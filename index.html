@@ -28,6 +28,15 @@
     }
 
     body{
+      <div class="intro-split">
+  <div class="intro-panel intro-left"></div>
+  <div class="intro-panel intro-right"></div>
+  <div class="intro-center">
+    <div class="intro-kicker">Hospitality Experience Strategist</div>
+    <div class="intro-title">Paris Intzes</div>
+    <div class="intro-subtitle">Multisensory & Eating Behavior Researcher</div>
+  </div>
+</div>
       margin:0;
       font-family:'Inter',sans-serif;
       background:var(--bg);
@@ -595,7 +604,7 @@ a::after {
 a:hover::after {
   width: 100%;
 }
-    /* ===== Split Editorial Curtain Intro ===== */
+/* ===== Safe Split Intro ===== */
 .intro-split {
   position: fixed;
   inset: 0;
@@ -607,11 +616,10 @@ a:hover::after {
 .intro-panel {
   position: absolute;
   top: 0;
-  width: 50.5%;
+  width: 50%;
   height: 100%;
   background: #f7f3ec;
-  transition: transform 1.8s cubic-bezier(0.77, 0, 0.175, 1);
-  will-change: transform;
+  transition: transform 1.6s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 .intro-left {
@@ -633,47 +641,38 @@ a:hover::after {
   justify-content: center;
   text-align: center;
   padding: 24px;
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 1s ease, transform 1s ease;
 }
 
 .intro-kicker {
   font-family: 'Inter', sans-serif;
   font-size: 10px;
-  letter-spacing: 0.35em;
+  letter-spacing: 0.34em;
   text-transform: uppercase;
-  color: rgba(23,21,18,0.62);
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 1s ease, transform 1s ease;
+  color: rgba(23,21,18,0.6);
 }
 
 .intro-title {
-  margin-top: 18px;
+  margin-top: 16px;
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(54px, 8vw, 120px);
   line-height: 0.95;
   letter-spacing: -0.05em;
   color: #171512;
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 1s ease, transform 1s ease;
 }
 
 .intro-subtitle {
-  margin-top: 16px;
+  margin-top: 14px;
   font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  letter-spacing: 0.2em;
+  font-size: 12px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(23,21,18,0.62);
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 1s ease, transform 1s ease;
+  color: rgba(23,21,18,0.6);
 }
 
-.intro-split.show .intro-kicker,
-.intro-split.show .intro-title,
-.intro-split.show .intro-subtitle {
+.intro-split.show .intro-center {
   opacity: 1;
   transform: translateY(0);
 }
@@ -688,51 +687,27 @@ a:hover::after {
 
 .intro-split.open .intro-center {
   opacity: 0;
-  transform: translateY(-14px);
-}
-
-.hero,
-header,
-main {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 1.2s ease, transform 1.2s ease;
-}
-
-body.site-ready .hero,
-body.site-ready header,
-body.site-ready main {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 @media (max-width: 768px) {
   .intro-panel {
-    transition: opacity 1s ease;
     width: 100%;
-  }
-
-  .intro-left,
-  .intro-right {
-    border: 0;
   }
 
   .intro-right {
     display: none;
   }
 
+  .intro-left {
+    border-right: 0;
+  }
+
   .intro-split.open .intro-left {
-    transform: none;
-    opacity: 0;
+    transform: translateY(-100%);
   }
 
   .intro-title {
     font-size: clamp(42px, 12vw, 72px);
-  }
-
-  .intro-subtitle {
-    font-size: 11px;
-    letter-spacing: 0.16em;
   }
 }
   </style>
@@ -971,36 +946,24 @@ links.forEach(link => {
     cursor.classList.remove('hover');
   });
 });
-    // ===== Split Editorial Curtain Intro =====
-const introSplit = document.querySelector('.intro-split');
-
+ // ===== Safe Split Intro Curtain =====
 window.addEventListener('load', () => {
+  const introSplit = document.querySelector('.intro-split');
+
+  if (!introSplit) return;
+
   setTimeout(() => {
     introSplit.classList.add('show');
   }, 150);
 
   setTimeout(() => {
     introSplit.classList.add('open');
-    document.body.classList.add('site-ready');
-  }, 1900);
+  }, 1800);
 
   setTimeout(() => {
-    if (introSplit) {
-      introSplit.style.display = 'none';
-    }
-  }, 3400);
+    introSplit.style.display = 'none';
+  }, 3300);
 });
   </script>
 </body>
-<div class="intro-split">
-  <div class="intro-panel intro-left"></div>
-  <div class="intro-panel intro-right"></div>
-
-  <div class="intro-center">
-    <div class="intro-kicker">Hospitality Experience Strategist</div>
-    <div class="intro-title">Paris Intzes</div>
-    <div class="intro-subtitle">Multisensory & Eating Behavior Researcher</div>
-  </div>
-</div>
-
 </html>
