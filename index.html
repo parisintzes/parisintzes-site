@@ -595,6 +595,146 @@ a::after {
 a:hover::after {
   width: 100%;
 }
+    /* ===== Split Editorial Curtain Intro ===== */
+.intro-split {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.intro-panel {
+  position: absolute;
+  top: 0;
+  width: 50.5%;
+  height: 100%;
+  background: #f7f3ec;
+  transition: transform 1.8s cubic-bezier(0.77, 0, 0.175, 1);
+  will-change: transform;
+}
+
+.intro-left {
+  left: 0;
+  border-right: 1px solid rgba(23,21,18,0.08);
+}
+
+.intro-right {
+  right: 0;
+  border-left: 1px solid rgba(23,21,18,0.08);
+}
+
+.intro-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.intro-kicker {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(23,21,18,0.62);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.intro-title {
+  margin-top: 18px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(54px, 8vw, 120px);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  color: #171512;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.intro-subtitle {
+  margin-top: 16px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(23,21,18,0.62);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.intro-split.show .intro-kicker,
+.intro-split.show .intro-title,
+.intro-split.show .intro-subtitle {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.intro-split.open .intro-left {
+  transform: translateX(-100%);
+}
+
+.intro-split.open .intro-right {
+  transform: translateX(100%);
+}
+
+.intro-split.open .intro-center {
+  opacity: 0;
+  transform: translateY(-14px);
+}
+
+.hero,
+header,
+main {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+body.site-ready .hero,
+body.site-ready header,
+body.site-ready main {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .intro-panel {
+    transition: opacity 1s ease;
+    width: 100%;
+  }
+
+  .intro-left,
+  .intro-right {
+    border: 0;
+  }
+
+  .intro-right {
+    display: none;
+  }
+
+  .intro-split.open .intro-left {
+    transform: none;
+    opacity: 0;
+  }
+
+  .intro-title {
+    font-size: clamp(42px, 12vw, 72px);
+  }
+
+  .intro-subtitle {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+  }
+}
   </style>
 </head>
 <body>
@@ -831,6 +971,36 @@ links.forEach(link => {
     cursor.classList.remove('hover');
   });
 });
+    // ===== Split Editorial Curtain Intro =====
+const introSplit = document.querySelector('.intro-split');
+
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    introSplit.classList.add('show');
+  }, 150);
+
+  setTimeout(() => {
+    introSplit.classList.add('open');
+    document.body.classList.add('site-ready');
+  }, 1900);
+
+  setTimeout(() => {
+    if (introSplit) {
+      introSplit.style.display = 'none';
+    }
+  }, 3400);
+});
   </script>
 </body>
+<div class="intro-split">
+  <div class="intro-panel intro-left"></div>
+  <div class="intro-panel intro-right"></div>
+
+  <div class="intro-center">
+    <div class="intro-kicker">Hospitality Experience Strategist</div>
+    <div class="intro-title">Paris Intzes</div>
+    <div class="intro-subtitle">Multisensory & Eating Behavior Researcher</div>
+  </div>
+</div>
+
 </html>
