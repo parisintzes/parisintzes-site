@@ -569,6 +569,32 @@ body {
   height: 50px;
   border-color: #555;
 }
+    /* Cursor refinement */
+.cursor {
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(0,0,0,0.4);
+}
+
+/* Link hover effect */
+a {
+  position: relative;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background: black;
+  transition: 0.4s ease;
+}
+
+a:hover::after {
+  width: 100%;
+}
   </style>
 </head>
 <body>
