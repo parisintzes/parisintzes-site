@@ -358,13 +358,13 @@
     min-height: 100vh;
     background: var(--bg);
     opacity: 0;
-    transform: translateY(38px);
-    filter: blur(6px);
+    transform: translateY(26px);
+    filter: blur(4px);
     transition:
-    opacity 1.4s ease,
-    transform 1.4s ease,
-    filter 1.4s ease;
-  }
+    opacity 1.5s ease,
+    transform 1.5s ease,
+    filter 1.5s ease;
+  }  
 
     .hero-cover.is-visible {
       opacity: 1;
@@ -473,12 +473,12 @@
 
     .hero-left-strip {
     position: absolute;
-    left: 26px;
-    top: 175px;
-    width: 18px;
-    height: 520px;
+    left: 34px;
+    top: 190px;
+    width: 14px;
+    height: 470px;
     overflow: hidden;
-    opacity: 0.8;
+    opacity: 0.68;
   }
 
     .hero-left-strip img {
@@ -488,54 +488,52 @@
     }
 
     .hero-title-block {
-    max-width: 650px;
-    padding-left: 56px;
-    padding-top: 150px;
-  }
-
-    .hero-accent-line {
-      width: 56px;
-      height: 2px;
-      background: var(--text);
-      margin-bottom: 22px;
-      opacity: 0;
-      transform: scaleX(0);
-      transform-origin: left center;
+    max-width: 620px;
+    padding-left: 72px;
+    padding-top: 162px;
     }
 
+    .hero-accent-line {
+    width: 44px;
+    height: 1px;
+    background: rgba(17, 17, 17, 0.82);
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+
     .hero-title {
-    font-size: clamp(40px, 4.8vw, 58px);
-    line-height: 0.98;
-    letter-spacing: -0.03em;
+    font-size: clamp(38px, 4.4vw, 54px);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
     font-weight: 300;
     margin: 0;
-    max-width: 760px;
+    max-width: 700px;
     opacity: 0;
     transform: translateY(26px);
     font-family: 'Inter', sans-serif;
   }
-
     .hero-subtitle {
-    margin-top: 24px;
-    font-size: 18px;
-    line-height: 1.2;
-    color: var(--muted);
-    max-width: 620px;
+    margin-top: 22px;
+    font-size: 16px;
+    line-height: 1.3;
+    color: rgba(17, 17, 17, 0.66);
+    max-width: 520px;
     opacity: 0;
     transform: translateY(26px);
     font-weight: 300;
   }  
 
     .hero-title-line {
-      margin-top: 18px;
-      width: 700px;
-    }
-
+    margin-top: 16px;
+    width: 540px;
+  }
     .hero-image-wrap {
     position: absolute;
-    right: 85px;
-    top: 180px;
-    width: 285px;
+    right: 95px;
+    top: 190px;
+    width: 260px;
     opacity: 0;
     transform: translateY(80px);
   }
@@ -548,24 +546,24 @@
 
     .hero-meta {
     position: absolute;
-    left: 85px;
-    bottom: 150px;
+    left: 95px;
+    bottom: 140px;
     opacity: 0;
     transform: translateY(24px);
   }
     .hero-meta-name {
-    font-size: 22px;
+    font-size: 20px;
     line-height: 1.05;
     font-weight: 400;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     font-family: 'Inter', sans-serif;
   }
 
     .hero-meta-role {
-    font-size: 15px;
-    line-height: 1.15;
-    color: var(--muted);
-    font-weight: 300;  
+    font-size: 13px;
+    line-height: 1.22;
+    color: rgba(17, 17, 17, 0.64);
+    font-weight: 300;
   }
 
     .hero-footer {
@@ -582,17 +580,17 @@
   }
 
     .hero-keywords {
-    font-size: 11px;
-    letter-spacing: 0.18em;
+    font-size: 10px;
+    letter-spacing: 0.22em;
     text-transform: lowercase;
-    color: var(--muted);
+    color: rgba(17, 17, 17, 0.56);
     text-align: center;
   }
 
-  .hero-year {
-  font-size: 14px;
-  letter-spacing: 0.1em;
-  color: var(--text);
+    .hero-year {
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    color: rgba(17, 17, 17, 0.72);
   }
 
     /* =========================
@@ -602,9 +600,8 @@
     .content-placeholder {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 120px 60px 160px;
+      padding: 140px 60px 180px;
     }
-
     .content-placeholder h2 {
       font-size: 42px;
       font-weight: 300;
@@ -648,48 +645,47 @@
   transform: translateY(0);
   filter: blur(0);
   }
-    .hero-cover.is-visible .hero-accent-line {
-      opacity: 1;
-      transform: scaleX(1);
-      transition: opacity 0.8s ease 0.2s, transform 1s ease 0.2s;
-    }
+   .hero-cover.is-visible .hero-accent-line {
+  opacity: 1;
+  transform: scaleX(1);
+  transition: opacity 0.8s ease 0.25s, transform 1.1s ease 0.25s;
+}
 
-    .hero-cover.is-visible .hero-title {
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 1s ease 0.45s, transform 1s ease 0.45s;
-    }
+  .hero-cover.is-visible .hero-title {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 1.1s ease 0.55s, transform 1.1s ease 0.55s;
+}
 
-    .hero-cover.is-visible .hero-subtitle {
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 1s ease 0.9s, transform 1s ease 0.9s;
-    }
+  .hero-cover.is-visible .hero-subtitle {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 1s ease 1.05s, transform 1s ease 1.05s;
+}
 
-    .hero-cover.is-visible .hero-title-line {
-      opacity: 1;
-      transform: scaleX(1);
-      transition: opacity 0.8s ease 1.15s, transform 1s ease 1.15s;
-    }
+  .hero-cover.is-visible .hero-title-line {
+  opacity: 1;
+  transform: scaleX(1);
+  transition: opacity 0.9s ease 1.35s, transform 1.1s ease 1.35s;
+}
 
-    .hero-cover.is-visible .hero-image-wrap {
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 1.2s ease 0.25s, transform 1.4s ease 0.25s;
-    }
+  .hero-cover.is-visible .hero-image-wrap {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 1.35s ease 0.4s, transform 1.45s ease 0.4s;
+}
 
-    .hero-cover.is-visible .hero-meta {
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 1s ease 1.35s, transform 1s ease 1.35s;
-    }
+  .hero-cover.is-visible .hero-meta {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 1s ease 1.55s, transform 1s ease 1.55s;
+}
 
-    .hero-cover.is-visible .hero-footer {
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 1s ease 1.65s, transform 1s ease 1.65s;
-    }
-
+  .hero-cover.is-visible .hero-footer {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 1s ease 1.9s, transform 1s ease 1.9s;
+}
     /* =========================
     SECTION 16: RESPONSIVE
     Mobile / tablet προσαρμογές
