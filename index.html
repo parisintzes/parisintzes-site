@@ -36,8 +36,7 @@
   ========================= -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
   <style>
     /* =========================
     SECTION 3: ROOT VARIABLES
@@ -110,15 +109,16 @@
       text-transform: none;
       font-weight: 400;
     }
-
     .page-line {
-      height: 1px;
-      background: var(--line);
-      transform: scaleX(0);
-      transform-origin: left center;
-      opacity: 0;
-    }
-
+    height: 1px;
+    background: var(--line);
+    transform: scaleX(0);
+    transform-origin: left center;
+    opacity: 0;
+    transition:
+    transform 1.35s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.8s ease;
+}
     /* =========================
     SECTION 6: ENTRANCE WRAPPER
     Ολόκληρο το cinematic intro sequence
@@ -177,46 +177,46 @@
     }
 
     .frame-one-image-left {
-      position: absolute;
-      left: 110px;
-      top: 100px;
-      width: 520px;
-      opacity: 0;
-      transform: translateY(120px);
-    }
+    position: absolute;
+    left: 130px;
+    top: 120px;
+    width: 420px;
+    opacity: 0;
+    transform: translateY(120px);
+  }
 
     .frame-one-image-right {
-      position: absolute;
-      right: 60px;
-      bottom: 0;
-      width: 560px;
-      opacity: 0;
-      transform: translateY(120px);
-    }
+    position: absolute;
+    right: 90px;
+    bottom: 40px;
+    width: 430px;
+    opacity: 0;
+    transform: translateY(120px);
+  }
 
     .frame-one-vertical {
-      position: absolute;
-      left: 655px;
-      top: 95px;
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-      font-size: 20px;
-      font-weight: 400;
-      opacity: 0;
-      letter-spacing: 0.01em;
-    }
+    position: absolute;
+    left: 595px;
+    top: 125px;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 16px;
+    font-weight: 300;
+    opacity: 0;
+    letter-spacing: 0.01em;
+  }
 
     .frame-one-quote-top {
-      position: absolute;
-      right: 110px;
-      top: 160px;
-      width: 430px;
-      font-size: 28px;
-      line-height: 1.1;
-      font-weight: 300;
-      opacity: 0;
-      transform: translateY(22px);
-    }
+    position: absolute;
+    right: 120px;
+    top: 185px;
+    width: 340px;
+    font-size: 22px;
+    line-height: 1.08;
+    font-weight: 300;
+    opacity: 0;
+    transform: translateY(22px);
+ }
 
     .frame-one-line-top {
       position: absolute;
@@ -242,16 +242,16 @@
     }
 
     .frame-one-quote-bottom-left {
-      position: absolute;
-      left: 125px;
-      bottom: 82px;
-      width: 690px;
-      text-align: center;
-      font-size: 24px;
-      font-weight: 300;
-      opacity: 0;
-      transform: translateY(22px);
-    }
+    position: absolute;
+    left: 130px;
+    bottom: 100px;
+    width: 520px;
+    text-align: left;
+    font-size: 20px;
+    font-weight: 300;
+    opacity: 0;
+    transform: translateY(22px);
+  }
 
     .frame-one-line-bottom-left {
       position: absolute;
@@ -273,15 +273,15 @@
     }
 
     .frame-two-quote-top-left {
-      position: absolute;
-      left: 125px;
-      top: 95px;
-      width: 420px;
-      font-size: 34px;
-      line-height: 1.08;
-      font-weight: 300;
-      opacity: 0;
-      transform: translateY(22px);
+    position: absolute;
+    left: 130px;
+    top: 120px;
+    width: 320px;
+    font-size: 22px;
+    line-height: 1.08;
+    font-weight: 300;
+    opacity: 0;
+    transform: translateY(22px);
     }
 
     .frame-two-line-top-left {
@@ -292,13 +292,13 @@
     }
 
     .frame-two-image-top-right {
-      position: absolute;
-      right: 95px;
-      top: 0;
-      width: 535px;
-      opacity: 0;
-      transform: translateY(120px);
-    }
+    position: absolute;
+    right: 120px;
+    top: 40px;
+    width: 360px;
+    opacity: 0;
+    transform: translateY(120px);
+  }
 
     .frame-two-label-analysis {
       position: absolute;
@@ -309,13 +309,13 @@
     }
 
     .frame-two-image-analysis {
-      position: absolute;
-      left: 125px;
-      top: 385px;
-      width: 545px;
-      opacity: 0;
-      transform: translateY(120px);
-    }
+    position: absolute;
+    left: 130px;
+    top: 430px;
+    width: 400px;
+    opacity: 0;
+    transform: translateY(120px);
+  }
 
     .frame-two-analysis-copy {
       position: absolute;
@@ -327,16 +327,16 @@
     }
 
     .frame-two-analysis-copy .main {
-      font-size: 28px;
-      line-height: 1.06;
-      font-weight: 300;
-    }
+    font-size: 22px;
+    line-height: 1.08;
+    font-weight: 300;
+  }
 
     .frame-two-analysis-copy .sub {
-      font-size: 24px;
-      line-height: 1.1;
-      font-weight: 300;
-    }
+    font-size: 18px;
+    line-height: 1.12;
+    font-weight: 300;
+  }
 
     .frame-two-line-analysis {
       position: absolute;
@@ -387,22 +387,22 @@
     }
 
     .hero-brand-name {
-      font-size: 28px;
-      line-height: 1;
-      font-weight: 400;
-      letter-spacing: -0.01em;
-      font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    line-height: 1;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    font-family: 'Inter', sans-serif;
     }
 
     .hero-brand-meta {
-      font-size: 18px;
-      line-height: 1.2;
-      font-weight: 400;
-      opacity: 1;
-      max-height: 120px;
-      overflow: hidden;
-      transition: opacity 0.45s ease, transform 0.45s ease, max-height 0.45s ease;
-    }
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 300;
+    opacity: 1;
+    max-height: 120px;
+    overflow: hidden;
+    transition: opacity 0.45s ease, transform 0.45s ease, max-height 0.45s ease;
+  }
 
     .hero-topbar.is-compact .hero-brand-meta {
       opacity: 0;
@@ -471,27 +471,27 @@
     }
 
     .hero-title {
-      font-size: clamp(56px, 6vw, 78px);
-      line-height: 0.98;
-      letter-spacing: -0.035em;
-      font-weight: 300;
-      margin: 0;
-      max-width: 820px;
-      opacity: 0;
-      transform: translateY(26px);
-      font-family: 'Inter', sans-serif;
-    }
+    font-size: clamp(40px, 4.8vw, 58px);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+    font-weight: 300;
+    margin: 0;
+    max-width: 760px;
+    opacity: 0;
+    transform: translateY(26px);
+    font-family: 'Inter', sans-serif;
+  }
 
     .hero-subtitle {
-      margin-top: 34px;
-      font-size: 24px;
-      line-height: 1.15;
-      color: var(--muted);
-      max-width: 760px;
-      opacity: 0;
-      transform: translateY(26px);
-      font-weight: 400;
-    }
+    margin-top: 24px;
+    font-size: 18px;
+    line-height: 1.2;
+    color: var(--muted);
+    max-width: 620px;
+    opacity: 0;
+    transform: translateY(26px);
+    font-weight: 300;
+  }  
 
     .hero-title-line {
       margin-top: 18px;
@@ -499,13 +499,13 @@
     }
 
     .hero-image-wrap {
-      position: absolute;
-      right: 0;
-      top: 140px;
-      width: 390px;
-      opacity: 0;
-      transform: translateY(80px);
-    }
+    position: absolute;
+    right: 60px;
+    top: 170px;
+    width: 320px;
+    opacity: 0;
+    transform: translateY(80px);
+  }
 
     .hero-image-wrap img {
       width: 100%;
@@ -522,19 +522,19 @@
     }
 
     .hero-meta-name {
-      font-size: 30px;
-      line-height: 1.05;
-      font-weight: 500;
-      margin-bottom: 10px;
-      font-family: 'Inter', sans-serif;
-    }
+    font-size: 22px;
+    line-height: 1.05;
+    font-weight: 400;
+    margin-bottom: 8px;
+    font-family: 'Inter', sans-serif;
+  }
 
     .hero-meta-role {
-      font-size: 20px;
-      line-height: 1.15;
-      color: var(--muted);
-      font-weight: 400;
-    }
+    font-size: 15px;
+    line-height: 1.15;
+    color: var(--muted);
+    font-weight: 300;  
+  }
 
     .hero-footer {
       position: absolute;
@@ -550,18 +550,18 @@
     }
 
     .hero-keywords {
-      font-size: 14px;
-      letter-spacing: 0.24em;
-      text-transform: lowercase;
-      color: var(--muted);
-      text-align: center;
-    }
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: lowercase;
+    color: var(--muted);
+    text-align: center;
+  }
 
-    .hero-year {
-      font-size: 18px;
-      letter-spacing: 0.12em;
-      color: var(--text);
-    }
+  .hero-year {
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  color: var(--text);
+  }
 
     /* =========================
     SECTION 13: CONTENT PLACEHOLDER
@@ -598,10 +598,9 @@
     }
 
     .line-open {
-      opacity: 1 !important;
-      transform: scaleX(1) !important;
-    }
-
+    opacity: 1 !important;
+    transform: scaleX(1) !important;
+  }
     .is-rising {
       opacity: 1 !important;
       transform: translateY(0) !important;
@@ -938,7 +937,7 @@
 
         <!-- Κάθετο κείμενο ανάμεσα στα στοιχεία -->
         <div class="frame-one-vertical serif" id="frameOneVertical">
-          Perception begins before thought.
+        Perception
         </div>
 
         <!-- Επάνω δεξιά academic quote -->
@@ -964,7 +963,7 @@
 
         <!-- Κάτω quote -->
         <div class="frame-one-quote-bottom-left serif" id="frameOneQuoteBottomLeft">
-          We do not see —<br>we interpret.
+        Perception begins before thought.
         </div>
 
         <!-- Κάτω γραμμή -->
@@ -981,7 +980,7 @@
 
         <!-- Επάνω αριστερά quote -->
         <div class="frame-two-quote-top-left serif" id="frameTwoQuoteTopLeft">
-          We do not see —<br>we interpret.
+        Sensation shapes eating behavior.
         </div>
 
         <!-- Επάνω αριστερά γραμμή -->
