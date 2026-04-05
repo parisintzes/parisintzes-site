@@ -46,7 +46,7 @@
       --bg: #ffffff;
       --text: #111111;
       --muted: #4d4d4d;
-      --line: rgba(17, 17, 17, 0.7);
+      --line: rgba(17, 17, 17, 0.48);
       --soft: rgba(17, 17, 17, 0.08);
 
       --transition-slow: 1.2s ease;
@@ -104,11 +104,12 @@
     }
 
     .editorial-label {
-      font-size: 14px;
-      letter-spacing: 0.18em;
-      text-transform: none;
-      font-weight: 400;
-    }
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: none;
+    font-weight: 300;
+    color: rgba(17, 17, 17, 0.72);
+  }
     .page-line {
     height: 1px;
     background: var(--line);
@@ -160,9 +161,9 @@
 
     .intro-frame.is-leaving {
       opacity: 0;
-      transform: translateY(-30px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
+      transform: translateY(-22px);
+      transition: opacity 1s ease, transform 1s ease;
+  }
 
     /* =========================
     SECTION 8: FRAME 1 LAYOUT
@@ -196,24 +197,26 @@
 
     .frame-one-vertical {
     position: absolute;
-    left: 545px;
-    top: 132px;
+    left: 538px;
+    top: 136px;
     writing-mode: vertical-rl;
     transform: rotate(180deg);
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 300;
     opacity: 0;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.08em;
+    color: rgba(17, 17, 17, 0.68);
   }
 
    .frame-one-quote-top {
     position: absolute;
     right: 120px;
-    top: 165px;
-    width: 320px;
-    font-size: 20px;
-    line-height: 1.08;
+    top: 162px;
+    width: 305px;
+    font-size: 18px;
+    line-height: 1.12;
     font-weight: 300;
+    letter-spacing: -0.01em;
     opacity: 0;
     transform: translateY(22px);
   }
@@ -242,12 +245,13 @@
     .frame-one-quote-bottom-left {
     position: absolute;
     left: 120px;
-    bottom: 92px;
-    width: 390px;
+    bottom: 94px;
+    width: 360px;
     text-align: left;
-    font-size: 18px;
-    line-height: 1.08;
+    font-size: 16px;
+    line-height: 1.14;
     font-weight: 300;
+    letter-spacing: -0.005em;
     opacity: 0;
     transform: translateY(22px);
   }
@@ -274,10 +278,11 @@
     position: absolute;
     left: 120px;
     top: 118px;
-    width: 300px;
-    font-size: 20px;
-    line-height: 1.08;
+    width: 290px;
+    font-size: 18px;
+    line-height: 1.12;
     font-weight: 300;
+    letter-spacing: -0.01em;
     opacity: 0;
     transform: translateY(22px);
   }
@@ -323,15 +328,18 @@
   }
 
     .frame-two-analysis-copy .main {
-    font-size: 22px;
-    line-height: 1.08;
+    font-size: 20px;
+    line-height: 1.1;
     font-weight: 300;
+    letter-spacing: -0.01em;  
   }
 
-    .frame-two-analysis-copy .sub {
-    font-size: 18px;
-    line-height: 1.12;
+  .frame-two-analysis-copy .sub {
+    margin-top: 6px;
+    font-size: 15px;
+    line-height: 1.16;
     font-weight: 300;
+    color: rgba(17, 17, 17, 0.78);  
   }
 
     .frame-two-line-analysis {
@@ -932,22 +940,23 @@ SECTION 16B: HERO MICRO MOTION
     Μικρό κουμπί skip για το intro
     ========================= */
     .skip-intro {
-      position: fixed;
-      right: 24px;
-      bottom: 24px;
-      z-index: 10000;
-      background: transparent;
-      border: 1px solid rgba(17,17,17,0.25);
-      padding: 10px 14px;
-      font-size: 12px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--text);
-      cursor: pointer;
-      opacity: 0;
-      transition: opacity 0.6s ease, transform 0.6s ease;
-      transform: translateY(10px);
-    }
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 10000;
+    background: rgba(255,255,255,0.65);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(17,17,17,0.12);
+    padding: 10px 14px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text);
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    transform: translateY(10px);    
+  }
 
     .skip-intro.is-visible {
       opacity: 1;
@@ -1198,17 +1207,17 @@ SECTION 16B: HERO MICRO MOTION
       riseElement(frameOneImageLeft, 350);
       riseElement(frameOneImageRight, 700);
 
-      showElement(frameOneQuoteTop, 1450);
-      openLine(frameOneLineTop, 2050);
+      showElement(frameOneQuoteTop, 1550);
+      openLine(frameOneLineTop, 2250);
 
-      showElement(frameOneLabelLeft, 2550);
-      showElement(frameOneLabelRight, 2750);
+      showElement(frameOneLabelLeft, 2850);
+      showElement(frameOneLabelRight, 3050);
 
-      showElement(frameOneVertical, 3100);
+      showElement(frameOneVertical, 3350);
 
-      showElement(frameOneQuoteBottomLeft, 3550);
-      openLine(frameOneLineBottomLeft, 4150);
-    }
+      showElement(frameOneQuoteBottomLeft, 3920);
+      openLine(frameOneLineBottomLeft, 4550);
+      }
 
     /* =========================
     SECTION 24: FRAME 2 TIMELINE
@@ -1217,16 +1226,16 @@ SECTION 16B: HERO MICRO MOTION
     function playFrameTwo() {
       frameTwo.classList.add('is-active');
 
-      showElement(frameTwoQuoteTopLeft, 450);
-      openLine(frameTwoLineTopLeft, 1100);
+      showElement(frameTwoQuoteTopLeft, 550);
+      openLine(frameTwoLineTopLeft, 1300);
 
-      riseElement(frameTwoImageTopRight, 750);
+      riseElement(frameTwoImageTopRight, 850);
 
-      showElement(frameTwoLabelAnalysis, 1650);
-      riseElement(frameTwoImageAnalysis, 2100);
+      showElement(frameTwoLabelAnalysis, 1900);
+      riseElement(frameTwoImageAnalysis, 2400);
 
-      showElement(frameTwoAnalysisCopy, 3000);
-      openLine(frameTwoLineAnalysis, 3650);
+      showElement(frameTwoAnalysisCopy, 3350);
+      openLine(frameTwoLineAnalysis, 4050);
     }
 
     /* =========================
