@@ -45,7 +45,7 @@
     :root {
       --bg: #ffffff;
       --text: #111111;
-      --muted: #4d4d4d;
+      --muted: rgba(17, 17, 17, 0.62);
       --line: rgba(17, 17, 17, 0.48);
       --soft: rgba(17, 17, 17, 0.08);
 
@@ -117,9 +117,9 @@
     transform-origin: left center;
     opacity: 0;
     transition:
-    transform 1.35s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.8s ease;
-}
+    transform 1.45s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.9s ease;
+  }
     /* =========================
     SECTION 6: ENTRANCE WRAPPER
     Ολόκληρο το cinematic intro sequence
@@ -134,10 +134,10 @@
     }
 
     .intro-sequence.is-hidden {
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 1s ease, visibility 1s ease;
-    }
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1.35s ease, visibility 1.35s ease;
+  }
 
     /* =========================
     SECTION 7: INTRO FRAME COMMON
@@ -214,9 +214,9 @@
     top: 162px;
     width: 305px;
     font-size: 18px;
-    line-height: 1.12;
+    line-height: 1.18;
     font-weight: 300;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.008em;
     opacity: 0;
     transform: translateY(22px);
   }
@@ -249,9 +249,9 @@
     width: 360px;
     text-align: left;
     font-size: 16px;
-    line-height: 1.14;
+    line-height: 1.2;
     font-weight: 300;
-    letter-spacing: -0.005em;
+    letter-spacing: -0.004em;
     opacity: 0;
     transform: translateY(22px);
   }
@@ -328,18 +328,18 @@
   }
 
     .frame-two-analysis-copy .main {
-    font-size: 20px;
-    line-height: 1.1;
+    font-size: 19px;
+    line-height: 1.14;
     font-weight: 300;
-    letter-spacing: -0.01em;  
+    letter-spacing: -0.008em;
   }
 
-  .frame-two-analysis-copy .sub {
-    margin-top: 6px;
-    font-size: 15px;
-    line-height: 1.16;
+    .frame-two-analysis-copy .sub {
+    margin-top: 7px;
+    font-size: 14px;
+    line-height: 1.2;
     font-weight: 300;
-    color: rgba(17, 17, 17, 0.78);  
+    color: rgba(17, 17, 17, 0.7);
   }
 
     .frame-two-line-analysis {
@@ -504,22 +504,22 @@
   }
 
     .hero-title {
-    font-size: clamp(38px, 4.4vw, 54px);
-    line-height: 1.02;
-    letter-spacing: -0.025em;
+    font-size: clamp(38px, 4.2vw, 52px);
+    line-height: 1.06;
+    letter-spacing: -0.02em;
     font-weight: 300;
     margin: 0;
-    max-width: 700px;
+    max-width: 680px;
     opacity: 0;
     transform: translateY(26px);
     font-family: 'Inter', sans-serif;
   }
     .hero-subtitle {
-    margin-top: 22px;
-    font-size: 16px;
-    line-height: 1.3;
-    color: rgba(17, 17, 17, 0.66);
-    max-width: 520px;
+    margin-top: 20px;
+    font-size: 15px;
+    line-height: 1.34;
+    color: rgba(17, 17, 17, 0.58);
+    max-width: 500px;
     opacity: 0;
     transform: translateY(26px);
     font-weight: 300;
@@ -581,16 +581,16 @@
 
     .hero-keywords {
     font-size: 10px;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.24em;
     text-transform: lowercase;
-    color: rgba(17, 17, 17, 0.56);
+    color: rgba(17, 17, 17, 0.5);
     text-align: center;
   }
-
+  
     .hero-year {
-    font-size: 12px;
-    letter-spacing: 0.14em;
-    color: rgba(17, 17, 17, 0.72);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: rgba(17, 17, 17, 0.62);
   }
 
     /* =========================
@@ -603,18 +603,18 @@
       padding: 140px 60px 180px;
     }
     .content-placeholder h2 {
-      font-size: 42px;
-      font-weight: 300;
-      margin: 0 0 20px;
-      font-family: 'Cormorant Garamond', serif;
-    }
+    font-size: 34px;
+    font-weight: 300;
+    margin: 0 0 16px;
+    font-family: 'Cormorant Garamond', serif;
+  }
 
     .content-placeholder p {
-      max-width: 700px;
-      font-size: 20px;
-      line-height: 1.6;
-      color: var(--muted);
-    }
+    max-width: 620px;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--muted);
+  }
 
     /* =========================
     SECTION 14: ACTIVE STATE HELPERS
@@ -1297,12 +1297,11 @@ SECTION 16B: HERO MICRO MOTION
     function handleHeroCompression() {
     const scrollY = window.scrollY;
 
-    if (scrollY > 70) {
+    if (scrollY > 60) {
     heroTopbar.classList.add('is-compact');
-    } else {
+  } else {
     heroTopbar.classList.remove('is-compact');
-    }
-    }
+  }
 
     window.addEventListener('scroll', handleHeroCompression);
 
