@@ -1,27 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Paris Intzes</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
-
-  <style>
-    body {
-      margin: 0;
-      background: #fff;
-      font-family: 'Cormorant Garamond', serif;
-  }
-  </style>
-
-</head>
-<body>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
   <!-- =========================
   SECTION 1: BASIC PAGE SETUP
   Βασικές πληροφορίες του document
@@ -1290,7 +1269,7 @@ SECTION 16B: HERO MICRO MOTION
 
     skipIntroBtn.addEventListener('click', skipIntro);
 
-    /* =========================
+   /* =========================
     SECTION 28: HERO SCROLL COMPRESSION
     Κατά το scroll μένει μόνο το "Paris Intzes"
     ========================= */
@@ -1299,12 +1278,12 @@ SECTION 16B: HERO MICRO MOTION
 
     if (scrollY > 60) {
     heroTopbar.classList.add('is-compact');
-  } else {
+    } else {
     heroTopbar.classList.remove('is-compact');
   }
+}
 
-    window.addEventListener('scroll', handleHeroCompression);
-
+window.addEventListener('scroll', handleHeroCompression);
     /* =========================
     SECTION 29: INITIAL LOAD
     Τι γίνεται όταν φορτώνει το site
