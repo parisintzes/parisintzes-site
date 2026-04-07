@@ -941,214 +941,272 @@ SECTION 16B: HERO MICRO MOTION
 </head>
 <body>
 
-  <!-- =========================
-  SECTION 18: CINEMATIC ENTRANCE
-  Το πλήρες intro sequence με 2 editorial frames
-  ========================= -->
-  <div class="intro-sequence" id="introSequence">
+ <body>
 
-    <!-- =========================
-    SECTION 18A: SKIP BUTTON
-    Δίνει δυνατότητα να προσπεράσει ο χρήστης το intro
-    ========================= -->
-    <button class="skip-intro" id="skipIntroBtn">Skip Intro</button>
+  <!-- =========================================================
+  SECTION 18: CONTINUOUS CINEMATIC ENTRANCE
+  Κύριο wrapper του νέου entrance.
+  Εδώ θα μπει όλο το continuous vertical flow:
+  images, labels, quotes, lines, transition προς hero.
+  ========================================================== -->
+  <div class="entrance-flow" id="entranceFlow">
 
-    <!-- =========================
-    SECTION 18B: FRAME 1
-    Perception + Sensory Response
-    ========================= -->
-    <div class="intro-frame intro-frame-1" id="frameOne">
-      <div class="frame-one">
+    <!-- =========================================================
+    SECTION 18A: ENTRANCE UTILITY / SKIP BUTTON
+    Κουμπί για παράλειψη του intro.
+    Θα βελτιωθεί αργότερα αισθητικά και λειτουργικά.
+    ========================================================== -->
+    <button class="entrance-skip" id="entranceSkipBtn">Skip Intro</button>
 
-        <!-- Μεγάλη αριστερή εικόνα -->
-        <img class="frame-one-image-left" id="frameOneImageLeft" src="images/perception.jpeg" alt="Perception image">
+    <!-- =========================================================
+    SECTION 18B: FLOW CANVAS
+    Το βασικό “stage” του entrance.
+    Μέσα εδώ θα κινούνται όλα τα visual layers προς τα πάνω.
+    ========================================================== -->
+    <div class="entrance-canvas" id="entranceCanvas">
 
-        <!-- Κάθετο κείμενο ανάμεσα στα στοιχεία -->
-        <div class="frame-one-vertical serif" id="frameOneVertical">
-        Perception
-        </div>
+      <!-- =========================================================
+      SECTION 18C: FLOW IMAGE LAYER
+      Layer αποκλειστικά για τις εικόνες του entrance.
+      Οι εικόνες δεν θα λειτουργούν σαν ξεχωριστά slides,
+      αλλά σαν ένα ενιαίο visual stream.
+      ========================================================== -->
+      <div class="entrance-image-layer" id="entranceImageLayer">
 
-        <!-- Επάνω δεξιά academic quote -->
-        <div class="frame-one-quote-top serif" id="frameOneQuoteTop">
-          Perception is not passive —<br>it is constructed.
-        </div>
+        <!-- IMAGE 01: PERCEPTION -->
+        <figure class="flow-image flow-image-perception" id="flowImagePerception">
+          <img src="images/perception.jpeg" alt="Perception visual">
+        </figure>
 
-        <!-- Γραμμή επάνω δεξιά -->
-        <div class="page-line frame-one-line-top" id="frameOneLineTop"></div>
+        <!-- IMAGE 02: SENSORY -->
+        <figure class="flow-image flow-image-sensory" id="flowImageSensory">
+          <img src="images/sensory.jpeg" alt="Sensory response visual">
+        </figure>
 
-        <!-- Label αριστερά -->
-        <div class="frame-one-label-left editorial-label" id="frameOneLabelLeft">
-          //Perception
-        </div>
-
-        <!-- Label δεξιά -->
-        <div class="frame-one-label-right editorial-label" id="frameOneLabelRight">
-          // Sensory Response
-        </div>
-
-        <!-- Δεξιά χαμηλή εικόνα -->
-        <img class="frame-one-image-right" id="frameOneImageRight" src="images/sensory.jpeg" alt="Sensory response image">
-
-        <!-- Κάτω quote -->
-        <div class="frame-one-quote-bottom-left serif" id="frameOneQuoteBottomLeft">
-        Perception begins before thought.
-        </div>
-
-        <!-- Κάτω γραμμή -->
-        <div class="page-line frame-one-line-bottom-left" id="frameOneLineBottomLeft"></div>
+        <!-- IMAGE 03: ANALYSIS -->
+        <figure class="flow-image flow-image-analysis" id="flowImageAnalysis">
+          <img src="images/analysis.jpeg" alt="Analysis visual">
+        </figure>
       </div>
-    </div>
 
-    <!-- =========================
-    SECTION 18C: FRAME 2
-    Analysis frame
-    ========================= -->
-    <div class="intro-frame intro-frame-2" id="frameTwo">
-      <div class="frame-two">
+      <!-- =========================================================
+      SECTION 18D: FLOW TEXT LAYER
+      Layer για labels, quotes, micro editorial text.
+      Τα texts θα εμφανίζονται, θα κάθονται για λίγο,
+      και μετά θα ενσωματώνονται στη ροή προς τα πάνω.
+      ========================================================== -->
+      <div class="entrance-text-layer" id="entranceTextLayer">
 
-        <!-- Επάνω αριστερά quote -->
-        <div class="frame-two-quote-top-left serif" id="frameTwoQuoteTopLeft">
-        Sensation shapes eating behavior.
+        <!-- -------------------------
+        TEXT GROUP 01: PERCEPTION
+        Πρώτο θεωρητικό / ακαδημαϊκό επίπεδο
+        -------------------------- -->
+        <div class="flow-text-group flow-text-group-perception" id="flowTextGroupPerception">
+
+          <!-- Micro label -->
+          <div class="flow-label flow-label-perception" id="flowLabelPerception">
+            // Perception
+          </div>
+
+          <!-- Main perception quote -->
+          <div class="flow-quote flow-quote-perception-top serif" id="flowQuotePerceptionTop">
+            Perception is not passive —<br>
+            it is constructed.
+          </div>
+
+          <!-- Editorial line κάτω από το main quote -->
+          <div class="flow-line flow-line-perception-top" id="flowLinePerceptionTop"></div>
+
+          <!-- Secondary perception quote -->
+          <div class="flow-quote flow-quote-perception-bottom serif" id="flowQuotePerceptionBottom">
+            Perception begins before thought.
+          </div>
+
+          <!-- Editorial line κάτω από το secondary quote -->
+          <div class="flow-line flow-line-perception-bottom" id="flowLinePerceptionBottom"></div>
+
+          <!-- Optional vertical micro-word -->
+          <div class="flow-micro-vertical serif" id="flowMicroVerticalPerception">
+            Perception
+          </div>
         </div>
 
-        <!-- Επάνω αριστερά γραμμή -->
-        <div class="page-line frame-two-line-top-left" id="frameTwoLineTopLeft"></div>
+        <!-- -------------------------
+        TEXT GROUP 02: SENSORY RESPONSE
+        Δεύτερο επίπεδο: eating behavior / sensory response
+        -------------------------- -->
+        <div class="flow-text-group flow-text-group-sensory" id="flowTextGroupSensory">
 
-        <!-- Εικόνα επάνω δεξιά -->
-        <img class="frame-two-image-top-right" id="frameTwoImageTopRight" src="images/sensory.jpeg" alt="Sensory closeup image">
+          <!-- Micro label -->
+          <div class="flow-label flow-label-sensory" id="flowLabelSensory">
+            // Sensory Response
+          </div>
 
-        <!-- Analysis label -->
-        <div class="frame-two-label-analysis editorial-label" id="frameTwoLabelAnalysis">
-          //Analysis
+          <!-- Main sensory quote -->
+          <div class="flow-quote flow-quote-sensory serif" id="flowQuoteSensory">
+            Sensation shapes eating behavior.
+          </div>
+
+          <!-- Editorial line -->
+          <div class="flow-line flow-line-sensory" id="flowLineSensory"></div>
         </div>
 
-        <!-- Analysis image -->
-        <img class="frame-two-image-analysis" id="frameTwoImageAnalysis" src="images/analysis.jpeg" alt="Analysis image">
+        <!-- -------------------------
+        TEXT GROUP 03: ANALYSIS
+        Τρίτο επίπεδο: analysis / research identity
+        -------------------------- -->
+        <div class="flow-text-group flow-text-group-analysis" id="flowTextGroupAnalysis">
 
-        <!-- Analysis copy -->
-        <div class="frame-two-analysis-copy serif" id="frameTwoAnalysisCopy">
-          <div class="main">The architecture of behavior.</div>
-          <div class="sub">Analyzed through data.</div>
+          <!-- Micro label -->
+          <div class="flow-label flow-label-analysis" id="flowLabelAnalysis">
+            // Analysis
+          </div>
+
+          <!-- Main analysis statement -->
+          <div class="flow-quote flow-quote-analysis-main serif" id="flowQuoteAnalysisMain">
+            The architecture of behavior.
+          </div>
+
+          <!-- Secondary analysis statement -->
+          <div class="flow-quote flow-quote-analysis-sub serif" id="flowQuoteAnalysisSub">
+            Analyzed through data.
+          </div>
+
+          <!-- Editorial line -->
+          <div class="flow-line flow-line-analysis" id="flowLineAnalysis"></div>
         </div>
-
-        <!-- Analysis line -->
-        <div class="page-line frame-two-line-analysis" id="frameTwoLineAnalysis"></div>
       </div>
     </div>
   </div>
 
-  <!-- =========================
-  SECTION 19: HERO SECTION
-  Το βασικό editorial hero που εμφανίζεται μετά το intro
-  ========================= -->
-  <section class="hero-cover" id="heroCover">
+  <!-- =========================================================
+  SECTION 19: CONTINUOUS HERO REVEAL
+  Το hero δεν αντιμετωπίζεται σαν “νέα σελίδα”.
+  Είναι η φυσική συνέχεια του entrance flow.
+  ========================================================== -->
+  <section class="hero-stage" id="heroStage">
 
-    <!-- =========================
-    SECTION 19A: TOPBAR
-    Επάνω brand + menu
-    ========================= -->
-    <div class="hero-topbar" id="heroTopbar">
-      <div class="hero-brand">
-        <div class="hero-brand-name">PARIS INTZES</div>
+    <!-- =========================================================
+    SECTION 19A: HERO TOP TOOLBAR
+    Επάνω μπάρα με brand name και menu trigger.
+    Θα εμφανίζεται με continuous upward reveal.
+    ========================================================== -->
+    <div class="hero-toolbar" id="heroToolbar">
+
+      <!-- BRAND BLOCK
+      Στην αρχή εμφανίζεται πλήρες.
+      Με το scroll μένει μόνο το Paris Intzes. -->
+      <div class="hero-brand-block" id="heroBrandBlock">
+        <div class="hero-brand-name" id="heroBrandName">PARIS INTZES</div>
         <div class="hero-brand-meta" id="heroBrandMeta">
           Hospitality Experience Strategist<br>
           Multisensory Experience & Eating Behavior Researcher
         </div>
       </div>
 
-      <div class="hero-menu" aria-label="Menu">
+      <!-- MENU ICON
+      3 γραμμές όπως ζήτησες -->
+      <button class="hero-menu-button" id="heroMenuButton" aria-label="Open menu">
         <span></span>
         <span></span>
         <span></span>
-      </div>
+      </button>
     </div>
 
-    <!-- =========================
-    SECTION 19B: MAIN HERO CONTENT
-    Κεντρικό title + image
-    ========================= -->
-    <div class="hero-main">
+    <!-- =========================================================
+    SECTION 19B: HERO MAIN COMPOSITION
+    Το βασικό editorial cover composition.
+    Desktop: split / editorial
+    Tablet: πιο compact
+    Mobile: stacked αλλά elegant
+    ========================================================== -->
+    <div class="hero-composition" id="heroComposition">
 
-      <!-- Αριστερό μικρό continuation strip -->
-      <div class="hero-left-strip">
+      <!-- LEFT MICRO IMAGE STRIP
+      Το μικρό continuation strip από την ίδια hero εικόνα -->
+      <div class="hero-image-strip" id="heroImageStrip">
         <img src="images/hero-strip.jpeg" alt="Hero continuation strip">
       </div>
 
-      <!-- Hero title block -->
-      <div class="hero-title-block">
-        <div class="hero-accent-line"></div>
+      <!-- HERO TEXT COLUMN
+      Τίτλος, subtitle, γραμμές -->
+      <div class="hero-copy-column" id="heroCopyColumn">
 
-        <h1 class="hero-title">
+        <!-- Small accent line -->
+        <div class="hero-accent-line" id="heroAccentLine"></div>
+
+        <!-- Main hero title -->
+        <h1 class="hero-main-title" id="heroMainTitle">
           Shaping<br>
           Eating Behavior through<br>
           Multisensory Experience
         </h1>
 
-        <p class="hero-subtitle">
+        <!-- Hero subtitle -->
+        <p class="hero-main-subtitle" id="heroMainSubtitle">
           Integrating Sensory Science, Gastronomy, and Data-Driven Insights
           into Hospitality Contexts
         </p>
 
-        <div class="page-line hero-title-line"></div>
+        <!-- Editorial underline -->
+        <div class="hero-title-line" id="heroTitleLine"></div>
       </div>
 
-      <!-- Hero image -->
-      <div class="hero-image-wrap">
+      <!-- HERO IMAGE COLUMN
+      Η βασική hero εικόνα -->
+      <div class="hero-image-column" id="heroImageColumn">
         <img src="images/hero.jpeg" alt="Hero image">
       </div>
 
-      <!-- Bottom keywords -->
-      <div class="hero-footer">
-        <div class="hero-keywords">sensory · behavior · emotion · gastronomy · data</div>
+      <!-- HERO AUTHOR / IDENTITY BLOCK
+      Τοποθετείται χαμηλότερα στο πρώτο fold -->
+      <div class="hero-identity-block" id="heroIdentityBlock">
+        <div class="hero-identity-name">Paris Intzesiloglou</div>
+        <div class="hero-identity-role">Hospitality Experience Strategist</div>
+        <div class="hero-identity-role">Multisensory Experience & Eating Behavior Researcher</div>
+      </div>
+
+      <!-- HERO FOOTER META
+      Keywords + year -->
+      <div class="hero-footer-meta" id="heroFooterMeta">
+        <div class="hero-keywords">
+          sensory · behavior · emotion · gastronomy · data
+        </div>
         <div class="hero-year">2026</div>
       </div>
     </div>
   </section>
 
-  <!-- =========================
-  SECTION 20: PLACEHOLDER CONTENT
-  Προσωρινό περιεχόμενο για να δουλέψει το scroll
-  ========================= -->
-  <section class="content-placeholder">
+  <!-- =========================================================
+  SECTION 20: POST-HERO PLACEHOLDER
+  Προσωρινό section για να δουλεύει το scroll και η συμπίεση
+  του brand block. Αργότερα θα αντικατασταθεί με πραγματικό content.
+  ========================================================== -->
+  <section class="post-hero-placeholder" id="postHeroPlaceholder">
     <h2 class="serif">Editorial Research Sections</h2>
     <p>
-      Αυτό είναι προσωρινό placeholder section ώστε να δουλεύει σωστά το scroll
-      και το compression του brand στην κορυφή. Αργότερα εδώ θα βάλουμε τα επόμενα
-      sections του site σου.
+      Αυτό είναι προσωρινό placeholder section ώστε να δουλεύει σωστά
+      το scroll behavior και η μετάβαση από το hero προς το υπόλοιπο site.
+      Αργότερα εδώ θα μπουν τα πραγματικά sections.
     </p>
   </section>
 
+  <!-- =========================================================
+  SECTION 21: JAVASCRIPT PLACEHOLDER
+  Προς το παρόν κρατάμε μόνο κενό script block.
+  Στο STEP 4 θα μπει ο νέος motion engine / sequencing logic.
+  ========================================================== -->
   <script>
-    /* =========================
-    SECTION 21: ELEMENT REFERENCES
-    Φέρνουμε όλα τα στοιχεία που θα χρειαστούμε στο JS
-    ========================= */
-    const introSequence = document.getElementById('introSequence');
-    const frameOne = document.getElementById('frameOne');
-    const frameTwo = document.getElementById('frameTwo');
-    const heroCover = document.getElementById('heroCover');
-    const heroTopbar = document.getElementById('heroTopbar');
-    const skipIntroBtn = document.getElementById('skipIntroBtn');
-
-    /* FRAME 1 ELEMENTS */
-    const frameOneImageLeft = document.getElementById('frameOneImageLeft');
-    const frameOneImageRight = document.getElementById('frameOneImageRight');
-    const frameOneVertical = document.getElementById('frameOneVertical');
-    const frameOneQuoteTop = document.getElementById('frameOneQuoteTop');
-    const frameOneLineTop = document.getElementById('frameOneLineTop');
-    const frameOneLabelLeft = document.getElementById('frameOneLabelLeft');
-    const frameOneLabelRight = document.getElementById('frameOneLabelRight');
-    const frameOneQuoteBottomLeft = document.getElementById('frameOneQuoteBottomLeft');
-    const frameOneLineBottomLeft = document.getElementById('frameOneLineBottomLeft');
-
-    /* FRAME 2 ELEMENTS */
-    const frameTwoQuoteTopLeft = document.getElementById('frameTwoQuoteTopLeft');
-    const frameTwoLineTopLeft = document.getElementById('frameTwoLineTopLeft');
-    const frameTwoImageTopRight = document.getElementById('frameTwoImageTopRight');
-    const frameTwoLabelAnalysis = document.getElementById('frameTwoLabelAnalysis');
-    const frameTwoImageAnalysis = document.getElementById('frameTwoImageAnalysis');
-    const frameTwoAnalysisCopy = document.getElementById('frameTwoAnalysisCopy');
-    const frameTwoLineAnalysis = document.getElementById('frameTwoLineAnalysis');
+    /* STEP 1 NOTE:
+    Στο παρόν βήμα ΔΕΝ βάζουμε ακόμη το νέο JavaScript σύστημα.
+    Πρώτα κλειδώνουμε:
+    1. σωστή HTML αρχιτεκτονική
+    2. σωστό CSS layout
+    3. responsive behavior
+    και μετά περνάμε στο motion engine.
+    */
+  </script>
+</body>
 
     /* =========================
     SECTION 22: INTRO TIMELINE HELPERS
