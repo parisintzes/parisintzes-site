@@ -968,7 +968,7 @@ States για unit-based entrance choreography
   transform: translateY(-115vh) !important;
   transition:
     transform 2.2s var(--ease-soft),
-    opacity 0.55s ease 1.35s !important;
+    opacity: 1 !important;
 }
     
   </style>
@@ -1250,7 +1250,42 @@ function revealLine(el) {
   
     animationFrameId = requestAnimationFrame(runContinuousFlow);
     }
+  /* =========================================
+   EXIT FADE CONTROL (top-based)
+========================================= */
 
+function applyExitFade(el) {
+  if (!el) return;
+
+  const rect = el.getBoundingClientRect();
+
+  const viewportHeight = window.innerHeight;
+
+  // πόσο κοντά είναι στο top
+  const distanceFromTop = rect.top;
+
+  // αρχίζει fade όταν μπει στο top 25% της οθόνης
+  const fadeStart = viewportHeight * 0.25;
+
+  if (distanceFromTop < fadeStart) {
+    const progress = Math.max(distanceFromTop / fadeStart, 0);
+    el.style.opacity = progress;
+  } else {
+    el.style.opacity = 1;
+  }
+}
+
+/* Apply to perception unit */
+applyExitFade(flowImagePerception);
+applyExitFade(flowTextGroupPerception);
+
+/* Apply to sensory */
+applyExitFade(flowImageSensory);
+applyExitFade(flowTextGroupSensory);
+
+/* Apply to analysis */
+applyExitFade(flowImageAnalysis);
+applyExitFade(flowTextGroupAnalysis);
   /* =========================================================
   JS SECTION 06: HERO REVEAL
   Ενεργοποιεί την εμφάνιση του hero
