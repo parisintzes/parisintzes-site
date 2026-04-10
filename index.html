@@ -967,7 +967,7 @@ States για unit-based entrance choreography
   opacity: 1 !important;
   transform: translateY(-115vh) !important;
   transition:
-    transform 2.2s var(--ease-soft) !important;
+    transform 3.1s var(--ease-soft) !important;
 }
     
   </style>
@@ -1255,7 +1255,6 @@ function revealLine(el) {
 function applyExitFade(el) {
   if (!el) return;
 
-  /* Fade only if the unit is already exiting */
   if (!el.classList.contains('is-unit-exit')) {
     el.style.opacity = 1;
     return;
@@ -1263,12 +1262,22 @@ function applyExitFade(el) {
 
   const rect = el.getBoundingClientRect();
 
-  /* Ξεκινά fade όταν έχει μείνει περίπου το μισό element μέσα στην οθόνη */
-  const fadeStart = rect.height * 0.5;
-  const fadeEnd = 0;
+  /* 
+     Το fade ξεκινά όταν έχει μείνει περίπου το 65% του element μέσα στην οθόνη,
+     ώστε να είναι ορατό νωρίτερα.
+  */
+  const fadeStart = rect.height * 0.75;
+  const fadeEnd = -40;
 
   if (rect.bottom <= fadeStart) {
-    const progress = Math.max((rect.bottom - fadeEnd) / (fadeStart - fadeEnd), 0);
+    let progress = (rect.bottom - fadeEnd) / (fadeStart - fadeEnd);
+
+    /* clamp */
+    progress = Math.max(Math.min(progress, 1), 0);
+
+    /* softer visual curve */
+    progress = progress * progress * progress;
+
     el.style.opacity = progress;
   } else {
     el.style.opacity = 1;
