@@ -968,6 +968,13 @@ States για unit-based entrance choreography
   transition:
     transform 3.1s var(--ease-soft) !important;
 }
+    .flow-text-group.is-unit-fade,
+    .flow-image.is-unit-fade {
+    opacity: 0 !important;
+    transition:
+    transform 3.1s var(--ease-soft),
+    opacity 0.95s ease !important;
+}
     
   </style>
 </head>
@@ -1211,6 +1218,12 @@ States για unit-based entrance choreography
 function exitUnit(imageEl, textGroupEl) {
   if (imageEl) imageEl.classList.add('is-unit-exit');
   if (textGroupEl) textGroupEl.classList.add('is-unit-exit');
+
+  /* Fade starts later, when the unit has already moved upward */
+  setTimeout(() => {
+    if (imageEl) imageEl.classList.add('is-unit-fade');
+    if (textGroupEl) textGroupEl.classList.add('is-unit-fade');
+  }, 1550);
 }
 
 function revealLine(el) {
@@ -1245,52 +1258,10 @@ function revealLine(el) {
   if (heroStage && heroStage.classList.contains('is-visible')) {
     heroStage.style.transform = `translateY(${24 - heroDrift}px)`;
   }
-  
-    animationFrameId = requestAnimationFrame(runContinuousFlow);
-    }
- /* =========================================
-   EXIT FADE CONTROL (only during exit state)
-========================================= */
-function applyExitFade(el) {
-  if (!el) return;
 
-  if (!el.classList.contains('is-unit-exit')) {
-    el.style.opacity = 1;
-    return;
-  }
-
-  const rect = el.getBoundingClientRect();
-
-  /* 
-     Το fade ξεκινά όταν έχει μείνει περίπου το 65% του element μέσα στην οθόνη,
-     ώστε να είναι ορατό νωρίτερα.
-  */
-  const fadeStart = rect.height * 0.95;
-  const fadeEnd = -40;
-
-  if (rect.bottom <= fadeStart) {
-    let progress = (rect.bottom - fadeEnd) / (fadeStart - fadeEnd);
-
-    /* clamp */
-    progress = Math.max(Math.min(progress, 1), 0);
-
-    /* softer visual curve */
-    progress = progress * progress * progress;
-
-    el.style.opacity = progress;
-  } else {
-    el.style.opacity = 1;
-  }
+  animationFrameId = requestAnimationFrame(runContinuousFlow);
 }
 
-applyExitFade(flowImagePerception);
-applyExitFade(flowTextGroupPerception);
-
-applyExitFade(flowImageSensory);
-applyExitFade(flowTextGroupSensory);
-
-applyExitFade(flowImageAnalysis);
-applyExitFade(flowTextGroupAnalysis);
   /* =========================================================
   JS SECTION 06: HERO REVEAL
   Ενεργοποιεί την εμφάνιση του hero
