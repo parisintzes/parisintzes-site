@@ -180,9 +180,9 @@
     .flow-image {
     position: absolute;
     opacity: 0;
-    transform: translateY(56px);
+    transform: translateY(140px);
     transition:
-    opacity 1.05s ease,
+    opacity 1s ease,
     transform 1.6s var(--ease-soft);
     will-change: transform, opacity;
     }
@@ -222,22 +222,20 @@
     }
 
     .flow-text-group {
-      position: absolute;
-      inset: 0;
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transform: translateY(140px);
+    transition:
+    opacity 0.9s ease,
+    transform 1.5s var(--ease-soft);
+    will-change: transform, opacity;
     }
-
     .flow-label,
     .flow-quote,
     .flow-micro-vertical {
     position: absolute;
-    opacity: 0;
-    transform: translateY(22px);
-    transition:
-    opacity 0.95s ease,
-    transform 1.35s var(--ease-soft);
-    will-change: transform, opacity;
     }
-
     /* =========================================================
     CSS SECTION 09: PERCEPTION TEXT GROUP
     Πρώτο θεωρητικό / ακαδημαϊκό επίπεδο
@@ -264,36 +262,6 @@
       width: 300px;
       opacity: 1;
       transform: scaleX(1);
-    }
-
-    .flow-quote-perception-bottom {
-      left: 8.5%;
-      top: 80%;
-      width: 360px;
-      font-size: 16px;
-      line-height: 1.2;
-      font-weight: 300;
-      letter-spacing: -0.004em;
-    }
-
-    .flow-line-perception-bottom {
-      position: absolute;
-      left: 8.5%;
-      top: calc(80% + 44px);
-      width: 360px;
-      opacity: 1;
-      transform: scaleX(1);
-    }
-
-    .flow-micro-vertical {
-      left: calc(8.5% + min(28vw, 390px) + 22px);
-      top: 21%;
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-      font-size: 12px;
-      font-weight: 300;
-      letter-spacing: 0.08em;
-      color: rgba(17, 17, 17, 0.68);
     }
 
     /* =========================================================
@@ -980,6 +948,25 @@ CSS SECTION 19: HERO REVEAL STATES
   transform: translateY(0);
   transition-delay: 1.45s;
 }
+    /* =========================================================
+CSS SECTION 20: UNIT MOTION STATES
+States για unit-based entrance choreography
+========================================================= */
+.flow-text-group.is-unit-visible,
+.flow-image.is-unit-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.flow-text-group.is-unit-exit,
+.flow-image.is-unit-exit {
+  opacity: 0 !important;
+  transform: translateY(-150px) !important;
+  transition:
+    opacity 1s ease,
+    transform 1.6s var(--ease-soft) !important;
+}
+    
   </style>
 </head>
 <body>
@@ -1038,16 +1025,6 @@ CSS SECTION 19: HERO REVEAL STATES
           </div>
 
           <div class="flow-line flow-line-perception-top" id="flowLinePerceptionTop"></div>
-
-          <div class="flow-quote flow-quote-perception-bottom serif" id="flowQuotePerceptionBottom">
-            Perception begins before thought.
-          </div>
-
-          <div class="flow-line flow-line-perception-bottom" id="flowLinePerceptionBottom"></div>
-
-          <div class="flow-micro-vertical serif" id="flowMicroVerticalPerception">
-            Perception
-          </div>
         </div>
 
         <!-- SENSORY GROUP -->
@@ -1176,7 +1153,11 @@ CSS SECTION 19: HERO REVEAL STATES
   const entranceFlow = document.getElementById('entranceFlow');
   const entranceSkipBtn = document.getElementById('entranceSkipBtn');
   const entranceCanvas = document.getElementById('entranceCanvas');
-
+    
+  const flowTextGroupPerception = document.getElementById('flowTextGroupPerception');
+  const flowTextGroupSensory = document.getElementById('flowTextGroupSensory');
+  const flowTextGroupAnalysis = document.getElementById('flowTextGroupAnalysis');
+    
   const flowImagePerception = document.getElementById('flowImagePerception');
   const flowImageSensory = document.getElementById('flowImageSensory');
   const flowImageAnalysis = document.getElementById('flowImageAnalysis');
@@ -1184,9 +1165,6 @@ CSS SECTION 19: HERO REVEAL STATES
   const flowLabelPerception = document.getElementById('flowLabelPerception');
   const flowQuotePerceptionTop = document.getElementById('flowQuotePerceptionTop');
   const flowLinePerceptionTop = document.getElementById('flowLinePerceptionTop');
-  const flowQuotePerceptionBottom = document.getElementById('flowQuotePerceptionBottom');
-  const flowLinePerceptionBottom = document.getElementById('flowLinePerceptionBottom');
-  const flowMicroVerticalPerception = document.getElementById('flowMicroVerticalPerception');
 
   const flowLabelSensory = document.getElementById('flowLabelSensory');
   const flowQuoteSensory = document.getElementById('flowQuoteSensory');
@@ -1223,15 +1201,20 @@ CSS SECTION 19: HERO REVEAL STATES
   JS SECTION 03: REVEAL HELPERS
   Helpers για reveal states
   ========================================================== */
-  function revealElement(el) {
-    if (!el) return;
-    el.classList.add('is-visible');
-  }
+  function revealUnit(imageEl, textGroupEl) {
+  if (imageEl) imageEl.classList.add('is-unit-visible');
+  if (textGroupEl) textGroupEl.classList.add('is-unit-visible');
+}
 
-  function revealLine(el) {
-    if (!el) return;
-    el.classList.add('line-open');
-  }
+function exitUnit(imageEl, textGroupEl) {
+  if (imageEl) imageEl.classList.add('is-unit-exit');
+  if (textGroupEl) textGroupEl.classList.add('is-unit-exit');
+}
+
+function revealLine(el) {
+  if (!el) return;
+  el.classList.add('line-open');
+}
 
   /* =========================================================
   JS SECTION 04: FLOW LAYER OFFSETS
@@ -1248,13 +1231,21 @@ CSS SECTION 19: HERO REVEAL STATES
   Layered upward drift με διαφορετικές ταχύτητες
   ========================================================== */
   function runContinuousFlow(timestamp) {
-    if (flowStopped) return;
+  if (flowStopped) return;
 
-    if (!flowStartedAt) {
-      flowStartedAt = timestamp;
+  if (!flowStartedAt) {
+    flowStartedAt = timestamp;
+  }
+
+  const elapsed = timestamp - flowStartedAt;
+  const heroDrift = Math.min(elapsed * 0.01, 24);
+
+  if (heroStage && heroStage.classList.contains('is-visible')) {
+    heroStage.style.transform = `translateY(${24 - heroDrift}px)`;
+  }
+  
+    animationFrameId = requestAnimationFrame(runContinuousFlow);
     }
-
-    const elapsed = timestamp - flowStartedAt;
 
     /* Core cinematic drift */
     const baseDrift = Math.min(elapsed * 0.032, 320);
@@ -1322,47 +1313,71 @@ CSS SECTION 19: HERO REVEAL STATES
   Τα στοιχεία εμφανίζονται, κάθονται, και μετά μπαίνουν στη ροή
   ========================================================== */
   function startEntranceTimeline() {
-    requestAnimationFrame(runContinuousFlow);
+  requestAnimationFrame(runContinuousFlow);
 
-    /* Show skip button */
-    schedule(() => {
-      if (entranceSkipBtn) entranceSkipBtn.classList.add('is-visible');
-    }, 450);
+  /* Show skip button */
+  schedule(() => {
+    if (entranceSkipBtn) entranceSkipBtn.classList.add('is-visible');
+  }, 350);
 
-    /* Image build-up */
-    schedule(() => revealElement(flowImagePerception), 450);
-    schedule(() => revealElement(flowImageSensory), 1050);
-    schedule(() => revealElement(flowImageAnalysis), 2050);
+  /* =========================================
+     UNIT 01 — PERCEPTION
+     image + label + quote enter together
+     line opens after settling
+  ========================================= */
+  schedule(() => {
+    revealUnit(flowImagePerception, flowTextGroupPerception);
+  }, 500);
 
-    /* Perception narrative */
-    schedule(() => revealElement(flowQuotePerceptionTop), 1500);
-    schedule(() => revealLine(flowLinePerceptionTop), 2050);
-    schedule(() => revealElement(flowLabelPerception), 2450);
-    schedule(() => revealElement(flowMicroVerticalPerception), 2725);
-    schedule(() => revealElement(flowQuotePerceptionBottom), 3225);
-    schedule(() => revealLine(flowLinePerceptionBottom), 3725);
+  schedule(() => {
+    revealLine(flowLinePerceptionTop);
+  }, 1850);
 
-    /* Sensory narrative */
-    schedule(() => revealElement(flowLabelSensory), 4150);
-    schedule(() => revealElement(flowQuoteSensory), 4550);
-    schedule(() => revealLine(flowLineSensory), 5025);
+  schedule(() => {
+    exitUnit(flowImagePerception, flowTextGroupPerception);
+  }, 3150);
 
-    /* Analysis narrative */
-    schedule(() => revealElement(flowLabelAnalysis), 5550);
-    schedule(() => revealElement(flowQuoteAnalysisMain), 6000);
-    schedule(() => revealElement(flowQuoteAnalysisSub), 6350);
-    schedule(() => revealLine(flowLineAnalysis), 6825);
+  /* =========================================
+     UNIT 02 — SENSORY
+  ========================================= */
+  schedule(() => {
+    revealUnit(flowImageSensory, flowTextGroupSensory);
+  }, 2550);
 
-    /* Hero emerges before entrance fully disappears */
-    schedule(() => revealHeroStage(), 7100);
+  schedule(() => {
+    revealLine(flowLineSensory);
+  }, 3900);
 
-    /* Entrance fades out after hero has started appearing */
-    schedule(() => {
-      if (entranceFlow) {
-        entranceFlow.classList.add('is-hidden');
-      }
-    }, 8150);
-  }
+  schedule(() => {
+    exitUnit(flowImageSensory, flowTextGroupSensory);
+  }, 5200);
+
+  /* =========================================
+     UNIT 03 — ANALYSIS
+  ========================================= */
+  schedule(() => {
+    revealUnit(flowImageAnalysis, flowTextGroupAnalysis);
+  }, 4600);
+
+  schedule(() => {
+    revealLine(flowLineAnalysis);
+  }, 6100);
+
+  schedule(() => {
+    exitUnit(flowImageAnalysis, flowTextGroupAnalysis);
+  }, 7600);
+
+  /* Hero emerges */
+  schedule(() => {
+    revealHeroStage();
+  }, 7000);
+
+  schedule(() => {
+    if (entranceFlow) {
+      entranceFlow.classList.add('is-hidden');
+    }
+  }, 8450);
+}
 
   /* =========================================================
   JS SECTION 09: HERO TOOLBAR COMPRESSION
