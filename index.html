@@ -1247,36 +1247,6 @@ function revealLine(el) {
     animationFrameId = requestAnimationFrame(runContinuousFlow);
     }
 
-    /* Core cinematic drift */
-    const baseDrift = Math.min(elapsed * 0.032, 320);
-
-    /* Image layers */
-    applyFlowTransforms(flowImagePerception, baseDrift * 0.92);
-    applyFlowTransforms(flowImageSensory, baseDrift * 1.06);
-    applyFlowTransforms(flowImageAnalysis, baseDrift * 0.98);
-
-    /* Perception text group */
-    applyFlowTransforms(flowLabelPerception, baseDrift * 0.88);
-    applyFlowTransforms(flowQuotePerceptionTop, baseDrift * 0.90);
-    applyFlowTransforms(flowLinePerceptionTop, baseDrift * 0.90);
-    applyFlowTransforms(flowQuotePerceptionBottom, baseDrift * 0.94);
-    applyFlowTransforms(flowLinePerceptionBottom, baseDrift * 0.94);
-    applyFlowTransforms(flowMicroVerticalPerception, baseDrift * 0.87);
-
-    /* Sensory group */
-    applyFlowTransforms(flowLabelSensory, baseDrift * 1.00);
-    applyFlowTransforms(flowQuoteSensory, baseDrift * 1.02);
-    applyFlowTransforms(flowLineSensory, baseDrift * 1.02);
-
-    /* Analysis group */
-    applyFlowTransforms(flowLabelAnalysis, baseDrift * 1.08);
-    applyFlowTransforms(flowQuoteAnalysisMain, baseDrift * 1.10);
-    applyFlowTransforms(flowQuoteAnalysisSub, baseDrift * 1.10);
-    applyFlowTransforms(flowLineAnalysis, baseDrift * 1.10);
-
-    animationFrameId = requestAnimationFrame(runContinuousFlow);
-  }
-
   /* =========================================================
   JS SECTION 06: HERO REVEAL
   Ενεργοποιεί την εμφάνιση του hero
