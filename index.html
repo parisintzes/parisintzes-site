@@ -179,12 +179,11 @@
 
     .flow-image {
     position: absolute;
-    opacity: 0;
-    transform: translateY(140px);
+    opacity: 1;
+    transform: translateY(140vh);
     transition:
-    opacity 1s ease,
     transform 1.6s var(--ease-soft);
-    will-change: transform, opacity;
+    will-change: transform;
     }
 
     .flow-image img {
@@ -235,7 +234,12 @@
     .flow-quote,
     .flow-micro-vertical {
     position: absolute;
-    }
+    opacity: 1;
+    transform: translateY(140vh);
+    transition:
+    transform 1.35s var(--ease-soft);
+    will-change: transform;
+  }
     /* =========================================================
     CSS SECTION 09: PERCEPTION TEXT GROUP
     Πρώτο θεωρητικό / ακαδημαϊκό επίπεδο
@@ -960,10 +964,9 @@ States για unit-based entrance choreography
 
 .flow-text-group.is-unit-exit,
 .flow-image.is-unit-exit {
-  opacity: 0 !important;
+  opacity: 1 !important;
   transform: translateY(-150px) !important;
   transition:
-    opacity 1s ease,
     transform 1.6s var(--ease-soft) !important;
 }
     
