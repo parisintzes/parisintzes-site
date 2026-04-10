@@ -1262,11 +1262,13 @@ function applyExitFade(el) {
   }
 
   const rect = el.getBoundingClientRect();
-  const fadeStart = 0;
-  const fadeEnd = 50;
 
-  if (rect.top <= fadeStart) {
-    const progress = Math.max((rect.top - fadeEnd) / (fadeStart - fadeEnd), 0);
+  /* Ξεκινά fade όταν έχει μείνει περίπου το μισό element μέσα στην οθόνη */
+  const fadeStart = rect.height * 0.5;
+  const fadeEnd = 0;
+
+  if (rect.bottom <= fadeStart) {
+    const progress = Math.max((rect.bottom - fadeEnd) / (fadeStart - fadeEnd), 0);
     el.style.opacity = progress;
   } else {
     el.style.opacity = 1;
