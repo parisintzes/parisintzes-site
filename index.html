@@ -170,8 +170,12 @@
     }
 
     .flow-image {
-      position: absolute;
-      opacity: 1;
+    position: absolute;
+    opacity: 0;
+    transform: translateY(42px);
+    transition:
+    opacity 0.9s ease,
+    transform 1.3s var(--ease-soft);
     }
 
     .flow-image img {
@@ -216,9 +220,13 @@
     .flow-label,
     .flow-quote,
     .flow-micro-vertical {
-      position: absolute;
-      opacity: 1;
-    }
+    position: absolute;
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+    opacity 0.8s ease,
+    transform 1.1s var(--ease-soft);
+  }
 
     /* =========================================================
     CSS SECTION 09: PERCEPTION TEXT GROUP
@@ -349,12 +357,16 @@
     Το hero λειτουργεί ως συνέχεια του entrance
     ========================================================== */
     .hero-stage {
-      position: relative;
-      min-height: 100vh;
-      background: var(--bg);
-      opacity: 1;
-      transform: translateY(0);
-      filter: blur(0);
+    position: relative;
+    min-height: 100vh;
+    background: var(--bg);
+    opacity: 0;
+    transform: translateY(24px);
+    filter: blur(4px);
+    transition:
+    opacity 1.3s ease,
+    transform 1.3s ease,
+    filter 1.3s ease;
     }
 
     /* =========================================================
@@ -487,32 +499,38 @@
     }
 
     .hero-accent-line {
-      width: 44px;
-      background: rgba(17, 17, 17, 0.82);
-      margin-bottom: 20px;
-      opacity: 1;
-      transform: scaleX(1);
+    width: 44px;
+    background: rgba(17, 17, 17, 0.82);
+    margin-bottom: 20px;
     }
 
     .hero-main-title {
-      margin: 0;
-      max-width: 680px;
-      font-size: clamp(38px, 4.2vw, 52px);
-      line-height: 1.06;
-      letter-spacing: -0.02em;
-      font-weight: 300;
-      font-family: 'Inter', sans-serif;
-      opacity: 1;
+    margin: 0;
+    max-width: 680px;
+    font-size: clamp(38px, 4.2vw, 52px);
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    font-weight: 300;
+    font-family: 'Inter', sans-serif;
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+    opacity 1s ease,
+    transform 1.2s var(--ease-soft);
     }
 
     .hero-main-subtitle {
-      margin-top: 20px;
-      max-width: 500px;
-      font-size: 15px;
-      line-height: 1.34;
-      color: rgba(17, 17, 17, 0.58);
-      font-weight: 300;
-      opacity: 1;
+    margin-top: 20px;
+    max-width: 500px;
+    font-size: 15px;
+    line-height: 1.34;
+    color: rgba(17, 17, 17, 0.58);
+    font-weight: 300;
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+    opacity 1s ease,
+    transform 1.2s var(--ease-soft);
     }
 
     .hero-title-line {
@@ -523,22 +541,29 @@
     }
 
     .hero-image-column {
-      position: absolute;
-      right: 95px;
-      top: 190px;
-      width: 260px;
-      opacity: 1;
+    position: absolute;
+    right: 95px;
+    top: 190px;
+    width: 260px;
+    opacity: 0;
+    transform: translateY(36px);
+    transition:
+    opacity 1.2s ease,
+    transform 1.4s var(--ease-soft);
     }
-
     .hero-image-column img {
       object-fit: cover;
     }
 
     .hero-identity-block {
-      position: absolute;
-      left: 95px;
-      bottom: 140px;
-      opacity: 1;
+    position: absolute;
+    left: 95px;
+    bottom: 140px;
+    opacity: 0;
+    transform: translateY(22px);
+    transition:
+    opacity 1s ease,
+    transform 1.2s var(--ease-soft);
     }
 
     .hero-identity-name {
@@ -557,15 +582,19 @@
     }
 
     .hero-footer-meta {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 28px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 18px;
-      opacity: 1;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+    opacity 1s ease,
+    transform 1.2s var(--ease-soft);
     }
 
     .hero-keywords {
@@ -879,6 +908,68 @@
       opacity: 1 !important;
       transform: scaleX(1) !important;
     }
+    /* =========================================================
+CSS SECTION 19: HERO REVEAL STATES
+Καθορίζει τη σειρά με την οποία “ζωντανεύει” το hero
+========================================================= */
+.hero-stage.is-visible .hero-toolbar {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-toolbar {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.9s ease,
+    transform 1.1s var(--ease-soft);
+}
+
+.hero-stage.is-visible .hero-accent-line {
+  opacity: 1;
+  transform: scaleX(1);
+  transition:
+    opacity 0.8s ease 0.15s,
+    transform 1s var(--ease-soft) 0.15s;
+}
+
+.hero-stage.is-visible .hero-main-title {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.35s;
+}
+
+.hero-stage.is-visible .hero-main-subtitle {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.65s;
+}
+
+.hero-stage.is-visible .hero-title-line {
+  opacity: 1;
+  transform: scaleX(1);
+  transition:
+    opacity 0.8s ease 0.95s,
+    transform 1s var(--ease-soft) 0.95s;
+}
+
+.hero-stage.is-visible .hero-image-column {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.25s;
+}
+
+.hero-stage.is-visible .hero-identity-block {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 1.05s;
+}
+
+.hero-stage.is-visible .hero-footer-meta {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 1.25s;
+}
   </style>
 </head>
 <body>
@@ -1068,45 +1159,195 @@
   </section>
 
   <script>
-    /* =========================================================
-    JS SECTION 01: ELEMENT REFERENCES
-    Φέρνουμε τα βασικά στοιχεία του νέου system
-    ========================================================== */
-    const entranceFlow = document.getElementById('entranceFlow');
-    const entranceSkipBtn = document.getElementById('entranceSkipBtn');
-    const heroStage = document.getElementById('heroStage');
-    const heroToolbar = document.getElementById('heroToolbar');
+  /* =========================================================
+  JS SECTION 01: ELEMENT REFERENCES
+  Φέρνουμε όλα τα βασικά στοιχεία του νέου continuous system
+  ========================================================== */
+  const entranceFlow = document.getElementById('entranceFlow');
+  const entranceSkipBtn = document.getElementById('entranceSkipBtn');
+  const entranceCanvas = document.getElementById('entranceCanvas');
 
-    /* =========================================================
-    JS SECTION 02: BASIC INTRO SKIP
-    Προσωρινή λειτουργία skip μέχρι να περάσουμε το full motion engine
-    ========================================================== */
-    if (entranceSkipBtn && entranceFlow && heroStage) {
-      entranceSkipBtn.addEventListener('click', () => {
+  const flowImagePerception = document.getElementById('flowImagePerception');
+  const flowImageSensory = document.getElementById('flowImageSensory');
+  const flowImageAnalysis = document.getElementById('flowImageAnalysis');
+
+  const flowLabelPerception = document.getElementById('flowLabelPerception');
+  const flowQuotePerceptionTop = document.getElementById('flowQuotePerceptionTop');
+  const flowLinePerceptionTop = document.getElementById('flowLinePerceptionTop');
+  const flowQuotePerceptionBottom = document.getElementById('flowQuotePerceptionBottom');
+  const flowLinePerceptionBottom = document.getElementById('flowLinePerceptionBottom');
+  const flowMicroVerticalPerception = document.getElementById('flowMicroVerticalPerception');
+
+  const flowLabelSensory = document.getElementById('flowLabelSensory');
+  const flowQuoteSensory = document.getElementById('flowQuoteSensory');
+  const flowLineSensory = document.getElementById('flowLineSensory');
+
+  const flowLabelAnalysis = document.getElementById('flowLabelAnalysis');
+  const flowQuoteAnalysisMain = document.getElementById('flowQuoteAnalysisMain');
+  const flowQuoteAnalysisSub = document.getElementById('flowQuoteAnalysisSub');
+  const flowLineAnalysis = document.getElementById('flowLineAnalysis');
+
+  const heroStage = document.getElementById('heroStage');
+  const heroToolbar = document.getElementById('heroToolbar');
+
+  /* =========================================================
+  JS SECTION 02: TIMELINE STORAGE
+  Κρατάμε όλα τα timeouts ώστε να μπορούμε να τα ακυρώσουμε αν γίνει skip
+  ========================================================== */
+  const activeTimers = [];
+  let animationFrameId = null;
+  let flowStartedAt = null;
+  let flowStopped = false;
+
+  function schedule(fn, delay) {
+    const timer = setTimeout(fn, delay);
+    activeTimers.push(timer);
+  }
+
+  function clearAllTimers() {
+    activeTimers.forEach(timer => clearTimeout(timer));
+    activeTimers.length = 0;
+  }
+
+  /* =========================================================
+  JS SECTION 03: REVEAL HELPERS
+  Helper functions για soft reveal / line reveal
+  ========================================================== */
+  function revealElement(el) {
+    if (!el) return;
+    el.classList.add('is-visible');
+  }
+
+  function revealLine(el) {
+    if (!el) return;
+    el.classList.add('line-open');
+  }
+
+  /* =========================================================
+  JS SECTION 04: CONTINUOUS FLOW ENGINE
+  Εδώ γίνεται το βασικό upward drift του entrance
+  ========================================================== */
+  function runContinuousFlow(timestamp) {
+    if (flowStopped) return;
+
+    if (!flowStartedAt) {
+      flowStartedAt = timestamp;
+    }
+
+    const elapsed = timestamp - flowStartedAt;
+
+    /* Βασική αργή upward ροή για όλο το canvas */
+    const globalDrift = Math.min(elapsed * 0.028, 220);
+
+    if (entranceCanvas) {
+      entranceCanvas.style.transform = `translateY(-${globalDrift}px)`;
+    }
+
+    animationFrameId = requestAnimationFrame(runContinuousFlow);
+  }
+
+  /* =========================================================
+  JS SECTION 05: HERO REVEAL
+  Ενεργοποιεί την εμφάνιση του hero
+  ========================================================== */
+  function revealHeroStage() {
+    if (heroStage) {
+      heroStage.classList.add('is-visible');
+    }
+  }
+
+  /* =========================================================
+  JS SECTION 06: SKIP INTRO
+  Κλείνει το entrance και περνάει απευθείας στο hero
+  ========================================================== */
+  function skipEntranceFlow() {
+    flowStopped = true;
+
+    if (animationFrameId) {
+      cancelAnimationFrame(animationFrameId);
+    }
+
+    clearAllTimers();
+
+    if (entranceFlow) {
+      entranceFlow.classList.add('is-hidden');
+    }
+
+    revealHeroStage();
+  }
+
+  /* =========================================================
+  JS SECTION 07: FIRST CONTINUOUS MOTION TIMELINE
+  Option 2:
+  Τα στοιχεία εμφανίζονται σταδιακά και μετά μπαίνουν στη ροή
+  ========================================================== */
+  function startEntranceTimeline() {
+    requestAnimationFrame(runContinuousFlow);
+
+    /* Images enter first */
+    schedule(() => revealElement(flowImagePerception), 350);
+    schedule(() => revealElement(flowImageSensory), 900);
+    schedule(() => revealElement(flowImageAnalysis), 1800);
+
+    /* Perception layer */
+    schedule(() => revealElement(flowQuotePerceptionTop), 1400);
+    schedule(() => revealLine(flowLinePerceptionTop), 1900);
+    schedule(() => revealElement(flowLabelPerception), 2250);
+    schedule(() => revealElement(flowMicroVerticalPerception), 2550);
+    schedule(() => revealElement(flowQuotePerceptionBottom), 2950);
+    schedule(() => revealLine(flowLinePerceptionBottom), 3400);
+
+    /* Sensory layer */
+    schedule(() => revealElement(flowLabelSensory), 3700);
+    schedule(() => revealElement(flowQuoteSensory), 4100);
+    schedule(() => revealLine(flowLineSensory), 4550);
+
+    /* Analysis layer */
+    schedule(() => revealElement(flowLabelAnalysis), 5000);
+    schedule(() => revealElement(flowQuoteAnalysisMain), 5400);
+    schedule(() => revealElement(flowQuoteAnalysisSub), 5750);
+    schedule(() => revealLine(flowLineAnalysis), 6150);
+
+    /* Transition to hero */
+    schedule(() => revealHeroStage(), 6600);
+    schedule(() => {
+      if (entranceFlow) {
         entranceFlow.classList.add('is-hidden');
-        heroStage.classList.add('is-visible');
-      });
-    }
+      }
+    }, 7600);
+  }
 
-    /* =========================================================
-    JS SECTION 03: BASIC HERO TOOLBAR COMPRESSION
-    Με το scroll, το brand meta εξαφανίζεται και μένει το όνομα
-    ========================================================== */
-    if (heroToolbar) {
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 60) {
-          heroToolbar.classList.add('is-compact');
-        } else {
-          heroToolbar.classList.remove('is-compact');
-        }
-      });
-    }
+  /* =========================================================
+  JS SECTION 08: HERO TOOLBAR COMPRESSION
+  Με το scroll μένει μόνο το brand name
+  ========================================================== */
+  function handleHeroCompression() {
+    if (!heroToolbar) return;
 
-    /* =========================================================
-    JS SECTION 04: TEMPORARY INITIAL HERO STATE
-    Μέχρι να περάσουμε το νέο motion engine, κρατάμε το hero visible
-    αφού φύγει το entrance με skip.
-    ========================================================== */
-  </script>
+    if (window.scrollY > 60) {
+      heroToolbar.classList.add('is-compact');
+    } else {
+      heroToolbar.classList.remove('is-compact');
+    }
+  }
+
+  /* =========================================================
+  JS SECTION 09: EVENT BINDINGS
+  Συνδέουμε interactions
+  ========================================================== */
+  if (entranceSkipBtn) {
+    entranceSkipBtn.addEventListener('click', skipEntranceFlow);
+  }
+
+  window.addEventListener('scroll', handleHeroCompression);
+
+  /* =========================================================
+  JS SECTION 10: INITIAL LOAD
+  Ξεκινάμε το πρώτο safe continuous motion system
+  ========================================================== */
+  window.addEventListener('load', () => {
+    startEntranceTimeline();
+  });
+</script>
 </body>
 </html>
