@@ -1263,7 +1263,7 @@ function applyExitFade(el) {
 
   const rect = el.getBoundingClientRect();
   const fadeStart = 0;
-  const fadeEnd = -180;
+  const fadeEnd = -300;
 
   if (rect.top <= fadeStart) {
     const progress = Math.max((rect.top - fadeEnd) / (fadeStart - fadeEnd), 0);
