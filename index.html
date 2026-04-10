@@ -166,15 +166,39 @@
       max-width: var(--max-width);
       margin: 0 auto;
     }
+    /* =========================================================
+    CSS SECTION 06A: ENTRANCE TOP FADE VEIL
+    Λευκό gradient overlay στο πάνω μέρος του entrance.
+    Χρησιμοποιείται για ορατό cinematic dissolve κατά την έξοδο.
+    ========================================================= */
+  .entrance-top-fade-veil {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 26vh;
+  z-index: 30;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.96) 18%,
+    rgba(255, 255, 255, 0.82) 40%,
+    rgba(255, 255, 255, 0.52) 62%,
+    rgba(255, 255, 255, 0.18) 82%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
 
     /* =========================================================
     CSS SECTION 07: IMAGE LAYER
     Layer αποκλειστικά για τις εικόνες του entrance
     ========================================================== */
     .entrance-image-layer {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    pointer-events: none;
     }
 
     .flow-image {
@@ -215,9 +239,10 @@
     Layer για labels, quotes και micro editorial text
     ========================================================== */
     .entrance-text-layer {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    pointer-events: none;
     }
 
     .flow-text-group {
@@ -997,6 +1022,12 @@ States για unit-based entrance choreography
     Το βασικό stage του entrance
     ========================================================== -->
     <div class="entrance-canvas" id="entranceCanvas">
+      <!-- =========================================================
+    HTML SECTION 05A: ENTRANCE TOP FADE VEIL
+    Σταθερό gradient veil στο πάνω μέρος του entrance.
+    Ό,τι περνά μέσα από αυτή τη ζώνη μοιάζει να διαλύεται κινηματογραφικά.
+    ========================================================== -->
+    <div class="entrance-top-fade-veil" id="entranceTopFadeVeil"></div>
 
       <!-- =========================================================
       HTML SECTION 06: ENTRANCE IMAGE LAYER
