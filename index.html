@@ -964,10 +964,11 @@ States για unit-based entrance choreography
 
 .flow-text-group.is-unit-exit,
 .flow-image.is-unit-exit {
-  opacity: 1 !important;
-  transform: translateY(-150px) !important;
+  opacity: 0 !important;
+  transform: translateY(-115vh) !important;
   transition:
-    transform 1.6s var(--ease-soft) !important;
+    transform 2.2s var(--ease-soft),
+    opacity 0.55s ease 1.35s !important;
 }
     
   </style>
@@ -1299,57 +1300,57 @@ function revealLine(el) {
      line opens after settling
   ========================================= */
   schedule(() => {
-    revealUnit(flowImagePerception, flowTextGroupPerception);
-  }, 500);
+  revealUnit(flowImagePerception, flowTextGroupPerception);
+}, 500);
 
-  schedule(() => {
-    revealLine(flowLinePerceptionTop);
-  }, 1850);
+schedule(() => {
+  revealLine(flowLinePerceptionTop);
+}, 2000);
 
-  schedule(() => {
-    exitUnit(flowImagePerception, flowTextGroupPerception);
-  }, 3150);
+schedule(() => {
+  exitUnit(flowImagePerception, flowTextGroupPerception);
+}, 3550);
 
   /* =========================================
      UNIT 02 — SENSORY
   ========================================= */
   schedule(() => {
-    revealUnit(flowImageSensory, flowTextGroupSensory);
-  }, 2550);
+  revealUnit(flowImageSensory, flowTextGroupSensory);
+}, 2850);
 
-  schedule(() => {
-    revealLine(flowLineSensory);
-  }, 3900);
+schedule(() => {
+  revealLine(flowLineSensory);
+}, 4350);
 
-  schedule(() => {
-    exitUnit(flowImageSensory, flowTextGroupSensory);
-  }, 5200);
+schedule(() => {
+  exitUnit(flowImageSensory, flowTextGroupSensory);
+}, 5950);
 
   /* =========================================
      UNIT 03 — ANALYSIS
   ========================================= */
-  schedule(() => {
-    revealUnit(flowImageAnalysis, flowTextGroupAnalysis);
-  }, 4600);
+ schedule(() => {
+  revealUnit(flowImageAnalysis, flowTextGroupAnalysis);
+}, 5250);
 
-  schedule(() => {
-    revealLine(flowLineAnalysis);
-  }, 6100);
+schedule(() => {
+  revealLine(flowLineAnalysis);
+}, 6900);
 
-  schedule(() => {
-    exitUnit(flowImageAnalysis, flowTextGroupAnalysis);
-  }, 7600);
+schedule(() => {
+  exitUnit(flowImageAnalysis, flowTextGroupAnalysis);
+}, 8750);
 
   /* Hero emerges */
-  schedule(() => {
-    revealHeroStage();
-  }, 7000);
+ schedule(() => {
+  revealHeroStage();
+}, 8300);
 
-  schedule(() => {
-    if (entranceFlow) {
-      entranceFlow.classList.add('is-hidden');
-    }
-  }, 8450);
+schedule(() => {
+  if (entranceFlow) {
+    entranceFlow.classList.add('is-hidden');
+  }
+}, 9650);
 }
 
   /* =========================================================
