@@ -964,11 +964,10 @@ States για unit-based entrance choreography
 
 .flow-text-group.is-unit-exit,
 .flow-image.is-unit-exit {
-  opacity: 0 !important;
+  opacity: 1 !important;
   transform: translateY(-115vh) !important;
   transition:
-    transform 2.2s var(--ease-soft),
-    opacity: 1 !important;
+    transform 2.2s var(--ease-soft) !important;
 }
     
   </style>
@@ -1250,40 +1249,36 @@ function revealLine(el) {
   
     animationFrameId = requestAnimationFrame(runContinuousFlow);
     }
-  /* =========================================
-   EXIT FADE CONTROL (top-based)
+ /* =========================================
+   EXIT FADE CONTROL (only during exit state)
 ========================================= */
-
 function applyExitFade(el) {
   if (!el) return;
 
+  /* Fade only if the unit is already exiting */
+  if (!el.classList.contains('is-unit-exit')) {
+    el.style.opacity = 1;
+    return;
+  }
+
   const rect = el.getBoundingClientRect();
+  const fadeStart = 0;
+  const fadeEnd = -180;
 
-  const viewportHeight = window.innerHeight;
-
-  // πόσο κοντά είναι στο top
-  const distanceFromTop = rect.top;
-
-  // αρχίζει fade όταν μπει στο top 25% της οθόνης
-  const fadeStart = viewportHeight * 0.25;
-
-  if (distanceFromTop < fadeStart) {
-    const progress = Math.max(distanceFromTop / fadeStart, 0);
+  if (rect.top <= fadeStart) {
+    const progress = Math.max((rect.top - fadeEnd) / (fadeStart - fadeEnd), 0);
     el.style.opacity = progress;
   } else {
     el.style.opacity = 1;
   }
 }
 
-/* Apply to perception unit */
 applyExitFade(flowImagePerception);
 applyExitFade(flowTextGroupPerception);
 
-/* Apply to sensory */
 applyExitFade(flowImageSensory);
 applyExitFade(flowTextGroupSensory);
 
-/* Apply to analysis */
 applyExitFade(flowImageAnalysis);
 applyExitFade(flowTextGroupAnalysis);
   /* =========================================================
