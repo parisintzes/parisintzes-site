@@ -712,10 +712,10 @@
       .hero-identity-block {
         left: 36px;
       }
-        /* =========================================================
-     CSS SECTION 16A: PERCEPTION UNIT / TABLET
-      Responsive προσαρμογές του ενιαίου perception block για tablet
-      ========================================================== */
+          /* =========================================================
+  CSS SECTION 16A: PERCEPTION UNIT / TABLET
+  Responsive προσαρμογές του ενιαίου perception block για tablet
+  ========================================================== */
   .flow-unit-perception {
     left: 6%;
     top: 17%;
@@ -729,19 +729,20 @@
   }
 
   .flow-unit-quote {
-    left: calc(100% + 90px);
-    top: 0;
-    width: 280px;
+    position: absolute;
+    left: 56%;
+    top: 13%;
+    width: 250px;
     font-size: 16px;
     line-height: 1.16;
   }
 
   .flow-unit-line {
-    left: calc(100% + 90px);
-    top: 78px;
-    width: 230px;
-      }
-    }
+    position: absolute;
+    left: 56%;
+    top: calc(13% + 38px);
+    width: 210px;
+  }
 
     /* =========================================================
     CSS SECTION 17: MOBILE LAYOUT
@@ -924,10 +925,11 @@
         padding: 0 24px;
       }
         /* =========================================================
-    CSS SECTION 17A: PERCEPTION UNIT / MOBILE
-    Στο mobile το perception block γίνεται stacked,
-    ώστε εικόνα + label + quote + line να λειτουργούν καθαρά
-    σαν ένα ενιαίο cinematic unit.
+      /* =========================================================
+  CSS SECTION 17A: PERCEPTION UNIT / MOBILE
+  Στο mobile το perception block γίνεται stacked,
+  ώστε εικόνα + label + quote + line να λειτουργούν καθαρά
+  σαν ένα ενιαίο cinematic unit.
   ========================================================== */
   .flow-unit-perception {
     left: 20px;
@@ -945,8 +947,7 @@
     position: absolute;
     left: 0;
     top: calc(100% + 34px);
-    width: calc(100vw - 40px);
-    max-width: 290px;
+    width: min(260px, calc(100vw - 40px));
     font-size: 17px;
     line-height: 1.14;
   }
@@ -954,8 +955,8 @@
   .flow-unit-line {
     position: absolute;
     left: 0;
-    top: calc(100% + 108px);
-    width: 220px;
+    top: calc(100% + 76px);
+    width: 200px;
   }
     }
 
@@ -1102,10 +1103,7 @@ CSS SECTION 21: PERCEPTION UNIT BLOCK
 .flow-unit-quote {
   position: absolute;
 
-  /* 🔥 ΚΛΕΙΔΙ: απομακρύνεται από την εικόνα */
   left: 58%;
-  
-  /* 🔥 ΚΛΕΙΔΙ: ίδιο vertical επίπεδο με την εικόνα */
   top: 12%;
 
   width: 340px;
@@ -1114,16 +1112,15 @@ CSS SECTION 21: PERCEPTION UNIT BLOCK
   line-height: 1.2;
   font-weight: 300;
   letter-spacing: -0.01em;
-
-  opacity: 0;
-  color: var(--text);
 }
  
 
 .flow-unit-line {
   position: absolute;
+
   left: 58%;
   top: calc(12% + 42px);
+
   width: 260px;
   height: 1px;
   background: var(--line);
