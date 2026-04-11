@@ -982,23 +982,83 @@ CSS SECTION 20: UNIT MOTION STATES
 States για unit-based entrance choreography
 ========================================================= */
 .flow-text-group.is-unit-visible,
-.flow-image.is-unit-visible {
+.flow-image.is-unit-visible,
+.flow-unit.is-unit-visible {
   opacity: 1 !important;
   transform: translateY(0) !important;
 }
-
 .flow-text-group.is-unit-exit,
-.flow-image.is-unit-exit {
+.flow-image.is-unit-exit,
+.flow-unit.is-unit-exit {
   transform: translateY(-115vh) !important;
   transition:
     transform 3.1s var(--ease-soft) !important;
 }
     .flow-text-group.is-unit-fade,
-    .flow-image.is-unit-fade {
-    opacity: 0 !important;
-    transition:
+.flow-image.is-unit-fade,
+.flow-unit.is-unit-fade {
+  opacity: 0 !important;
+  transition:
     transform 3.1s var(--ease-soft),
     opacity 0.95s ease !important;
+}
+    /* =========================================================
+CSS SECTION 21: PERCEPTION UNIT BLOCK
+Ενιαίο cinematic block για εικόνα + label + quote + line
+========================================================= */
+.flow-unit {
+  position: absolute;
+  opacity: 1;
+  transform: translateY(140vh);
+  will-change: transform, opacity;
+}
+
+.flow-unit-perception {
+  left: 8.5%;
+  top: 18%;
+  width: 340px;
+  z-index: 18;
+}
+
+.flow-unit-image {
+  width: 100%;
+  margin: 0;
+}
+
+.flow-unit-label {
+  margin-top: 14px;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  font-weight: 300;
+  color: rgba(17, 17, 17, 0.72);
+}
+
+.flow-unit-quote {
+  position: absolute;
+  left: calc(100% + 280px);
+  top: 0;
+  width: 360px;
+  font-size: 18px;
+  line-height: 1.18;
+  font-weight: 300;
+  letter-spacing: -0.008em;
+  color: var(--text);
+}
+
+.flow-unit-line {
+  position: absolute;
+  left: calc(100% + 280px);
+  top: 86px;
+  width: 300px;
+  height: 1px;
+  background: var(--line);
+  transform: scaleX(0);
+  transform-origin: left center;
+  opacity: 0;
+
+  transition:
+    transform 1.4s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.6s ease;
 }
     
   </style>
@@ -1022,6 +1082,7 @@ States για unit-based entrance choreography
     Το βασικό stage του entrance
     ========================================================== -->
     <div class="entrance-canvas" id="entranceCanvas">
+
       <!-- =========================================================
     HTML SECTION 05A: ENTRANCE TOP FADE VEIL
     Σταθερό gradient veil στο πάνω μέρος του entrance.
@@ -1029,14 +1090,32 @@ States για unit-based entrance choreography
     ========================================================== -->
     <div class="entrance-top-fade-veil" id="entranceTopFadeVeil"></div>
 
+     <!-- =========================================================
+    HTML SECTION 05B: PERCEPTION UNIT BLOCK
+    Ενιαίο block για εικόνα + label + quote + line.
+    Αυτό το unit θα κινείται σαν ένα σώμα.
+    ========================================================== -->
+  <div class="flow-unit flow-unit-perception" id="flowUnitPerception">
+  <figure class="flow-unit-image" id="flowUnitPerceptionImage">
+    <img src="images/perception.jpeg" alt="Perception visual">
+  </figure>
+
+  <div class="flow-unit-label editorial-label" id="flowUnitPerceptionLabel">
+    // Perception
+  </div>
+
+  <div class="flow-unit-quote serif" id="flowUnitPerceptionQuote">
+    Perception is not passive —<br>
+    it is constructed.
+  </div>
+
+  <div class="flow-unit-line" id="flowUnitPerceptionLine"></div>
+</div>
       <!-- =========================================================
       HTML SECTION 06: ENTRANCE IMAGE LAYER
       Layer μόνο για τις εικόνες
       ========================================================== -->
       <div class="entrance-image-layer" id="entranceImageLayer">
-        <figure class="flow-image flow-image-perception" id="flowImagePerception">
-          <img src="images/perception.jpeg" alt="Perception visual">
-        </figure>
 
         <figure class="flow-image flow-image-sensory" id="flowImageSensory">
           <img src="images/sensory.jpeg" alt="Sensory response visual">
@@ -1055,16 +1134,6 @@ States για unit-based entrance choreography
 
         <!-- PERCEPTION GROUP -->
         <div class="flow-text-group flow-text-group-perception" id="flowTextGroupPerception">
-          <div class="flow-label flow-label-perception" id="flowLabelPerception">
-            Perception
-            </div>
-
-          <div class="flow-quote flow-quote-perception-top serif" id="flowQuotePerceptionTop">
-            Perception is not passive —<br>
-            it is constructed.
-          </div>
-
-          <div class="flow-line flow-line-perception-top" id="flowLinePerceptionTop"></div>
         </div>
 
         <!-- SENSORY GROUP -->
@@ -1194,17 +1263,16 @@ States για unit-based entrance choreography
   const entranceSkipBtn = document.getElementById('entranceSkipBtn');
   const entranceCanvas = document.getElementById('entranceCanvas');
     
-  const flowTextGroupPerception = document.getElementById('flowTextGroupPerception');
+  
   const flowTextGroupSensory = document.getElementById('flowTextGroupSensory');
   const flowTextGroupAnalysis = document.getElementById('flowTextGroupAnalysis');
     
-  const flowImagePerception = document.getElementById('flowImagePerception');
+  
   const flowImageSensory = document.getElementById('flowImageSensory');
   const flowImageAnalysis = document.getElementById('flowImageAnalysis');
 
-  const flowLabelPerception = document.getElementById('flowLabelPerception');
-  const flowQuotePerceptionTop = document.getElementById('flowQuotePerceptionTop');
-  const flowLinePerceptionTop = document.getElementById('flowLinePerceptionTop');
+  const flowUnitPerception = document.getElementById('flowUnitPerception');
+  const flowUnitPerceptionLine = document.getElementById('flowUnitPerceptionLine');
 
   const flowLabelSensory = document.getElementById('flowLabelSensory');
   const flowQuoteSensory = document.getElementById('flowQuoteSensory');
@@ -1341,17 +1409,21 @@ function revealLine(el) {
      image + label + quote enter together
      line opens after settling
   ========================================= */
-  schedule(() => {
-  revealUnit(flowImagePerception, flowTextGroupPerception);
+ schedule(() => {
+  if (flowUnitPerception) flowUnitPerception.classList.add('is-unit-visible');
 }, 500);
 
 schedule(() => {
-  revealLine(flowLinePerceptionTop);
-}, 2000);
+  revealLine(flowUnitPerceptionLine);
+}, 2400);
 
 schedule(() => {
-  exitUnit(flowImagePerception, flowTextGroupPerception);
+  if (flowUnitPerception) flowUnitPerception.classList.add('is-unit-exit');
 }, 3550);
+
+schedule(() => {
+  if (flowUnitPerception) flowUnitPerception.classList.add('is-unit-fade');
+}, 5100);
 
   /* =========================================
      UNIT 02 — SENSORY
