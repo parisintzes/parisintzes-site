@@ -1001,20 +1001,23 @@ States για unit-based entrance choreography
 ========================================================= */
 .flow-text-group.is-unit-visible,
 .flow-image.is-unit-visible,
-.flow-unit.is-unit-visible {
+.flow-unit.is-unit-visible,
+.flow-echo-quote.is-unit-visible {
   opacity: 1 !important;
   transform: translateY(0) !important;
 }
 .flow-text-group.is-unit-exit,
 .flow-image.is-unit-exit,
-.flow-unit.is-unit-exit {
+.flow-unit.is-unit-exit,
+.flow-echo-quote.is-unit-exit {
   transform: translateY(-115vh) !important;
   transition:
     transform 3.1s var(--ease-soft) !important;
 }
-    .flow-text-group.is-unit-fade,
+   .flow-text-group.is-unit-fade,
 .flow-image.is-unit-fade,
-.flow-unit.is-unit-fade {
+.flow-unit.is-unit-fade,
+.flow-echo-quote.is-unit-fade {
   opacity: 0 !important;
   transition:
     transform 3.1s var(--ease-soft),
@@ -1083,6 +1086,48 @@ CSS SECTION 21: PERCEPTION UNIT BLOCK
     transform 1.4s cubic-bezier(0.22, 1, 0.36, 1),
     opacity 0.6s ease;
 }
+/* =========================================================
+CSS SECTION 21A: PERCEPTION ECHO QUOTE
+Δεύτερο λεκτικό perception block που εμφανίζεται κάτω αριστερά
+και λειτουργεί ως conceptual echo του πρώτου unit.
+========================================================= */
+.flow-echo-quote {
+  position: absolute;
+  opacity: 1;
+  transform: translateY(140vh);
+  transition:
+    transform 1.9s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.9s ease;
+  will-change: transform, opacity;
+  z-index: 18;
+}
+
+.flow-echo-quote-perception {
+  left: 8%;
+  top: 68%;
+  width: 320px;
+}
+
+.flow-echo-text {
+  font-size: 18px;
+  line-height: 1.18;
+  font-weight: 300;
+  letter-spacing: -0.008em;
+  color: var(--text);
+}
+
+.flow-echo-line {
+  margin-top: 14px;
+  width: 240px;
+  height: 1px;
+  background: var(--line);
+  transform: scaleX(0);
+  transform-origin: right center;
+  opacity: 0;
+  transition:
+    transform 1.4s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.6s ease;
+}
     
   </style>
 </head>
@@ -1134,6 +1179,19 @@ CSS SECTION 21: PERCEPTION UNIT BLOCK
   <div class="flow-unit-line" id="flowUnitPerceptionLine"></div>
 </div>
       <!-- =========================================================
+    HTML SECTION 05C: PERCEPTION ECHO QUOTE
+    Δεύτερο λεκτικό perception statement που εμφανίζεται
+    ως echo του βασικού perception unit.
+    ========================================================== -->
+<div class="flow-echo-quote flow-echo-quote-perception" id="flowEchoQuotePerception">
+  <div class="flow-echo-text serif" id="flowEchoTextPerception">
+    Perception is not passive —<br>
+    it is constructed.
+  </div>
+
+  <div class="flow-echo-line flow-echo-line-perception" id="flowEchoLinePerception"></div>
+</div>
+      <!-- =========================================================
       HTML SECTION 06: ENTRANCE IMAGE LAYER
       Layer μόνο για τις εικόνες
       ========================================================== -->
@@ -1161,20 +1219,11 @@ CSS SECTION 21: PERCEPTION UNIT BLOCK
         <!-- SENSORY GROUP -->
         <div class="flow-text-group flow-text-group-sensory" id="flowTextGroupSensory">
           <div class="flow-label flow-label-sensory" id="flowLabelSensory">
-            // Sensory Response
-          </div>
-
-          <div class="flow-quote flow-quote-sensory serif" id="flowQuoteSensory">
-            Sensation shapes eating behavior.
-          </div>
-
-          <div class="flow-line flow-line-sensory" id="flowLineSensory"></div>
         </div>
 
         <!-- ANALYSIS GROUP -->
         <div class="flow-text-group flow-text-group-analysis" id="flowTextGroupAnalysis">
           <div class="flow-label flow-label-analysis" id="flowLabelAnalysis">
-            // Analysis
           </div>
 
           <div class="flow-quote flow-quote-analysis-main serif" id="flowQuoteAnalysisMain">
@@ -1295,6 +1344,9 @@ CSS SECTION 21: PERCEPTION UNIT BLOCK
 
   const flowUnitPerception = document.getElementById('flowUnitPerception');
   const flowUnitPerceptionLine = document.getElementById('flowUnitPerceptionLine');
+
+  const flowEchoQuotePerception = document.getElementById('flowEchoQuotePerception');
+  const flowEchoLinePerception = document.getElementById('flowEchoLinePerception');
 
   const flowLabelSensory = document.getElementById('flowLabelSensory');
   const flowQuoteSensory = document.getElementById('flowQuoteSensory');
@@ -1431,22 +1483,37 @@ function revealLine(el) {
      image + label + quote enter together
      line opens after settling
   ========================================= */
- schedule(() => {
+schedule(() => {
   if (flowUnitPerception) flowUnitPerception.classList.add('is-unit-visible');
 }, 500);
 
 schedule(() => {
   revealLine(flowUnitPerceptionLine);
-}, 2400);
+}, 2000);
 
 schedule(() => {
   if (flowUnitPerception) flowUnitPerception.classList.add('is-unit-exit');
-}, 3550);
+}, 3700);
+
+schedule(() => {
+  if (flowEchoQuotePerception) flowEchoQuotePerception.classList.add('is-unit-visible');
+}, 4300);
+
+schedule(() => {
+  revealLine(flowEchoLinePerception);
+}, 5450);
 
 schedule(() => {
   if (flowUnitPerception) flowUnitPerception.classList.add('is-unit-fade');
-}, 5100);
+}, 5600);
 
+schedule(() => {
+  if (flowEchoQuotePerception) flowEchoQuotePerception.classList.add('is-unit-exit');
+}, 6600);
+
+schedule(() => {
+  if (flowEchoQuotePerception) flowEchoQuotePerception.classList.add('is-unit-fade');
+}, 8150);
   /* =========================================
      UNIT 02 — SENSORY
   ========================================= */
