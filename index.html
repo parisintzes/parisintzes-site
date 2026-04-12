@@ -1130,7 +1130,64 @@ CSS SECTION 21A: PERCEPTION ECHO QUOTE
     transform 1.4s cubic-bezier(0.22, 1, 0.36, 1),
     opacity 0.6s ease;
 }
-    
+/* =========================================================
+CSS SECTION 21B: SENSORY RESPONSE UNIT BLOCK
+Mirrored cinematic block για label + quote + line + image
+========================================================= */
+.flow-unit-sensory {
+  left: 61%;
+  top: 46%;
+  width: 220px;
+  z-index: 18;
+}
+
+.flow-unit-image-sensory {
+  width: 100%;
+  margin: 0;
+}
+
+.flow-unit-label-sensory {
+  position: absolute;
+  right: 0;
+  top: -26px;
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  font-weight: 300;
+  color: rgba(17, 17, 17, 0.72);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.flow-unit-quote-sensory {
+  position: absolute;
+  right: calc(100% + 44px);
+  top: 18px;
+  width: 320px;
+
+  font-size: 18px;
+  line-height: 1.18;
+  font-weight: 300;
+  letter-spacing: -0.008em;
+  text-align: left;
+}
+
+.flow-unit-line-sensory {
+  position: absolute;
+  right: calc(100% + 44px);
+  top: 58px;
+
+  width: 300px;
+  height: 1px;
+  background: var(--line);
+  transform: scaleX(0);
+  transform-origin: right center;
+  opacity: 0;
+
+  transition:
+    transform 1.4s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.6s ease;
+}    
   </style>
 </head>
 <body>
@@ -1193,14 +1250,29 @@ CSS SECTION 21A: PERCEPTION ECHO QUOTE
   <div class="flow-echo-line flow-echo-line-perception" id="flowEchoLinePerception"></div>
 </div>
       <!-- =========================================================
+    HTML SECTION 05D: SENSORY RESPONSE UNIT BLOCK
+    Mirrored cinematic block για label + quote + line + image
+    ========================================================== -->
+<div class="flow-unit flow-unit-sensory" id="flowUnitSensory">
+  <div class="flow-unit-label flow-unit-label-sensory editorial-label" id="flowUnitSensoryLabel">
+    // Sensory Response
+  </div>
+
+  <div class="flow-unit-quote flow-unit-quote-sensory serif" id="flowUnitSensoryQuote">
+    Sensation shapes eating behavior.
+  </div>
+
+  <div class="flow-unit-line flow-unit-line-sensory" id="flowUnitSensoryLine"></div>
+
+  <figure class="flow-unit-image flow-unit-image-sensory" id="flowUnitSensoryImage">
+    <img src="images/sensory.jpeg" alt="Sensory response visual">
+  </figure>
+</div>
+      <!-- =========================================================
       HTML SECTION 06: ENTRANCE IMAGE LAYER
       Layer μόνο για τις εικόνες
       ========================================================== -->
       <div class="entrance-image-layer" id="entranceImageLayer">
-
-        <figure class="flow-image flow-image-sensory" id="flowImageSensory">
-          <img src="images/sensory.jpeg" alt="Sensory response visual">
-        </figure>
 
         <figure class="flow-image flow-image-analysis" id="flowImageAnalysis">
           <img src="images/analysis.jpeg" alt="Analysis visual">
@@ -1227,15 +1299,6 @@ CSS SECTION 21A: PERCEPTION ECHO QUOTE
           <div class="flow-label flow-label-analysis" id="flowLabelAnalysis">
           </div>
 
-          <div class="flow-quote flow-quote-analysis-main serif" id="flowQuoteAnalysisMain">
-            The architecture of behavior.
-          </div>
-
-          <div class="flow-quote flow-quote-analysis-sub serif" id="flowQuoteAnalysisSub">
-            Analyzed through data.
-          </div>
-
-          <div class="flow-line flow-line-analysis" id="flowLineAnalysis"></div>
         </div>
       </div>
     </div>
@@ -1335,24 +1398,20 @@ CSS SECTION 21A: PERCEPTION ECHO QUOTE
   const entranceSkipBtn = document.getElementById('entranceSkipBtn');
   const entranceCanvas = document.getElementById('entranceCanvas');
     
-  
-  const flowTextGroupSensory = document.getElementById('flowTextGroupSensory');
   const flowTextGroupAnalysis = document.getElementById('flowTextGroupAnalysis');
     
-  
-  const flowImageSensory = document.getElementById('flowImageSensory');
   const flowImageAnalysis = document.getElementById('flowImageAnalysis');
 
   const flowUnitPerception = document.getElementById('flowUnitPerception');
   const flowUnitPerceptionLine = document.getElementById('flowUnitPerceptionLine');
 
+  const flowUnitSensory = document.getElementById('flowUnitSensory');
+  const flowUnitSensoryLine = document.getElementById('flowUnitSensoryLine');
+
   const flowEchoQuotePerception = document.getElementById('flowEchoQuotePerception');
   const flowEchoLinePerception = document.getElementById('flowEchoLinePerception');
 
-  const flowLabelSensory = document.getElementById('flowLabelSensory');
-  const flowQuoteSensory = document.getElementById('flowQuoteSensory');
-  const flowLineSensory = document.getElementById('flowLineSensory');
-
+  
   const flowLabelAnalysis = document.getElementById('flowLabelAnalysis');
   const flowQuoteAnalysisMain = document.getElementById('flowQuoteAnalysisMain');
   const flowQuoteAnalysisSub = document.getElementById('flowQuoteAnalysisSub');
@@ -1515,20 +1574,24 @@ schedule(() => {
 schedule(() => {
   if (flowEchoQuotePerception) flowEchoQuotePerception.classList.add('is-unit-fade');
 }, 8150);
-  /* =========================================
-     UNIT 02 — SENSORY
-  ========================================= */
-  schedule(() => {
-  revealUnit(flowImageSensory, flowTextGroupSensory);
-}, 2850);
+ /* =========================================
+   UNIT 02 — SENSORY RESPONSE
+========================================= */
+schedule(() => {
+  if (flowUnitSensory) flowUnitSensory.classList.add('is-unit-visible');
+}, 7200);
 
 schedule(() => {
-  revealLine(flowLineSensory);
-}, 4350);
+  revealLine(flowUnitSensoryLine);
+}, 8600);
 
 schedule(() => {
-  exitUnit(flowImageSensory, flowTextGroupSensory);
-}, 5950);
+  if (flowUnitSensory) flowUnitSensory.classList.add('is-unit-exit');
+}, 10300);
+
+schedule(() => {
+  if (flowUnitSensory) flowUnitSensory.classList.add('is-unit-fade');
+}, 11850);
 
   /* =========================================
      UNIT 03 — ANALYSIS
