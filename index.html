@@ -1161,7 +1161,7 @@ Mirrored cinematic block για label + quote + line + image
 
 .flow-unit-quote-sensory {
   position: absolute;
-  right: calc(100% + 12px);
+  right: calc(100% + 30px);
   left: auto;
   top: 410px;
   width: 320px;
@@ -1171,11 +1171,12 @@ Mirrored cinematic block για label + quote + line + image
   font-weight: 300;
   letter-spacing: -0.008em;
   text-align: left;
+  white-space: nowrap;
 }
 
 .flow-unit-line-sensory {
   position: absolute;
-  right: calc(100% + 12px);
+  right: calc(100% + 30px);
   left: auto;
   top: 444px;
 
@@ -1589,11 +1590,11 @@ schedule(() => {
 
 schedule(() => {
   if (flowUnitSensory) flowUnitSensory.classList.add('is-unit-exit');
-}, 10300);
+}, 10450);
 
 schedule(() => {
   if (flowUnitSensory) flowUnitSensory.classList.add('is-unit-fade');
-}, 11850);
+}, 12050);
 
   /* =========================================
      UNIT 03 — ANALYSIS
