@@ -1193,6 +1193,59 @@ Mirrored cinematic block για label + quote + line + image
     transform 1.4s cubic-bezier(0.22, 1, 0.36, 1),
     opacity 0.6s ease;
 }
+    /* =========================================================
+CSS SECTION 21C: ANALYSIS UNIT BLOCK
+Same cinematic structure as perception
+========================================================= */
+.flow-unit-analysis {
+  left: 6%;
+  top: 64%;
+  width: 300px;
+  z-index: 18;
+}
+
+.flow-unit-image-analysis {
+  width: 100%;
+  margin: 0;
+}
+
+.flow-unit-label-analysis {
+  margin-top: 14px;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  font-weight: 300;
+  color: rgba(17, 17, 17, 0.72);
+}
+
+.flow-unit-quote-analysis {
+  position: absolute;
+  left: calc(100% + 30px);
+  top: 2px;
+  width: 320px;
+
+  font-size: 18px;
+  line-height: 1.2;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  text-align: left;
+}
+
+.flow-unit-line-analysis {
+  position: absolute;
+  left: calc(100% + 30px);
+  top: 68px;
+
+  width: 600px;
+  height: 1px;
+  background: var(--line);
+  transform: scaleX(0);
+  transform-origin: left center;
+  opacity: 0;
+
+  transition:
+    transform 1.4s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.6s ease;
+}
   </style>
 </head>
 <body>
@@ -1274,14 +1327,31 @@ Mirrored cinematic block για label + quote + line + image
   </figure>
 </div>
       <!-- =========================================================
+HTML SECTION 05E: ANALYSIS UNIT BLOCK
+Same cinematic structure as perception:
+image left / label below / quote right / line below quote
+========================================================== -->
+<div class="flow-unit flow-unit-analysis" id="flowUnitAnalysis">
+  <figure class="flow-unit-image flow-unit-image-analysis" id="flowUnitAnalysisImage">
+    <img src="images/analysis.jpeg" alt="Analysis visual">
+  </figure>
+
+  <div class="flow-unit-label flow-unit-label-analysis editorial-label" id="flowUnitAnalysisLabel">
+    //Analysis
+  </div>
+
+  <div class="flow-unit-quote flow-unit-quote-analysis serif" id="flowUnitAnalysisQuote">
+    The architecture of behavior.<br>
+    Analyzed through data.
+  </div>
+
+  <div class="flow-unit-line flow-unit-line-analysis" id="flowUnitAnalysisLine"></div>
+</div>
+      <!-- =========================================================
       HTML SECTION 06: ENTRANCE IMAGE LAYER
       Layer μόνο για τις εικόνες
       ========================================================== -->
       <div class="entrance-image-layer" id="entranceImageLayer">
-
-        <figure class="flow-image flow-image-analysis" id="flowImageAnalysis">
-          <img src="images/analysis.jpeg" alt="Analysis visual">
-        </figure>
       </div>
 
       <!-- =========================================================
@@ -1403,10 +1473,6 @@ Mirrored cinematic block για label + quote + line + image
   const entranceSkipBtn = document.getElementById('entranceSkipBtn');
   const entranceCanvas = document.getElementById('entranceCanvas');
     
-  const flowTextGroupAnalysis = document.getElementById('flowTextGroupAnalysis');
-    
-  const flowImageAnalysis = document.getElementById('flowImageAnalysis');
-
   const flowUnitPerception = document.getElementById('flowUnitPerception');
   const flowUnitPerceptionLine = document.getElementById('flowUnitPerceptionLine');
 
@@ -1416,11 +1482,8 @@ Mirrored cinematic block για label + quote + line + image
   const flowEchoQuotePerception = document.getElementById('flowEchoQuotePerception');
   const flowEchoLinePerception = document.getElementById('flowEchoLinePerception');
 
-  
-  const flowLabelAnalysis = document.getElementById('flowLabelAnalysis');
-  const flowQuoteAnalysisMain = document.getElementById('flowQuoteAnalysisMain');
-  const flowQuoteAnalysisSub = document.getElementById('flowQuoteAnalysisSub');
-  const flowLineAnalysis = document.getElementById('flowLineAnalysis');
+  const flowUnitAnalysis = document.getElementById('flowUnitAnalysis');
+  const flowUnitAnalysisLine = document.getElementById('flowUnitAnalysisLine');
 
   const heroStage = document.getElementById('heroStage');
   const heroToolbar = document.getElementById('heroToolbar');
@@ -1594,24 +1657,20 @@ schedule(() => {
   if (flowUnitSensory) flowUnitSensory.classList.add('is-unit-exit');
 }, 10300);
 
+/* =========================================
+   UNIT 03 — ANALYSIS
+========================================= */
 schedule(() => {
-  if (flowUnitSensory) flowUnitSensory.classList.add('is-unit-fade');
-}, 12750);
-
-  /* =========================================
-     UNIT 03 — ANALYSIS
-  ========================================= */
- schedule(() => {
-  revealUnit(flowImageAnalysis, flowTextGroupAnalysis);
-}, 5250);
+  if (flowUnitAnalysis) flowUnitAnalysis.classList.add('is-unit-visible');
+}, 11200);
 
 schedule(() => {
-  revealLine(flowLineAnalysis);
-}, 6900);
+  revealLine(flowUnitAnalysisLine);
+}, 12600);
 
 schedule(() => {
-  exitUnit(flowImageAnalysis, flowTextGroupAnalysis);
-}, 8750);
+  if (flowUnitAnalysis) flowUnitAnalysis.classList.add('is-unit-exit');
+}, 14300);
 
   /* Hero emerges */
  schedule(() => {
