@@ -1614,6 +1614,19 @@ schedule(() => {
   }
   }, 15100);
 }
+    /* =========================================================
+JS SECTION 09: HERO TOOLBAR COMPRESSION
+Με το scroll μένει μόνο το brand name
+========================================================= */
+function handleHeroCompression() {
+  if (!heroToolbar) return;
+
+  if (window.scrollY > 60) {
+    heroToolbar.classList.add('is-compact');
+  } else {
+    heroToolbar.classList.remove('is-compact');
+  }
+}
 
   /* =========================================================
   JS SECTION 10: EVENT BINDINGS
