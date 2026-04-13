@@ -1149,15 +1149,20 @@ Mirrored cinematic block για label + quote + line + image
   right: calc(100% + 330px);
   left: auto;
   top: 410px;
-  width: max-content;
-  max-width: 320px;
+  width: 360px;
+  max-width: 360px;
+
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+
   font-family: 'Inter', sans-serif;
   font-size: 15px;
-  line-height: 1.2;
+  line-height: 1.28;
   font-weight: 300;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.002em;
   text-align: left;
-  white-space: nowrap;
+  white-space: normal;
 }
 .flow-unit-quote strong {
   font-weight: 400;
@@ -1277,6 +1282,33 @@ Subtle διαφοροποίηση για note / obs / ref
   font-weight: 200;
   color: rgba(17, 17, 17, 0.76);
 }
+    .flow-unit-note-index {
+  flex: 0 0 auto;
+  font-size: 11px;
+  line-height: 1.1;
+  letter-spacing: 0.12em;
+  font-weight: 300;
+  color: rgba(17, 17, 17, 0.42);
+  white-space: nowrap;
+  margin-top: 2px;
+}
+
+.flow-unit-note-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  white-space: normal;
+}
+
+.flow-unit-note-text br {
+  display: block;
+  content: "";
+}
+  .flow-unit-citation {
+  font-style: italic;
+  font-weight: 300;
+  color: rgba(17, 17, 17, 0.60);
+  letter-spacing: 0.01em;
+}
     /* =========================================================
 CSS SECTION 22: FRAME LINES SYSTEM
 Editorial vertical lines for cinematic entrance
@@ -1371,8 +1403,7 @@ Editorial vertical lines for cinematic entrance
   <span class="flow-unit-note-index">obs. 01</span>
   <span class="flow-unit-note-text">
     Multisensory stimuli shape eating behavior through integrated sensory activation.<br>
-    (Epignosis Study 1.)
-  </span>
+    <span class="flow-unit-citation">(Epignosis Study 1.)</span>
 </div>
   <div class="flow-unit-line flow-unit-line-sensory" id="flowUnitSensoryLine"></div>
 
@@ -1394,12 +1425,13 @@ image left / label below / quote right / line below quote
     //Analysis
   </div>
 
-  <div class="flow-unit-quote flow-unit-quote-analysis flow-unit-quote-ref" id="flowUnitAnalysisQuote">
+<div class="flow-unit-quote flow-unit-quote-analysis flow-unit-quote-ref" id="flowUnitAnalysisQuote">
   <span class="flow-unit-note-index">ref. 01</span>
- <span class="flow-unit-note-text">
-  Behavior unfolds through perceptual and affective integration,<br>
-  preceding cognitive evaluation (Spence, 2022).
-</span>
+  <span class="flow-unit-note-text">
+    Behavior unfolds through perceptual and affective integration,<br>
+    preceding cognitive evaluation <span class="flow-unit-citation">(Spence, 2022)</span>.
+  </span>
+</div>
 
   <div class="flow-unit-line flow-unit-line-analysis" id="flowUnitAnalysisLine"></div>
 </div>
