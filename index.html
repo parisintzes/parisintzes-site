@@ -1396,6 +1396,78 @@ Editorial vertical lines for cinematic entrance
 .frame-line-right {
   right: 6%;
 }
+    /* =========================================================
+SECTION NUMBERS (EDITORIAL INDEX)
+========================================================= */
+.section-number {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: rgba(17,17,17,0.4);
+  margin-bottom: 10px;
+}
+ /* =========================================================
+CONTENT SECTIONS
+========================================================= */
+
+.content-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 160px 24px;
+}
+
+.section-title {
+  font-size: 32px;
+  font-weight: 300;
+  margin-bottom: 24px;
+}
+
+.section-text {
+  max-width: 600px;
+  font-size: 15px;
+  line-height: 1.7;
+  font-weight: 300;
+  color: rgba(17,17,17,0.75);
+  margin-bottom: 16px;
+}
+
+/* =========================================================
+MENU OVERLAY
+========================================================= */
+
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: white;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.menu-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.menu-inner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+}
+
+.menu-link {
+  font-size: 22px;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  transition: opacity 0.3s ease;
+}
+
+.menu-link:hover {
+  opacity: 0.5;
+}
   </style>
 </head>
 <body>
@@ -1597,17 +1669,95 @@ image left / label below / quote right / line below quote
 
   <!-- =========================================================
   HTML SECTION 11: POST-HERO PLACEHOLDER
-  Προσωρινό content για να δουλεύει το scroll
   ========================================================== -->
-  <section class="post-hero-placeholder" id="postHeroPlaceholder">
-    <h2 class="serif">Editorial Research Sections</h2>
-    <p>
-      Αυτό είναι προσωρινό placeholder section ώστε να δουλεύει σωστά
-      το scroll behavior και η μετάβαση από το hero προς το υπόλοιπο site.
-      Αργότερα εδώ θα μπουν τα πραγματικά sections.
+   </section>
+  <!-- =========================================================
+MAIN CONTENT SECTIONS
+========================================================= -->
+
+<main id="mainContent">
+
+  <!-- 02. Direction -->
+  <section id="direction" class="content-section">
+    <h2 class="section-number">02</h2>
+    <h2 class="section-title serif">Direction</h2>
+
+    <p class="section-text">
+      Experience is not designed as a visual outcome, but as a perceptual system.
+    </p>
+    <p class="section-text">
+      The focus lies on how sensory stimuli shape behavior, emotion, and cognitive response within hospitality environments.
     </p>
   </section>
 
+  <!-- 03. Contexts -->
+  <section id="contexts" class="content-section">
+    <h2 class="section-number">03</h2>
+    <h2 class="section-title serif">Contexts</h2>
+
+    <p class="section-text">
+      Hospitality is approached as a dynamic system of interactions between space, body, and perception.
+    </p>
+    <p class="section-text">
+      The work spans across gastronomy, tourism environments, and multisensory design contexts.
+    </p>
+  </section>
+
+  <!-- 04. Method -->
+  <section id="method" class="content-section">
+    <h2 class="section-number">04</h2>
+    <h2 class="section-title serif">Method</h2>
+
+    <p class="section-text">
+      The methodology integrates sensory science, behavioral analysis, and data-driven research.
+    </p>
+    <p class="section-text">
+      Experiential patterns emerge through the synthesis of perception and analytics.
+    </p>
+  </section>
+
+  <!-- 05. Work / Studies -->
+  <section id="work" class="content-section">
+    <h2 class="section-number">05</h2>
+    <h2 class="section-title serif">Work & Studies</h2>
+
+    <p class="section-text">
+      Research and applied work explore multisensory experience and eating behavior.
+    </p>
+    <p class="section-text">
+      Projects include experimental studies, conceptual frameworks, and hospitality implementations.
+    </p>
+  </section>
+
+  <!-- 06. Profile -->
+  <section id="profile" class="content-section">
+    <h2 class="section-number">06</h2>
+    <h2 class="section-title serif">Profile</h2>
+
+    <p class="section-text">
+      Paris Intzes is a Hospitality Experience Strategist and Researcher working at the intersection of multisensory experience, eating behavior, and experiential design.
+    </p>
+    <p class="section-text">
+      His work integrates sensory science, gastronomy, and marketing analytics to explore how environments shape perception, emotion, and behavior.
+    </p>
+  </section>
+
+  <!-- 07. Contact -->
+  <section id="contact" class="content-section">
+    <h2 class="section-number">07</h2>
+    <h2 class="section-title serif">Contact</h2>
+
+    <p class="section-text">
+      For collaborations, research inquiries, or project development:
+    </p>
+    <p class="section-text">
+      paris.intzes@email.com
+    </p>
+  </section>
+
+</main>
+ 
+  
   <script>
   /* =========================================================
   JS SECTION 01: ELEMENT REFERENCES
@@ -1946,6 +2096,41 @@ window.addEventListener('load', () => {
     revealHeroDirect();
   }
 });
+/* =========================================================
+MENU SYSTEM
+========================================================= */
+
+const menuBtn = document.getElementById('heroMenuButton');
+const menuOverlay = document.getElementById('menuOverlay');
+
+if (menuBtn && menuOverlay) {
+  menuBtn.addEventListener('click', () => {
+    menuOverlay.classList.toggle('active');
+  });
+}
+
+/* Close menu on click */
+document.querySelectorAll('.menu-link').forEach(link => {
+  link.addEventListener('click', () => {
+    menuOverlay.classList.remove('active');
+  });
+});
 </script>
+ <!-- [03] BURGER MENU OVERLAY -->
+<div class="menu-overlay" id="menuOverlay">
+
+  <div class="menu-inner">
+
+    <a href="#direction" class="menu-link">02 Direction</a>
+    <a href="#contexts" class="menu-link">03 Contexts</a>
+    <a href="#method" class="menu-link">04 Method</a>
+    <a href="#work" class="menu-link">05 Work</a>
+    <a href="#profile" class="menu-link">06 Profile</a>
+    <a href="#contact" class="menu-link">07 Contact</a>
+
+  </div>
+
+</div>
+
 </body>
 </html>
