@@ -1146,11 +1146,11 @@ Mirrored cinematic block για label + quote + line + image
 
 .flow-unit-quote-sensory {
   position: absolute;
-  right: calc(100% + 34px);
+  right: calc(100% + 30px);
   left: auto;
-  top: 338px;
-  width: 460px;
-  max-width: 460px;
+  top: 372px;
+  width: 420px;
+  max-width: 420px;
 
   display: grid;
   grid-template-columns: auto 1fr;
@@ -1158,23 +1158,17 @@ Mirrored cinematic block για label + quote + line + image
   align-items: start;
 
   text-align: left;
-
-  font-family: 'Inter', sans-serif;
-  font-size: 15px;
-  line-height: 1.28;
-  font-weight: 300;
-  letter-spacing: 0.002em;
 }
 .flow-unit-quote strong {
   font-weight: 400;
 }
 .flow-unit-line-sensory {
   position: absolute;
-  right: calc(100% + 34px);
+  right: calc(100% + 30px);
   left: auto;
-  top: 392px;
+  top: 446px;
 
-  width: 520px;
+  width: 600px;
   height: 1px;
   background: var(--line);
   transform: scaleX(0);
@@ -1229,13 +1223,8 @@ Same cinematic structure as perception
   grid-template-columns: auto 1fr;
   column-gap: 10px;
   align-items: start;
+
   text-align: left;
-  font-family: 'Inter', sans-serif;
-  font-size: 15px;
-  line-height: 1.2;
-  font-weight: 300;
-  letter-spacing: -0.01em;
-  
 }
 .flow-unit-quote strong {
   font-weight: 400;
@@ -1287,63 +1276,17 @@ Shared layout for note / obs / ref quotes
 }
 
 .flow-unit-citation {
-  font-style: italic;
-  font-weight: 300;
-  color: rgba(17, 17, 17, 0.60);
-  letter-spacing: 0.01em;
-}
- /* =========================================================
-CSS SECTION 21D: MICRO REFERENCE SYSTEM (SUPERSCRIPT + HOVER)
-========================================================= */
+  display: block;
+  margin-top: 6px;
 
-/* wrapper */
-.ref-hover {
-  position: relative;
-  display: inline-block;
-}
-
-/* superscript number */
-.ref-hover sup {
-  font-size: 10px;
-  vertical-align: super;
-  margin-left: 2px;
-  color: rgba(17, 17, 17, 0.55);
-  cursor: default;
-}
-
-/* tooltip */
-.ref-tooltip {
-  position: absolute;
-  bottom: 140%;
-  left: 50%;
-  transform: translateX(-50%) translateY(6px);
-
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(6px);
-
-  border: 1px solid rgba(17,17,17,0.08);
-  padding: 6px 10px;
-
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.2;
   font-style: italic;
-  color: rgba(17,17,17,0.72);
-
-  white-space: nowrap;
-
-  opacity: 0;
-  pointer-events: none;
-
-  transition:
-    opacity 0.25s ease,
-    transform 0.25s ease;
+  font-weight: 300;
+  color: rgba(17, 17, 17, 0.58);
+  letter-spacing: 0.01em;
 }
 
-/* hover trigger */
-.ref-hover:hover .ref-tooltip {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-}   
     /* =========================================================
 CSS SECTION 22: FRAME LINES SYSTEM
 Editorial vertical lines for cinematic entrance
@@ -1434,17 +1377,12 @@ Editorial vertical lines for cinematic entrance
     // Sensory Response
   </div>
 
-  <div class="flow-unit-quote flow-unit-quote-sensory flow-unit-quote-obs" id="flowUnitSensoryQuote">
-  <span class="flow-unit-note-index">obs. 01</span>
-  <div class="flow-unit-quote flow-unit-quote-sensory flow-unit-quote-obs" id="flowUnitSensoryQuote">
+<div class="flow-unit-quote flow-unit-quote-sensory" id="flowUnitSensoryQuote">
   <span class="flow-unit-note-index">obs. 01</span>
   <span class="flow-unit-note-text">
     Multisensory stimuli shape eating behavior through<br>
-    integrated sensory activation
-    <span class="ref-hover">
-      <sup>1</sup>
-      <span class="ref-tooltip">(Spence, 2022)</span>
-    </span>
+    integrated sensory activation.
+    <span class="flow-unit-citation">(Spence, 2022)</span>
   </span>
 </div>
   <div class="flow-unit-line flow-unit-line-sensory" id="flowUnitSensoryLine"></div>
@@ -1467,16 +1405,13 @@ image left / label below / quote right / line below quote
     //Analysis
   </div>
 
-<div class="flow-unit-quote flow-unit-quote-analysis flow-unit-quote-ref" id="flowUnitAnalysisQuote">
+<div class="flow-unit-quote flow-unit-quote-analysis" id="flowUnitAnalysisQuote">
   <span class="flow-unit-note-index">ref. 01</span>
   <span class="flow-unit-note-text">
-  Behavior unfolds through perceptual and affective integration,<br>
-  preceding cognitive evaluation
-  <span class="ref-hover">
-    <sup>1</sup>
-    <span class="ref-tooltip">(Spence, 2022)</span>
+    Behavior unfolds through perceptual and affective integration,<br>
+    preceding cognitive evaluation.
+    <span class="flow-unit-citation">(Spence, 2022)</span>
   </span>
-</span>
 </div>
 
   <div class="flow-unit-line flow-unit-line-analysis" id="flowUnitAnalysisLine"></div>
