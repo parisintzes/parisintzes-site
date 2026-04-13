@@ -1063,25 +1063,35 @@ CSS SECTION 21: PERCEPTION UNIT BLOCK
   color: rgba(17, 17, 17, 0.72);
 }
 
-.flow-unit-quote {
+..flow-unit-quote {
   position: absolute;
   left: calc(100% + 30px);
   top: 2px;
   width: 320px;
+
   font-family: 'Inter', sans-serif;
-  font-size: 18px;
-  line-height: 1.2;
-  font-weight: 300;
-  letter-spacing: -0.01em;
+  font-size: 15px;
+  line-height: 1.34;
+  font-weight: 200;
+  letter-spacing: 0.01em;
+  color: rgba(17, 17, 17, 0.88);
 }
  .flow-unit-quote strong {
   font-weight: 400;
 }
-
+  .flow-unit-note-index {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  font-weight: 300;
+  color: rgba(17, 17, 17, 0.48);
+  vertical-align: baseline;
+}
 .flow-unit-line {
   position: absolute;
   left: calc(100% + 30px);
-  top: 30px;
+  top: 36px;
 
   width: 600px;
   height: 1px;
@@ -1147,7 +1157,7 @@ Mirrored cinematic block για label + quote + line + image
   position: absolute;
   right: calc(100% + 30px);
   left: auto;
-  top: 439px;
+  top: 446px;
 
   width: 600px;
   height: 1px;
@@ -1211,7 +1221,7 @@ Same cinematic structure as perception
 .flow-unit-line-analysis {
   position: absolute;
   left: calc(100% + 30px);
-  top: 50px;
+  top: 56px;
 
   width: 600px;
   height: 1px;
@@ -1299,7 +1309,8 @@ Editorial vertical lines for cinematic entrance
   </div>
 
   <div class="flow-unit-quote" id="flowUnitPerceptionQuote">
-  <strong>Perception<strong> begins before thought.
+  <span class="flow-unit-note-index">[01]</span>
+  Perception begins before thought.
 </div>
 
   <div class="flow-unit-line" id="flowUnitPerceptionLine"></div>
@@ -1314,9 +1325,9 @@ Editorial vertical lines for cinematic entrance
   </div>
 
   <div class="flow-unit-quote flow-unit-quote-sensory" id="flowUnitSensoryQuote">
-    Sensation shapes <strong>eating behavior<strong>.
-  </div>
-
+  <span class="flow-unit-note-index">[02]</span>
+  Sensation shapes eating behavior.
+</div>
   <div class="flow-unit-line flow-unit-line-sensory" id="flowUnitSensoryLine"></div>
 
   <figure class="flow-unit-image flow-unit-image-sensory" id="flowUnitSensoryImage">
@@ -1338,9 +1349,10 @@ image left / label below / quote right / line below quote
   </div>
 
   <div class="flow-unit-quote flow-unit-quote-analysis" id="flowUnitAnalysisQuote">
-    The <strong>architecture<strong> of behavior.<br>
-    Analyzed through <strong>data<strong>.
-  </div>
+  <span class="flow-unit-note-index">[03]</span>
+  The architecture of behavior.<br>
+  Analyzed through data.
+</div>
 
   <div class="flow-unit-line flow-unit-line-analysis" id="flowUnitAnalysisLine"></div>
 </div>
