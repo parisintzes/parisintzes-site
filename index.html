@@ -1653,7 +1653,6 @@ image left / label below / quote right / line below quote
   Φέρνουμε τα βασικά στοιχεία του νέου continuous system
   ========================================================== */
   const desktopEntranceQuery = window.matchMedia('(min-width: 1101px)');
-  const desktopEntranceQuery = window.matchMedia('(min-width: 1101px)');
     
   const entranceFlow = document.getElementById('entranceFlow');
   const entranceSkipBtn = document.getElementById('entranceSkipBtn');
@@ -1787,8 +1786,9 @@ function revealHeroDirect() {
   if (frameLineRight) frameLineRight.style.display = 'none';
 
   if (heroStage) {
-    heroStage.classList.add('is-visible');
-  }
+  heroStage.classList.add('is-visible');
+  heroStage.classList.add('is-rising');
+}
 
   /* Tablet / mobile cinematic reveal sequence */
   schedule(() => {
@@ -1815,32 +1815,7 @@ function revealHeroDirect() {
     if (heroStage) heroStage.classList.add('is-mobile-footer-ready');
   }, 980);
 }  
-/* =========================================================
-JS SECTION 06A: DIRECT HERO MODE
-Tablet / mobile φορτώνουν απευθείας το hero χωρίς entrance
-========================================================= */
-function revealHeroDirect() {
-  flowStopped = true;
 
-  if (animationFrameId) {
-    cancelAnimationFrame(animationFrameId);
-  }
-
-  clearAllTimers();
-
-  if (entranceFlow) {
-    entranceFlow.style.display = 'none';
-  }
-
-  if (heroStage) {
-    heroStage.classList.add('is-visible');
-    heroStage.classList.add('is-settled');
-    heroStage.style.transform = 'translateY(0)';
-  }
-
-  if (frameLineLeft) frameLineLeft.style.display = 'none';
-  if (frameLineRight) frameLineRight.style.display = 'none';
-}
     /* =========================================================
   JS SECTION 07: SKIP INTRO
   Άμεσο πέρασμα από entrance σε hero
