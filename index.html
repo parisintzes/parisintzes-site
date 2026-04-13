@@ -1292,6 +1292,58 @@ Shared layout for note / obs / ref quotes
   color: rgba(17, 17, 17, 0.60);
   letter-spacing: 0.01em;
 }
+ /* =========================================================
+CSS SECTION 21D: MICRO REFERENCE SYSTEM (SUPERSCRIPT + HOVER)
+========================================================= */
+
+/* wrapper */
+.ref-hover {
+  position: relative;
+  display: inline-block;
+}
+
+/* superscript number */
+.ref-hover sup {
+  font-size: 10px;
+  vertical-align: super;
+  margin-left: 2px;
+  color: rgba(17, 17, 17, 0.55);
+  cursor: default;
+}
+
+/* tooltip */
+.ref-tooltip {
+  position: absolute;
+  bottom: 140%;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(6px);
+
+  border: 1px solid rgba(17,17,17,0.08);
+  padding: 6px 10px;
+
+  font-size: 12px;
+  line-height: 1.2;
+  font-style: italic;
+  color: rgba(17,17,17,0.72);
+
+  white-space: nowrap;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+/* hover trigger */
+.ref-hover:hover .ref-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}   
     /* =========================================================
 CSS SECTION 22: FRAME LINES SYSTEM
 Editorial vertical lines for cinematic entrance
@@ -1384,9 +1436,16 @@ Editorial vertical lines for cinematic entrance
 
   <div class="flow-unit-quote flow-unit-quote-sensory flow-unit-quote-obs" id="flowUnitSensoryQuote">
   <span class="flow-unit-note-index">obs. 01</span>
+  <div class="flow-unit-quote flow-unit-quote-sensory flow-unit-quote-obs" id="flowUnitSensoryQuote">
+  <span class="flow-unit-note-index">obs. 01</span>
   <span class="flow-unit-note-text">
-    Multisensory stimuli shape eating behavior through integrated sensory activation.
-    <span class="flow-unit-citation">(Epignosis Study 1.)</span>
+    Multisensory stimuli shape eating behavior through<br>
+    integrated sensory activation
+    <span class="ref-hover">
+      <sup>1</sup>
+      <span class="ref-tooltip">(Spence, 2022)</span>
+    </span>
+  </span>
 </div>
   <div class="flow-unit-line flow-unit-line-sensory" id="flowUnitSensoryLine"></div>
 
@@ -1411,9 +1470,13 @@ image left / label below / quote right / line below quote
 <div class="flow-unit-quote flow-unit-quote-analysis flow-unit-quote-ref" id="flowUnitAnalysisQuote">
   <span class="flow-unit-note-index">ref. 01</span>
   <span class="flow-unit-note-text">
-    Behavior unfolds through perceptual and affective integration,
-    preceding cognitive evaluation <span class="flow-unit-citation">(Spence, 2022)</span>.
+  Behavior unfolds through perceptual and affective integration,<br>
+  preceding cognitive evaluation
+  <span class="ref-hover">
+    <sup>1</sup>
+    <span class="ref-tooltip">(Spence, 2022)</span>
   </span>
+</span>
 </div>
 
   <div class="flow-unit-line flow-unit-line-analysis" id="flowUnitAnalysisLine"></div>
