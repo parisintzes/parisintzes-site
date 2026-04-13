@@ -1494,9 +1494,9 @@ image left / label below / quote right / line below quote
   JS SECTION 03: REVEAL HELPERS
   Helpers για reveal states
   ========================================================== */
-  function expandFrameLines() {
-  if (frameLineLeft) frameLineLeft.style.height = '100vh';
-  if (frameLineRight) frameLineRight.style.height = '100vh';
+  function setFrameLinesHeight(value) {
+  if (frameLineLeft) frameLineLeft.style.height = value;
+  if (frameLineRight) frameLineRight.style.height = value;
 }
 
 function fadeFrameLines() {
@@ -1598,15 +1598,25 @@ function startEntranceTimeline() {
   schedule(() => {
     if (entranceSkipBtn) entranceSkipBtn.classList.add('is-visible');
   }, 350);
+  
+/* FRAME LINES — PHASE 1 / PERCEPTION */
+schedule(() => {
+  setFrameLinesHeight('30vh');
+}, 450);
 
+/* FRAME LINES — PHASE 2 / SENSORY */
+schedule(() => {
+  setFrameLinesHeight('62vh');
+}, 3900);
+
+/* FRAME LINES — PHASE 3 / ANALYSIS */
+schedule(() => {
+  setFrameLinesHeight('100vh');
+}, 7100);
 
   /* =========================================
    UNIT 01 — PERCEPTION
 ========================================= */
-  schedule(() => {
-  setFrameLinesHeight('30vh');
-}, 500);
-  
 schedule(() => {
   if (flowUnitPerception) flowUnitPerception.classList.add('is-unit-visible');
 }, 500);
@@ -1623,10 +1633,6 @@ schedule(() => {
   /* =========================================
    UNIT 02 — SENSORY RESPONSE
 ========================================= */
-  schedule(() => {
-  setFrameLinesHeight('65vh');
-}, 3900);
-  
 schedule(() => {
   if (flowUnitSensory) flowUnitSensory.classList.add('is-unit-visible');
 }, 3900);
@@ -1642,11 +1648,7 @@ schedule(() => {
 
 /* =========================================
    UNIT 03 — ANALYSIS
-========================================= */
-schedule(() => {
-setFrameLinesHeight('100vh');
-}, 7100);
-  
+========================================= */  
 schedule(() => {
   if (flowUnitAnalysis) flowUnitAnalysis.classList.add('is-unit-visible');
 }, 7100);
@@ -1677,7 +1679,7 @@ schedule(() => {
 /* FRAME LINES FADE OUT */
 schedule(() => {
   fadeFrameLines();
-}, 13600);
+}, 12450);
     /* =========================================================
 JS SECTION 09: HERO TOOLBAR COMPRESSION
 Με το scroll μένει μόνο το brand name
