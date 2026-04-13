@@ -1068,13 +1068,15 @@ CSS SECTION 21: PERCEPTION UNIT BLOCK
   left: calc(100% + 30px);
   top: 2px;
   width: 320px;
-
+  font-family: 'Inter', sans-serif;
   font-size: 18px;
   line-height: 1.2;
   font-weight: 300;
   letter-spacing: -0.01em;
 }
- 
+ .flow-unit-quote strong {
+  font-weight: 400;
+}
 
 .flow-unit-line {
   position: absolute;
@@ -1130,15 +1132,17 @@ Mirrored cinematic block για label + quote + line + image
   top: 410px;
   width: max-content;
   max-width: 320px;
-  
+  font-family: 'Inter', sans-serif;
   font-size: 18px;
-  line-height: 1.18;
+  line-height: 1.2;
   font-weight: 300;
-  letter-spacing: -0.008em;
+  letter-spacing: -0.01em;
   text-align: left;
   white-space: nowrap;
 }
-
+.flow-unit-quote strong {
+  font-weight: 400;
+}
 .flow-unit-line-sensory {
   position: absolute;
   right: calc(100% + 30px);
@@ -1194,14 +1198,16 @@ Same cinematic structure as perception
   left: calc(100% + 30px);
   top: 2px;
   width: 320px;
-
+  font-family: 'Inter', sans-serif;
   font-size: 18px;
   line-height: 1.2;
   font-weight: 300;
   letter-spacing: -0.01em;
   text-align: left;
 }
-
+.flow-unit-quote strong {
+  font-weight: 400;
+}
 .flow-unit-line-analysis {
   position: absolute;
   left: calc(100% + 30px);
@@ -1292,8 +1298,8 @@ Editorial vertical lines for cinematic entrance
     // Perception
   </div>
 
-  <div class="flow-unit-quote serif" id="flowUnitPerceptionQuote">
-  Perception begins before thought.
+  <div class="flow-unit-quote" id="flowUnitPerceptionQuote">
+  <strong>Perception<strong> begins before thought.
 </div>
 
   <div class="flow-unit-line" id="flowUnitPerceptionLine"></div>
@@ -1307,8 +1313,8 @@ Editorial vertical lines for cinematic entrance
     // Sensory Response
   </div>
 
-  <div class="flow-unit-quote flow-unit-quote-sensory serif" id="flowUnitSensoryQuote">
-    Sensation shapes eating behavior.
+  <div class="flow-unit-quote flow-unit-quote-sensory" id="flowUnitSensoryQuote">
+    Sensation shapes <strong>eating behavior<strong>.
   </div>
 
   <div class="flow-unit-line flow-unit-line-sensory" id="flowUnitSensoryLine"></div>
@@ -1331,9 +1337,9 @@ image left / label below / quote right / line below quote
     //Analysis
   </div>
 
-  <div class="flow-unit-quote flow-unit-quote-analysis serif" id="flowUnitAnalysisQuote">
-    The architecture of behavior.<br>
-    Analyzed through data.
+  <div class="flow-unit-quote flow-unit-quote-analysis" id="flowUnitAnalysisQuote">
+    The <strong>architecture<strong> of behavior.<br>
+    Analyzed through <strong>data<strong>.
   </div>
 
   <div class="flow-unit-line flow-unit-line-analysis" id="flowUnitAnalysisLine"></div>
