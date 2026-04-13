@@ -1211,6 +1211,31 @@ Same cinematic structure as perception
     transform 1.4s cubic-bezier(0.22, 1, 0.36, 1),
     opacity 0.6s ease;
 }
+    /* =========================================================
+CSS SECTION 22: FRAME LINES SYSTEM
+Editorial vertical lines for cinematic entrance
+========================================================= */
+
+.frame-line {
+  position: absolute;
+  top: 0;
+  width: 1px;
+  height: 0; /* αρχικά κρυφό */
+  background: var(--line);
+  opacity: 0.3;
+
+  transition: height 3.2s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 1s ease;
+  z-index: 5;
+}
+
+.frame-line-left {
+  left: 6%;
+}
+
+.frame-line-right {
+  right: 6%;
+}
   </style>
 </head>
 <body>
@@ -1226,6 +1251,11 @@ Same cinematic structure as perception
     Κουμπί παράλειψης intro
     ========================================================== -->
     <button class="entrance-skip" id="entranceSkipBtn">Skip Intro</button>
+    <!-- =========================================================
+    HTML SECTION 04B: FRAME LINES (EDITORIAL GUIDES)
+    ========================================================== -->
+  <div class="frame-line frame-line-left" id="frameLineLeft"></div>  
+  <div class="frame-line frame-line-right" id="frameLineRight"></div>
 
     <!-- =========================================================
     HTML SECTION 05: ENTRANCE CANVAS
@@ -1435,6 +1465,9 @@ image left / label below / quote right / line below quote
   const flowUnitAnalysis = document.getElementById('flowUnitAnalysis');
   const flowUnitAnalysisLine = document.getElementById('flowUnitAnalysisLine');
 
+  const frameLineLeft = document.getElementById('frameLineLeft');
+  const frameLineRight = document.getElementById('frameLineRight');
+
   const heroStage = document.getElementById('heroStage');
   const heroToolbar = document.getElementById('heroToolbar');
 
@@ -1461,6 +1494,16 @@ image left / label below / quote right / line below quote
   JS SECTION 03: REVEAL HELPERS
   Helpers για reveal states
   ========================================================== */
+  function expandFrameLines() {
+  if (frameLineLeft) frameLineLeft.style.height = '100vh';
+  if (frameLineRight) frameLineRight.style.height = '100vh';
+}
+
+function fadeFrameLines() {
+  if (frameLineLeft) frameLineLeft.style.opacity = '0';
+  if (frameLineRight) frameLineRight.style.opacity = '0';
+}
+    
   function revealUnit(imageEl, textGroupEl) {
   if (imageEl) imageEl.classList.add('is-unit-visible');
   if (textGroupEl) textGroupEl.classList.add('is-unit-visible');
@@ -1556,6 +1599,11 @@ function startEntranceTimeline() {
     if (entranceSkipBtn) entranceSkipBtn.classList.add('is-visible');
   }, 350);
 
+  /* FRAME LINES START */
+schedule(() => {
+  expandFrameLines();
+}, 400);
+
   /* =========================================
    UNIT 01 — PERCEPTION
 ========================================= */
@@ -1617,6 +1665,11 @@ schedule(() => {
   }
   }, 13600);
 }
+
+/* FRAME LINES FADE OUT */
+schedule(() => {
+  fadeFrameLines();
+}, 13500);
     /* =========================================================
 JS SECTION 09: HERO TOOLBAR COMPRESSION
 Με το scroll μένει μόνο το brand name
