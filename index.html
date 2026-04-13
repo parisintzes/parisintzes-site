@@ -1146,34 +1146,35 @@ Mirrored cinematic block για label + quote + line + image
 
 .flow-unit-quote-sensory {
   position: absolute;
-  right: calc(100% + 330px);
+  right: calc(100% + 34px);
   left: auto;
-  top: 410px;
-  width: 360px;
-  max-width: 360px;
+  top: 338px;
+  width: 460px;
+  max-width: 460px;
 
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 10px;
+  align-items: start;
+
+  text-align: left;
 
   font-family: 'Inter', sans-serif;
   font-size: 15px;
   line-height: 1.28;
   font-weight: 300;
   letter-spacing: 0.002em;
-  text-align: left;
-  white-space: normal;
 }
 .flow-unit-quote strong {
   font-weight: 400;
 }
 .flow-unit-line-sensory {
   position: absolute;
-  right: calc(100% + 30px);
+  right: calc(100% + 34px);
   left: auto;
-  top: 446px;
+  top: 392px;
 
-  width: 800px;
+  width: 520px;
   height: 1px;
   background: var(--line);
   transform: scaleX(0);
@@ -1221,13 +1222,20 @@ Same cinematic structure as perception
   position: absolute;
   left: calc(100% + 30px);
   top: 2px;
-  width: 320px;
+  width: 430px;
+  max-width: 430px;
+
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 10px;
+  align-items: start;
+  text-align: left;
   font-family: 'Inter', sans-serif;
   font-size: 15px;
   line-height: 1.2;
   font-weight: 300;
   letter-spacing: -0.01em;
-  text-align: left;
+  
 }
 .flow-unit-quote strong {
   font-weight: 400;
@@ -1235,7 +1243,7 @@ Same cinematic structure as perception
 .flow-unit-line-analysis {
   position: absolute;
   left: calc(100% + 30px);
-  top: 56px;
+  top: 64px;
 
   width: 600px;
   height: 1px;
@@ -1250,40 +1258,10 @@ Same cinematic structure as perception
 }
 /* =========================================================
 CSS SECTION 21C: JOURNAL ANNOTATION SYSTEM
-Subtle διαφοροποίηση για note / obs / ref
+Shared layout for note / obs / ref quotes
 ========================================================= */
-
-.flow-unit-quote-note .flow-unit-note-index {
-  letter-spacing: 0.16em;
-  color: rgba(17, 17, 17, 0.38);
-}
-
-.flow-unit-quote-note .flow-unit-note-text {
-  font-weight: 200;
-  color: rgba(17, 17, 17, 0.84);
-}
-
-.flow-unit-quote-obs .flow-unit-note-index {
-  letter-spacing: 0.12em;
-  color: rgba(17, 17, 17, 0.50);
-}
-
-.flow-unit-quote-obs .flow-unit-note-text {
-  font-weight: 300;
-  color: rgba(17, 17, 17, 0.90);
-}
-
-.flow-unit-quote-ref .flow-unit-note-index {
-  letter-spacing: 0.18em;
-  color: rgba(17, 17, 17, 0.34);
-}
-
-.flow-unit-quote-ref .flow-unit-note-text {
-  font-weight: 200;
-  color: rgba(17, 17, 17, 0.76);
-}
-    .flow-unit-note-index {
-  flex: 0 0 auto;
+.flow-unit-note-index {
+  display: block;
   font-size: 11px;
   line-height: 1.1;
   letter-spacing: 0.12em;
@@ -1294,16 +1272,21 @@ Subtle διαφοροποίηση για note / obs / ref
 }
 
 .flow-unit-note-text {
-  flex: 1 1 auto;
-  min-width: 0;
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.28;
+  font-weight: 300;
+  letter-spacing: 0.002em;
+  color: rgba(17, 17, 17, 0.88);
   white-space: normal;
 }
 
-.flow-unit-note-text br {
-  display: block;
-  content: "";
+.flow-unit-note-text strong {
+  font-weight: 400;
 }
-  .flow-unit-citation {
+
+.flow-unit-citation {
   font-style: italic;
   font-weight: 300;
   color: rgba(17, 17, 17, 0.60);
