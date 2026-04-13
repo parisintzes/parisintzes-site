@@ -1232,9 +1232,9 @@ Same cinematic structure as perception
 .flow-unit-line-analysis {
   position: absolute;
   left: calc(100% + 30px);
-  top: 64px;
+  top: 74px;
 
-  width: 600px;
+  width: 800px;
   height: 1px;
   background: var(--line);
   transform: scaleX(0);
@@ -1719,7 +1719,7 @@ schedule(() => {
 
 schedule(() => {
   if (flowUnitSensory) flowUnitSensory.classList.add('is-unit-exit');
-}, 7500);
+}, 8500);
 
 
 /* =========================================
@@ -1727,15 +1727,15 @@ schedule(() => {
 ========================================= */  
 schedule(() => {
   if (flowUnitAnalysis) flowUnitAnalysis.classList.add('is-unit-visible');
-}, 7100);
+}, 8100);
 
 schedule(() => {
   revealLine(flowUnitAnalysisLine);
-}, 8800);
+}, 9800);
 
 schedule(() => {
   if (flowUnitAnalysis) flowUnitAnalysis.classList.add('is-unit-exit');
-}, 10700);
+}, 11700);
 
 
 /* =========================================
@@ -1749,13 +1749,13 @@ schedule(() => {
   }
 
   fadeFrameLines();
-}, 12200);
+}, 13200);
 
 schedule(() => {
   if (entranceFlow) {
     entranceFlow.style.display = 'none';
   }
-}, 13650);
+}, 14650);
 }
     /* =========================================================
 JS SECTION 09: HERO TOOLBAR COMPRESSION
