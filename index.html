@@ -364,29 +364,27 @@
 
 /* =========================================================
 CSS SECTION 12: HERO STAGE WRAPPER
-Το hero ανεβαίνει σαν master block από κάτω προς τα πάνω
+Το hero λειτουργεί ως συνέχεια του entrance
 ========================================================= */
 .hero-stage {
   position: relative;
   z-index: 1;
   min-height: 100vh;
   background: var(--bg);
-
-  opacity: 1;
-  transform: translateY(140vh);
-  filter: blur(0);
-
+  opacity: 0;
+  transform: translateY(30px);
+  filter: blur(6px);
   transition:
-    transform 2.2s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 1.2s ease;
-
-  will-change: transform, opacity;
+    opacity 1.5s ease,
+    transform 1.5s ease,
+    filter 1.5s ease;
 }
 
-.hero-stage.is-rising {
+.hero-stage.is-visible {
+  opacity: 1;
   transform: translateY(0);
+  filter: blur(0);
 }
-
     /* =========================================================
     CSS SECTION 13: HERO TOOLBAR
     Toolbar με brand block και menu
@@ -1560,13 +1558,9 @@ JS SECTION 06: HERO REVEAL
 Το hero ανεβαίνει σαν master block και μετά ενεργοποιεί τα inner reveals
 ========================================================= */
 function revealHeroStage() {
-  if (!heroStage) return;
-
-  heroStage.classList.add('is-rising');
-
-  setTimeout(() => {
-    heroStage.classList.add('is-settled');
-  }, 1650);
+  if (heroStage) {
+    heroStage.classList.add('is-visible');
+  }
 }
   /* =========================================================
   JS SECTION 07: SKIP INTRO
@@ -1669,8 +1663,11 @@ schedule(() => {
 ========================================= */
 schedule(() => {
   revealHeroStage();
-  fadeFrameLines();
 }, 12200);
+
+schedule(() => {
+  fadeFrameLines();
+}, 12450);
 
 schedule(() => {
   if (entranceFlow) {
