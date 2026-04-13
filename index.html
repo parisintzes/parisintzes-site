@@ -1344,19 +1344,16 @@ image left / label below / quote right / line below quote
       ========================================================== -->
       <div class="entrance-text-layer" id="entranceTextLayer">
 
-        <!-- PERCEPTION GROUP -->
-        <div class="flow-text-group flow-text-group-perception" id="flowTextGroupPerception">
-        </div>
+      <!-- PERCEPTION GROUP -->
+      <div class="flow-text-group flow-text-group-perception" id="flowTextGroupPerception"></div>
 
-        <!-- SENSORY GROUP -->
-        <div class="flow-text-group flow-text-group-sensory" id="flowTextGroupSensory">
-          <div class="flow-label flow-label-sensory" id="flowLabelSensory">
-        </div>
+      <!-- SENSORY GROUP -->
+      <div class="flow-text-group flow-text-group-sensory" id="flowTextGroupSensory"></div>
 
-        <!-- ANALYSIS GROUP -->
-        <div class="flow-text-group flow-text-group-analysis" id="flowTextGroupAnalysis">
-          <div class="flow-label flow-label-analysis" id="flowLabelAnalysis">
-          </div>
+      <!-- ANALYSIS GROUP -->
+      <div class="flow-text-group flow-text-group-analysis" id="flowTextGroupAnalysis"></div>
+
+      </div>
 
         </div>
       </div>
@@ -1555,12 +1552,16 @@ function revealLine(el) {
 
   /* =========================================================
 JS SECTION 06: HERO REVEAL
-Το hero ανεβαίνει σαν master block και μετά ενεργοποιεί τα inner reveals
+Εμφανίζει το hero wrapper και μετά ενεργοποιεί τα inner reveals
 ========================================================= */
 function revealHeroStage() {
-  if (heroStage) {
-    heroStage.classList.add('is-visible');
-  }
+  if (!heroStage) return;
+
+  heroStage.classList.add('is-visible');
+
+  setTimeout(() => {
+    heroStage.classList.add('is-settled');
+  }, 900);
 }
   /* =========================================================
   JS SECTION 07: SKIP INTRO
