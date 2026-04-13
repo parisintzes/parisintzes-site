@@ -1597,11 +1597,11 @@ function revealLine(el) {
   }
 
   /* =========================================================
-  JS SECTION 08: FIRST CINEMATIC TIMELINE
-  Option 2:
-  Τα στοιχεία εμφανίζονται, κάθονται, και μετά μπαίνουν στη ροή
-  ========================================================== */
-  function startEntranceTimeline() {
+JS SECTION 08: FIRST CINEMATIC TIMELINE
+Option 2:
+Τα στοιχεία εμφανίζονται, κάθονται, και μετά μπαίνουν στη ροή
+========================================================= */
+function startEntranceTimeline() {
   requestAnimationFrame(runContinuousFlow);
 
   /* Show skip button */
@@ -1610,90 +1610,87 @@ function revealLine(el) {
   }, 350);
 
   /* =========================================
-   UNIT 01 — PERCEPTION
-========================================= */
-schedule(() => {
-  if (flowUnitPerception) flowUnitPerception.classList.add('is-unit-visible');
-}, 500);
+     UNIT 01 — PERCEPTION
+  ========================================= */
+  schedule(() => {
+    if (flowUnitPerception) flowUnitPerception.classList.add('is-unit-visible');
+  }, 500);
 
-schedule(() => {
-  revealLine(flowUnitPerceptionLine);
-}, 2100);
+  schedule(() => {
+    revealLine(flowUnitPerceptionLine);
+  }, 2100);
 
-/* echo εμφανίζεται λίγο πριν το perception φύγει */
-schedule(() => {
-  if (flowEchoQuotePerception) flowEchoQuotePerception.classList.add('is-unit-visible');
-}, 3600);
+  /* echo εμφανίζεται λίγο πριν το perception φύγει */
+  schedule(() => {
+    if (flowEchoQuotePerception) flowEchoQuotePerception.classList.add('is-unit-visible');
+  }, 3600);
 
-schedule(() => {
-  revealLine(flowEchoLinePerception);
-}, 4450);
+  schedule(() => {
+    revealLine(flowEchoLinePerception);
+  }, 4450);
 
-/* perception αρχίζει να φεύγει αφού έχει διαβαστεί */
-schedule(() => {
-  if (flowUnitPerception) flowUnitPerception.classList.add('is-unit-exit');
-}, 5000);
+  /* perception αρχίζει να φεύγει αφού έχει διαβαστεί */
+  schedule(() => {
+    if (flowUnitPerception) flowUnitPerception.classList.add('is-unit-exit');
+  }, 5000);
 
-schedule(() => {
-  if (flowUnitPerception) flowUnitPerception.classList.add('is-unit-fade');
-}, 6450);
+  schedule(() => {
+    if (flowUnitPerception) flowUnitPerception.classList.add('is-unit-fade');
+  }, 6450);
 
+  /* =========================================
+     UNIT 02 — SENSORY RESPONSE
+  ========================================= */
+  /* το sensory αρχίζει να φαίνεται πριν χαθεί τελείως το perception echo */
+  schedule(() => {
+    if (flowUnitSensory) flowUnitSensory.classList.add('is-unit-visible');
+  }, 6200);
 
-/* =========================================
-   UNIT 02 — SENSORY RESPONSE
-========================================= */
-/* το sensory αρχίζει να φαίνεται πριν χαθεί τελείως το perception echo */
-schedule(() => {
-  if (flowUnitSensory) flowUnitSensory.classList.add('is-unit-visible');
-}, 6200);
+  schedule(() => {
+    revealLine(flowUnitSensoryLine);
+  }, 7900);
 
-schedule(() => {
-  revealLine(flowUnitSensoryLine);
-}, 7900);
+  schedule(() => {
+    if (flowUnitSensory) flowUnitSensory.classList.add('is-unit-exit');
+  }, 9800);
 
-schedule(() => {
-  if (flowUnitSensory) flowUnitSensory.classList.add('is-unit-exit');
-}, 9800);
+  /* ΠΡΟΣΟΧΗ:
+     για τώρα άφησέ το ΧΩΡΙΣ is-unit-fade
+     ώστε να βλέπεις πρώτα την upward κίνηση
+     και να το πιάνει το fade veil φυσικά
+  */
 
-/* ΠΡΟΣΟΧΗ:
-   για τώρα άφησέ το ΧΩΡΙΣ is-unit-fade
-   ώστε να βλέπεις πρώτα την upward κίνηση
-   και να το πιάνει το fade veil φυσικά
-*/
+  /* =========================================
+     UNIT 03 — ANALYSIS
+  ========================================= */
+  /* το analysis αρχίζει να εμφανίζεται λίγο πριν φύγει το sensory */
+  schedule(() => {
+    if (flowUnitAnalysis) flowUnitAnalysis.classList.add('is-unit-visible');
+  }, 9300);
 
+  schedule(() => {
+    revealLine(flowUnitAnalysisLine);
+  }, 11000);
 
-/* =========================================
-   UNIT 03 — ANALYSIS
-========================================= */
-/* το analysis αρχίζει να εμφανίζεται λίγο πριν φύγει το sensory */
-schedule(() => {
-  if (flowUnitAnalysis) flowUnitAnalysis.classList.add('is-unit-visible');
-}, 9300);
+  schedule(() => {
+    if (flowUnitAnalysis) flowUnitAnalysis.classList.add('is-unit-exit');
+  }, 13000);
 
-schedule(() => {
-  revealLine(flowUnitAnalysisLine);
-}, 11000);
+  /* και εδώ για τώρα χωρίς manual fade */
 
-schedule(() => {
-  if (flowUnitAnalysis) flowUnitAnalysis.classList.add('is-unit-exit');
-}, 13000);
+  /* =========================================
+     HERO EMERGES
+  ========================================= */
+  schedule(() => {
+    revealHeroStage();
+  }, 14500);
 
-/* και εδώ για τώρα χωρίς manual fade */
- 
-
-/* =========================================
-   HERO EMERGES
-========================================= */
-schedule(() => {
-  revealHeroStage();
-}, 14500);
-
-schedule(() => {
-  if (entranceFlow) {
-    entranceFlow.classList.add('is-hidden');
-  }
-}, 15900);
-
+  schedule(() => {
+    if (entranceFlow) {
+      entranceFlow.classList.add('is-hidden');
+    }
+  }, 15900);
+}
   /* =========================================================
   JS SECTION 09: HERO TOOLBAR COMPRESSION
   Με το scroll μένει μόνο το brand name
