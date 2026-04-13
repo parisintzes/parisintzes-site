@@ -362,28 +362,30 @@
       transform: scaleX(1);
     }
 
-    /* =========================================================
-    CSS SECTION 12: HERO STAGE WRAPPER
-    Το hero λειτουργεί ως συνέχεια του entrance
-    ========================================================== */
-    .hero-stage.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
-    }
-    ..hero-stage {
-    position: relative;
-    z-index: 1;
-    min-height: 100vh;
-    background: var(--bg);
-    opacity: 0;
-    transform: translateY(30px);
-    filter: blur(6px);
-    transition:
-    opacity 1.5s ease,
-    transform 1.5s ease,
-    filter 1.5s ease;
-    }
+/* =========================================================
+CSS SECTION 12: HERO STAGE WRAPPER
+Το hero ανεβαίνει σαν master block από κάτω προς τα πάνω
+========================================================= */
+.hero-stage {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  background: var(--bg);
+
+  opacity: 1;
+  transform: translateY(140vh);
+  filter: blur(0);
+
+  transition:
+    transform 2.2s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 1.2s ease;
+
+  will-change: transform, opacity;
+}
+
+.hero-stage.is-rising {
+  transform: translateY(0);
+}
 
     /* =========================================================
     CSS SECTION 13: HERO TOOLBAR
@@ -946,20 +948,12 @@ Stacked responsive σύστημα για κινητά
 CSS SECTION 19: HERO REVEAL STATES
 Καθορίζει τη σειρά με την οποία “ζωντανεύει” το hero
 ========================================================= */
-.hero-stage.is-visible .hero-toolbar {
+.hero-stage.is-settled .hero-toolbar {
   opacity: 1;
   transform: translateY(0);
 }
 
-.hero-toolbar {
-  opacity: 0;
-  transform: translateY(22px);
-  transition:
-    opacity 1s ease,
-    transform 1.2s var(--ease-soft);
-}
-
-.hero-stage.is-visible .hero-accent-line {
+.hero-stage.is-settled .hero-accent-line {
   opacity: 1;
   transform: scaleX(1);
   transition:
@@ -967,19 +961,19 @@ CSS SECTION 19: HERO REVEAL STATES
     transform 1.15s var(--ease-soft) 0.20s;
 }
 
-.hero-stage.is-visible .hero-main-title {
+.hero-stage.is-settled .hero-main-title {
   opacity: 1;
   transform: translateY(0);
   transition-delay: 0.45s;
 }
 
-.hero-stage.is-visible .hero-main-subtitle {
+.hero-stage.is-settled .hero-main-subtitle {
   opacity: 1;
   transform: translateY(0);
   transition-delay: 0.85s;
 }
 
-.hero-stage.is-visible .hero-title-line {
+.hero-stage.is-settled .hero-title-line {
   opacity: 1;
   transform: scaleX(1);
   transition:
@@ -987,19 +981,19 @@ CSS SECTION 19: HERO REVEAL STATES
     transform 1.15s var(--ease-soft) 1.15s;
 }
 
-.hero-stage.is-visible .hero-image-column {
+.hero-stage.is-settled .hero-image-column {
   opacity: 1;
   transform: translateY(0);
   transition-delay: 0.30s;
 }
 
-.hero-stage.is-visible .hero-identity-block {
+.hero-stage.is-settled .hero-identity-block {
   opacity: 1;
   transform: translateY(0);
   transition-delay: 1.25s;
 }
 
-.hero-stage.is-visible .hero-footer-meta {
+.hero-stage.is-settled .hero-footer-meta {
   opacity: 1;
   transform: translateY(0);
   transition-delay: 1.45s;
@@ -1558,23 +1552,22 @@ function revealLine(el) {
   const elapsed = timestamp - flowStartedAt;
   const heroDrift = Math.min(elapsed * 0.01, 24);
 
-  if (heroStage && heroStage.classList.contains('is-visible')) {
-    heroStage.style.transform = `translateY(${24 - heroDrift}px)`;
-  }
-
   animationFrameId = requestAnimationFrame(runContinuousFlow);
 }
 
   /* =========================================================
-  JS SECTION 06: HERO REVEAL
-  Ενεργοποιεί την εμφάνιση του hero
-  ========================================================== */
-  function revealHeroStage() {
-    if (heroStage) {
-      heroStage.classList.add('is-visible');
-    }
-  }
+JS SECTION 06: HERO REVEAL
+Το hero ανεβαίνει σαν master block και μετά ενεργοποιεί τα inner reveals
+========================================================= */
+function revealHeroStage() {
+  if (!heroStage) return;
 
+  heroStage.classList.add('is-rising');
+
+  setTimeout(() => {
+    heroStage.classList.add('is-settled');
+  }, 1650);
+}
   /* =========================================================
   JS SECTION 07: SKIP INTRO
   Άμεσο πέρασμα από entrance σε hero
@@ -1675,24 +1668,21 @@ schedule(() => {
    HERO EMERGES
 ========================================= */
 schedule(() => {
+  revealHeroStage();
+  fadeFrameLines();
+}, 12200);
+
+schedule(() => {
   if (entranceFlow) {
     entranceFlow.classList.add('is-hidden');
   }
+}, 12650);
 
-  revealHeroStage();
-
-  /* Μετά το fade-out του entrance, το αφαιρούμε τελείως */
-  setTimeout(() => {
-    if (entranceFlow) {
-      entranceFlow.style.display = 'none';
-    }
-  }, 1250);
-}, 12200);
-
-  /* FRAME LINES FADE OUT */
 schedule(() => {
-  fadeFrameLines();
-}, 12450);
+  if (entranceFlow) {
+    entranceFlow.style.display = 'none';
+  }
+}, 13950);
 }
     /* =========================================================
 JS SECTION 09: HERO TOOLBAR COMPRESSION
