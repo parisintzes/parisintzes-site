@@ -1199,9 +1199,12 @@ Same cinematic structure as perception
 ========================================================= */
 .flow-unit-analysis {
   left: 6%;
-  top: 64%;
+  top: 20%;
   width: 300px;
   z-index: 18;
+  outline: 2px solid red;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
 
 .flow-unit-image-analysis {
@@ -1607,82 +1610,89 @@ function revealLine(el) {
   }, 350);
 
   /* =========================================
-     UNIT 01 — PERCEPTION
-     image + label + quote enter together
-     line opens after settling
-  ========================================= */
+   UNIT 01 — PERCEPTION
+========================================= */
 schedule(() => {
   if (flowUnitPerception) flowUnitPerception.classList.add('is-unit-visible');
 }, 500);
 
 schedule(() => {
   revealLine(flowUnitPerceptionLine);
-}, 2000);
+}, 2100);
 
-schedule(() => {
-  if (flowUnitPerception) flowUnitPerception.classList.add('is-unit-exit');
-}, 4500);
-
+/* echo εμφανίζεται λίγο πριν το perception φύγει */
 schedule(() => {
   if (flowEchoQuotePerception) flowEchoQuotePerception.classList.add('is-unit-visible');
-}, 3500);
+}, 3600);
 
 schedule(() => {
   revealLine(flowEchoLinePerception);
-}, 4300);
+}, 4450);
+
+/* perception αρχίζει να φεύγει αφού έχει διαβαστεί */
+schedule(() => {
+  if (flowUnitPerception) flowUnitPerception.classList.add('is-unit-exit');
+}, 5000);
 
 schedule(() => {
   if (flowUnitPerception) flowUnitPerception.classList.add('is-unit-fade');
-}, 5600);
+}, 6450);
 
-schedule(() => {
-  if (flowEchoQuotePerception) flowEchoQuotePerception.classList.add('is-unit-exit');
-}, 6600);
 
-schedule(() => {
-  if (flowEchoQuotePerception) flowEchoQuotePerception.classList.add('is-unit-fade');
-}, 8150);
- /* =========================================
+/* =========================================
    UNIT 02 — SENSORY RESPONSE
 ========================================= */
+/* το sensory αρχίζει να φαίνεται πριν χαθεί τελείως το perception echo */
 schedule(() => {
   if (flowUnitSensory) flowUnitSensory.classList.add('is-unit-visible');
-}, 5400);
+}, 6200);
 
 schedule(() => {
   revealLine(flowUnitSensoryLine);
-}, 8600);
+}, 7900);
 
 schedule(() => {
   if (flowUnitSensory) flowUnitSensory.classList.add('is-unit-exit');
-}, 10300);
+}, 9800);
+
+/* ΠΡΟΣΟΧΗ:
+   για τώρα άφησέ το ΧΩΡΙΣ is-unit-fade
+   ώστε να βλέπεις πρώτα την upward κίνηση
+   και να το πιάνει το fade veil φυσικά
+*/
+
 
 /* =========================================
    UNIT 03 — ANALYSIS
 ========================================= */
+/* το analysis αρχίζει να εμφανίζεται λίγο πριν φύγει το sensory */
 schedule(() => {
   if (flowUnitAnalysis) flowUnitAnalysis.classList.add('is-unit-visible');
-}, 11200);
+}, 9300);
 
 schedule(() => {
   revealLine(flowUnitAnalysisLine);
-}, 12600);
+}, 11000);
 
 schedule(() => {
   if (flowUnitAnalysis) flowUnitAnalysis.classList.add('is-unit-exit');
-}, 14300);
+}, 13000);
 
-  /* Hero emerges */
- schedule(() => {
+/* και εδώ για τώρα χωρίς manual fade */
+ 
+
+/* =========================================
+   HERO EMERGES
+========================================= */
+schedule(() => {
   revealHeroStage();
-}, 8300);
+}, 14500);
 
 schedule(() => {
   if (entranceFlow) {
     entranceFlow.classList.add('is-hidden');
   }
-}, 9650);
-}
+}, 15900);
 
   /* =========================================================
   JS SECTION 09: HERO TOOLBAR COMPRESSION
