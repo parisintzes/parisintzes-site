@@ -502,6 +502,7 @@ CSS SECTION 12: HERO STAGE WRAPPER
       height: 470px;
       overflow: hidden;
       opacity: 0.68;
+      will-change: transform;
     }
 
     .hero-image-strip img {
@@ -571,16 +572,6 @@ CSS SECTION 12: HERO STAGE WRAPPER
     will-change: transform;
   }
 
-   .hero-identity-block {
-    position: absolute;
-    left: 95px;
-    bottom: 178px;
-    opacity: 0;
-    transform: translateY(22px);
-    transition:
-    opacity 1s ease,
-    transform 1.2s var(--ease-soft);
-  }
 
     .hero-footer-meta {
     position: absolute;
@@ -726,10 +717,6 @@ CSS SECTION 12: HERO STAGE WRAPPER
       width: 220px;
     }
 
-     .hero-identity-block {
-      left: 36px;
-      bottom: 110px;
-    }
    /* =========================================================
   CSS SECTION 16A: PERCEPTION UNIT / TABLET
   Responsive προσαρμογές του ενιαίου perception block για tablet
@@ -783,7 +770,6 @@ CSS SECTION 16B: TABLET / MOBILE CINEMATIC HERO MODE
   .hero-main-title,
   .hero-main-subtitle,
   .hero-image-column,
-  .hero-identity-block,
   .hero-footer-meta,
   .hero-accent-line,
   .hero-title-line {
@@ -816,13 +802,6 @@ CSS SECTION 16B: TABLET / MOBILE CINEMATIC HERO MODE
     transition:
       opacity 0.8s ease,
       transform 1s var(--ease-soft);
-  }
-
-  .hero-identity-block {
-    transform: translateY(14px);
-    transition:
-      opacity 0.65s ease,
-      transform 0.85s var(--ease-soft);
   }
 
   .hero-footer-meta {
@@ -870,11 +849,6 @@ CSS SECTION 16B: TABLET / MOBILE CINEMATIC HERO MODE
   .hero-stage.is-mobile-image-ready .hero-image-column {
     opacity: 1;
     transform: translateY(0) scale(1);
-  }
-
-  .hero-stage.is-mobile-identity-ready .hero-identity-block {
-    opacity: 1;
-    transform: translateY(0);
   }
 
   .hero-stage.is-mobile-footer-ready .hero-footer-meta {
@@ -999,13 +973,6 @@ Stacked responsive σύστημα για κινητά
   width: 100%;
   max-width: 280px;
 }
-
-  .hero-identity-block {
-  position: relative;
-  left: auto;
-  bottom: auto;
-  margin-top: 26px;
-}
   .hero-footer-meta {
   position: relative;
   bottom: auto;
@@ -1110,12 +1077,6 @@ CSS SECTION 19: HERO REVEAL STATES
   opacity: 1;
   transform: translateY(0);
   transition-delay: 0.30s;
-}
-
-.hero-stage.is-settled .hero-identity-block {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 1.25s;
 }
 
 .hero-stage.is-settled .hero-footer-meta {
@@ -1624,7 +1585,6 @@ image left / label below / quote right / line below quote
         <img src="images/hero.jpeg" alt="Hero image">
       </div>
 
-
       <div class="hero-footer-meta" id="heroFooterMeta">
         <div class="hero-keywords">
           sensory · behavior · emotion · gastronomy · data
@@ -1673,6 +1633,7 @@ image left / label below / quote right / line below quote
   const heroImageColumn = document.getElementById('heroImageColumn');
   const heroStage = document.getElementById('heroStage');
   const heroToolbar = document.getElementById('heroToolbar');
+  const heroImageStrip = document.getElementById('heroImageStrip');
 
   /* =========================================================
   JS SECTION 02: TIMELINE STORAGE
@@ -1806,10 +1767,6 @@ function revealHeroDirect() {
   schedule(() => {
     if (heroStage) heroStage.classList.add('is-mobile-image-ready');
   }, 620);
-
-  schedule(() => {
-    if (heroStage) heroStage.classList.add('is-mobile-identity-ready');
-  }, 820);
 
   schedule(() => {
     if (heroStage) heroStage.classList.add('is-mobile-footer-ready');
@@ -1949,13 +1906,22 @@ JS SECTION 09A: HERO MICRO DRIFT
 Subtle parallax drift for hero image column
 ========================================================= */
 function handleHeroMicroDrift() {
-  if (!heroImageColumn || !heroStage) return;
-  if (!heroStage.classList.contains('is-settled')) return;
+  if (!desktopEntranceQuery.matches) return;
+  if (!heroStage || !heroStage.classList.contains('is-settled')) return;
 
   const scrollY = window.scrollY;
-  const drift = Math.min(scrollY * 0.08, 18);
 
-  heroImageColumn.style.transform = `translateY(${drift}px)`;
+  /* Main hero image */
+  if (heroImageColumn) {
+    const driftMain = Math.min(scrollY * 0.08, 18);
+    heroImageColumn.style.transform = `translateY(${driftMain}px)`;
+  }
+
+  /* Left vertical strip */
+  if (heroImageStrip) {
+    const driftStrip = Math.min(scrollY * 0.04, 10);
+    heroImageStrip.style.transform = `translateY(${driftStrip}px)`;
+  }
 }
   /* =========================================================
   JS SECTION 10: EVENT BINDINGS
