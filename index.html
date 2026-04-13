@@ -363,27 +363,27 @@
     }
 
 /* =========================================================
+/* =========================================================
 CSS SECTION 12: HERO STAGE WRAPPER
-Το hero λειτουργεί ως συνέχεια του entrance
+Το hero ανεβαίνει σαν master block από κάτω προς τα πάνω
 ========================================================= */
 .hero-stage {
   position: relative;
   z-index: 1;
   min-height: 100vh;
   background: var(--bg);
-  opacity: 0;
-  transform: translateY(30px);
-  filter: blur(6px);
+
+  opacity: 1;
+  transform: translateY(140vh);
+
   transition:
-    opacity 1.5s ease,
-    transform 1.5s ease,
-    filter 1.5s ease;
+    transform 2.15s cubic-bezier(0.22, 1, 0.36, 1);
+
+  will-change: transform;
 }
 
-.hero-stage.is-visible {
-  opacity: 1;
+.hero-stage.is-rising {
   transform: translateY(0);
-  filter: blur(0);
 }
     /* =========================================================
     CSS SECTION 13: HERO TOOLBAR
@@ -1226,7 +1226,7 @@ Editorial vertical lines for cinematic entrance
   opacity: 0.3;
 
   transition: height 2.4s cubic-bezier(0.22, 1, 0.36, 1),
-              opacity 1s ease;
+              opacity 1.35s ease;
   z-index: 5;
 }
 
@@ -1544,24 +1544,21 @@ function revealLine(el) {
     flowStartedAt = timestamp;
   }
 
-  const elapsed = timestamp - flowStartedAt;
-  const heroDrift = Math.min(elapsed * 0.01, 24);
-
   animationFrameId = requestAnimationFrame(runContinuousFlow);
 }
 
-  /* =========================================================
+ /* =========================================================
 JS SECTION 06: HERO REVEAL
-Εμφανίζει το hero wrapper και μετά ενεργοποιεί τα inner reveals
+Το hero ανεβαίνει σαν master block και μετά ενεργοποιεί τα inner reveals
 ========================================================= */
 function revealHeroStage() {
   if (!heroStage) return;
 
-  heroStage.classList.add('is-visible');
+  heroStage.classList.add('is-rising');
 
   setTimeout(() => {
     heroStage.classList.add('is-settled');
-  }, 900);
+  }, 1200);
 }
   /* =========================================================
   JS SECTION 07: SKIP INTRO
@@ -1660,27 +1657,23 @@ schedule(() => {
 
 
 /* =========================================
-   HERO EMERGES
+   HERO EMERGES 
 ========================================= */
 schedule(() => {
   revealHeroStage();
-}, 12200);
 
-schedule(() => {
-  fadeFrameLines();
-}, 12450);
-
-schedule(() => {
   if (entranceFlow) {
     entranceFlow.classList.add('is-hidden');
   }
-}, 12650);
+
+  fadeFrameLines();
+}, 12200);
 
 schedule(() => {
   if (entranceFlow) {
     entranceFlow.style.display = 'none';
   }
-}, 13950);
+}, 13650);
 }
     /* =========================================================
 JS SECTION 09: HERO TOOLBAR COMPRESSION
