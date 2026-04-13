@@ -715,18 +715,21 @@ CSS SECTION 12: HERO STAGE WRAPPER
       }
 
       .hero-copy-column {
-        padding-left: 0;
-        max-width: 520px;
+      padding-left: 0;
+      padding-top: 118px;
+      max-width: 520px;
       }
 
-      .hero-image-column {
-        right: 40px;
-        width: 230px;
-      }
+     .hero-image-column {
+       right: 36px;
+      top: 170px;
+      width: 220px;
+    }
 
-      .hero-identity-block {
-        left: 36px;
-      }
+     .hero-identity-block {
+      left: 36px;
+      bottom: 110px;
+    }
    /* =========================================================
   CSS SECTION 16A: PERCEPTION UNIT / TABLET
   Responsive προσαρμογές του ενιαίου perception block για tablet
@@ -759,9 +762,10 @@ CSS SECTION 12: HERO STAGE WRAPPER
     width: 320px;
   }
 }  
-    /* =========================================================
-CSS SECTION 16B: ENTRANCE DISABLED FOR TABLET / MOBILE
-Σε tablet και mobile το intro απενεργοποιείται πλήρως
+ /* =========================================================
+CSS SECTION 16B: TABLET / MOBILE CINEMATIC HERO MODE
+Σε tablet και mobile το intro απενεργοποιείται
+και το hero αποκαλύπτεται με staged reveal
 ========================================================= */
 @media (max-width: 1100px) {
   .entrance-flow {
@@ -774,6 +778,7 @@ CSS SECTION 16B: ENTRANCE DISABLED FOR TABLET / MOBILE
     filter: blur(0) !important;
   }
 
+  /* αρχικά όλα ήσυχα */
   .hero-toolbar,
   .hero-main-title,
   .hero-main-subtitle,
@@ -782,8 +787,99 @@ CSS SECTION 16B: ENTRANCE DISABLED FOR TABLET / MOBILE
   .hero-footer-meta,
   .hero-accent-line,
   .hero-title-line {
-    opacity: 1 !important;
-    transform: none !important;
+    opacity: 0;
+  }
+
+  .hero-toolbar {
+    transform: translateY(14px);
+    transition:
+      opacity 0.55s ease,
+      transform 0.75s var(--ease-soft);
+  }
+
+  .hero-main-title {
+    transform: translateY(18px);
+    transition:
+      opacity 0.7s ease,
+      transform 0.95s var(--ease-soft);
+  }
+
+  .hero-main-subtitle {
+    transform: translateY(16px);
+    transition:
+      opacity 0.65s ease,
+      transform 0.9s var(--ease-soft);
+  }
+
+  .hero-image-column {
+    transform: translateY(18px) scale(1.02);
+    transition:
+      opacity 0.8s ease,
+      transform 1s var(--ease-soft);
+  }
+
+  .hero-identity-block {
+    transform: translateY(14px);
+    transition:
+      opacity 0.65s ease,
+      transform 0.85s var(--ease-soft);
+  }
+
+  .hero-footer-meta {
+    transform: translateY(14px);
+    transition:
+      opacity 0.65s ease,
+      transform 0.85s var(--ease-soft);
+  }
+
+  .hero-accent-line,
+  .hero-title-line {
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition:
+      opacity 0.6s ease,
+      transform 0.9s var(--ease-soft);
+  }
+
+  /* staged reveal states */
+  .hero-stage.is-mobile-toolbar-ready .hero-toolbar {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .hero-stage.is-mobile-title-ready .hero-main-title,
+  .hero-stage.is-mobile-title-ready .hero-accent-line {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .hero-stage.is-mobile-title-ready .hero-accent-line {
+    transform: scaleX(1);
+  }
+
+  .hero-stage.is-mobile-subtitle-ready .hero-main-subtitle,
+  .hero-stage.is-mobile-subtitle-ready .hero-title-line {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .hero-stage.is-mobile-subtitle-ready .hero-title-line {
+    transform: scaleX(1);
+  }
+
+  .hero-stage.is-mobile-image-ready .hero-image-column {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .hero-stage.is-mobile-identity-ready .hero-identity-block {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .hero-stage.is-mobile-footer-ready .hero-footer-meta {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
    /* =========================================================
@@ -874,10 +970,10 @@ Stacked responsive σύστημα για κινητά
   }
 
   .hero-copy-column {
-    padding-left: 0;
-    padding-top: 82px;
-    max-width: 100%;
-  }
+  padding-left: 0;
+  padding-top: 94px;
+  max-width: 100%;
+}
 
   .hero-main-title {
     font-size: clamp(34px, 10vw, 46px);
@@ -896,27 +992,25 @@ Stacked responsive σύστημα για κινητά
   }
 
   .hero-image-column {
-    position: relative;
-    top: auto;
-    right: auto;
-    margin-top: 42px;
-    width: 100%;
-    max-width: 300px;
-  }
+  position: relative;
+  top: auto;
+  right: auto;
+  margin-top: 34px;
+  width: 100%;
+  max-width: 280px;
+}
 
   .hero-identity-block {
-    position: relative;
-    left: auto;
-    bottom: auto;
-    margin-top: 34px;
-  }
-
+  position: relative;
+  left: auto;
+  bottom: auto;
+  margin-top: 26px;
+}
   .hero-footer-meta {
-    position: relative;
-    bottom: auto;
-    margin-top: 70px;
-  }
-
+  position: relative;
+  bottom: auto;
+  margin-top: 48px;
+}
   .hero-keywords {
     line-height: 1.9;
     padding: 0 24px;
@@ -1559,6 +1653,7 @@ image left / label below / quote right / line below quote
   Φέρνουμε τα βασικά στοιχεία του νέου continuous system
   ========================================================== */
   const desktopEntranceQuery = window.matchMedia('(min-width: 1101px)');
+  const desktopEntranceQuery = window.matchMedia('(min-width: 1101px)');
     
   const entranceFlow = document.getElementById('entranceFlow');
   const entranceSkipBtn = document.getElementById('entranceSkipBtn');
@@ -1671,6 +1766,55 @@ function revealHeroStage() {
     heroStage.classList.add('is-settled');
   }, 1200);
 }
+  /* =========================================================
+JS SECTION 06A: DIRECT HERO MODE
+Tablet / mobile φορτώνουν απευθείας το hero με staged reveal
+========================================================= */
+function revealHeroDirect() {
+  flowStopped = true;
+
+  if (animationFrameId) {
+    cancelAnimationFrame(animationFrameId);
+  }
+
+  clearAllTimers();
+
+  if (entranceFlow) {
+    entranceFlow.style.display = 'none';
+  }
+
+  if (frameLineLeft) frameLineLeft.style.display = 'none';
+  if (frameLineRight) frameLineRight.style.display = 'none';
+
+  if (heroStage) {
+    heroStage.classList.add('is-visible');
+  }
+
+  /* Tablet / mobile cinematic reveal sequence */
+  schedule(() => {
+    if (heroStage) heroStage.classList.add('is-mobile-toolbar-ready');
+  }, 80);
+
+  schedule(() => {
+    if (heroStage) heroStage.classList.add('is-mobile-title-ready');
+  }, 260);
+
+  schedule(() => {
+    if (heroStage) heroStage.classList.add('is-mobile-subtitle-ready');
+  }, 430);
+
+  schedule(() => {
+    if (heroStage) heroStage.classList.add('is-mobile-image-ready');
+  }, 620);
+
+  schedule(() => {
+    if (heroStage) heroStage.classList.add('is-mobile-identity-ready');
+  }, 820);
+
+  schedule(() => {
+    if (heroStage) heroStage.classList.add('is-mobile-footer-ready');
+  }, 980);
+}  
 /* =========================================================
 JS SECTION 06A: DIRECT HERO MODE
 Tablet / mobile φορτώνουν απευθείας το hero χωρίς entrance
