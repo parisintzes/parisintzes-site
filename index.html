@@ -1581,11 +1581,11 @@ schedule(() => {
 
 schedule(() => {
   revealLine(flowUnitSensoryLine);
-}, 7100);
+}, 5600);
 
 schedule(() => {
   if (flowUnitSensory) flowUnitSensory.classList.add('is-unit-exit');
-}, 9000);
+}, 7500);
 
 
 /* =========================================
@@ -1593,15 +1593,15 @@ schedule(() => {
 ========================================= */
 schedule(() => {
   if (flowUnitAnalysis) flowUnitAnalysis.classList.add('is-unit-visible');
-}, 8600);
+}, 7100);
 
 schedule(() => {
   revealLine(flowUnitAnalysisLine);
-}, 10300);
+}, 8800);
 
 schedule(() => {
   if (flowUnitAnalysis) flowUnitAnalysis.classList.add('is-unit-exit');
-}, 12200);
+}, 10700);
 
 
 /* =========================================
@@ -1609,13 +1609,13 @@ schedule(() => {
 ========================================= */
 schedule(() => {
   revealHeroStage();
-}, 13700);
+}, 12200);
 
 schedule(() => {
   if (entranceFlow) {
     entranceFlow.classList.add('is-hidden');
   }
-  }, 15100);
+  }, 13600);
 }
     /* =========================================================
 JS SECTION 09: HERO TOOLBAR COMPRESSION
