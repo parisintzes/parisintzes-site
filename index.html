@@ -1001,8 +1001,7 @@ States για unit-based entrance choreography
 ========================================================= */
 .flow-text-group.is-unit-visible,
 .flow-image.is-unit-visible,
-.flow-unit.is-unit-visible,
-.flow-echo-quote.is-unit-visible {
+.flow-unit.is-unit-visible {
   opacity: 1 !important;
   transform: translateY(0) !important;
 }
@@ -1086,52 +1085,9 @@ CSS SECTION 21: PERCEPTION UNIT BLOCK
     transform 1.4s cubic-bezier(0.22, 1, 0.36, 1),
     opacity 0.6s ease;
 }
-/* =========================================================
-CSS SECTION 21A: PERCEPTION ECHO QUOTE
-Δεύτερο λεκτικό perception block που εμφανίζεται κάτω αριστερά
-και λειτουργεί ως conceptual echo του πρώτου unit.
-========================================================= */
-.flow-echo-quote {
-  position: absolute;
-  opacity: 1;
-  transform: translateY(140vh);
-  transition:
-    transform 1.9s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.9s ease;
-  will-change: transform, opacity;
-  z-index: 18;
-}
 
-.flow-echo-quote-perception {
-  left: 2%;
-  top: 68%;
-  width: 460px;
-}
-    
-.flow-echo-text {
-  font-size: 18px;
-  line-height: 1.18;
-  font-weight: 300;
-  letter-spacing: -0.008em;
-  color: var(--text);
-  text-align: right;
-}
-
-.flow-echo-line {
-  margin-top: 10px;
-  margin-left: auto;
-  width: 380px;
-  height: 1px;
-  background: var(--line);
-  transform: scaleX(0);
-  transform-origin: right center;
-  opacity: 0;
-  transition:
-    transform 1.4s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.6s ease;
-}
 /* =========================================================
-CSS SECTION 21B: SENSORY RESPONSE UNIT BLOCK
+CSS SECTION 21Α: SENSORY RESPONSE UNIT BLOCK
 Mirrored cinematic block για label + quote + line + image
 ========================================================= */
 .flow-unit-sensory {
@@ -1194,7 +1150,7 @@ Mirrored cinematic block για label + quote + line + image
     opacity 0.6s ease;
 }
     /* =========================================================
-CSS SECTION 21C: ANALYSIS UNIT BLOCK
+CSS SECTION 21Β: ANALYSIS UNIT BLOCK
 Same cinematic structure as perception
 ========================================================= */
 .flow-unit-analysis {
@@ -1299,19 +1255,7 @@ Same cinematic structure as perception
   <div class="flow-unit-line" id="flowUnitPerceptionLine"></div>
 </div>
       <!-- =========================================================
-    HTML SECTION 05C: PERCEPTION ECHO QUOTE
-    Δεύτερο λεκτικό perception statement που εμφανίζεται
-    ως echo του βασικού perception unit.
-    ========================================================== -->
-<div class="flow-echo-quote flow-echo-quote-perception" id="flowEchoQuotePerception">
-  <div class="flow-echo-text serif" id="flowEchoTextPerception">
-    Perception is not passive — it is constructed.
-  </div>
-
-  <div class="flow-echo-line flow-echo-line-perception" id="flowEchoLinePerception"></div>
-</div>
-      <!-- =========================================================
-    HTML SECTION 05D: SENSORY RESPONSE UNIT BLOCK
+    HTML SECTION 05C: SENSORY RESPONSE UNIT BLOCK
     Mirrored cinematic block για label + quote + line + image
     ========================================================== -->
 <div class="flow-unit flow-unit-sensory" id="flowUnitSensory">
@@ -1330,7 +1274,7 @@ Same cinematic structure as perception
   </figure>
 </div>
       <!-- =========================================================
-HTML SECTION 05E: ANALYSIS UNIT BLOCK
+HTML SECTION 05D: ANALYSIS UNIT BLOCK
 Same cinematic structure as perception:
 image left / label below / quote right / line below quote
 ========================================================== -->
@@ -1482,9 +1426,6 @@ image left / label below / quote right / line below quote
   const flowUnitSensory = document.getElementById('flowUnitSensory');
   const flowUnitSensoryLine = document.getElementById('flowUnitSensoryLine');
 
-  const flowEchoQuotePerception = document.getElementById('flowEchoQuotePerception');
-  const flowEchoLinePerception = document.getElementById('flowEchoLinePerception');
-
   const flowUnitAnalysis = document.getElementById('flowUnitAnalysis');
   const flowUnitAnalysisLine = document.getElementById('flowUnitAnalysisLine');
 
@@ -1610,100 +1551,69 @@ function startEntranceTimeline() {
   }, 350);
 
   /* =========================================
-     UNIT 01 — PERCEPTION
-  ========================================= */
-  schedule(() => {
-    if (flowUnitPerception) flowUnitPerception.classList.add('is-unit-visible');
-  }, 500);
+   UNIT 01 — PERCEPTION
+========================================= */
+schedule(() => {
+  if (flowUnitPerception) flowUnitPerception.classList.add('is-unit-visible');
+}, 500);
 
-  schedule(() => {
-    revealLine(flowUnitPerceptionLine);
-  }, 2100);
+schedule(() => {
+  revealLine(flowUnitPerceptionLine);
+}, 2100);
 
-  /* echo εμφανίζεται λίγο πριν το perception φύγει */
-  schedule(() => {
-    if (flowEchoQuotePerception) flowEchoQuotePerception.classList.add('is-unit-visible');
-  }, 3600);
+schedule(() => {
+  if (flowUnitPerception) flowUnitPerception.classList.add('is-unit-exit');
+}, 4300);
 
-  schedule(() => {
-    revealLine(flowEchoLinePerception);
-  }, 4450);
-
-  /* perception αρχίζει να φεύγει αφού έχει διαβαστεί */
-  schedule(() => {
-    if (flowUnitPerception) flowUnitPerception.classList.add('is-unit-exit');
-  }, 5000);
-
-  schedule(() => {
-    if (flowUnitPerception) flowUnitPerception.classList.add('is-unit-fade');
-  }, 6450);
+schedule(() => {
+  if (flowUnitPerception) flowUnitPerception.classList.add('is-unit-fade');
+}, 5750);
 
   /* =========================================
-     UNIT 02 — SENSORY RESPONSE
-  ========================================= */
-  /* το sensory αρχίζει να φαίνεται πριν χαθεί τελείως το perception echo */
-  schedule(() => {
-    if (flowUnitSensory) flowUnitSensory.classList.add('is-unit-visible');
-  }, 6200);
+   UNIT 02 — SENSORY RESPONSE
+========================================= */
+schedule(() => {
+  if (flowUnitSensory) flowUnitSensory.classList.add('is-unit-visible');
+}, 5400);
 
-  schedule(() => {
-    revealLine(flowUnitSensoryLine);
-  }, 7900);
+schedule(() => {
+  revealLine(flowUnitSensoryLine);
+}, 7100);
 
-  schedule(() => {
-    if (flowUnitSensory) flowUnitSensory.classList.add('is-unit-exit');
-  }, 9800);
+schedule(() => {
+  if (flowUnitSensory) flowUnitSensory.classList.add('is-unit-exit');
+}, 9000);
 
-  /* ΠΡΟΣΟΧΗ:
-     για τώρα άφησέ το ΧΩΡΙΣ is-unit-fade
-     ώστε να βλέπεις πρώτα την upward κίνηση
-     και να το πιάνει το fade veil φυσικά
-  */
 
-  /* =========================================
-     UNIT 03 — ANALYSIS
-  ========================================= */
-  /* το analysis αρχίζει να εμφανίζεται λίγο πριν φύγει το sensory */
-  schedule(() => {
-    if (flowUnitAnalysis) flowUnitAnalysis.classList.add('is-unit-visible');
-  }, 9300);
+/* =========================================
+   UNIT 03 — ANALYSIS
+========================================= */
+schedule(() => {
+  if (flowUnitAnalysis) flowUnitAnalysis.classList.add('is-unit-visible');
+}, 8600);
 
-  schedule(() => {
-    revealLine(flowUnitAnalysisLine);
-  }, 11000);
+schedule(() => {
+  revealLine(flowUnitAnalysisLine);
+}, 10300);
 
-  schedule(() => {
-    if (flowUnitAnalysis) flowUnitAnalysis.classList.add('is-unit-exit');
-  }, 13000);
+schedule(() => {
+  if (flowUnitAnalysis) flowUnitAnalysis.classList.add('is-unit-exit');
+}, 12200);
 
-  /* και εδώ για τώρα χωρίς manual fade */
 
-  /* =========================================
-     HERO EMERGES
-  ========================================= */
-  schedule(() => {
-    revealHeroStage();
-  }, 14500);
+/* =========================================
+   HERO EMERGES
+========================================= */
+schedule(() => {
+  revealHeroStage();
+}, 13700);
 
-  schedule(() => {
-    if (entranceFlow) {
-      entranceFlow.classList.add('is-hidden');
-    }
-  }, 15900);
-}
-  /* =========================================================
-  JS SECTION 09: HERO TOOLBAR COMPRESSION
-  Με το scroll μένει μόνο το brand name
-  ========================================================== */
-  function handleHeroCompression() {
-    if (!heroToolbar) return;
-
-    if (window.scrollY > 60) {
-      heroToolbar.classList.add('is-compact');
-    } else {
-      heroToolbar.classList.remove('is-compact');
-    }
+schedule(() => {
+  if (entranceFlow) {
+    entranceFlow.classList.add('is-hidden');
   }
+  }, 15100);
+}
 
   /* =========================================================
   JS SECTION 10: EVENT BINDINGS
