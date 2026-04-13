@@ -758,6 +758,33 @@ CSS SECTION 12: HERO STAGE WRAPPER
 
     width: 320px;
   }
+}  
+    /* =========================================================
+CSS SECTION 16B: ENTRANCE DISABLED FOR TABLET / MOBILE
+Σε tablet και mobile το intro απενεργοποιείται πλήρως
+========================================================= */
+@media (max-width: 1100px) {
+  .entrance-flow {
+    display: none !important;
+  }
+
+  .hero-stage {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    filter: blur(0) !important;
+  }
+
+  .hero-toolbar,
+  .hero-main-title,
+  .hero-main-subtitle,
+  .hero-image-column,
+  .hero-identity-block,
+  .hero-footer-meta,
+  .hero-accent-line,
+  .hero-title-line {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
    /* =========================================================
 CSS SECTION 17: MOBILE LAYOUT
@@ -1531,6 +1558,8 @@ image left / label below / quote right / line below quote
   JS SECTION 01: ELEMENT REFERENCES
   Φέρνουμε τα βασικά στοιχεία του νέου continuous system
   ========================================================== */
+  const desktopEntranceQuery = window.matchMedia('(min-width: 1101px)');
+    
   const entranceFlow = document.getElementById('entranceFlow');
   const entranceSkipBtn = document.getElementById('entranceSkipBtn');
   const entranceCanvas = document.getElementById('entranceCanvas');
@@ -1642,7 +1671,33 @@ function revealHeroStage() {
     heroStage.classList.add('is-settled');
   }, 1200);
 }
-  /* =========================================================
+/* =========================================================
+JS SECTION 06A: DIRECT HERO MODE
+Tablet / mobile φορτώνουν απευθείας το hero χωρίς entrance
+========================================================= */
+function revealHeroDirect() {
+  flowStopped = true;
+
+  if (animationFrameId) {
+    cancelAnimationFrame(animationFrameId);
+  }
+
+  clearAllTimers();
+
+  if (entranceFlow) {
+    entranceFlow.style.display = 'none';
+  }
+
+  if (heroStage) {
+    heroStage.classList.add('is-visible');
+    heroStage.classList.add('is-settled');
+    heroStage.style.transform = 'translateY(0)';
+  }
+
+  if (frameLineLeft) frameLineLeft.style.display = 'none';
+  if (frameLineRight) frameLineRight.style.display = 'none';
+}
+    /* =========================================================
   JS SECTION 07: SKIP INTRO
   Άμεσο πέρασμα από entrance σε hero
   ========================================================== */
@@ -1719,7 +1774,7 @@ schedule(() => {
 
 schedule(() => {
   if (flowUnitSensory) flowUnitSensory.classList.add('is-unit-exit');
-}, 8500);
+}, 8000);
 
 
 /* =========================================
@@ -1727,7 +1782,7 @@ schedule(() => {
 ========================================= */  
 schedule(() => {
   if (flowUnitAnalysis) flowUnitAnalysis.classList.add('is-unit-visible');
-}, 8100);
+}, 7700);
 
 schedule(() => {
   revealLine(flowUnitAnalysisLine);
@@ -1794,13 +1849,17 @@ function handleHeroMicroDrift() {
   window.addEventListener('scroll', handleHeroCompression);
   window.addEventListener('scroll', handleHeroMicroDrift);
 
-  /* =========================================================
-  JS SECTION 11: INITIAL LOAD
-  Εκκίνηση του refined motion system
-  ========================================================== */
-  window.addEventListener('load', () => {
+ /* =========================================================
+JS SECTION 11: INITIAL LOAD
+Desktop only entrance / direct hero for tablet & mobile
+========================================================= */
+window.addEventListener('load', () => {
+  if (desktopEntranceQuery.matches) {
     startEntranceTimeline();
-  });
+  } else {
+    revealHeroDirect();
+  }
+});
 </script>
 </body>
 </html>
