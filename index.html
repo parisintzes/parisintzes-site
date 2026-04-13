@@ -1671,20 +1671,17 @@ schedule(() => {
    HERO EMERGES
 ========================================= */
 schedule(() => {
-  revealHeroStage();
-}, 12200);
-
-schedule(() => {
   if (entranceFlow) {
     entranceFlow.classList.add('is-hidden');
   }
-  }, 13600);
-}
+  revealHeroStage();
+}, 12200);
 
 /* FRAME LINES FADE OUT */
 schedule(() => {
   fadeFrameLines();
 }, 12450);
+}
     /* =========================================================
 JS SECTION 09: HERO TOOLBAR COMPRESSION
 Με το scroll μένει μόνο το brand name
