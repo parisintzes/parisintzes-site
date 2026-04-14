@@ -2760,10 +2760,11 @@ function initCustomCursor() {
   let cursorY = 0;
 
   function moveCursor(event) {
-    cursorX = event.clientX;
-    cursorY = event.clientY;
-    customCursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
-  }
+  cursorX = event.clientX;
+  cursorY = event.clientY;
+  customCursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
+  customCursor.classList.add('is-visible');
+}
 
   function showCursor() {
     customCursor.classList.add('is-visible');
@@ -2783,8 +2784,7 @@ function initCustomCursor() {
   }
 
   window.addEventListener('mousemove', moveCursor);
-  window.addEventListener('mouseenter', showCursor);
-  window.addEventListener('mouseleave', hideCursor);
+  document.addEventListener('mouseenter', showCursor);
   document.addEventListener('mouseleave', hideCursor);
 
   const interactiveTargets = document.querySelectorAll(
