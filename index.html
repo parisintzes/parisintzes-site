@@ -1876,9 +1876,80 @@ Single-page full-screen navigation
     gap: 16px;
   }
 }
+/* =========================================================
+CSS SECTION 27: DESKTOP CUSTOM CURSOR
+Minimal outlined circle → filled dot on interactive hover
+========================================================= */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  margin-left: -11px;
+  margin-top: -11px;
+  border: 1px solid rgba(17, 17, 17, 0.68);
+  border-radius: 50%;
+  background: transparent;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate3d(0, 0, 0) scale(1);
+  transition:
+    opacity 0.25s ease,
+    transform 0.22s ease,
+    width 0.22s ease,
+    height 0.22s ease,
+    margin-left 0.22s ease,
+    margin-top 0.22s ease,
+    border-color 0.22s ease,
+    background-color 0.22s ease;
+  z-index: 20000;
+  will-change: transform, opacity, width, height;
+  mix-blend-mode: normal;
+}
+
+.custom-cursor.is-visible {
+  opacity: 1;
+}
+
+.custom-cursor.is-active {
+  width: 8px;
+  height: 8px;
+  margin-left: -4px;
+  margin-top: -4px;
+  border-color: rgba(17, 17, 17, 0.95);
+  background: rgba(17, 17, 17, 0.95);
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+/* Desktop only: hide native cursor on interactive cinematic mode */
+@media (min-width: 1101px) {
+  body.has-custom-cursor,
+  body.has-custom-cursor a,
+  body.has-custom-cursor button,
+  body.has-custom-cursor .research-label,
+  body.has-custom-cursor .menu-link,
+  body.has-custom-cursor .hero-menu-button,
+  body.has-custom-cursor .entrance-skip {
+    cursor: none;
+  }
+}
+
+/* Tablet / mobile: completely disable custom cursor */
+@media (max-width: 1100px) {
+  .custom-cursor {
+    display: none !important;
+  }
+}
   </style>
 </head>
 <body>
+
+  <!-- =========================================================
+  HTML SECTION 02: CUSTOM CURSOR
+  Desktop-only cinematic cursor
+  ========================================================= -->
+  <div class="custom-cursor" id="customCursor" aria-hidden="true"></div>
 
   <!-- =========================================================
   HTML SECTION 03: CONTINUOUS CINEMATIC ENTRANCE
@@ -2673,6 +2744,61 @@ if (menuOverlay) {
     }
   });
 }
+ /* =========================================================
+JS SECTION 14: DESKTOP CUSTOM CURSOR
+Only for desktop screens
+========================================================= */
+const customCursor = document.getElementById('customCursor');
+
+function initCustomCursor() {
+  if (!desktopEntranceQuery.matches || !customCursor) return;
+
+  document.body.classList.add('has-custom-cursor');
+
+  let cursorX = 0;
+  let cursorY = 0;
+
+  function moveCursor(event) {
+    cursorX = event.clientX;
+    cursorY = event.clientY;
+    customCursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
+  }
+
+  function showCursor() {
+    customCursor.classList.add('is-visible');
+  }
+
+  function hideCursor() {
+    customCursor.classList.remove('is-visible');
+    customCursor.classList.remove('is-active');
+  }
+
+  function activateCursor() {
+    customCursor.classList.add('is-active');
+  }
+
+  function deactivateCursor() {
+    customCursor.classList.remove('is-active');
+  }
+
+  window.addEventListener('mousemove', moveCursor);
+  window.addEventListener('mouseenter', showCursor);
+  window.addEventListener('mouseleave', hideCursor);
+  document.addEventListener('mouseleave', hideCursor);
+
+  const interactiveTargets = document.querySelectorAll(
+    'a, button, .research-label, .menu-link, .hero-menu-button, .entrance-skip'
+  );
+
+  interactiveTargets.forEach(target => {
+    target.addEventListener('mouseenter', activateCursor);
+    target.addEventListener('mouseleave', deactivateCursor);
+  });
+}
+
+window.addEventListener('load', () => {
+  initCustomCursor();
+});
 </script>
 
 
