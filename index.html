@@ -1396,77 +1396,491 @@ Editorial vertical lines for cinematic entrance
 .frame-line-right {
   right: 6%;
 }
-    /* =========================================================
-SECTION NUMBERS (EDITORIAL INDEX)
+    
+/* =========================================================
+CSS SECTION 23: DESKTOP CINEMATIC MAIN CONTENT
+Full cinematic interactive field below hero
 ========================================================= */
-.section-number {
+.research-field {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 58%) minmax(120px, 14%) minmax(260px, 28%);
+  align-items: start;
+  gap: 0;
+  min-height: 120vh;
+  padding: 140px 64px 180px;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.research-reveal-stage {
+  position: relative;
+  min-height: 760px;
+  z-index: 3;
+}
+
+.research-panel {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-80px);
+  transition:
+    opacity 0.75s ease,
+    transform 1.05s var(--ease-soft);
+}
+
+.research-panel.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+}
+
+.research-panel-inner {
+  max-width: 640px;
+  padding-top: 10px;
+}
+
+.research-panel-number {
   font-size: 11px;
-  letter-spacing: 0.22em;
-  color: rgba(17,17,17,0.4);
-  margin-bottom: 10px;
-}
- /* =========================================================
-CONTENT SECTIONS
-========================================================= */
-
-.content-section {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 160px 24px;
+  letter-spacing: 0.20em;
+  color: rgba(17, 17, 17, 0.42);
+  margin-bottom: 18px;
 }
 
-.section-title {
-  font-size: 32px;
+.research-panel-title {
+  margin: 0 0 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(34px, 3.2vw, 46px);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
   font-weight: 300;
-  margin-bottom: 24px;
 }
 
-.section-text {
-  max-width: 600px;
+.research-panel-lead {
+  margin: 0 0 22px;
+  max-width: 560px;
+  font-size: 18px;
+  line-height: 1.34;
+  font-weight: 300;
+  color: rgba(17, 17, 17, 0.86);
+}
+
+.research-panel-body {
+  margin: 0;
+  max-width: 540px;
   font-size: 15px;
   line-height: 1.7;
   font-weight: 300;
-  color: rgba(17,17,17,0.75);
-  margin-bottom: 16px;
+  color: rgba(17, 17, 17, 0.68);
+}
+
+.research-panel-line {
+  width: 84px;
+  height: 1px;
+  margin-top: 34px;
+  background: rgba(17, 17, 17, 0.42);
+  transform-origin: left center;
+}
+
+.research-wave-field {
+  position: relative;
+  min-height: 760px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.research-wave-track {
+  width: 100%;
+  max-width: 320px;
+  opacity: 0.72;
+  transform: translateX(0);
+  animation: wave-track-drift 12s ease-in-out infinite alternate;
+}
+
+.research-wave-svg {
+  width: 100%;
+  height: 240px;
+  overflow: visible;
+}
+
+.research-wave-path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.research-wave-path-primary {
+  stroke: rgba(17, 17, 17, 0.24);
+  stroke-width: 1.2;
+}
+
+.research-wave-path-secondary {
+  stroke: rgba(17, 17, 17, 0.12);
+  stroke-width: 1;
+}
+
+.research-label-rail {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 32px;
+  min-height: 760px;
+  z-index: 4;
+  padding-top: 8px;
+}
+
+.research-label {
+  position: relative;
+  display: grid;
+  grid-template-columns: 18px auto 1fr 18px;
+  align-items: center;
+  column-gap: 12px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  max-width: 360px;
+  transform: translateX(0);
+  animation: label-drift 9s ease-in-out infinite alternate;
+}
+
+.research-label:nth-child(2) { animation-delay: 0.4s; }
+.research-label:nth-child(3) { animation-delay: 0.8s; }
+.research-label:nth-child(4) { animation-delay: 1.2s; }
+.research-label:nth-child(5) { animation-delay: 1.6s; }
+.research-label:nth-child(6) { animation-delay: 2s; }
+
+.research-label.is-active,
+.research-label:hover {
+  animation-play-state: paused;
+}
+
+.research-label-meta {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: rgba(17, 17, 17, 0.42);
+  white-space: nowrap;
+}
+
+.research-label-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  line-height: 1.1;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  color: rgba(17, 17, 17, 0.72);
+  transition:
+    color 0.35s ease,
+    transform 0.45s ease;
+}
+
+.research-label-arrow {
+  font-size: 13px;
+  color: rgba(17, 17, 17, 0.28);
+  transition:
+    opacity 0.35s ease,
+    transform 0.45s ease,
+    color 0.35s ease;
+}
+
+.research-label-arrow-left {
+  opacity: 0;
+  transform: translateX(8px);
+}
+
+.research-label-arrow-right {
+  opacity: 1;
+  transform: translateX(0);
+  justify-self: end;
+}
+
+.research-label:hover .research-label-title,
+.research-label.is-active .research-label-title {
+  color: rgba(17, 17, 17, 0.96);
+  transform: translateX(4px);
+}
+
+.research-label:hover .research-label-arrow-left,
+.research-label.is-active .research-label-arrow-left {
+  opacity: 1;
+  transform: translateX(0);
+  color: rgba(17, 17, 17, 0.70);
+}
+
+.research-label:hover .research-label-arrow-right,
+.research-label.is-active .research-label-arrow-right {
+  color: rgba(17, 17, 17, 0.70);
+  transform: translateX(4px);
+}
+
+@keyframes label-drift {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(18px); }
+}
+
+@keyframes wave-track-drift {
+  0%   { transform: translateX(-10px); }
+  100% { transform: translateX(12px); }
 }
 
 /* =========================================================
-MENU OVERLAY
+CSS SECTION 24: TABLET ADAPTATION
+Cinematic stacked adaptation for tablet
 ========================================================= */
+@media (max-width: 1100px) {
+  .research-field {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    min-height: auto;
+    padding: 110px 36px 140px;
+  }
 
+  .research-wave-field {
+    order: 2;
+    min-height: 120px;
+    justify-content: flex-start;
+  }
+
+  .research-wave-track {
+    max-width: 240px;
+  }
+
+  .research-wave-svg {
+    height: 120px;
+  }
+
+  .research-label-rail {
+    order: 1;
+    min-height: auto;
+    gap: 18px;
+    padding-top: 0;
+  }
+
+  .research-label {
+    max-width: 100%;
+    animation: none;
+  }
+
+  .research-reveal-stage {
+    order: 3;
+    min-height: 520px;
+  }
+
+  .research-panel-inner {
+    max-width: 100%;
+  }
+
+  .research-panel-title {
+    font-size: clamp(30px, 5vw, 40px);
+  }
+
+  .research-panel-lead {
+    max-width: 100%;
+    font-size: 17px;
+  }
+
+  .research-panel-body {
+    max-width: 100%;
+  }
+}
+
+/* =========================================================
+CSS SECTION 25: MOBILE ADAPTATION
+Accordion-cinematic adaptation for mobile
+========================================================= */
+@media (max-width: 767px) {
+  .research-field {
+    padding: 86px 20px 110px;
+    gap: 26px;
+  }
+
+  .research-label-rail {
+    gap: 14px;
+  }
+
+  .research-label {
+    grid-template-columns: 16px auto 1fr 16px;
+    column-gap: 10px;
+  }
+
+  .research-label-meta {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+  }
+
+  .research-label-title {
+    font-size: 17px;
+  }
+
+  .research-wave-field {
+    min-height: 86px;
+  }
+
+  .research-wave-track {
+    max-width: 180px;
+    opacity: 0.58;
+  }
+
+  .research-wave-svg {
+    height: 86px;
+  }
+
+  .research-reveal-stage {
+    min-height: 540px;
+  }
+
+  .research-panel {
+    transform: translateX(-36px);
+  }
+
+  .research-panel-number {
+    margin-bottom: 14px;
+  }
+
+  .research-panel-title {
+    font-size: 28px;
+    line-height: 1.04;
+    margin-bottom: 16px;
+  }
+
+  .research-panel-lead {
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 18px;
+  }
+
+  .research-panel-body {
+    font-size: 14px;
+    line-height: 1.68;
+  }
+
+  .research-panel-line {
+    margin-top: 26px;
+    width: 68px;
+  }
+}
+/* =========================================================
+CSS SECTION 26: BURGER MENU OVERLAY
+Single-page full-screen navigation
+========================================================= */
 .menu-overlay {
   position: fixed;
   inset: 0;
-  background: white;
-  z-index: 999;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(10px);
+  z-index: 10050;
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.4s ease;
+  transition:
+    opacity 0.45s ease,
+    visibility 0.45s ease;
 }
 
-.menu-overlay.active {
+.menu-overlay.is-open {
   opacity: 1;
-  pointer-events: all;
+  visibility: visible;
+  pointer-events: auto;
 }
 
-.menu-inner {
+.menu-overlay-inner {
+  position: relative;
+  width: 100%;
   height: 100%;
+  padding: 36px 64px 64px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  gap: 28px;
+}
+
+.menu-overlay-close {
+  position: absolute;
+  top: 28px;
+  right: 64px;
+  border: 0;
+  background: transparent;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(17, 17, 17, 0.62);
+  cursor: pointer;
+}
+
+.menu-overlay-links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .menu-link {
-  font-size: 22px;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  text-align: left;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(22px, 3vw, 34px);
+  line-height: 1.06;
   font-weight: 300;
-  letter-spacing: 0.04em;
-  transition: opacity 0.3s ease;
+  letter-spacing: -0.02em;
+  color: rgba(17, 17, 17, 0.92);
+  cursor: pointer;
+  transform: translateY(18px);
+  opacity: 0;
+  transition:
+    opacity 0.45s ease,
+    transform 0.65s var(--ease-soft),
+    color 0.3s ease;
 }
 
+.menu-overlay.is-open .menu-link {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.menu-overlay.is-open .menu-link:nth-child(1) { transition-delay: 0.08s; }
+.menu-overlay.is-open .menu-link:nth-child(2) { transition-delay: 0.14s; }
+.menu-overlay.is-open .menu-link:nth-child(3) { transition-delay: 0.20s; }
+.menu-overlay.is-open .menu-link:nth-child(4) { transition-delay: 0.26s; }
+.menu-overlay.is-open .menu-link:nth-child(5) { transition-delay: 0.32s; }
+.menu-overlay.is-open .menu-link:nth-child(6) { transition-delay: 0.38s; }
+
 .menu-link:hover {
-  opacity: 0.5;
+  color: rgba(17, 17, 17, 0.52);
+}
+
+@media (max-width: 1100px) {
+  .menu-overlay-inner {
+    padding: 28px 36px 36px;
+  }
+
+  .menu-overlay-close {
+    right: 36px;
+  }
+}
+
+@media (max-width: 767px) {
+  .menu-overlay-inner {
+    padding: 24px 20px 28px;
+  }
+
+  .menu-overlay-close {
+    top: 22px;
+    right: 20px;
+  }
+
+  .menu-overlay-links {
+    gap: 16px;
+  }
 }
   </style>
 </head>
@@ -1665,98 +2079,188 @@ image left / label below / quote right / line below quote
         <div class="hero-year">2026</div>
       </div>
     </div>
-  </section>
-
-  <!-- =========================================================
-  HTML SECTION 11: POST-HERO PLACEHOLDER
-  ========================================================== -->
    </section>
   <!-- =========================================================
-MAIN CONTENT SECTIONS
+HTML SECTION 12: CINEMATIC MAIN CONTENT FIELD
+Interactive research field below hero
 ========================================================= -->
+<main class="research-field" id="researchField">
 
-<main id="mainContent">
+  <!-- Left reveal stage -->
+  <section class="research-reveal-stage" id="researchRevealStage">
 
-  <!-- 02. Direction -->
-  <section id="direction" class="content-section">
-    <h2 class="section-number">02</h2>
-    <h2 class="section-title serif">Direction</h2>
+    <!-- 001 / Direction -->
+    <article class="research-panel is-active" id="panel-direction" data-panel="direction">
+      <div class="research-panel-inner">
+        <div class="research-panel-number">001</div>
+        <h2 class="research-panel-title">Direction</h2>
+        <p class="research-panel-lead">
+          Experience is not designed as a visual outcome, but as a perceptual system.
+        </p>
+        <p class="research-panel-body">
+          The work investigates how multisensory stimuli shape behavior, emotion, and cognitive response across hospitality environments. It is concerned with the way atmospheres are absorbed, interpreted, and translated into meaningful experience.
+        </p>
+        <div class="research-panel-line"></div>
+      </div>
+    </article>
 
-    <p class="section-text">
-      Experience is not designed as a visual outcome, but as a perceptual system.
-    </p>
-    <p class="section-text">
-      The focus lies on how sensory stimuli shape behavior, emotion, and cognitive response within hospitality environments.
-    </p>
+    <!-- 002 / Contexts -->
+    <article class="research-panel" id="panel-contexts" data-panel="contexts">
+      <div class="research-panel-inner">
+        <div class="research-panel-number">002</div>
+        <h2 class="research-panel-title">Contexts</h2>
+        <p class="research-panel-lead">
+          Hospitality is approached as a dynamic system of perception, space, and embodied interaction.
+        </p>
+        <p class="research-panel-body">
+          The research spans across gastronomy, tourism environments, and multisensory design settings where atmosphere becomes a behavioral condition rather than a decorative layer.
+        </p>
+        <div class="research-panel-line"></div>
+      </div>
+    </article>
+
+    <!-- 003 / Method -->
+    <article class="research-panel" id="panel-method" data-panel="method">
+      <div class="research-panel-inner">
+        <div class="research-panel-number">003</div>
+        <h2 class="research-panel-title">Method</h2>
+        <p class="research-panel-lead">
+          The methodology integrates sensory science, behavioral interpretation, and analytical structure.
+        </p>
+        <p class="research-panel-body">
+          By combining conceptual framing with empirical inquiry, the work translates perception into research evidence and research evidence into experiential intelligence.
+        </p>
+        <div class="research-panel-line"></div>
+      </div>
+    </article>
+
+    <!-- 004 / Work & Studies -->
+    <article class="research-panel" id="panel-work" data-panel="work">
+      <div class="research-panel-inner">
+        <div class="research-panel-number">004</div>
+        <h2 class="research-panel-title">Work &amp; Studies</h2>
+        <p class="research-panel-lead">
+          Selected work explores multisensory experience, eating behavior, and environmental meaning.
+        </p>
+        <p class="research-panel-body">
+          The field includes Epignosis Study 1, Epignosis Study 2, and research experience connected to sensory science and hospitality contexts, forming a continuous trajectory between theory, measurement, and application.
+        </p>
+        <div class="research-panel-line"></div>
+      </div>
+    </article>
+
+    <!-- 005 / Profile -->
+    <article class="research-panel" id="panel-profile" data-panel="profile">
+      <div class="research-panel-inner">
+        <div class="research-panel-number">005</div>
+        <h2 class="research-panel-title">Profile</h2>
+        <p class="research-panel-lead">
+          Paris Intzes is a Hospitality Experience Strategist and Researcher working at the intersection of multisensory experience, eating behavior, and experiential design.
+        </p>
+        <p class="research-panel-body">
+          With a background in food science, gastronomy, tourism management, and marketing analytics, his work integrates scientific inquiry with applied experience composition across hospitality and sensory environments.
+        </p>
+        <div class="research-panel-line"></div>
+      </div>
+    </article>
+
+    <!-- 006 / Contact -->
+    <article class="research-panel" id="panel-contact" data-panel="contact">
+      <div class="research-panel-inner">
+        <div class="research-panel-number">006</div>
+        <h2 class="research-panel-title">Contact</h2>
+        <p class="research-panel-lead">
+          For research dialogue, interdisciplinary collaborations, and hospitality-related concepts.
+        </p>
+        <p class="research-panel-body">
+          Contact details, partnerships, and future projects can be discussed directly through the communication channels that will be added here.
+        </p>
+        <div class="research-panel-line"></div>
+      </div>
+    </article>
+
   </section>
 
-  <!-- 03. Contexts -->
-  <section id="contexts" class="content-section">
-    <h2 class="section-number">03</h2>
-    <h2 class="section-title serif">Contexts</h2>
+  <!-- Center wave field -->
+  <div class="research-wave-field" aria-hidden="true">
+    <div class="research-wave-track">
+      <svg class="research-wave-svg" viewBox="0 0 600 120" preserveAspectRatio="none">
+        <path
+          class="research-wave-path research-wave-path-primary"
+          d="M0,62 C60,30 120,92 180,62 C240,32 300,92 360,62 C420,32 480,92 540,62 C570,48 585,52 600,62" />
+        <path
+          class="research-wave-path research-wave-path-secondary"
+          d="M0,68 C60,46 120,84 180,68 C240,48 300,84 360,68 C420,48 480,84 540,68 C570,58 585,60 600,68" />
+      </svg>
+    </div>
+  </div>
 
-    <p class="section-text">
-      Hospitality is approached as a dynamic system of interactions between space, body, and perception.
-    </p>
-    <p class="section-text">
-      The work spans across gastronomy, tourism environments, and multisensory design contexts.
-    </p>
-  </section>
+  <!-- Right drifting label rail -->
+  <nav class="research-label-rail" id="researchLabelRail" aria-label="Research Sections">
 
-  <!-- 04. Method -->
-  <section id="method" class="content-section">
-    <h2 class="section-number">04</h2>
-    <h2 class="section-title serif">Method</h2>
+    <button class="research-label is-active" data-target="direction" type="button">
+      <span class="research-label-arrow research-label-arrow-left">←</span>
+      <span class="research-label-meta">001/006</span>
+      <span class="research-label-title">Direction</span>
+      <span class="research-label-arrow research-label-arrow-right">→</span>
+    </button>
 
-    <p class="section-text">
-      The methodology integrates sensory science, behavioral analysis, and data-driven research.
-    </p>
-    <p class="section-text">
-      Experiential patterns emerge through the synthesis of perception and analytics.
-    </p>
-  </section>
+    <button class="research-label" data-target="contexts" type="button">
+      <span class="research-label-arrow research-label-arrow-left">←</span>
+      <span class="research-label-meta">002/006</span>
+      <span class="research-label-title">Contexts</span>
+      <span class="research-label-arrow research-label-arrow-right">→</span>
+    </button>
 
-  <!-- 05. Work / Studies -->
-  <section id="work" class="content-section">
-    <h2 class="section-number">05</h2>
-    <h2 class="section-title serif">Work & Studies</h2>
+    <button class="research-label" data-target="method" type="button">
+      <span class="research-label-arrow research-label-arrow-left">←</span>
+      <span class="research-label-meta">003/006</span>
+      <span class="research-label-title">Method</span>
+      <span class="research-label-arrow research-label-arrow-right">→</span>
+    </button>
 
-    <p class="section-text">
-      Research and applied work explore multisensory experience and eating behavior.
-    </p>
-    <p class="section-text">
-      Projects include experimental studies, conceptual frameworks, and hospitality implementations.
-    </p>
-  </section>
+    <button class="research-label" data-target="work" type="button">
+      <span class="research-label-arrow research-label-arrow-left">←</span>
+      <span class="research-label-meta">004/006</span>
+      <span class="research-label-title">Work &amp; Studies</span>
+      <span class="research-label-arrow research-label-arrow-right">→</span>
+    </button>
 
-  <!-- 06. Profile -->
-  <section id="profile" class="content-section">
-    <h2 class="section-number">06</h2>
-    <h2 class="section-title serif">Profile</h2>
+    <button class="research-label" data-target="profile" type="button">
+      <span class="research-label-arrow research-label-arrow-left">←</span>
+      <span class="research-label-meta">005/006</span>
+      <span class="research-label-title">Profile</span>
+      <span class="research-label-arrow research-label-arrow-right">→</span>
+    </button>
 
-    <p class="section-text">
-      Paris Intzes is a Hospitality Experience Strategist and Researcher working at the intersection of multisensory experience, eating behavior, and experiential design.
-    </p>
-    <p class="section-text">
-      His work integrates sensory science, gastronomy, and marketing analytics to explore how environments shape perception, emotion, and behavior.
-    </p>
-  </section>
+    <button class="research-label" data-target="contact" type="button">
+      <span class="research-label-arrow research-label-arrow-left">←</span>
+      <span class="research-label-meta">006/006</span>
+      <span class="research-label-title">Contact</span>
+      <span class="research-label-arrow research-label-arrow-right">→</span>
+    </button>
 
-  <!-- 07. Contact -->
-  <section id="contact" class="content-section">
-    <h2 class="section-number">07</h2>
-    <h2 class="section-title serif">Contact</h2>
-
-    <p class="section-text">
-      For collaborations, research inquiries, or project development:
-    </p>
-    <p class="section-text">
-      paris.intzes@email.com
-    </p>
-  </section>
+  </nav>
 
 </main>
- 
+  <!-- =========================================================
+HTML SECTION 13: BURGER MENU OVERLAY
+Single-page navigation overlay
+========================================================= -->
+<div class="menu-overlay" id="menuOverlay" aria-hidden="true">
+  <div class="menu-overlay-inner">
+    <button class="menu-overlay-close" id="menuOverlayClose" type="button" aria-label="Close menu">Close</button>
+
+    <div class="menu-overlay-links">
+      <button class="menu-link" data-menu-target="direction" type="button">001 / Direction</button>
+      <button class="menu-link" data-menu-target="contexts" type="button">002 / Contexts</button>
+      <button class="menu-link" data-menu-target="method" type="button">003 / Method</button>
+      <button class="menu-link" data-menu-target="work" type="button">004 / Work &amp; Studies</button>
+      <button class="menu-link" data-menu-target="profile" type="button">005 / Profile</button>
+      <button class="menu-link" data-menu-target="contact" type="button">006 / Contact</button>
+    </div>
+  </div>
+</div>
   
   <script>
   /* =========================================================
@@ -2096,41 +2600,98 @@ window.addEventListener('load', () => {
     revealHeroDirect();
   }
 });
+
 /* =========================================================
-MENU SYSTEM
+JS SECTION 12: MAIN CONTENT INTERACTION
+Cinematic panel switching + burger menu navigation
 ========================================================= */
+const researchLabels = document.querySelectorAll('.research-label');
+const researchPanels = document.querySelectorAll('.research-panel');
 
-const menuBtn = document.getElementById('heroMenuButton');
-const menuOverlay = document.getElementById('menuOverlay');
+function activateResearchPanel(targetName) {
+  researchLabels.forEach(label => {
+    const isMatch = label.dataset.target === targetName;
+    label.classList.toggle('is-active', isMatch);
+  });
 
-if (menuBtn && menuOverlay) {
-  menuBtn.addEventListener('click', () => {
-    menuOverlay.classList.toggle('active');
+  researchPanels.forEach(panel => {
+    const isMatch = panel.dataset.panel === targetName;
+    panel.classList.toggle('is-active', isMatch);
   });
 }
 
-/* Close menu on click */
-document.querySelectorAll('.menu-link').forEach(link => {
-  link.addEventListener('click', () => {
-    menuOverlay.classList.remove('active');
+researchLabels.forEach(label => {
+  label.addEventListener('click', () => {
+    activateResearchPanel(label.dataset.target);
+
+    const field = document.getElementById('researchField');
+    if (field) {
+      field.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   });
 });
+
+/* =========================================================
+JS SECTION 13: BURGER MENU SYSTEM
+Overlay open / close + section activation
+========================================================= */
+const menuOverlay = document.getElementById('menuOverlay');
+const menuOverlayClose = document.getElementById('menuOverlayClose');
+const heroMenuButton = document.getElementById('heroMenuButton');
+const menuLinks = document.querySelectorAll('.menu-link');
+
+function openMenuOverlay() {
+  if (!menuOverlay) return;
+  menuOverlay.classList.add('is-open');
+  menuOverlay.setAttribute('aria-hidden', 'false');
+}
+
+function closeMenuOverlay() {
+  if (!menuOverlay) return;
+  menuOverlay.classList.remove('is-open');
+  menuOverlay.setAttribute('aria-hidden', 'true');
+}
+
+if (heroMenuButton) {
+  heroMenuButton.addEventListener('click', () => {
+    if (!menuOverlay) return;
+    const isOpen = menuOverlay.classList.contains('is-open');
+    if (isOpen) {
+      closeMenuOverlay();
+    } else {
+      openMenuOverlay();
+    }
+  });
+}
+
+if (menuOverlayClose) {
+  menuOverlayClose.addEventListener('click', closeMenuOverlay);
+}
+
+menuLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    const targetName = link.dataset.menuTarget;
+    activateResearchPanel(targetName);
+    closeMenuOverlay();
+
+    const field = document.getElementById('researchField');
+    if (field) {
+      setTimeout(() => {
+        field.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 120);
+    }
+  });
+});
+
+if (menuOverlay) {
+  menuOverlay.addEventListener('click', (event) => {
+    if (event.target === menuOverlay) {
+      closeMenuOverlay();
+    }
+  });
+}
 </script>
- <!-- [03] BURGER MENU OVERLAY -->
-<div class="menu-overlay" id="menuOverlay">
 
-  <div class="menu-inner">
-
-    <a href="#direction" class="menu-link">02 Direction</a>
-    <a href="#contexts" class="menu-link">03 Contexts</a>
-    <a href="#method" class="menu-link">04 Method</a>
-    <a href="#work" class="menu-link">05 Work</a>
-    <a href="#profile" class="menu-link">06 Profile</a>
-    <a href="#contact" class="menu-link">07 Contact</a>
-
-  </div>
-
-</div>
 
 </body>
 </html>
