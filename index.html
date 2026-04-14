@@ -1887,25 +1887,20 @@ Minimal outlined circle → filled dot on interactive hover
   left: 0;
   width: 22px;
   height: 22px;
-  margin-left: -11px;
-  margin-top: -11px;
   border: 1px solid rgba(17, 17, 17, 0.68);
   border-radius: 50%;
   background: transparent;
   pointer-events: none;
   opacity: 0;
-  transform: translate3d(0, 0, 0) scale(1);
+  transform: translate(-50%, -50%);
   transition:
     opacity 0.25s ease,
-    transform 0.22s ease,
     width 0.22s ease,
     height 0.22s ease,
-    margin-left 0.22s ease,
-    margin-top 0.22s ease,
     border-color 0.22s ease,
     background-color 0.22s ease;
   z-index: 20000;
-  will-change: transform, opacity, width, height;
+  will-change: left, top, opacity, width, height;
   mix-blend-mode: normal;
 }
 
@@ -1916,11 +1911,8 @@ Minimal outlined circle → filled dot on interactive hover
 .custom-cursor.is-active {
   width: 8px;
   height: 8px;
-  margin-left: -4px;
-  margin-top: -4px;
   border-color: rgba(17, 17, 17, 0.95);
   background: rgba(17, 17, 17, 0.95);
-  transform: translate3d(0, 0, 0) scale(1);
 }
 
 /* Desktop only: hide native cursor on interactive cinematic mode */
@@ -2762,10 +2754,10 @@ function initCustomCursor() {
   function moveCursor(event) {
   cursorX = event.clientX;
   cursorY = event.clientY;
-  customCursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
+  customCursor.style.left = `${cursorX}px`;
+  customCursor.style.top = `${cursorY}px`;
   customCursor.classList.add('is-visible');
 }
-
   function showCursor() {
     customCursor.classList.add('is-visible');
   }
