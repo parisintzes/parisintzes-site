@@ -1409,10 +1409,43 @@ Full cinematic interactive field below hero
   align-items: start;
   gap: 0;
   min-height: 120vh;
-  padding: 140px 64px 180px;
+  margin-top: -90px;
+  padding: 230px 64px 180px;
   background: var(--bg);
-  overflow: hidden;
+  overflow: visible;
+  z-index: 3;
 }
+  .research-field::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 180px;
+  transform: translateY(-100%);
+  pointer-events: none;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.24) 18%,
+    rgba(255, 255, 255, 0.56) 42%,
+    rgba(255, 255, 255, 0.86) 72%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+.research-field::after {
+  content: "";
+  position: absolute;
+  top: -54px;
+  left: 64px;
+  right: 64px;
+  height: 1px;
+  background: rgba(17, 17, 17, 0.10);
+  pointer-events: none;
+  z-index: 2;
+}  
     
 .research-reveal-stage {
   position: relative;
@@ -1632,12 +1665,22 @@ CSS SECTION 24: TABLET ADAPTATION
 Cinematic stacked adaptation for tablet
 ========================================================= */
 @media (max-width: 1100px) {
-  .research-field {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    min-height: auto;
-    padding: 110px 36px 140px;
-  }
+ .research-field {
+  grid-template-columns: 1fr;
+  gap: 40px;
+  min-height: auto;
+  margin-top: -56px;
+  padding: 150px 36px 140px;
+}
+  .research-field::before {
+  height: 120px;
+}
+
+.research-field::after {
+  top: -34px;
+  left: 36px;
+  right: 36px;
+}
 
   .research-wave-field {
   display: none !important;
@@ -1694,9 +1737,19 @@ Accordion-cinematic adaptation for mobile
 ========================================================= */
 @media (max-width: 767px) {
   .research-field {
-    padding: 86px 20px 110px;
-    gap: 26px;
-  }
+  margin-top: -34px;
+  padding: 118px 20px 110px;
+  gap: 26px;
+}
+  .research-field::before {
+  height: 86px;
+}
+
+.research-field::after {
+  top: -22px;
+  left: 20px;
+  right: 20px;
+}
 
   .research-label-rail {
     gap: 14px;
@@ -2167,46 +2220,64 @@ Interactive research field below hero
       </div>
     </article>
 
-    <!-- 002 / Contexts -->
+    <!-- 002 / Fields of Inquiry -->
     <article class="research-panel" id="panel-contexts" data-panel="contexts">
       <div class="research-panel-inner">
         <div class="research-panel-number">002/006</div>
-        <h2 class="research-panel-title">Contexts</h2>
+        <h2 class="research-panel-title">Fields of Inquiry</h2>
         <p class="research-panel-lead">
-          Hospitality is approached as a dynamic system of perception, space, and embodied interaction.
+          The conditions under which food is consumed are not neutral — they are active determinants of behavior.
         </p>
         <p class="research-panel-body">
-          The research spans across gastronomy, tourism environments, and multisensory design settings where atmosphere becomes a behavioral condition rather than a decorative layer.
+          Sensory properties of food, atmospheric stimuli, and spatial conditions do not merely accompany an experience — they shape it. Understanding how these elements interact to influence eating behavior, guest perception, and consumption patterns across diverse research and hospitality contexts is the core research context of this inquiry.
+          Three domains frame this work. In gastronomy and F&B settings, the focus is on how food texture, oral processing, and sensory design influence eating behavior and consumption experience. In hotel and tourism environments, the interest lies in how spatial aesthetics and multisensory atmosphere affect guest perception and behavioral intention. Across both contexts, the underlying question remains consistent: how does the environment become a behavioral condition?
         </p>
         <div class="research-panel-line"></div>
       </div>
     </article>
 
-    <!-- 003 / Method -->
+    <!-- 003 / Approach -->
     <article class="research-panel" id="panel-method" data-panel="method">
       <div class="research-panel-inner">
         <div class="research-panel-number">003/006</div>
-        <h2 class="research-panel-title">Method</h2>
+        <h2 class="research-panel-title">Approach</h2>
         <p class="research-panel-lead">
-          The methodology integrates sensory science, behavioral interpretation, and analytical structure.
+          Method is not a procedure — it is a way of thinking.
         </p>
         <p class="research-panel-body">
-          By combining conceptual framing with empirical inquiry, the work translates perception into research evidence and research evidence into experiential intelligence.
+         The methodological approach integrates empirical inquiry with analytical structure, drawing from sensory science, behavioral research, and marketing analytics. Quantitative data collection and statistical analysis form the backbone of the research design, while conceptual frameworks from gastronomy and hospitality strategy provide the interpretive context.
+        Research design is approached as a synthesis — combining controlled experimental measurement with real-world observation. Experience with randomized controlled trial methodology, developed through research participation at the Department of Sensory Science & Eating Behavior, Wageningen University & Research, informs the empirical rigor applied across all research contexts. Analytical tools include sentiment analysis for the interpretation of consumer perception and affective response, translating qualitative experiential data into quantitative behavioral evidence.
+        The goal is not to describe experience — it is to measure it, interpret it, and translate it into research intelligence that advances understanding across sensory science and hospitality contexts.
+
         </p>
         <div class="research-panel-line"></div>
       </div>
     </article>
 
-    <!-- 004 / Work & Studies -->
+    <!-- 004 / Investigations -->
     <article class="research-panel" id="panel-work" data-panel="work">
       <div class="research-panel-inner">
         <div class="research-panel-number">004/006</div>
-        <h2 class="research-panel-title">Work &amp; Studies</h2>
+        <h2 class="research-panel-title">Investigations</h2>
         <p class="research-panel-lead">
-          Selected work explores multisensory experience, eating behavior, and environmental meaning.
+          Restructure Study (2023–2024)
+          Research Fellow — Department of Sensory Science & Eating Behavior, Wageningen University & Research, The Netherlands
+          Supervised by Prof. Ciaran Forde
         </p>
         <p class="research-panel-body">
-          The field includes Epignosis Study 1, Epignosis Study 2, and research experience connected to sensory science and hospitality contexts, forming a continuous trajectory between theory, measurement, and application.
+          The Restructure Study is a randomized controlled trial investigating how the texture of ultra-processed foods influences eating rate and energy intake. As a Research Fellow within the Department of Sensory Science & Eating Behavior, contributions spanned three interconnected dimensions of the research process — meal preparation as a trained chef, ensuring precise control of textural properties across experimental conditions; direct participant interaction during trial sessions, supporting data collection protocols; and video-based behavioral analysis of eating behavior, capturing consumption patterns, eating rate, and behavioral response to textural variation. This comprehensive involvement across culinary, observational, and analytical dimensions of an RCT forms the empirical foundation that informs the broader research trajectory.
+
+          Epignosis Study 2 (2024–2025)
+          Principal Investigator — Department of Marketing & Communication, Athens University of Economics and Business
+          Supervised by Prof. Georgios Mpaltas
+          Sustainable Spatial Aesthetics, Multisensory Experience and Emotional Processing in Concept Hotels: A Sequential S-O-R Model Enhanced by Sentiment Analytics
+          This study investigates how sustainability-oriented spatial aesthetics function as active sensory stimuli in concept hotel environments. Applying the Stimulus-Organism-Response framework, the research empirically confirms a sequential mediation structure: spatial sustainability activates multisensory perception, which triggers emotional response, which shapes brand attitude, and ultimately drives green behavioral intentions. Sentiment analytics were integrated as an analytical layer to capture affective dimensions of guest response. Findings indicate that brand meaning in experiential hospitality contexts is constructed through sensory absorption and emotional congruence rather than cognitive quality evaluation.
+
+          Epignosis Study 1 (2023–2024)
+          Principal Investigator — Department of Management, Marketing & Tourism, International Hellenic University
+          Supervised by Assistant Professor Dr. Antonios Giannopoulos
+          The Awareness of Sensory Marketing in Co-creating a New-Age Gastronomic Tourism Experience: Investigating the Eating Behavior of Millennials and Gen Z
+          This study examines the contribution of multisensory aesthetic factors — visual, auditory, olfactory, and flavor perception — in shaping dining experience and cuisine choice among Millennials and Generation Z. Based on responses from 308 participants, bivariate correlation and multivariate linear regression methods were applied to identify the sensory and demographic determinants of dining behavior. Findings demonstrate that interior design, color, light, and olfactory elements are among the most influential factors in restaurant aesthetic appeal, and that cultural and demographic variables significantly moderate sensory perception and cuisine preference.
         </p>
         <div class="research-panel-line"></div>
       </div>
