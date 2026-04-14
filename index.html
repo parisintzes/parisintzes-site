@@ -1926,12 +1926,8 @@ Minimal outlined circle → filled dot on interactive hover
   html.has-custom-cursor,
   html.has-custom-cursor body,
   html.has-custom-cursor body *,
-  html.has-custom-cursor .menu-overlay,
-  html.has-custom-cursor .menu-overlay *,
-  html.has-custom-cursor .menu-overlay button,
-  html.has-custom-cursor .menu-overlay-close,
-  html.has-custom-cursor .menu-link,
-  html.has-custom-cursor .hero-menu-button {
+  html.has-custom-cursor body *::before,
+  html.has-custom-cursor body *::after {
     cursor: none !important;
   }
 }
@@ -2122,12 +2118,12 @@ image left / label below / quote right / line below quote
 
         <h1 class="hero-main-title" id="heroMainTitle">
           Investigating<br>
-          Multisensory Experience<br> 
-          as a Behavioral Variable
+          Multisensory Experience as a Behavioral Variable
         </h1>
 
         <p class="hero-main-subtitle" id="heroMainSubtitle">
-          Research at the Convergence of Sensory Science, Gastronomy, and Hospitality Strategy
+          Research at the Convergence of Sensory Science, Gastronomy,<br>
+          and Hospitality Strategy
         </p>
 
         <div class="hero-title-line" id="heroTitleLine"></div>
@@ -2154,16 +2150,18 @@ Interactive research field below hero
   <!-- Left reveal stage -->
   <section class="research-reveal-stage" id="researchRevealStage">
 
-    <!-- 001 / Direction -->
+    <!-- 001 / Inquiry -->
     <article class="research-panel is-active" id="panel-direction" data-panel="direction">
       <div class="research-panel-inner">
         <div class="research-panel-number">001/006</div>
-        <h2 class="research-panel-title">Direction</h2>
+        <h2 class="research-panel-title">Inquiry</h2>
         <p class="research-panel-lead">
-          Experience is not designed as a visual outcome, but as a perceptual system.
+          Eating is not a simple act — it is a perceptual event.
         </p>
         <p class="research-panel-body">
-          The work investigates how multisensory stimuli shape behavior, emotion, and cognitive response across hospitality environments. It is concerned with the way atmospheres are absorbed, interpreted, and translated into meaningful experience.
+          Perception precedes cognition. Before a meal is evaluated, it is absorbed — through texture, atmosphere, sound, and spatial condition. Gastronomy is not merely the study of food — it is the study of how food is perceived, remembered, and experienced within a cultural and spatial context.
+          Understanding how these stimuli converge to shape eating behavior and guest experience is the central intellectual interest that drives this research trajectory — one that combines scientific rigor with creative inquiry.
+          The inquiry sits at the intersection of sensory science, gastronomy, and hospitality strategy — examining multisensory experience not as aesthetic layer, but as a measurable behavioral variable. The analytical lens draws from marketing analytics and data-driven methodologies, bridging empirical evidence with applied hospitality intelligence.
         </p>
         <div class="research-panel-line"></div>
       </div>
@@ -2255,7 +2253,7 @@ Interactive research field below hero
     <button class="research-label is-active" data-target="direction" type="button">
       <span class="research-label-arrow research-label-arrow-left">←</span>
       <span class="research-label-meta">001/006</span>
-      <span class="research-label-title">Direction</span>
+      <span class="research-label-title">Inquiry</span>
       <span class="research-label-arrow research-label-arrow-right">→</span>
     </button>
 
@@ -2788,18 +2786,30 @@ function initCustomCursor() {
   let cursorX = 0;
   let cursorY = 0;
 
+  function enforceCursorNone(target) {
+    document.documentElement.style.cursor = 'none';
+    document.body.style.cursor = 'none';
+
+    let node = target;
+    while (node && node !== document.documentElement) {
+      if (node.style) {
+        node.style.cursor = 'none';
+      }
+      node = node.parentElement;
+    }
+  }
+
   function moveCursor(event) {
-  cursorX = event.clientX;
-  cursorY = event.clientY;
+    cursorX = event.clientX;
+    cursorY = event.clientY;
 
-  customCursor.style.left = `${cursorX}px`;
-  customCursor.style.top = `${cursorY}px`;
-  customCursor.classList.add('is-visible');
+    customCursor.style.left = `${cursorX}px`;
+    customCursor.style.top = `${cursorY}px`;
+    customCursor.classList.add('is-visible');
 
-  // 🔥 FORCE HIDE NATIVE CURSOR ΠΑΝΤΟΥ
-  document.body.style.cursor = 'none';
-  document.documentElement.style.cursor = 'none';
-}
+    enforceCursorNone(event.target);
+  }
+
   function showCursor() {
     customCursor.classList.add('is-visible');
   }
@@ -2818,11 +2828,19 @@ function initCustomCursor() {
   }
 
   window.addEventListener('mousemove', moveCursor);
-  // 🔥 συνεχές enforcement για overlays / menu
-setInterval(() => {
-  document.body.style.cursor = 'none';
-  document.documentElement.style.cursor = 'none';
-}, 100);
+
+  document.addEventListener('mouseover', (event) => {
+    enforceCursorNone(event.target);
+  }, true);
+
+  document.addEventListener('mousedown', (event) => {
+    enforceCursorNone(event.target);
+  }, true);
+
+  document.addEventListener('mouseup', (event) => {
+    enforceCursorNone(event.target);
+  }, true);
+
   document.addEventListener('mouseenter', showCursor);
   document.addEventListener('mouseleave', hideCursor);
 
