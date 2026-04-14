@@ -1404,7 +1404,7 @@ Full cinematic interactive field below hero
 .research-field {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 58%) minmax(120px, 14%) minmax(260px, 28%);
+  grid-template-columns: minmax(0, 68%) minmax(260px, 32%);
   align-items: start;
   gap: 0;
   min-height: 120vh;
@@ -1412,7 +1412,7 @@ Full cinematic interactive field below hero
   background: var(--bg);
   overflow: hidden;
 }
-
+    
 .research-reveal-stage {
   position: relative;
   min-height: 760px;
@@ -1484,13 +1484,7 @@ Full cinematic interactive field below hero
 }
 
 .research-wave-field {
-  position: relative;
-  min-height: 760px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-  pointer-events: none;
+  display: none;
 }
 
 .research-wave-track {
@@ -1528,11 +1522,11 @@ Full cinematic interactive field below hero
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 32px;
   min-height: 760px;
   z-index: 4;
-  padding-top: 8px;
+  padding-top: 175px;
 }
 
 .research-label {
@@ -2181,18 +2175,7 @@ Interactive research field below hero
 
   </section>
 
-  <!-- Center wave field -->
-  <div class="research-wave-field" aria-hidden="true">
-    <div class="research-wave-track">
-      <svg class="research-wave-svg" viewBox="0 0 600 120" preserveAspectRatio="none">
-        <path
-          class="research-wave-path research-wave-path-primary"
-          d="M0,62 C60,30 120,92 180,62 C240,32 300,92 360,62 C420,32 480,92 540,62 C570,48 585,52 600,62" />
-        <path
-          class="research-wave-path research-wave-path-secondary"
-          d="M0,68 C60,46 120,84 180,68 C240,48 300,84 360,68 C420,48 480,84 540,68 C570,58 585,60 600,68" />
-      </svg>
-    </div>
+
   </div>
 
   <!-- Right drifting label rail -->
