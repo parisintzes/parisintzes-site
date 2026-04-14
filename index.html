@@ -2115,14 +2115,12 @@ image left / label below / quote right / line below quote
         <div class="hero-accent-line" id="heroAccentLine"></div>
 
         <h1 class="hero-main-title" id="heroMainTitle">
-          Shaping<br>
-          Eating Behavior through<br>
-          Multisensory Experience
+          Multisensory Experience<br> 
+          as a Behavioral Variable
         </h1>
 
         <p class="hero-main-subtitle" id="heroMainSubtitle">
-          Integrating Sensory Science, Gastronomy, and Data-Driven Insights
-          into Hospitality Contexts
+          Research at the Convergence of Sensory Science, Gastronomy, and Hospitality Strategy
         </p>
 
         <div class="hero-title-line" id="heroTitleLine"></div>
@@ -2769,9 +2767,14 @@ function initCustomCursor() {
   function moveCursor(event) {
   cursorX = event.clientX;
   cursorY = event.clientY;
+
   customCursor.style.left = `${cursorX}px`;
   customCursor.style.top = `${cursorY}px`;
   customCursor.classList.add('is-visible');
+
+  // 🔥 FORCE HIDE NATIVE CURSOR ΠΑΝΤΟΥ
+  document.body.style.cursor = 'none';
+  document.documentElement.style.cursor = 'none';
 }
   function showCursor() {
     customCursor.classList.add('is-visible');
@@ -2791,6 +2794,11 @@ function initCustomCursor() {
   }
 
   window.addEventListener('mousemove', moveCursor);
+  // 🔥 συνεχές enforcement για overlays / menu
+setInterval(() => {
+  document.body.style.cursor = 'none';
+  document.documentElement.style.cursor = 'none';
+}, 100);
   document.addEventListener('mouseenter', showCursor);
   document.addEventListener('mouseleave', hideCursor);
 
