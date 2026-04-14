@@ -1852,7 +1852,13 @@ Single-page full-screen navigation
 .menu-link:hover {
   color: rgba(17, 17, 17, 0.52);
 }
-
+.menu-overlay,
+.menu-overlay *,
+.menu-overlay button,
+.menu-overlay .menu-link,
+.menu-overlay .menu-overlay-close {
+  cursor: none !important;
+}
 @media (max-width: 1100px) {
   .menu-overlay-inner {
     padding: 28px 36px 36px;
@@ -2115,6 +2121,7 @@ image left / label below / quote right / line below quote
         <div class="hero-accent-line" id="heroAccentLine"></div>
 
         <h1 class="hero-main-title" id="heroMainTitle">
+          Investigating<br>
           Multisensory Experience<br> 
           as a Behavioral Variable
         </h1>
@@ -2132,7 +2139,7 @@ image left / label below / quote right / line below quote
 
       <div class="hero-footer-meta" id="heroFooterMeta">
         <div class="hero-keywords">
-          sensory · behavior · emotion · gastronomy · data
+          sensory · behavior · emotion · gastronomy · data · synthesis
         </div>
         <div class="hero-year">2026</div>
       </div>
@@ -2687,23 +2694,31 @@ const menuOverlayClose = document.getElementById('menuOverlayClose');
 const heroMenuButton = document.getElementById('heroMenuButton');
 const menuLinks = document.querySelectorAll('.menu-link');
 
+function forceHideNativeCursor() {
+  document.documentElement.style.cursor = 'none';
+  document.body.style.cursor = 'none';
+
+  if (menuOverlay) menuOverlay.style.cursor = 'none';
+  if (menuOverlayClose) menuOverlayClose.style.cursor = 'none';
+  if (heroMenuButton) heroMenuButton.style.cursor = 'none';
+
+  menuLinks.forEach(link => {
+    link.style.cursor = 'none';
+  });
+}
+
 function openMenuOverlay() {
   if (!menuOverlay) return;
   menuOverlay.classList.add('is-open');
   menuOverlay.setAttribute('aria-hidden', 'false');
-
-  document.documentElement.style.cursor = 'none';
-  document.body.style.cursor = 'none';
-  menuOverlay.style.cursor = 'none';
+  forceHideNativeCursor();
 }
 
 function closeMenuOverlay() {
   if (!menuOverlay) return;
   menuOverlay.classList.remove('is-open');
   menuOverlay.setAttribute('aria-hidden', 'true');
-
-  document.documentElement.style.cursor = 'none';
-  document.body.style.cursor = 'none';
+  forceHideNativeCursor();
 }
 
 if (heroMenuButton) {
@@ -2718,11 +2733,15 @@ if (heroMenuButton) {
     }
 
     heroMenuButton.blur();
+    forceHideNativeCursor();
   });
 }
 
 if (menuOverlayClose) {
-  menuOverlayClose.addEventListener('click', closeMenuOverlay);
+  menuOverlayClose.addEventListener('click', () => {
+    closeMenuOverlay();
+    forceHideNativeCursor();
+  });
 }
 
 menuLinks.forEach(link => {
@@ -2730,6 +2749,7 @@ menuLinks.forEach(link => {
     const targetName = link.dataset.menuTarget;
     activateResearchPanel(targetName);
     closeMenuOverlay();
+    forceHideNativeCursor();
 
     const field = document.getElementById('researchField');
     if (field) {
@@ -2744,8 +2764,12 @@ if (menuOverlay) {
   menuOverlay.addEventListener('click', (event) => {
     if (event.target === menuOverlay) {
       closeMenuOverlay();
+      forceHideNativeCursor();
     }
   });
+
+  menuOverlay.addEventListener('mousemove', forceHideNativeCursor);
+  menuOverlay.addEventListener('mouseenter', forceHideNativeCursor);
 }
  /* =========================================================
 JS SECTION 14: DESKTOP CUSTOM CURSOR
