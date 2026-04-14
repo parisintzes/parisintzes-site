@@ -2742,7 +2742,7 @@ const customCursor = document.getElementById('customCursor');
 function initCustomCursor() {
   if (!desktopEntranceQuery.matches || !customCursor) return;
 
-  document.body.classList.add('has-custom-cursor');
+  document.documentElement.classList.add('has-custom-cursor');
 
   let cursorX = 0;
   let cursorY = 0;
