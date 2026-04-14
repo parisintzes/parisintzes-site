@@ -1919,7 +1919,13 @@ Minimal outlined circle → filled dot on interactive hover
 @media (min-width: 1101px) {
   html.has-custom-cursor,
   html.has-custom-cursor body,
-  html.has-custom-cursor * {
+  html.has-custom-cursor body *,
+  html.has-custom-cursor .menu-overlay,
+  html.has-custom-cursor .menu-overlay *,
+  html.has-custom-cursor .menu-overlay button,
+  html.has-custom-cursor .menu-overlay-close,
+  html.has-custom-cursor .menu-link,
+  html.has-custom-cursor .hero-menu-button {
     cursor: none !important;
   }
 }
@@ -2687,23 +2693,33 @@ function openMenuOverlay() {
   if (!menuOverlay) return;
   menuOverlay.classList.add('is-open');
   menuOverlay.setAttribute('aria-hidden', 'false');
+
+  document.documentElement.style.cursor = 'none';
+  document.body.style.cursor = 'none';
+  menuOverlay.style.cursor = 'none';
 }
 
 function closeMenuOverlay() {
   if (!menuOverlay) return;
   menuOverlay.classList.remove('is-open');
   menuOverlay.setAttribute('aria-hidden', 'true');
+
+  document.documentElement.style.cursor = 'none';
+  document.body.style.cursor = 'none';
 }
 
 if (heroMenuButton) {
   heroMenuButton.addEventListener('click', () => {
     if (!menuOverlay) return;
     const isOpen = menuOverlay.classList.contains('is-open');
+
     if (isOpen) {
       closeMenuOverlay();
     } else {
       openMenuOverlay();
     }
+
+    heroMenuButton.blur();
   });
 }
 
@@ -2743,6 +2759,9 @@ function initCustomCursor() {
   if (!desktopEntranceQuery.matches || !customCursor) return;
 
   document.documentElement.classList.add('has-custom-cursor');
+  document.body.classList.add('has-custom-cursor');
+  document.documentElement.style.cursor = 'none';
+  document.body.style.cursor = 'none';
 
   let cursorX = 0;
   let cursorY = 0;
