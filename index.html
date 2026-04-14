@@ -1527,7 +1527,7 @@ Full cinematic interactive field below hero
   gap: 32px;
   min-height: 760px;
   z-index: 4;
-  padding-top: 50px;
+  padding-top: 40px;
 }
 
 .research-label {
@@ -1917,14 +1917,10 @@ Minimal outlined circle → filled dot on interactive hover
 
 /* Desktop only: hide native cursor on interactive cinematic mode */
 @media (min-width: 1101px) {
-  body.has-custom-cursor,
-  body.has-custom-cursor a,
-  body.has-custom-cursor button,
-  body.has-custom-cursor .research-label,
-  body.has-custom-cursor .menu-link,
-  body.has-custom-cursor .hero-menu-button,
-  body.has-custom-cursor .entrance-skip {
-    cursor: none;
+  html.has-custom-cursor,
+  html.has-custom-cursor body,
+  html.has-custom-cursor * {
+    cursor: none !important;
   }
 }
 
