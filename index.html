@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <!-- =========================================================
   HTML SECTION 01: BASIC PAGE SETUP
-  Βασικές πληροφορίες του document
   ========================================================== -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,13 +12,13 @@
 
   <!-- =========================================================
   HTML SECTION 02: GOOGLE FONTS
-  Γραμματοσειρές για editorial / premium αισθητική
   ========================================================== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
   <style>
+
     /* =========================================================
     CSS SECTION 01: ROOT VARIABLES
     Κεντρικά design tokens για χρώματα, αποστάσεις και sizing
@@ -96,12 +96,12 @@
     .flow-line,
     .hero-accent-line,
     .hero-title-line {
-    height: 1px;
-    background: var(--line);
-    transform: scaleX(0);
-    transform-origin: left center;
-    opacity: 0;
-    will-change: transform, opacity;
+      height: 1px;
+      background: var(--line);
+      transform: scaleX(0);
+      transform-origin: left center;
+      opacity: 0;
+      will-change: transform, opacity;
     }
 
     /* =========================================================
@@ -117,12 +117,12 @@
     }
 
     .entrance-flow.is-hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition:
-    opacity 1.2s ease,
-    visibility 1.2s ease;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition:
+        opacity 1.2s ease,
+        visibility 1.2s ease;
     }
 
     /* =========================================================
@@ -130,34 +130,35 @@
     Κουμπί παράλειψης intro
     ========================================================== */
     .entrance-skip {
-    position: fixed;
-    right: 24px;
-    bottom: 24px;
-    z-index: 10020;
-    background: rgba(255,255,255,0.62);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(17,17,17,0.10);
-    padding: 10px 14px;
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--text);
-    cursor: pointer;
-    opacity: 0;
-    transform: translateY(10px);
-    transition:
-    opacity 0.55s ease,
-    transform 0.55s ease,
-    background 0.3s ease,
-    border-color 0.3s ease;
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 10020;
+      background: rgba(255, 255, 255, 0.62);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(17, 17, 17, 0.10);
+      padding: 10px 14px;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text);
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(10px);
+      transition:
+        opacity 0.55s ease,
+        transform 0.55s ease,
+        background 0.3s ease,
+        border-color 0.3s ease;
     }
+
     .entrance-skip.is-visible {
-    opacity: 1;
-    transform: translateY(0);
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .entrance-skip:hover {
-      background: rgba(255,255,255,0.85);
+      background: rgba(255, 255, 255, 0.85);
     }
 
     /* =========================================================
@@ -171,48 +172,48 @@
       max-width: var(--max-width);
       margin: 0 auto;
     }
+
     /* =========================================================
     CSS SECTION 06A: ENTRANCE TOP FADE VEIL
     Λευκό gradient overlay στο πάνω μέρος του entrance.
     Χρησιμοποιείται για ορατό cinematic dissolve κατά την έξοδο.
-    ========================================================= */
-  .entrance-top-fade-veil {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 18vh;
-  z-index: 30;
-  pointer-events: none;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(255, 255, 255, 0.96) 18%,
-    rgba(255, 255, 255, 0.82) 40%,
-    rgba(255, 255, 255, 0.52) 62%,
-    rgba(255, 255, 255, 0.18) 82%,
-    rgba(255, 255, 255, 0) 100%
-  );
-}
+    ========================================================== */
+    .entrance-top-fade-veil {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 18vh;
+      z-index: 30;
+      pointer-events: none;
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 0.96) 18%,
+        rgba(255, 255, 255, 0.82) 40%,
+        rgba(255, 255, 255, 0.52) 62%,
+        rgba(255, 255, 255, 0.18) 82%,
+        rgba(255, 255, 255, 0) 100%
+      );
+    }
 
     /* =========================================================
     CSS SECTION 07: IMAGE LAYER
     Layer αποκλειστικά για τις εικόνες του entrance
     ========================================================== */
     .entrance-image-layer {
-    position: absolute;
-    inset: 0;
-    z-index: 10;
-    pointer-events: none;
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      pointer-events: none;
     }
 
     .flow-image {
-    position: absolute;
-    opacity: 1;
-    transform: translateY(140vh);
-    transition:
-    transform 1.6s var(--ease-soft);
-    will-change: transform;
+      position: absolute;
+      opacity: 1;
+      transform: translateY(140vh);
+      transition: transform 1.6s var(--ease-soft);
+      will-change: transform;
     }
 
     .flow-image img {
@@ -244,32 +245,33 @@
     Layer για labels, quotes και micro editorial text
     ========================================================== */
     .entrance-text-layer {
-    position: absolute;
-    inset: 0;
-    z-index: 20;
-    pointer-events: none;
+      position: absolute;
+      inset: 0;
+      z-index: 20;
+      pointer-events: none;
     }
 
     .flow-text-group {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transform: translateY(140px);
-    transition:
-    opacity 0.9s ease,
-    transform 1.5s var(--ease-soft);
-    will-change: transform, opacity;
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transform: translateY(140px);
+      transition:
+        opacity 0.9s ease,
+        transform 1.5s var(--ease-soft);
+      will-change: transform, opacity;
     }
+
     .flow-label,
     .flow-quote,
     .flow-micro-vertical {
-    position: absolute;
-    opacity: 1;
-    transform: translateY(140vh);
-    transition:
-    transform 1.35s var(--ease-soft);
-    will-change: transform;
-  }
+      position: absolute;
+      opacity: 1;
+      transform: translateY(140vh);
+      transition: transform 1.35s var(--ease-soft);
+      will-change: transform;
+    }
+
     /* =========================================================
     CSS SECTION 09: PERCEPTION TEXT GROUP
     Πρώτο θεωρητικό / ακαδημαϊκό επίπεδο
@@ -364,29 +366,25 @@
       transform: scaleX(1);
     }
 
-/* =========================================================
-/* =========================================================
-CSS SECTION 12: HERO STAGE WRAPPER
-Το hero ανεβαίνει σαν master block από κάτω προς τα πάνω
-========================================================= */
-.hero-stage {
-  position: relative;
-  z-index: 1;
-  min-height: 100vh;
-  background: var(--bg);
+    /* =========================================================
+    CSS SECTION 12: HERO STAGE WRAPPER
+    Το hero ανεβαίνει σαν master block από κάτω προς τα πάνω
+    ========================================================== */
+    .hero-stage {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      background: var(--bg);
+      opacity: 1;
+      transform: translateY(140vh);
+      transition: transform 2.15s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
 
-  opacity: 1;
-  transform: translateY(140vh);
+    .hero-stage.is-rising {
+      transform: translateY(0);
+    }
 
-  transition:
-    transform 2.15s cubic-bezier(0.22, 1, 0.36, 1);
-
-  will-change: transform;
-}
-
-.hero-stage.is-rising {
-  transform: translateY(0);
-}
     /* =========================================================
     CSS SECTION 13: HERO TOOLBAR
     Toolbar με brand block και menu
@@ -400,7 +398,7 @@ CSS SECTION 12: HERO STAGE WRAPPER
       justify-content: space-between;
       padding: 20px var(--pad-desktop) 0;
       min-height: var(--toolbar-height);
-      background: linear-gradient(to bottom, rgba(255,255,255,0.96), rgba(255,255,255,0));
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0));
       transition:
         padding 0.45s ease,
         background 0.45s ease,
@@ -488,6 +486,7 @@ CSS SECTION 12: HERO STAGE WRAPPER
     ========================================================== */
     .hero-composition {
       position: relative;
+      isolation: isolate;
       max-width: var(--max-width);
       margin: 0 auto;
       min-height: calc(100vh - var(--toolbar-height));
@@ -512,44 +511,44 @@ CSS SECTION 12: HERO STAGE WRAPPER
     }
 
     .hero-copy-column {
-    max-width: 620px;
-    padding-left: 72px;
-    padding-top: 178px;
-  }
+      max-width: 620px;
+      padding-left: 72px;
+      padding-top: 178px;
+    }
 
     .hero-accent-line {
-    width: 44px;
-    background: rgba(17, 17, 17, 0.82);
-    margin-bottom: 20px;
+      width: 44px;
+      background: rgba(17, 17, 17, 0.82);
+      margin-bottom: 20px;
     }
 
     .hero-main-title {
-    margin: 0;
-    max-width: 680px;
-    font-size: clamp(38px, 4.2vw, 40px);
-    line-height: 1.06;
-    letter-spacing: -0.02em;
-    font-weight: 300;
-    font-family: 'Inter', sans-serif;
-    opacity: 0;
-    transform: translateY(24px);
-    transition:
-    opacity 1s ease,
-    transform 1.2s var(--ease-soft);
+      margin: 0;
+      max-width: 680px;
+      font-size: clamp(38px, 4.2vw, 40px);
+      line-height: 1.06;
+      letter-spacing: -0.02em;
+      font-weight: 300;
+      font-family: 'Inter', sans-serif;
+      opacity: 0;
+      transform: translateY(24px);
+      transition:
+        opacity 1s ease,
+        transform 1.2s var(--ease-soft);
     }
 
     .hero-main-subtitle {
-    margin-top: 20px;
-    max-width: 500px;
-    font-size: 15px;
-    line-height: 1.34;
-    color: rgba(17, 17, 17, 0.58);
-    font-weight: 300;
-    opacity: 0;
-    transform: translateY(24px);
-    transition:
-    opacity 1s ease,
-    transform 1.2s var(--ease-soft);
+      margin-top: 20px;
+      max-width: 500px;
+      font-size: 15px;
+      line-height: 1.34;
+      color: rgba(17, 17, 17, 0.58);
+      font-weight: 300;
+      opacity: 0;
+      transform: translateY(24px);
+      transition:
+        opacity 1s ease,
+        transform 1.2s var(--ease-soft);
     }
 
     .hero-title-line {
@@ -560,35 +559,35 @@ CSS SECTION 12: HERO STAGE WRAPPER
     }
 
     .hero-image-column {
-  position: absolute;
-  right: 95px;
-  top: 212px;
-  width: 248px;
-  height: 260px;
-  opacity: 0;
-  transform: translateY(36px);
-  transition:
-    opacity 1.2s ease,
-    transform 1.4s var(--ease-soft);
-  will-change: transform;
-}
-
+      position: absolute;
+      right: 95px;
+      top: 212px;
+      width: 248px;
+      height: 260px;
+      opacity: 0;
+      transform: translateY(36px);
+      transition:
+        opacity 1.2s ease,
+        transform 1.4s var(--ease-soft);
+      will-change: transform;
+    }
 
     .hero-footer-meta {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 48px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 18px;
-    opacity: 0;
-    transform: translateY(18px);
-    transition:
-    opacity 1s ease,
-    transform 1.2s var(--ease-soft);
-  }
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      opacity: 0;
+      transform: translateY(18px);
+      transition:
+        opacity 1s ease,
+        transform 1.2s var(--ease-soft);
+    }
+
     .hero-keywords {
       font-size: 10px;
       letter-spacing: 0.24em;
@@ -606,25 +605,22 @@ CSS SECTION 12: HERO STAGE WRAPPER
     /* =========================================================
     CSS SECTION 14A: HERO GRAIN LAYER
     Ultra subtle atmospheric grain for editorial depth
-    ========================================================= */
-.hero-grain-layer {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.045;
-  mix-blend-mode: multiply;
-  background-image:
-    radial-gradient(circle at 20% 20%, rgba(0,0,0,0.06) 0.5px, transparent 0.6px),
-    radial-gradient(circle at 80% 30%, rgba(0,0,0,0.04) 0.5px, transparent 0.7px),
-    radial-gradient(circle at 40% 70%, rgba(0,0,0,0.05) 0.5px, transparent 0.6px),
-    radial-gradient(circle at 70% 80%, rgba(0,0,0,0.04) 0.5px, transparent 0.7px);
-  background-size: 170px 170px, 210px 210px, 190px 190px, 230px 230px;
-}
-    .hero-composition {
-  position: relative;
-  isolation: isolate;
-}
+    ========================================================== */
+    .hero-grain-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.045;
+      mix-blend-mode: multiply;
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(0, 0, 0, 0.06) 0.5px, transparent 0.6px),
+        radial-gradient(circle at 80% 30%, rgba(0, 0, 0, 0.04) 0.5px, transparent 0.7px),
+        radial-gradient(circle at 40% 70%, rgba(0, 0, 0, 0.05) 0.5px, transparent 0.6px),
+        radial-gradient(circle at 70% 80%, rgba(0, 0, 0, 0.04) 0.5px, transparent 0.7px);
+      background-size: 170px 170px, 210px 210px, 190px 190px, 230px 230px;
+    }
+
     /* =========================================================
     CSS SECTION 15: POST-HERO PLACEHOLDER
     Placeholder content για scroll testing
@@ -707,317 +703,319 @@ CSS SECTION 12: HERO STAGE WRAPPER
       }
 
       .hero-copy-column {
-      padding-left: 0;
-      padding-top: 118px;
-      max-width: 520px;
+        padding-left: 0;
+        padding-top: 118px;
+        max-width: 520px;
       }
 
-     .hero-image-column {
-       right: 36px;
-      top: 170px;
-      width: 220px;
+      .hero-image-column {
+        right: 36px;
+        top: 170px;
+        width: 220px;
+      }
+
+      /* =========================================================
+      CSS SECTION 16A: PERCEPTION UNIT / TABLET
+      Responsive προσαρμογές του ενιαίου perception block για tablet
+      ========================================================== */
+      .flow-unit-perception {
+        left: 5%;
+        top: 16%;
+        width: 240px;
+      }
+
+      .flow-unit-label {
+        margin-top: 12px;
+        font-size: 10px;
+        letter-spacing: 0.20em;
+      }
+
+      .flow-unit-quote {
+        left: calc(100% + 140px);
+        top: 2px;
+        width: 240px;
+        font-size: 16px;
+        line-height: 1.16;
+      }
+
+      .flow-unit-line {
+        left: calc(100% + 140px);
+        top: 34px;
+        width: 320px;
+      }
     }
 
-   /* =========================================================
-  CSS SECTION 16A: PERCEPTION UNIT / TABLET
-  Responsive προσαρμογές του ενιαίου perception block για tablet
-  ========================================================== */
-  .flow-unit-perception {
-    left: 5%;
-    top: 16%;
-    width: 240px;
-  }
+    /* =========================================================
+    CSS SECTION 16B: TABLET / MOBILE CINEMATIC HERO MODE
+    Σε tablet και mobile το intro απενεργοποιείται
+    και το hero αποκαλύπτεται με staged reveal
+    ========================================================== */
+    @media (max-width: 1100px) {
+      .entrance-flow {
+        display: none !important;
+      }
 
-  .flow-unit-label {
-    margin-top: 12px;
-    font-size: 10px;
-    letter-spacing: 0.20em;
-  }
+      .hero-stage {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+        filter: blur(0) !important;
+      }
 
-  .flow-unit-quote {
-    left: calc(100% + 140px);
-    top: 2px;
-    width: 240px;
+      /* αρχικά όλα ήσυχα */
+      .hero-toolbar,
+      .hero-main-title,
+      .hero-main-subtitle,
+      .hero-image-column,
+      .hero-footer-meta,
+      .hero-accent-line,
+      .hero-title-line {
+        opacity: 0;
+      }
 
-    font-size: 16px;
-    line-height: 1.16;
-  }
+      .hero-toolbar {
+        transform: translateY(14px);
+        transition:
+          opacity 0.55s ease,
+          transform 0.75s var(--ease-soft);
+      }
 
-  .flow-unit-line {
-    left: calc(100% + 140px);
-    top: 34px;
+      .hero-main-title {
+        transform: translateY(18px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.95s var(--ease-soft);
+      }
 
-    width: 320px;
-  }
-}  
- /* =========================================================
-CSS SECTION 16B: TABLET / MOBILE CINEMATIC HERO MODE
-Σε tablet και mobile το intro απενεργοποιείται
-και το hero αποκαλύπτεται με staged reveal
-========================================================= */
-@media (max-width: 1100px) {
-  .entrance-flow {
-    display: none !important;
-  }
+      .hero-main-subtitle {
+        transform: translateY(16px);
+        transition:
+          opacity 0.65s ease,
+          transform 0.9s var(--ease-soft);
+      }
 
-  .hero-stage {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-    filter: blur(0) !important;
-  }
+      .hero-image-column {
+        transform: translateY(18px) scale(1.02);
+        transition:
+          opacity 0.8s ease,
+          transform 1s var(--ease-soft);
+      }
 
-  /* αρχικά όλα ήσυχα */
-  .hero-toolbar,
-  .hero-main-title,
-  .hero-main-subtitle,
-  .hero-image-column,
-  .hero-footer-meta,
-  .hero-accent-line,
-  .hero-title-line {
-    opacity: 0;
-  }
+      .hero-footer-meta {
+        transform: translateY(14px);
+        transition:
+          opacity 0.65s ease,
+          transform 0.85s var(--ease-soft);
+      }
 
-  .hero-toolbar {
-    transform: translateY(14px);
-    transition:
-      opacity 0.55s ease,
-      transform 0.75s var(--ease-soft);
-  }
+      .hero-accent-line,
+      .hero-title-line {
+        transform: scaleX(0);
+        transform-origin: left center;
+        transition:
+          opacity 0.6s ease,
+          transform 0.9s var(--ease-soft);
+      }
 
-  .hero-main-title {
-    transform: translateY(18px);
-    transition:
-      opacity 0.7s ease,
-      transform 0.95s var(--ease-soft);
-  }
+      /* staged reveal states */
+      .hero-stage.is-mobile-toolbar-ready .hero-toolbar {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
-  .hero-main-subtitle {
-    transform: translateY(16px);
-    transition:
-      opacity 0.65s ease,
-      transform 0.9s var(--ease-soft);
-  }
+      .hero-stage.is-mobile-title-ready .hero-main-title,
+      .hero-stage.is-mobile-title-ready .hero-accent-line {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
-  .hero-image-column {
-    transform: translateY(18px) scale(1.02);
-    transition:
-      opacity 0.8s ease,
-      transform 1s var(--ease-soft);
-  }
+      .hero-stage.is-mobile-title-ready .hero-accent-line {
+        transform: scaleX(1);
+      }
 
-  .hero-footer-meta {
-    transform: translateY(14px);
-    transition:
-      opacity 0.65s ease,
-      transform 0.85s var(--ease-soft);
-  }
+      .hero-stage.is-mobile-subtitle-ready .hero-main-subtitle,
+      .hero-stage.is-mobile-subtitle-ready .hero-title-line {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
-  .hero-accent-line,
-  .hero-title-line {
-    transform: scaleX(0);
-    transform-origin: left center;
-    transition:
-      opacity 0.6s ease,
-      transform 0.9s var(--ease-soft);
-  }
+      .hero-stage.is-mobile-subtitle-ready .hero-title-line {
+        transform: scaleX(1);
+      }
 
-  /* staged reveal states */
-  .hero-stage.is-mobile-toolbar-ready .hero-toolbar {
-    opacity: 1;
-    transform: translateY(0);
-  }
+      .hero-stage.is-mobile-image-ready .hero-image-column {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
 
-  .hero-stage.is-mobile-title-ready .hero-main-title,
-  .hero-stage.is-mobile-title-ready .hero-accent-line {
-    opacity: 1;
-    transform: translateY(0);
-  }
+      .hero-stage.is-mobile-footer-ready .hero-footer-meta {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-  .hero-stage.is-mobile-title-ready .hero-accent-line {
-    transform: scaleX(1);
-  }
+    /* =========================================================
+    CSS SECTION 17: MOBILE LAYOUT
+    Stacked responsive σύστημα για κινητά
+    ========================================================== */
+    @media (max-width: 767px) {
+      .entrance-skip {
+        right: 16px;
+        bottom: 16px;
+        font-size: 10px;
+        padding: 9px 12px;
+      }
 
-  .hero-stage.is-mobile-subtitle-ready .hero-main-subtitle,
-  .hero-stage.is-mobile-subtitle-ready .hero-title-line {
-    opacity: 1;
-    transform: translateY(0);
-  }
+      .entrance-canvas {
+        width: 100%;
+        height: 100vh;
+      }
 
-  .hero-stage.is-mobile-subtitle-ready .hero-title-line {
-    transform: scaleX(1);
-  }
+      .flow-image-sensory {
+        right: 20px;
+        top: 55%;
+        width: 210px;
+      }
 
-  .hero-stage.is-mobile-image-ready .hero-image-column {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+      .flow-image-analysis {
+        left: 20px;
+        top: 52%;
+        width: 220px;
+      }
 
-  .hero-stage.is-mobile-footer-ready .hero-footer-meta {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-   /* =========================================================
-CSS SECTION 17: MOBILE LAYOUT
-Stacked responsive σύστημα για κινητά
-========================================================== */
-@media (max-width: 767px) {
-  .entrance-skip {
-    right: 16px;
-    bottom: 16px;
-    font-size: 10px;
-    padding: 9px 12px;
-  }
+      .flow-label-sensory {
+        right: 20px;
+        top: 66%;
+      }
 
-  .entrance-canvas {
-    width: 100%;
-    height: 100vh;
-  }
+      .flow-quote-sensory {
+        left: 20px;
+        top: 9%;
+        width: calc(100% - 40px);
+        font-size: 18px;
+        line-height: 1.14;
+      }
 
-  .flow-image-sensory {
-    right: 20px;
-    top: 55%;
-    width: 210px;
-  }
+      .flow-line-sensory {
+        left: 20px;
+        top: calc(9% + 70px);
+        width: 230px;
+      }
 
-  .flow-image-analysis {
-    left: 20px;
-    top: 52%;
-    width: 220px;
-  }
+      .flow-label-analysis {
+        left: 20px;
+        top: 47%;
+      }
 
-  .flow-label-sensory {
-    right: 20px;
-    top: 66%;
-  }
+      .flow-quote-analysis-main {
+        right: 20px;
+        left: 20px;
+        top: 77%;
+        width: auto;
+        font-size: 18px;
+        line-height: 1.14;
+      }
 
-  .flow-quote-sensory {
-    left: 20px;
-    top: 9%;
-    width: calc(100% - 40px);
-    font-size: 18px;
-    line-height: 1.14;
-  }
+      .flow-quote-analysis-sub {
+        right: 20px;
+        left: 20px;
+        top: calc(77% + 34px);
+        width: auto;
+        font-size: 14px;
+        line-height: 1.18;
+      }
 
-  .flow-line-sensory {
-    left: 20px;
-    top: calc(9% + 70px);
-    width: 230px;
-  }
+      .flow-line-analysis {
+        left: 20px;
+        right: auto;
+        top: calc(77% + 68px);
+        width: 220px;
+      }
 
-  .flow-label-analysis {
-    left: 20px;
-    top: 47%;
-  }
+      .hero-toolbar {
+        padding: 18px var(--pad-mobile) 0;
+      }
 
-  .flow-quote-analysis-main {
-    right: 20px;
-    left: 20px;
-    top: 77%;
-    width: auto;
-    font-size: 18px;
-    line-height: 1.14;
-  }
+      .hero-composition {
+        padding: 34px var(--pad-mobile) 100px;
+        min-height: auto;
+      }
 
-  .flow-quote-analysis-sub {
-    right: 20px;
-    left: 20px;
-    top: calc(77% + 34px);
-    width: auto;
-    font-size: 14px;
-    line-height: 1.18;
-  }
+      .hero-copy-column {
+        padding-left: 0;
+        padding-top: 94px;
+        max-width: 100%;
+      }
 
-  .flow-line-analysis {
-    left: 20px;
-    right: auto;
-    top: calc(77% + 68px);
-    width: 220px;
-  }
+      .hero-main-title {
+        font-size: clamp(34px, 10vw, 46px);
+        line-height: 1.03;
+        max-width: 100%;
+      }
 
-  .hero-toolbar {
-    padding: 18px var(--pad-mobile) 0;
-  }
+      .hero-main-subtitle {
+        font-size: 12px;
+        line-height: 1.28;
+        max-width: 100%;
+      }
 
-  .hero-composition {
-    padding: 34px var(--pad-mobile) 100px;
-    min-height: auto;
-  }
+      .hero-title-line {
+        width: 100%;
+      }
 
-  .hero-copy-column {
-  padding-left: 0;
-  padding-top: 94px;
-  max-width: 100%;
-}
+      .hero-image-column {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin-top: 34px;
+        width: 100%;
+        max-width: 280px;
+      }
 
-  .hero-main-title {
-    font-size: clamp(34px, 10vw, 46px);
-    line-height: 1.03;
-    max-width: 100%;
-  }
+      .hero-footer-meta {
+        position: relative;
+        bottom: auto;
+        margin-top: 48px;
+      }
 
-  .hero-main-subtitle {
-    font-size: 12px;
-    line-height: 1.28;
-    max-width: 100%;
-  }
+      .hero-keywords {
+        font-size: 8px;
+        line-height: 1.9;
+        padding: 0 24px;
+      }
 
-  .hero-title-line {
-    width: 100%;
-  }
+      /* =========================================================
+      CSS SECTION 17A: PERCEPTION UNIT / MOBILE
+      Στο mobile το perception block γίνεται stacked,
+      ώστε εικόνα + label + quote + line να διαβάζονται καθαρά
+      ========================================================== */
+      .flow-unit-perception {
+        left: 20px;
+        top: 12%;
+        width: 60px;
+      }
 
-  .hero-image-column {
-  position: relative;
-  top: auto;
-  right: auto;
-  margin-top: 34px;
-  width: 100%;
-  max-width: 280px;
-}
-  .hero-footer-meta {
-  position: relative;
-  bottom: auto;
-  margin-top: 48px;
-}
-  .hero-keywords {
-    font-size: 8px;
-    line-height: 1.9;
-    padding: 0 24px;
-  }
+      .flow-unit-label {
+        margin-top: 10px;
+        font-size: 10px;
+        letter-spacing: 0.18em;
+      }
 
-  /* =========================================================
-  CSS SECTION 17A: PERCEPTION UNIT / MOBILE
-  Στο mobile το perception block γίνεται stacked,
-  ώστε εικόνα + label + quote + line να διαβάζονται καθαρά
-  ========================================================== */
-  .flow-unit-perception {
-    left: 20px;
-    top: 12%;
-    width: 60px;
-  }
+      .flow-unit-quote {
+        position: absolute;
+        left: 0;
+        top: calc(100% + 28px);
+        width: min(250px, calc(100vw - 40px));
+        font-size: 17px;
+        line-height: 1.14;
+      }
 
-  .flow-unit-label {
-    margin-top: 10px;
-    font-size: 10px;
-    letter-spacing: 0.18em;
-  }
-
-  .flow-unit-quote {
-    position: absolute;
-    left: 0;
-    top: calc(100% + 28px);
-    width: min(250px, calc(100vw - 40px));
-    font-size: 17px;
-    line-height: 1.14;
-  }
-
-  .flow-unit-line {
-    position: absolute;
-    left: 0;
-    top: calc(100% + 60px);
-    width: min(220px, calc(100vw - 80px));
-  }
-}
+      .flow-unit-line {
+        position: absolute;
+        left: 0;
+        top: calc(100% + 60px);
+        width: min(220px, calc(100vw - 80px));
+      }
+    }
 
     /* =========================================================
     CSS SECTION 18: HELPER STATES
@@ -1038,959 +1036,947 @@ Stacked responsive σύστημα για κινητά
       opacity: 1 !important;
       transform: scaleX(1) !important;
     }
-   /* =========================================================
-CSS SECTION 19: HERO REVEAL STATES
-Καθορίζει τη σειρά με την οποία “ζωντανεύει” το hero
-========================================================= */
-.hero-stage.is-settled .hero-toolbar {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.hero-stage.is-settled .hero-accent-line {
-  opacity: 1;
-  transform: scaleX(1);
-  transition:
-    opacity 0.9s ease 0.20s,
-    transform 1.15s var(--ease-soft) 0.20s;
-}
-
-.hero-stage.is-settled .hero-main-title {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.45s;
-}
-
-.hero-stage.is-settled .hero-main-subtitle {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.85s;
-}
-
-.hero-stage.is-settled .hero-title-line {
-  opacity: 1;
-  transform: scaleX(1);
-  transition:
-    opacity 0.9s ease 1.15s,
-    transform 1.15s var(--ease-soft) 1.15s;
-}
-
-.hero-stage.is-settled .hero-image-column {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.30s;
-}
-
-.hero-stage.is-settled .hero-footer-meta {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 1.45s;
-}
-    /* =========================================================
-CSS SECTION 20: UNIT MOTION STATES
-States για unit-based entrance choreography
-========================================================= */
-.flow-text-group.is-unit-visible,
-.flow-image.is-unit-visible,
-.flow-unit.is-unit-visible {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-}
-.flow-text-group.is-unit-exit,
-.flow-image.is-unit-exit,
-.flow-unit.is-unit-exit,
-.flow-echo-quote.is-unit-exit {
-  transform: translateY(-115vh) !important;
-  transition:
-    transform 3.1s var(--ease-soft) !important;
-}
-   .flow-text-group.is-unit-fade,
-.flow-image.is-unit-fade,
-.flow-unit.is-unit-fade,
-.flow-echo-quote.is-unit-fade {
-  opacity: 0 !important;
-  transition:
-    transform 3.1s var(--ease-soft),
-    opacity 0.95s ease !important;
-}
-    /* =========================================================
-CSS SECTION 21: PERCEPTION UNIT BLOCK
-Ενιαίο cinematic block για εικόνα + label + quote + line
-========================================================= */
-.flow-unit {
-  position: absolute;
-  opacity: 1;
-  transform: translateY(140vh);
-  transition:
-    transform 1.9s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.6s ease;
-  will-change: transform, opacity;
-}
-
-.flow-unit-perception {
-  left: 6%;
-  top: 16%;
-  width: 300px;
-  z-index: 18;
-}
-
-.flow-unit-image {
-  width: 100%;
-  margin: 0;
-}
-
-.flow-unit-label {
-  margin-top: 14px;
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  font-weight: 300;
-  color: rgba(17, 17, 17, 0.72);
-}
-
-.flow-unit-quote {
-  position: absolute;
-  left: calc(100% + 30px);
-  top: 2px;
-  width: 320px;
-
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-
-  font-family: 'Inter', sans-serif;
-  font-size: 15px;
-  line-height: 1.34;
-  font-weight: 200;
-  letter-spacing: 0.01em;
-  color: rgba(17, 17, 17, 0.88);
-}
-.flow-unit-note-index {
-  flex: 0 0 auto;
-  font-size: 11px;
-  line-height: 1;
-  letter-spacing: 0.14em;
-  font-weight: 300;
-  text-transform: lowercase;
-  color: rgba(17, 17, 17, 0.42);
-}
-
-.flow-unit-note-text {
-  flex: 1 1 auto;
-}
-
-.flow-unit-quote strong {
-  font-weight: 400;
-}
-.flow-unit-line {
-  position: absolute;
-  left: calc(100% + 30px);
-  top: 36px;
-
-  width: 600px;
-  height: 1px;
-  background: var(--line);
-  transform: scaleX(0);
-  transform-origin: left center;
-  opacity: 0;
-
-  transition:
-    transform 1.4s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.6s ease;
-}
-
-/* =========================================================
-CSS SECTION 21Α: SENSORY RESPONSE UNIT BLOCK
-Mirrored cinematic block για label + quote + line + image
-========================================================= */
-.flow-unit-sensory {
-  right: 6%;
-  left: auto;
-  top: 30%;
-  width: 300px;
-  z-index: 18;
-}
-
-.flow-unit-image-sensory {
-  width: 100%;
-  margin: 0;
-}
-
-.flow-unit-label-sensory {
-  position: absolute;
-  right: 0;
-  top: -26px;
-  margin: 0;
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  font-weight: 300;
-  color: rgba(17, 17, 17, 0.72);
-  text-align: right;
-  white-space: nowrap;
-}
-
-.flow-unit-quote-sensory {
-  position: absolute;
-  right: calc(100% + 30px);
-  left: auto;
-  top: 372px;
-  width: 420px;
-  max-width: 420px;
-
-  display: grid;
-  grid-template-columns: auto 1fr;
-  column-gap: 10px;
-  align-items: start;
-
-  text-align: left;
-}
-.flow-unit-quote strong {
-  font-weight: 400;
-}
-.flow-unit-line-sensory {
-  position: absolute;
-  right: calc(100% + 30px);
-  left: auto;
-  top: 446px;
-
-  width: 600px;
-  height: 1px;
-  background: var(--line);
-  transform: scaleX(0);
-  transform-origin: right center;
-  opacity: 0;
-
-  transition:
-    transform 1.4s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.6s ease;
-}
-    /* =========================================================
-CSS SECTION 21Β: ANALYSIS UNIT BLOCK
-Same cinematic structure as perception
-========================================================= */
-.flow-unit {
-  position: absolute;
-  opacity: 1;
-  transform: translateY(140vh);
-  transition:
-    transform 1.9s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.6s ease;
-  will-change: transform, opacity;
-}
-  .flow-unit-analysis {
-  left: 6%;
-  top: 45%;
-  width: 300px;
-  z-index: 18;
-}
-
-.flow-unit-image-analysis {
-  width: 100%;
-  margin: 0;
-}
-
-.flow-unit-label-analysis {
-  margin-top: 14px;
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  font-weight: 300;
-  color: rgba(17, 17, 17, 0.72);
-}
-
-.flow-unit-quote-analysis {
-  position: absolute;
-  left: calc(100% + 30px);
-  top: 2px;
-  width: 500px;
-  max-width: 500px;
-
-  display: grid;
-  grid-template-columns: 56px 1fr;
-  column-gap: 12px;
-  align-items: start;
-
-  text-align: left;
-}
-.flow-unit-quote strong {
-  font-weight: 400;
-}
-.flow-unit-line-analysis {
-  position: absolute;
-  left: calc(100% + 30px);
-  top: 74px;
-
-  width: 800px;
-  height: 1px;
-  background: var(--line);
-  transform: scaleX(0);
-  transform-origin: left center;
-  opacity: 0;
-
-  transition:
-    transform 1.4s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.6s ease;
-}
-/* =========================================================
-CSS SECTION 21C: JOURNAL ANNOTATION SYSTEM
-Shared layout for note / obs / ref quotes
-========================================================= */
-.flow-unit-note-index {
-  display: block;
-  font-size: 11px;
-  line-height: 1.1;
-  letter-spacing: 0.12em;
-  font-weight: 300;
-  color: rgba(17, 17, 17, 0.42);
-  white-space: nowrap;
-  margin-top: 2px;
-}
-
-.flow-unit-note-text {
-  display: block;
-  font-family: 'Inter', sans-serif;
-  font-size: 15px;
-  line-height: 1.28;
-  font-weight: 300;
-  letter-spacing: 0.002em;
-  color: rgba(17, 17, 17, 0.88);
-  white-space: normal;
-}
-
-.flow-unit-note-text strong {
-  font-weight: 400;
-}
-
-.flow-unit-citation {
-  display: block;
-  margin-top: 6px;
-
-  font-size: 11px;
-  line-height: 1.2;
-  font-style: italic;
-  font-weight: 300;
-  color: rgba(17, 17, 17, 0.58);
-  letter-spacing: 0.01em;
-}
 
     /* =========================================================
-CSS SECTION 22: FRAME LINES SYSTEM
-Editorial vertical lines for cinematic entrance
-========================================================= */
-
-.frame-line {
-  position: absolute;
-  top: 0;
-  width: 1px;
-  height: 0;
-  background: var(--line);
-  opacity: 0.24;
-
-  transition:
-    height 2.4s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 1.25s ease;
-  z-index: 5;
-}
-
-.frame-line-left {
-  left: 6%;
-}
-
-.frame-line-right {
-  right: 6%;
-}
-    
-/* =========================================================
-CSS SECTION 23: DESKTOP CINEMATIC MAIN CONTENT
-Full cinematic interactive field below hero
-========================================================= */
-.research-field {
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 68%) minmax(260px, 32%);
-  align-items: start;
-  gap: 0;
-  min-height: 120vh;
-  margin-top: -90px;
-  padding: 230px 64px 180px;
-  background: var(--bg);
-  overflow: visible;
-  z-index: 3;
-}
-  .research-field::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 180px;
-  transform: translateY(-100%);
-  pointer-events: none;
-  z-index: 1;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.24) 18%,
-    rgba(255, 255, 255, 0.56) 42%,
-    rgba(255, 255, 255, 0.86) 72%,
-    rgba(255, 255, 255, 1) 100%
-  );
-}
-
-.research-field::after {
-  content: "";
-  position: absolute;
-  top: -54px;
-  left: 64px;
-  right: 64px;
-  height: 1px;
-  background: rgba(17, 17, 17, 0.10);
-  pointer-events: none;
-  z-index: 2;
-}  
-    
-.research-reveal-stage {
-  position: relative;
-  min-height: 760px;
-  z-index: 3;
-}
-
-.research-panel {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateX(-80px);
-  transition:
-    opacity 0.75s ease,
-    transform 1.05s var(--ease-soft);
-}
-
-.research-panel.is-active {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateX(0);
-}
-
-.research-panel-inner {
-  max-width: 640px;
-  padding-top: 10px;
-}
-
-.research-panel-number {
-  font-size: 11px;
-  letter-spacing: 0.20em;
-  color: rgba(17, 17, 17, 0.42);
-  margin-bottom: 18px;
-}
-
-.research-panel-title {
-  margin: 0 0 20px;
-  font-family: 'Inter', sans-serif;
-  font-size: clamp(34px, 3.2vw, 46px);
-  line-height: 1.04;
-  letter-spacing: -0.03em;
-  font-weight: 300;
-}
-
-.research-panel-lead {
-  margin: 0 0 22px;
-  max-width: 560px;
-  font-size: 18px;
-  line-height: 1.34;
-  font-weight: 300;
-  color: rgba(17, 17, 17, 0.86);
-}
-
-.research-panel-body {
-  margin: 0;
-  max-width: 540px;
-  font-size: 15px;
-  line-height: 1.7;
-  font-weight: 300;
-  color: rgba(17, 17, 17, 0.68);
-}
-
-.research-panel-line {
-  width: 84px;
-  height: 1px;
-  margin-top: 34px;
-  background: rgba(17, 17, 17, 0.42);
-  transform-origin: left center;
-}
-
-.research-wave-field {
-  display: none;
-}
-
-.research-wave-track {
-  width: 100%;
-  max-width: 320px;
-  opacity: 0.72;
-  transform: translateX(0);
-  animation: wave-track-drift 12s ease-in-out infinite alternate;
-}
-
-.research-wave-svg {
-  width: 100%;
-  height: 240px;
-  overflow: visible;
-}
-
-.research-wave-path {
-  fill: none;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.research-wave-path-primary {
-  stroke: rgba(17, 17, 17, 0.24);
-  stroke-width: 1.2;
-}
-
-.research-wave-path-secondary {
-  stroke: rgba(17, 17, 17, 0.12);
-  stroke-width: 1;
-}
-
-.research-label-rail {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: 32px;
-  min-height: 760px;
-  z-index: 4;
-  padding-top: 40px;
-}
-
-.research-label {
-  position: relative;
-  display: grid;
-  grid-template-columns: 18px auto 1fr 18px;
-  align-items: center;
-  column-gap: 12px;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: var(--text);
-  cursor: pointer;
-  text-align: left;
-  width: 100%;
-  max-width: 360px;
-  transform: translateX(0);
-  animation: label-drift 9s ease-in-out infinite alternate;
-}
-
-.research-label:nth-child(2) { animation-delay: 0.4s; }
-.research-label:nth-child(3) { animation-delay: 0.8s; }
-.research-label:nth-child(4) { animation-delay: 1.2s; }
-.research-label:nth-child(5) { animation-delay: 1.6s; }
-.research-label:nth-child(6) { animation-delay: 2s; }
-
-.research-label.is-active,
-.research-label:hover {
-  animation-play-state: paused;
-}
-
-.research-label-meta {
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  color: rgba(17, 17, 17, 0.42);
-  white-space: nowrap;
-}
-
-.research-label-title {
-  font-family: 'Inter', sans-serif;
-  font-size: 20px;
-  line-height: 1.1;
-  font-weight: 300;
-  letter-spacing: -0.02em;
-  color: rgba(17, 17, 17, 0.72);
-  transition:
-    color 0.35s ease,
-    transform 0.45s ease;
-}
-
-.research-label-arrow {
-  font-size: 13px;
-  color: rgba(17, 17, 17, 0.28);
-  transition:
-    opacity 0.35s ease,
-    transform 0.45s ease,
-    color 0.35s ease;
-}
-
-.research-label-arrow-left {
-  opacity: 0;
-  transform: translateX(8px);
-}
-
-.research-label-arrow-right {
-  opacity: 1;
-  transform: translateX(0);
-  justify-self: end;
-}
-
-.research-label:hover .research-label-title,
-.research-label.is-active .research-label-title {
-  color: rgba(17, 17, 17, 0.96);
-  transform: translateX(4px);
-}
-
-.research-label:hover .research-label-arrow-left,
-.research-label.is-active .research-label-arrow-left {
-  opacity: 1;
-  transform: translateX(0);
-  color: rgba(17, 17, 17, 0.70);
-}
-
-.research-label:hover .research-label-arrow-right,
-.research-label.is-active .research-label-arrow-right {
-  color: rgba(17, 17, 17, 0.70);
-  transform: translateX(4px);
-}
-
-@keyframes label-drift {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(18px); }
-}
-
-@keyframes wave-track-drift {
-  0%   { transform: translateX(-10px); }
-  100% { transform: translateX(12px); }
-}
-
-/* =========================================================
-CSS SECTION 24: TABLET ADAPTATION
-Cinematic stacked adaptation for tablet
-========================================================= */
-@media (max-width: 1100px) {
- .research-field {
-  grid-template-columns: 1fr;
-  gap: 40px;
-  min-height: auto;
-  margin-top: -56px;
-  padding: 150px 36px 140px;
-}
-  .research-field::before {
-  height: 120px;
-}
-
-.research-field::after {
-  top: -34px;
-  left: 36px;
-  right: 36px;
-}
-
-  .research-wave-field {
-  display: none !important;
-  width: 0;
-  height: 0;
-}
-
-  .research-wave-track {
-    max-width: 240px;
-  }
-
-  .research-wave-svg {
-    height: 120px;
-  }
-
-  .research-label-rail {
-    order: 1;
-    min-height: auto;
-    gap: 18px;
-    padding-top: 0;
-  }
-
-  .research-label {
-    max-width: 100%;
-    animation: none;
-  }
-
-  .research-reveal-stage {
-    order: 3;
-    min-height: 520px;
-  }
-
-  .research-panel-inner {
-    max-width: 100%;
-  }
-
-  .research-panel-title {
-    font-size: clamp(30px, 5vw, 40px);
-  }
-
-  .research-panel-lead {
-    max-width: 100%;
-    font-size: 17px;
-  }
-
-  .research-panel-body {
-    max-width: 100%;
-  }
-}
-
-/* =========================================================
-CSS SECTION 25: MOBILE ADAPTATION
-Accordion-cinematic adaptation for mobile
-========================================================= */
-@media (max-width: 767px) {
-  .research-field {
-  margin-top: -34px;
-  padding: 118px 20px 110px;
-  gap: 26px;
-}
-  .research-field::before {
-  height: 86px;
-}
-
-.research-field::after {
-  top: -22px;
-  left: 20px;
-  right: 20px;
-}
-
-  .research-label-rail {
-    gap: 14px;
-  }
-
-  .research-label {
-    grid-template-columns: 16px auto 1fr 16px;
-    column-gap: 10px;
-  }
-
-  .research-label-meta {
-    font-size: 10px;
-    letter-spacing: 0.14em;
-  }
-
-  .research-label-title {
-    font-size: 17px;
-  }
-
-  .research-wave-field {
-    min-height: 86px;
-  }
-
-  .research-wave-track {
-    max-width: 180px;
-    opacity: 0.58;
-  }
-
-  .research-wave-svg {
-    height: 86px;
-  }
-
-  .research-reveal-stage {
-    min-height: 540px;
-  }
-
-  .research-panel {
-    transform: translateX(-36px);
-  }
-
-  .research-panel-number {
-    margin-bottom: 14px;
-  }
-
-  .research-panel-title {
-    font-size: 28px;
-    line-height: 1.04;
-    margin-bottom: 16px;
-  }
-
-  .research-panel-lead {
-    font-size: 16px;
-    line-height: 1.4;
-    margin-bottom: 18px;
-  }
-
-  .research-panel-body {
-    font-size: 14px;
-    line-height: 1.68;
-  }
-
-  .research-panel-line {
-    margin-top: 26px;
-    width: 68px;
-  }
-}
-/* =========================================================
-CSS SECTION 26: BURGER MENU OVERLAY
-Single-page full-screen navigation
-========================================================= */
-.menu-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(10px);
-  z-index: 10050;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition:
-    opacity 0.45s ease,
-    visibility 0.45s ease;
-}
-
-.menu-overlay.is-open {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
-
-.menu-overlay-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  padding: 36px 64px 64px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.menu-overlay-close {
-  position: absolute;
-  top: 28px;
-  right: 64px;
-  border: 0;
-  background: transparent;
-  font-family: 'Inter', sans-serif;
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(17, 17, 17, 0.62);
-  cursor: pointer;
-}
-
-.menu-overlay-links {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.menu-link {
-  border: 0;
-  background: transparent;
-  padding: 0;
-  text-align: left;
-  font-family: 'Inter', sans-serif;
-  font-size: clamp(22px, 3vw, 34px);
-  line-height: 1.06;
-  font-weight: 300;
-  letter-spacing: -0.02em;
-  color: rgba(17, 17, 17, 0.92);
-  cursor: pointer;
-  transform: translateY(18px);
-  opacity: 0;
-  transition:
-    opacity 0.45s ease,
-    transform 0.65s var(--ease-soft),
-    color 0.3s ease;
-}
-
-.menu-overlay.is-open .menu-link {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.menu-overlay.is-open .menu-link:nth-child(1) { transition-delay: 0.08s; }
-.menu-overlay.is-open .menu-link:nth-child(2) { transition-delay: 0.14s; }
-.menu-overlay.is-open .menu-link:nth-child(3) { transition-delay: 0.20s; }
-.menu-overlay.is-open .menu-link:nth-child(4) { transition-delay: 0.26s; }
-.menu-overlay.is-open .menu-link:nth-child(5) { transition-delay: 0.32s; }
-.menu-overlay.is-open .menu-link:nth-child(6) { transition-delay: 0.38s; }
-
-.menu-link:hover {
-  color: rgba(17, 17, 17, 0.52);
-}
-.menu-overlay,
-.menu-overlay *,
-.menu-overlay button,
-.menu-overlay .menu-link,
-.menu-overlay .menu-overlay-close {
-  cursor: none !important;
-}
-@media (max-width: 1100px) {
-  .menu-overlay-inner {
-    padding: 28px 36px 36px;
-  }
-
-  .menu-overlay-close {
-    right: 36px;
-  }
-}
-
-@media (max-width: 767px) {
-  .menu-overlay-inner {
-    padding: 24px 20px 28px;
-  }
-
-  .menu-overlay-close {
-    top: 22px;
-    right: 20px;
-  }
-
-  .menu-overlay-links {
-    gap: 16px;
-  }
-}
-/* =========================================================
-CSS SECTION 27: DESKTOP CUSTOM CURSOR
-Minimal outlined circle → filled dot on interactive hover
-========================================================= */
-.custom-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 22px;
-  height: 22px;
-  border: 1px solid rgba(17, 17, 17, 0.68);
-  border-radius: 50%;
-  background: transparent;
-  pointer-events: none;
-  opacity: 0;
-  transform: translate(-50%, -50%);
-  transition:
-    opacity 0.25s ease,
-    width 0.22s ease,
-    height 0.22s ease,
-    border-color 0.22s ease,
-    background-color 0.22s ease;
-  z-index: 20000;
-  will-change: left, top, opacity, width, height;
-  mix-blend-mode: normal;
-}
-
-.custom-cursor.is-visible {
-  opacity: 1;
-}
-
-.custom-cursor.is-active {
-  width: 8px;
-  height: 8px;
-  border-color: rgba(17, 17, 17, 0.95);
-  background: rgba(17, 17, 17, 0.95);
-}
-
-/* Desktop only: hide native cursor on interactive cinematic mode */
-@media (min-width: 1101px) {
-  html.has-custom-cursor,
-  html.has-custom-cursor body,
-  html.has-custom-cursor body *,
-  html.has-custom-cursor body *::before,
-  html.has-custom-cursor body *::after {
-    cursor: none !important;
-  }
-}
-
-/* Tablet / mobile: completely disable custom cursor */
-@media (max-width: 1100px) {
-  .custom-cursor {
-    display: none !important;
-  }
-}
+    CSS SECTION 19: HERO REVEAL STATES
+    Καθορίζει τη σειρά με την οποία "ζωντανεύει" το hero
+    ========================================================== */
+    .hero-stage.is-settled .hero-toolbar {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero-stage.is-settled .hero-accent-line {
+      opacity: 1;
+      transform: scaleX(1);
+      transition:
+        opacity 0.9s ease 0.20s,
+        transform 1.15s var(--ease-soft) 0.20s;
+    }
+
+    .hero-stage.is-settled .hero-main-title {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.45s;
+    }
+
+    .hero-stage.is-settled .hero-main-subtitle {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.85s;
+    }
+
+    .hero-stage.is-settled .hero-title-line {
+      opacity: 1;
+      transform: scaleX(1);
+      transition:
+        opacity 0.9s ease 1.15s,
+        transform 1.15s var(--ease-soft) 1.15s;
+    }
+
+    .hero-stage.is-settled .hero-image-column {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.30s;
+    }
+
+    .hero-stage.is-settled .hero-footer-meta {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 1.45s;
+    }
+
+    /* =========================================================
+    CSS SECTION 20: UNIT MOTION STATES
+    States για unit-based entrance choreography
+    ========================================================== */
+    .flow-text-group.is-unit-visible,
+    .flow-image.is-unit-visible,
+    .flow-unit.is-unit-visible {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+
+    .flow-text-group.is-unit-exit,
+    .flow-image.is-unit-exit,
+    .flow-unit.is-unit-exit,
+    .flow-echo-quote.is-unit-exit {
+      transform: translateY(-115vh) !important;
+      transition: transform 3.1s var(--ease-soft) !important;
+    }
+
+    .flow-text-group.is-unit-fade,
+    .flow-image.is-unit-fade,
+    .flow-unit.is-unit-fade,
+    .flow-echo-quote.is-unit-fade {
+      opacity: 0 !important;
+      transition:
+        transform 3.1s var(--ease-soft),
+        opacity 0.95s ease !important;
+    }
+
+    /* =========================================================
+    CSS SECTION 21: PERCEPTION UNIT BLOCK
+    Ενιαίο cinematic block για εικόνα + label + quote + line
+    ========================================================== */
+    .flow-unit {
+      position: absolute;
+      opacity: 1;
+      transform: translateY(140vh);
+      transition:
+        transform 1.9s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.6s ease;
+      will-change: transform, opacity;
+    }
+
+    .flow-unit-perception {
+      left: 6%;
+      top: 16%;
+      width: 300px;
+      z-index: 18;
+    }
+
+    .flow-unit-image {
+      width: 100%;
+      margin: 0;
+    }
+
+    .flow-unit-label {
+      margin-top: 14px;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      font-weight: 300;
+      color: rgba(17, 17, 17, 0.72);
+    }
+
+    .flow-unit-quote {
+      position: absolute;
+      left: calc(100% + 30px);
+      top: 2px;
+      width: 320px;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.34;
+      font-weight: 200;
+      letter-spacing: 0.01em;
+      color: rgba(17, 17, 17, 0.88);
+    }
+
+    .flow-unit-note-index {
+      flex: 0 0 auto;
+      font-size: 11px;
+      line-height: 1;
+      letter-spacing: 0.14em;
+      font-weight: 300;
+      text-transform: lowercase;
+      color: rgba(17, 17, 17, 0.42);
+    }
+
+    .flow-unit-note-text {
+      flex: 1 1 auto;
+    }
+
+    .flow-unit-quote strong {
+      font-weight: 400;
+    }
+
+    .flow-unit-line {
+      position: absolute;
+      left: calc(100% + 30px);
+      top: 36px;
+      width: 600px;
+      height: 1px;
+      background: var(--line);
+      transform: scaleX(0);
+      transform-origin: left center;
+      opacity: 0;
+      transition:
+        transform 1.4s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.6s ease;
+    }
+
+    /* =========================================================
+    CSS SECTION 21A: SENSORY RESPONSE UNIT BLOCK
+    Mirrored cinematic block για label + quote + line + image
+    ========================================================== */
+    .flow-unit-sensory {
+      right: 6%;
+      left: auto;
+      top: 30%;
+      width: 300px;
+      z-index: 18;
+    }
+
+    .flow-unit-image-sensory {
+      width: 100%;
+      margin: 0;
+    }
+
+    .flow-unit-label-sensory {
+      position: absolute;
+      right: 0;
+      top: -26px;
+      margin: 0;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      font-weight: 300;
+      color: rgba(17, 17, 17, 0.72);
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .flow-unit-quote-sensory {
+      position: absolute;
+      right: calc(100% + 30px);
+      left: auto;
+      top: 372px;
+      width: 420px;
+      max-width: 420px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      column-gap: 10px;
+      align-items: start;
+      text-align: left;
+    }
+
+    .flow-unit-line-sensory {
+      position: absolute;
+      right: calc(100% + 30px);
+      left: auto;
+      top: 446px;
+      width: 600px;
+      height: 1px;
+      background: var(--line);
+      transform: scaleX(0);
+      transform-origin: right center;
+      opacity: 0;
+      transition:
+        transform 1.4s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.6s ease;
+    }
+
+    /* =========================================================
+    CSS SECTION 21B: ANALYSIS UNIT BLOCK
+    Same cinematic structure as perception
+    ========================================================== */
+    .flow-unit-analysis {
+      left: 6%;
+      top: 45%;
+      width: 300px;
+      z-index: 18;
+    }
+
+    .flow-unit-image-analysis {
+      width: 100%;
+      margin: 0;
+    }
+
+    .flow-unit-label-analysis {
+      margin-top: 14px;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      font-weight: 300;
+      color: rgba(17, 17, 17, 0.72);
+    }
+
+    .flow-unit-quote-analysis {
+      position: absolute;
+      left: calc(100% + 30px);
+      top: 2px;
+      width: 500px;
+      max-width: 500px;
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      column-gap: 12px;
+      align-items: start;
+      text-align: left;
+    }
+
+    .flow-unit-line-analysis {
+      position: absolute;
+      left: calc(100% + 30px);
+      top: 74px;
+      width: 800px;
+      height: 1px;
+      background: var(--line);
+      transform: scaleX(0);
+      transform-origin: left center;
+      opacity: 0;
+      transition:
+        transform 1.4s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.6s ease;
+    }
+
+    /* =========================================================
+    CSS SECTION 21C: JOURNAL ANNOTATION SYSTEM
+    Shared layout for note / obs / ref quotes
+    ========================================================== */
+    .flow-unit-note-index {
+      display: block;
+      font-size: 11px;
+      line-height: 1.1;
+      letter-spacing: 0.12em;
+      font-weight: 300;
+      color: rgba(17, 17, 17, 0.42);
+      white-space: nowrap;
+      margin-top: 2px;
+    }
+
+    .flow-unit-note-text {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.28;
+      font-weight: 300;
+      letter-spacing: 0.002em;
+      color: rgba(17, 17, 17, 0.88);
+      white-space: normal;
+    }
+
+    .flow-unit-note-text strong {
+      font-weight: 400;
+    }
+
+    .flow-unit-citation {
+      display: block;
+      margin-top: 6px;
+      font-size: 11px;
+      line-height: 1.2;
+      font-style: italic;
+      font-weight: 300;
+      color: rgba(17, 17, 17, 0.58);
+      letter-spacing: 0.01em;
+    }
+
+    /* =========================================================
+    CSS SECTION 22: FRAME LINES SYSTEM
+    Editorial vertical lines for cinematic entrance
+    ========================================================== */
+    .frame-line {
+      position: absolute;
+      top: 0;
+      width: 1px;
+      height: 0;
+      background: var(--line);
+      opacity: 0.24;
+      transition:
+        height 2.4s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 1.25s ease;
+      z-index: 5;
+    }
+
+    .frame-line-left {
+      left: 6%;
+    }
+
+    .frame-line-right {
+      right: 6%;
+    }
+
+    /* =========================================================
+    CSS SECTION 23: DESKTOP CINEMATIC MAIN CONTENT
+    Full cinematic interactive field below hero
+    ========================================================== */
+    .research-field {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 68%) minmax(260px, 32%);
+      align-items: start;
+      gap: 0;
+      min-height: 120vh;
+      margin-top: -90px;
+      padding: 230px 64px 180px;
+      background: var(--bg);
+      overflow: visible;
+      z-index: 3;
+    }
+
+    .research-field::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 180px;
+      transform: translateY(-100%);
+      pointer-events: none;
+      z-index: 1;
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.24) 18%,
+        rgba(255, 255, 255, 0.56) 42%,
+        rgba(255, 255, 255, 0.86) 72%,
+        rgba(255, 255, 255, 1) 100%
+      );
+    }
+
+    .research-field::after {
+      content: "";
+      position: absolute;
+      top: -54px;
+      left: 64px;
+      right: 64px;
+      height: 1px;
+      background: rgba(17, 17, 17, 0.10);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .research-reveal-stage {
+      position: relative;
+      min-height: 760px;
+      z-index: 3;
+    }
+
+    .research-panel {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(-80px);
+      transition:
+        opacity 0.75s ease,
+        transform 1.05s var(--ease-soft);
+    }
+
+    .research-panel.is-active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(0);
+    }
+
+    .research-panel-inner {
+      max-width: 640px;
+      padding-top: 10px;
+    }
+
+    .research-panel-number {
+      font-size: 11px;
+      letter-spacing: 0.20em;
+      color: rgba(17, 17, 17, 0.42);
+      margin-bottom: 18px;
+    }
+
+    .research-panel-title {
+      margin: 0 0 20px;
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(34px, 3.2vw, 46px);
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+      font-weight: 300;
+    }
+
+    .research-panel-lead {
+      margin: 0 0 22px;
+      max-width: 560px;
+      font-size: 18px;
+      line-height: 1.34;
+      font-weight: 300;
+      color: rgba(17, 17, 17, 0.86);
+    }
+
+    .research-panel-body {
+      margin: 0;
+      max-width: 540px;
+      font-size: 15px;
+      line-height: 1.7;
+      font-weight: 300;
+      color: rgba(17, 17, 17, 0.68);
+    }
+
+    .research-panel-line {
+      width: 84px;
+      height: 1px;
+      margin-top: 34px;
+      background: rgba(17, 17, 17, 0.42);
+      transform-origin: left center;
+    }
+
+    .research-wave-field {
+      display: none;
+    }
+
+    .research-wave-track {
+      width: 100%;
+      max-width: 320px;
+      opacity: 0.72;
+      transform: translateX(0);
+      animation: wave-track-drift 12s ease-in-out infinite alternate;
+    }
+
+    .research-wave-svg {
+      width: 100%;
+      height: 240px;
+      overflow: visible;
+    }
+
+    .research-wave-path {
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .research-wave-path-primary {
+      stroke: rgba(17, 17, 17, 0.24);
+      stroke-width: 1.2;
+    }
+
+    .research-wave-path-secondary {
+      stroke: rgba(17, 17, 17, 0.12);
+      stroke-width: 1;
+    }
+
+    .research-label-rail {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 32px;
+      min-height: 760px;
+      z-index: 4;
+      padding-top: 40px;
+    }
+
+    .research-label {
+      position: relative;
+      display: grid;
+      grid-template-columns: 18px auto 1fr 18px;
+      align-items: center;
+      column-gap: 12px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--text);
+      cursor: pointer;
+      text-align: left;
+      width: 100%;
+      max-width: 360px;
+      transform: translateX(0);
+      animation: label-drift 9s ease-in-out infinite alternate;
+    }
+
+    .research-label:nth-child(2) { animation-delay: 0.4s; }
+    .research-label:nth-child(3) { animation-delay: 0.8s; }
+    .research-label:nth-child(4) { animation-delay: 1.2s; }
+    .research-label:nth-child(5) { animation-delay: 1.6s; }
+    .research-label:nth-child(6) { animation-delay: 2s; }
+
+    .research-label.is-active,
+    .research-label:hover {
+      animation-play-state: paused;
+    }
+
+    .research-label-meta {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      color: rgba(17, 17, 17, 0.42);
+      white-space: nowrap;
+    }
+
+    .research-label-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 20px;
+      line-height: 1.1;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      color: rgba(17, 17, 17, 0.72);
+      transition:
+        color 0.35s ease,
+        transform 0.45s ease;
+    }
+
+    .research-label-arrow {
+      font-size: 13px;
+      color: rgba(17, 17, 17, 0.28);
+      transition:
+        opacity 0.35s ease,
+        transform 0.45s ease,
+        color 0.35s ease;
+    }
+
+    .research-label-arrow-left {
+      opacity: 0;
+      transform: translateX(8px);
+    }
+
+    .research-label-arrow-right {
+      opacity: 1;
+      transform: translateX(0);
+      justify-self: end;
+    }
+
+    .research-label:hover .research-label-title,
+    .research-label.is-active .research-label-title {
+      color: rgba(17, 17, 17, 0.96);
+      transform: translateX(4px);
+    }
+
+    .research-label:hover .research-label-arrow-left,
+    .research-label.is-active .research-label-arrow-left {
+      opacity: 1;
+      transform: translateX(0);
+      color: rgba(17, 17, 17, 0.70);
+    }
+
+    .research-label:hover .research-label-arrow-right,
+    .research-label.is-active .research-label-arrow-right {
+      color: rgba(17, 17, 17, 0.70);
+      transform: translateX(4px);
+    }
+
+    @keyframes label-drift {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(18px); }
+    }
+
+    @keyframes wave-track-drift {
+      0%   { transform: translateX(-10px); }
+      100% { transform: translateX(12px); }
+    }
+
+    /* =========================================================
+    CSS SECTION 24: TABLET ADAPTATION
+    Cinematic stacked adaptation for tablet
+    ========================================================== */
+    @media (max-width: 1100px) {
+      .research-field {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        min-height: auto;
+        margin-top: -56px;
+        padding: 150px 36px 140px;
+      }
+
+      .research-field::before {
+        height: 120px;
+      }
+
+      .research-field::after {
+        top: -34px;
+        left: 36px;
+        right: 36px;
+      }
+
+      .research-wave-field {
+        display: none !important;
+        width: 0;
+        height: 0;
+      }
+
+      .research-wave-track {
+        max-width: 240px;
+      }
+
+      .research-wave-svg {
+        height: 120px;
+      }
+
+      .research-label-rail {
+        order: 1;
+        min-height: auto;
+        gap: 18px;
+        padding-top: 0;
+      }
+
+      .research-label {
+        max-width: 100%;
+        animation: none;
+      }
+
+      .research-reveal-stage {
+        order: 3;
+        min-height: 520px;
+      }
+
+      .research-panel-inner {
+        max-width: 100%;
+      }
+
+      .research-panel-title {
+        font-size: clamp(30px, 5vw, 40px);
+      }
+
+      .research-panel-lead {
+        max-width: 100%;
+        font-size: 17px;
+      }
+
+      .research-panel-body {
+        max-width: 100%;
+      }
+    }
+
+    /* =========================================================
+    CSS SECTION 25: MOBILE ADAPTATION
+    Accordion-cinematic adaptation for mobile
+    ========================================================== */
+    @media (max-width: 767px) {
+      .research-field {
+        margin-top: -34px;
+        padding: 118px 20px 110px;
+        gap: 26px;
+      }
+
+      .research-field::before {
+        height: 86px;
+      }
+
+      .research-field::after {
+        top: -22px;
+        left: 20px;
+        right: 20px;
+      }
+
+      .research-label-rail {
+        gap: 14px;
+      }
+
+      .research-label {
+        grid-template-columns: 16px auto 1fr 16px;
+        column-gap: 10px;
+      }
+
+      .research-label-meta {
+        font-size: 10px;
+        letter-spacing: 0.14em;
+      }
+
+      .research-label-title {
+        font-size: 17px;
+      }
+
+      .research-wave-field {
+        min-height: 86px;
+      }
+
+      .research-wave-track {
+        max-width: 180px;
+        opacity: 0.58;
+      }
+
+      .research-wave-svg {
+        height: 86px;
+      }
+
+      .research-reveal-stage {
+        min-height: 540px;
+      }
+
+      .research-panel {
+        transform: translateX(-36px);
+      }
+
+      .research-panel-number {
+        margin-bottom: 14px;
+      }
+
+      .research-panel-title {
+        font-size: 28px;
+        line-height: 1.04;
+        margin-bottom: 16px;
+      }
+
+      .research-panel-lead {
+        font-size: 16px;
+        line-height: 1.4;
+        margin-bottom: 18px;
+      }
+
+      .research-panel-body {
+        font-size: 14px;
+        line-height: 1.68;
+      }
+
+      .research-panel-line {
+        margin-top: 26px;
+        width: 68px;
+      }
+    }
+
+    /* =========================================================
+    CSS SECTION 26: BURGER MENU OVERLAY
+    Single-page full-screen navigation
+    ========================================================== */
+    .menu-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      z-index: 10050;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition:
+        opacity 0.45s ease,
+        visibility 0.45s ease;
+    }
+
+    .menu-overlay.is-open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .menu-overlay-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      padding: 36px 64px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .menu-overlay-close {
+      position: absolute;
+      top: 28px;
+      right: 64px;
+      border: 0;
+      background: transparent;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(17, 17, 17, 0.62);
+      cursor: pointer;
+    }
+
+    .menu-overlay-links {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .menu-link {
+      border: 0;
+      background: transparent;
+      padding: 0;
+      text-align: left;
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(22px, 3vw, 34px);
+      line-height: 1.06;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      color: rgba(17, 17, 17, 0.92);
+      cursor: pointer;
+      transform: translateY(18px);
+      opacity: 0;
+      transition:
+        opacity 0.45s ease,
+        transform 0.65s var(--ease-soft),
+        color 0.3s ease;
+    }
+
+    .menu-overlay.is-open .menu-link {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .menu-overlay.is-open .menu-link:nth-child(1) { transition-delay: 0.08s; }
+    .menu-overlay.is-open .menu-link:nth-child(2) { transition-delay: 0.14s; }
+    .menu-overlay.is-open .menu-link:nth-child(3) { transition-delay: 0.20s; }
+    .menu-overlay.is-open .menu-link:nth-child(4) { transition-delay: 0.26s; }
+    .menu-overlay.is-open .menu-link:nth-child(5) { transition-delay: 0.32s; }
+    .menu-overlay.is-open .menu-link:nth-child(6) { transition-delay: 0.38s; }
+
+    .menu-link:hover {
+      color: rgba(17, 17, 17, 0.52);
+    }
+
+    .menu-overlay,
+    .menu-overlay *,
+    .menu-overlay button,
+    .menu-overlay .menu-link,
+    .menu-overlay .menu-overlay-close {
+      cursor: none !important;
+    }
+
+    @media (max-width: 1100px) {
+      .menu-overlay-inner {
+        padding: 28px 36px 36px;
+      }
+
+      .menu-overlay-close {
+        right: 36px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .menu-overlay-inner {
+        padding: 24px 20px 28px;
+      }
+
+      .menu-overlay-close {
+        top: 22px;
+        right: 20px;
+      }
+
+      .menu-overlay-links {
+        gap: 16px;
+      }
+    }
+
+    /* =========================================================
+    CSS SECTION 27: DESKTOP CUSTOM CURSOR
+    Minimal outlined circle → filled dot on interactive hover
+    ========================================================== */
+    .custom-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 22px;
+      height: 22px;
+      border: 1px solid rgba(17, 17, 17, 0.68);
+      border-radius: 50%;
+      background: transparent;
+      pointer-events: none;
+      opacity: 0;
+      transform: translate(-50%, -50%);
+      transition:
+        opacity 0.25s ease,
+        width 0.22s ease,
+        height 0.22s ease,
+        border-color 0.22s ease,
+        background-color 0.22s ease;
+      z-index: 20000;
+      will-change: left, top, opacity, width, height;
+      mix-blend-mode: normal;
+    }
+
+    .custom-cursor.is-visible {
+      opacity: 1;
+    }
+
+    .custom-cursor.is-active {
+      width: 8px;
+      height: 8px;
+      border-color: rgba(17, 17, 17, 0.95);
+      background: rgba(17, 17, 17, 0.95);
+    }
+
+    /* Desktop only: hide native cursor on interactive cinematic mode */
+    @media (min-width: 1101px) {
+      html.has-custom-cursor,
+      html.has-custom-cursor body,
+      html.has-custom-cursor body *,
+      html.has-custom-cursor body *::before,
+      html.has-custom-cursor body *::after {
+        cursor: none !important;
+      }
+    }
+
+    /* Tablet / mobile: completely disable custom cursor */
+    @media (max-width: 1100px) {
+      .custom-cursor {
+        display: none !important;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1998,25 +1984,25 @@ Minimal outlined circle → filled dot on interactive hover
   <!-- =========================================================
   HTML SECTION 02: CUSTOM CURSOR
   Desktop-only cinematic cursor
-  ========================================================= -->
+  ========================================================== -->
   <div class="custom-cursor" id="customCursor" aria-hidden="true"></div>
 
   <!-- =========================================================
   HTML SECTION 03: CONTINUOUS CINEMATIC ENTRANCE
-  Κύριο wrapper του νέου entrance
+  Κύριο wrapper του entrance
   ========================================================== -->
   <div class="entrance-flow" id="entranceFlow">
 
     <!-- =========================================================
     HTML SECTION 04: ENTRANCE SKIP BUTTON
-    Κουμπί παράλειψης intro
     ========================================================== -->
     <button class="entrance-skip" id="entranceSkipBtn">Skip Intro</button>
+
     <!-- =========================================================
     HTML SECTION 04B: FRAME LINES (EDITORIAL GUIDES)
     ========================================================== -->
-  <div class="frame-line frame-line-left" id="frameLineLeft"></div>  
-  <div class="frame-line frame-line-right" id="frameLineRight"></div>
+    <div class="frame-line frame-line-left" id="frameLineLeft"></div>
+    <div class="frame-line frame-line-right" id="frameLineRight"></div>
 
     <!-- =========================================================
     HTML SECTION 05: ENTRANCE CANVAS
@@ -2025,112 +2011,97 @@ Minimal outlined circle → filled dot on interactive hover
     <div class="entrance-canvas" id="entranceCanvas">
 
       <!-- =========================================================
-    HTML SECTION 05A: ENTRANCE TOP FADE VEIL
-    Σταθερό gradient veil στο πάνω μέρος του entrance.
-    Ό,τι περνά μέσα από αυτή τη ζώνη μοιάζει να διαλύεται κινηματογραφικά.
-    ========================================================== -->
-    <div class="entrance-top-fade-veil" id="entranceTopFadeVeil"></div>
+      HTML SECTION 05A: ENTRANCE TOP FADE VEIL
+      Gradient veil — στοιχεία που περνούν από εδώ φαίνεται να διαλύονται
+      ========================================================== -->
+      <div class="entrance-top-fade-veil" id="entranceTopFadeVeil"></div>
 
-     <!-- =========================================================
-    HTML SECTION 05B: PERCEPTION UNIT BLOCK
-    Ενιαίο block για εικόνα + label + quote + line.
-    Αυτό το unit θα κινείται σαν ένα σώμα.
-    ========================================================== -->
-  <div class="flow-unit flow-unit-perception" id="flowUnitPerception">
-  <figure class="flow-unit-image" id="flowUnitPerceptionImage">
-    <img src="images/perception.jpeg" alt="Perception visual">
-  </figure>
-
-  <div class="flow-unit-label editorial-label" id="flowUnitPerceptionLabel">
-    // Perception
-  </div>
-
-  <div class="flow-unit-quote flow-unit-quote-note" id="flowUnitPerceptionQuote">
-  <span class="flow-unit-note-index">note. 01</span>
-  <span class="flow-unit-note-text">Perception begins before thought.</span>
-</div>
-
-  <div class="flow-unit-line" id="flowUnitPerceptionLine"></div>
-</div>
       <!-- =========================================================
-    HTML SECTION 05C: SENSORY RESPONSE UNIT BLOCK
-    Mirrored cinematic block για label + quote + line + image
-    ========================================================== -->
-<div class="flow-unit flow-unit-sensory" id="flowUnitSensory">
-  <div class="flow-unit-label flow-unit-label-sensory editorial-label" id="flowUnitSensoryLabel">
-    // Sensory Response
-  </div>
+      HTML SECTION 05B: PERCEPTION UNIT BLOCK
+      Ενιαίο block: εικόνα + label + quote + line
+      ========================================================== -->
+      <div class="flow-unit flow-unit-perception" id="flowUnitPerception">
+        <figure class="flow-unit-image" id="flowUnitPerceptionImage">
+          <img src="images/perception.jpeg" alt="Perception visual">
+        </figure>
+        <div class="flow-unit-label editorial-label" id="flowUnitPerceptionLabel">
+          // Perception
+        </div>
+        <div class="flow-unit-quote flow-unit-quote-note" id="flowUnitPerceptionQuote">
+          <span class="flow-unit-note-index">note. 01</span>
+          <span class="flow-unit-note-text">Perception begins before thought.</span>
+        </div>
+        <div class="flow-unit-line" id="flowUnitPerceptionLine"></div>
+      </div>
 
-<div class="flow-unit-quote flow-unit-quote-sensory" id="flowUnitSensoryQuote">
-  <span class="flow-unit-note-index">obs. 01</span>
-  <span class="flow-unit-note-text">
-    Multisensory stimuli shape eating behavior through<br>
-    integrated sensory activation.
-    <span class="flow-unit-citation">(Εpignosis Study 1., 2024)</span>
-  </span>
-</div>
-  <div class="flow-unit-line flow-unit-line-sensory" id="flowUnitSensoryLine"></div>
+      <!-- =========================================================
+      HTML SECTION 05C: SENSORY RESPONSE UNIT BLOCK
+      Mirrored block: label + quote + line + image
+      ========================================================== -->
+      <div class="flow-unit flow-unit-sensory" id="flowUnitSensory">
+        <div class="flow-unit-label flow-unit-label-sensory editorial-label" id="flowUnitSensoryLabel">
+          // Sensory Response
+        </div>
+        <div class="flow-unit-quote flow-unit-quote-sensory" id="flowUnitSensoryQuote">
+          <span class="flow-unit-note-index">obs. 01</span>
+          <span class="flow-unit-note-text">
+            Multisensory stimuli shape eating behavior through<br>
+            integrated sensory activation.
+            <span class="flow-unit-citation">(Εpignosis Study 1., 2024)</span>
+          </span>
+        </div>
+        <div class="flow-unit-line flow-unit-line-sensory" id="flowUnitSensoryLine"></div>
+        <figure class="flow-unit-image flow-unit-image-sensory" id="flowUnitSensoryImage">
+          <img src="images/sensory.jpeg" alt="Sensory response visual">
+        </figure>
+      </div>
 
-  <figure class="flow-unit-image flow-unit-image-sensory" id="flowUnitSensoryImage">
-    <img src="images/sensory.jpeg" alt="Sensory response visual">
-  </figure>
-</div>
-    <!-- =========================================================
-HTML SECTION 05D: ANALYSIS UNIT BLOCK
-Same cinematic structure as perception:
-image left / label below / quote right / line below quote
-========================================================== -->
-<div class="flow-unit flow-unit-analysis" id="flowUnitAnalysis">
-  <figure class="flow-unit-image flow-unit-image-analysis" id="flowUnitAnalysisImage">
-    <img src="images/analysis.jpeg" alt="Analysis visual">
-  </figure>
+      <!-- =========================================================
+      HTML SECTION 05D: ANALYSIS UNIT BLOCK
+      image left / label below / quote right / line below quote
+      ========================================================== -->
+      <div class="flow-unit flow-unit-analysis" id="flowUnitAnalysis">
+        <figure class="flow-unit-image flow-unit-image-analysis" id="flowUnitAnalysisImage">
+          <img src="images/analysis.jpeg" alt="Analysis visual">
+        </figure>
+        <div class="flow-unit-label flow-unit-label-analysis editorial-label" id="flowUnitAnalysisLabel">
+          // Analysis
+        </div>
+        <div class="flow-unit-quote flow-unit-quote-analysis" id="flowUnitAnalysisQuote">
+          <span class="flow-unit-note-index">ref. 01</span>
+          <span class="flow-unit-note-text">
+            Behavior unfolds through perceptual and affective integration,<br>
+            preceding cognitive evaluation.
+            <span class="flow-unit-citation">(Spence, 2022)</span>
+          </span>
+        </div>
+        <div class="flow-unit-line flow-unit-line-analysis" id="flowUnitAnalysisLine"></div>
+      </div>
 
-  <div class="flow-unit-label flow-unit-label-analysis editorial-label" id="flowUnitAnalysisLabel">
-    //Analysis
-  </div>
-
-<div class="flow-unit-quote flow-unit-quote-analysis" id="flowUnitAnalysisQuote">
-  <span class="flow-unit-note-index">ref. 01</span>
-  <span class="flow-unit-note-text">
-    Behavior unfolds through perceptual and affective integration,<br>
-    preceding cognitive evaluation.
-    <span class="flow-unit-citation">(Spence, 2022)</span>
-  </span>
-</div>
-
-  <div class="flow-unit-line flow-unit-line-analysis" id="flowUnitAnalysisLine"></div>
-</div>
       <!-- =========================================================
       HTML SECTION 06: ENTRANCE IMAGE LAYER
-      Layer μόνο για τις εικόνες
+      Layer αποκλειστικά για εικόνες
       ========================================================== -->
-      <div class="entrance-image-layer" id="entranceImageLayer">
-      </div>
+      <div class="entrance-image-layer" id="entranceImageLayer"></div>
 
       <!-- =========================================================
       HTML SECTION 07: ENTRANCE TEXT LAYER
       Layer για labels, quotes και micro editorial text
       ========================================================== -->
       <div class="entrance-text-layer" id="entranceTextLayer">
-
-      <!-- PERCEPTION GROUP -->
-      <div class="flow-text-group flow-text-group-perception" id="flowTextGroupPerception"></div>
-
-      <!-- SENSORY GROUP -->
-      <div class="flow-text-group flow-text-group-sensory" id="flowTextGroupSensory"></div>
-
-      <!-- ANALYSIS GROUP -->
-      <div class="flow-text-group flow-text-group-analysis" id="flowTextGroupAnalysis"></div>
-
+        <div class="flow-text-group flow-text-group-perception" id="flowTextGroupPerception"></div>
+        <div class="flow-text-group flow-text-group-sensory" id="flowTextGroupSensory"></div>
+        <div class="flow-text-group flow-text-group-analysis" id="flowTextGroupAnalysis"></div>
       </div>
 
-        </div>
-      </div>
     </div>
+    <!-- /entrance-canvas -->
+
   </div>
+  <!-- /entrance-flow -->
 
   <!-- =========================================================
-  HTML SECTION 08: CONTINUOUS HERO REVEAL
+  HTML SECTION 08: HERO STAGE
   Το hero λειτουργεί σαν συνέχεια του entrance
   ========================================================== -->
   <section class="hero-stage" id="heroStage">
@@ -2147,7 +2118,6 @@ image left / label below / quote right / line below quote
           Multisensory Experience & Eating Behavior Researcher
         </div>
       </div>
-
       <button class="hero-menu-button" id="heroMenuButton" aria-label="Open menu">
         <span></span>
         <span></span>
@@ -2160,7 +2130,7 @@ image left / label below / quote right / line below quote
     Κεντρική editorial σύνθεση του hero
     ========================================================== -->
     <div class="hero-composition" id="heroComposition">
-    <div class="hero-grain-layer" id="heroGrainLayer"></div>
+      <div class="hero-grain-layer" id="heroGrainLayer"></div>
 
       <div class="hero-image-strip" id="heroImageStrip">
         <img src="images/hero-strip.jpeg" alt="Hero continuation strip">
@@ -2168,17 +2138,14 @@ image left / label below / quote right / line below quote
 
       <div class="hero-copy-column" id="heroCopyColumn">
         <div class="hero-accent-line" id="heroAccentLine"></div>
-
         <h1 class="hero-main-title" id="heroMainTitle">
           Investigating<br>
           Multisensory Experience as a Behavioral Variable
         </h1>
-
         <p class="hero-main-subtitle" id="heroMainSubtitle">
           Research at the Convergence of Sensory Science, Gastronomy,<br>
           and Hospitality Strategy
         </p>
-
         <div class="hero-title-line" id="heroTitleLine"></div>
       </div>
 
@@ -2193,743 +2160,608 @@ image left / label below / quote right / line below quote
         <div class="hero-year">2026</div>
       </div>
     </div>
-   </section>
-  <!-- =========================================================
-HTML SECTION 12: CINEMATIC MAIN CONTENT FIELD
-Interactive research field below hero
-========================================================= -->
-<main class="research-field" id="researchField">
-
-  <!-- Left reveal stage -->
-  <section class="research-reveal-stage" id="researchRevealStage">
-
-    <!-- 001 / Inquiry -->
-    <article class="research-panel is-active" id="panel-direction" data-panel="direction">
-      <div class="research-panel-inner">
-        <div class="research-panel-number">001/006</div>
-        <h2 class="research-panel-title">Inquiry</h2>
-        <p class="research-panel-lead">
-          Eating is not a simple act — it is a perceptual event.
-        </p>
-        <p class="research-panel-body">
-          Perception precedes cognition. Before a meal is evaluated, it is absorbed — through texture, atmosphere, sound, and spatial condition. Gastronomy is not merely the study of food — it is the study of how food is perceived, remembered, and experienced within a cultural and spatial context.
-          Understanding how these stimuli converge to shape eating behavior and guest experience is the central intellectual interest that drives this research trajectory — one that combines scientific rigor with creative inquiry.
-          The inquiry sits at the intersection of sensory science, gastronomy, and hospitality strategy — examining multisensory experience not as aesthetic layer, but as a measurable behavioral variable. The analytical lens draws from marketing analytics and data-driven methodologies, bridging empirical evidence with applied hospitality intelligence.
-        </p>
-        <div class="research-panel-line"></div>
-      </div>
-    </article>
-
-    <!-- 002 / Fields of Inquiry -->
-    <article class="research-panel" id="panel-contexts" data-panel="contexts">
-      <div class="research-panel-inner">
-        <div class="research-panel-number">002/006</div>
-        <h2 class="research-panel-title">Fields of Inquiry</h2>
-        <p class="research-panel-lead">
-          The conditions under which food is consumed are not neutral — they are active determinants of behavior.
-        </p>
-        <p class="research-panel-body">
-          Sensory properties of food, atmospheric stimuli, and spatial conditions do not merely accompany an experience — they shape it. Understanding how these elements interact to influence eating behavior, guest perception, and consumption patterns across diverse research and hospitality contexts is the core research context of this inquiry.
-          Three domains frame this work. In gastronomy and F&B settings, the focus is on how food texture, oral processing, and sensory design influence eating behavior and consumption experience. In hotel and tourism environments, the interest lies in how spatial aesthetics and multisensory atmosphere affect guest perception and behavioral intention. Across both contexts, the underlying question remains consistent: how does the environment become a behavioral condition?
-        </p>
-        <div class="research-panel-line"></div>
-      </div>
-    </article>
-
-    <!-- 003 / Approach -->
-    <article class="research-panel" id="panel-method" data-panel="method">
-      <div class="research-panel-inner">
-        <div class="research-panel-number">003/006</div>
-        <h2 class="research-panel-title">Approach</h2>
-        <p class="research-panel-lead">
-          Method is not a procedure — it is a way of thinking.
-        </p>
-        <p class="research-panel-body">
-         The methodological approach integrates empirical inquiry with analytical structure, drawing from sensory science, behavioral research, and marketing analytics. Quantitative data collection and statistical analysis form the backbone of the research design, while conceptual frameworks from gastronomy and hospitality strategy provide the interpretive context.
-        Research design is approached as a synthesis — combining controlled experimental measurement with real-world observation. Experience with randomized controlled trial methodology, developed through research participation at the Department of Sensory Science & Eating Behavior, Wageningen University & Research, informs the empirical rigor applied across all research contexts. Analytical tools include sentiment analysis for the interpretation of consumer perception and affective response, translating qualitative experiential data into quantitative behavioral evidence.
-        The goal is not to describe experience — it is to measure it, interpret it, and translate it into research intelligence that advances understanding across sensory science and hospitality contexts.
-
-        </p>
-        <div class="research-panel-line"></div>
-      </div>
-    </article>
-
-    <!-- 004 / Investigations -->
-    <article class="research-panel" id="panel-work" data-panel="work">
-      <div class="research-panel-inner">
-        <div class="research-panel-number">004/006</div>
-        <h2 class="research-panel-title">Investigations</h2>
-        <p class="research-panel-lead">
-          Restructure Study (2023–2024)
-          Research Fellow — Department of Sensory Science & Eating Behavior, Wageningen University & Research, The Netherlands
-          Supervised by Prof. Ciaran Forde
-        </p>
-        <p class="research-panel-body">
-          The Restructure Study is a randomized controlled trial investigating how the texture of ultra-processed foods influences eating rate and energy intake. As a Research Fellow within the Department of Sensory Science & Eating Behavior, contributions spanned three interconnected dimensions of the research process — meal preparation as a trained chef, ensuring precise control of textural properties across experimental conditions; direct participant interaction during trial sessions, supporting data collection protocols; and video-based behavioral analysis of eating behavior, capturing consumption patterns, eating rate, and behavioral response to textural variation. This comprehensive involvement across culinary, observational, and analytical dimensions of an RCT forms the empirical foundation that informs the broader research trajectory.
-
-          Epignosis Study 2 (2024–2025)
-          Principal Investigator — Department of Marketing & Communication, Athens University of Economics and Business
-          Supervised by Prof. Georgios Mpaltas
-          Sustainable Spatial Aesthetics, Multisensory Experience and Emotional Processing in Concept Hotels: A Sequential S-O-R Model Enhanced by Sentiment Analytics
-          This study investigates how sustainability-oriented spatial aesthetics function as active sensory stimuli in concept hotel environments. Applying the Stimulus-Organism-Response framework, the research empirically confirms a sequential mediation structure: spatial sustainability activates multisensory perception, which triggers emotional response, which shapes brand attitude, and ultimately drives green behavioral intentions. Sentiment analytics were integrated as an analytical layer to capture affective dimensions of guest response. Findings indicate that brand meaning in experiential hospitality contexts is constructed through sensory absorption and emotional congruence rather than cognitive quality evaluation.
-
-          Epignosis Study 1 (2023–2024)
-          Principal Investigator — Department of Management, Marketing & Tourism, International Hellenic University
-          Supervised by Assistant Professor Dr. Antonios Giannopoulos
-          The Awareness of Sensory Marketing in Co-creating a New-Age Gastronomic Tourism Experience: Investigating the Eating Behavior of Millennials and Gen Z
-          This study examines the contribution of multisensory aesthetic factors — visual, auditory, olfactory, and flavor perception — in shaping dining experience and cuisine choice among Millennials and Generation Z. Based on responses from 308 participants, bivariate correlation and multivariate linear regression methods were applied to identify the sensory and demographic determinants of dining behavior. Findings demonstrate that interior design, color, light, and olfactory elements are among the most influential factors in restaurant aesthetic appeal, and that cultural and demographic variables significantly moderate sensory perception and cuisine preference.
-        </p>
-        <div class="research-panel-line"></div>
-      </div>
-    </article>
-
-    <!-- 005 / Profile -->
-    <article class="research-panel" id="panel-profile" data-panel="profile">
-      <div class="research-panel-inner">
-        <div class="research-panel-number">005/006</div>
-        <h2 class="research-panel-title">Profile</h2>
-        <p class="research-panel-lead">
-          Paris Intzes is a Hospitality Experience Strategist and Researcher working at the intersection of multisensory experience, eating behavior, and experiential design.
-        </p>
-        <p class="research-panel-body">
-          With a background in food science, gastronomy, tourism management, and marketing analytics, his work integrates scientific inquiry with applied experience composition across hospitality and sensory environments.
-        </p>
-        <div class="research-panel-line"></div>
-      </div>
-    </article>
-
-    <!-- 006 / Contact -->
-    <article class="research-panel" id="panel-contact" data-panel="contact">
-      <div class="research-panel-inner">
-        <div class="research-panel-number">006/006</div>
-        <h2 class="research-panel-title">Contact</h2>
-        <p class="research-panel-lead">
-          For research dialogue, interdisciplinary collaborations, and hospitality-related concepts.
-        </p>
-        <p class="research-panel-body">
-          Contact details, partnerships, and future projects can be discussed directly through the communication channels that will be added here.
-        </p>
-        <div class="research-panel-line"></div>
-      </div>
-    </article>
 
   </section>
+  <!-- /hero-stage -->
 
-
-  </div>
-
-  <!-- Right drifting label rail -->
-  <nav class="research-label-rail" id="researchLabelRail" aria-label="Research Sections">
-
-    <button class="research-label is-active" data-target="direction" type="button">
-      <span class="research-label-arrow research-label-arrow-left">←</span>
-      <span class="research-label-meta">001/006</span>
-      <span class="research-label-title">Inquiry</span>
-      <span class="research-label-arrow research-label-arrow-right">→</span>
-    </button>
-
-    <button class="research-label" data-target="contexts" type="button">
-      <span class="research-label-arrow research-label-arrow-left">←</span>
-      <span class="research-label-meta">002/006</span>
-      <span class="research-label-title">Contexts</span>
-      <span class="research-label-arrow research-label-arrow-right">→</span>
-    </button>
-
-    <button class="research-label" data-target="method" type="button">
-      <span class="research-label-arrow research-label-arrow-left">←</span>
-      <span class="research-label-meta">003/006</span>
-      <span class="research-label-title">Method</span>
-      <span class="research-label-arrow research-label-arrow-right">→</span>
-    </button>
-
-    <button class="research-label" data-target="work" type="button">
-      <span class="research-label-arrow research-label-arrow-left">←</span>
-      <span class="research-label-meta">004/006</span>
-      <span class="research-label-title">Work &amp; Studies</span>
-      <span class="research-label-arrow research-label-arrow-right">→</span>
-    </button>
-
-    <button class="research-label" data-target="profile" type="button">
-      <span class="research-label-arrow research-label-arrow-left">←</span>
-      <span class="research-label-meta">005/006</span>
-      <span class="research-label-title">Profile</span>
-      <span class="research-label-arrow research-label-arrow-right">→</span>
-    </button>
-
-    <button class="research-label" data-target="contact" type="button">
-      <span class="research-label-arrow research-label-arrow-left">←</span>
-      <span class="research-label-meta">006/006</span>
-      <span class="research-label-title">Contact</span>
-      <span class="research-label-arrow research-label-arrow-right">→</span>
-    </button>
-
-  </nav>
-
-</main>
   <!-- =========================================================
-HTML SECTION 13: BURGER MENU OVERLAY
-Single-page navigation overlay
-========================================================= -->
-<div class="menu-overlay" id="menuOverlay" aria-hidden="true">
-  <div class="menu-overlay-inner">
-    <button class="menu-overlay-close" id="menuOverlayClose" type="button" aria-label="Close menu">Close</button>
+  HTML SECTION 11: RESEARCH FIELD
+  Interactive cinematic content field below hero
+  ========================================================== -->
+  <main class="research-field" id="researchField">
 
-    <div class="menu-overlay-links">
-      <button class="menu-link" data-menu-target="direction" type="button">001 / Direction</button>
-      <button class="menu-link" data-menu-target="contexts" type="button">002 / Contexts</button>
-      <button class="menu-link" data-menu-target="method" type="button">003 / Method</button>
-      <button class="menu-link" data-menu-target="work" type="button">004 / Work &amp; Studies</button>
-      <button class="menu-link" data-menu-target="profile" type="button">005 / Profile</button>
-      <button class="menu-link" data-menu-target="contact" type="button">006 / Contact</button>
+    <!-- =========================================================
+    HTML SECTION 12: RESEARCH REVEAL STAGE
+    Left column — panel content
+    ========================================================== -->
+    <section class="research-reveal-stage" id="researchRevealStage">
+
+      <!-- 001 / Inquiry -->
+      <article class="research-panel is-active" id="panel-direction" data-panel="direction">
+        <div class="research-panel-inner">
+          <div class="research-panel-number">001/006</div>
+          <h2 class="research-panel-title">Inquiry</h2>
+          <p class="research-panel-lead">
+            Eating is not a simple act — it is a perceptual event.
+          </p>
+          <p class="research-panel-body">
+            Perception precedes cognition. Before a meal is evaluated, it is absorbed — through texture, atmosphere, sound, and spatial condition. Gastronomy is not merely the study of food — it is the study of how food is perceived, remembered, and experienced within a cultural and spatial context.
+            Understanding how these stimuli converge to shape eating behavior and guest experience is the central intellectual interest that drives this research trajectory — one that combines scientific rigor with creative inquiry.
+            The inquiry sits at the intersection of sensory science, gastronomy, and hospitality strategy — examining multisensory experience not as aesthetic layer, but as a measurable behavioral variable. The analytical lens draws from marketing analytics and data-driven methodologies, bridging empirical evidence with applied hospitality intelligence.
+          </p>
+          <div class="research-panel-line"></div>
+        </div>
+      </article>
+
+      <!-- 002 / Fields of Inquiry -->
+      <article class="research-panel" id="panel-contexts" data-panel="contexts">
+        <div class="research-panel-inner">
+          <div class="research-panel-number">002/006</div>
+          <h2 class="research-panel-title">Fields of Inquiry</h2>
+          <p class="research-panel-lead">
+            The conditions under which food is consumed are not neutral — they are active determinants of behavior.
+          </p>
+          <p class="research-panel-body">
+            Sensory properties of food, atmospheric stimuli, and spatial conditions do not merely accompany an experience — they shape it. Understanding how these elements interact to influence eating behavior, guest perception, and consumption patterns across diverse research and hospitality contexts is the core research context of this inquiry.
+            Three domains frame this work. In gastronomy and F&B settings, the focus is on how food texture, oral processing, and sensory design influence eating behavior and consumption experience. In hotel and tourism environments, the interest lies in how spatial aesthetics and multisensory atmosphere affect guest perception and behavioral intention. Across both contexts, the underlying question remains consistent: how does the environment become a behavioral condition?
+          </p>
+          <div class="research-panel-line"></div>
+        </div>
+      </article>
+
+      <!-- 003 / Approach -->
+      <article class="research-panel" id="panel-method" data-panel="method">
+        <div class="research-panel-inner">
+          <div class="research-panel-number">003/006</div>
+          <h2 class="research-panel-title">Approach</h2>
+          <p class="research-panel-lead">
+            Method is not a procedure — it is a way of thinking.
+          </p>
+          <p class="research-panel-body">
+            The methodological approach integrates empirical inquiry with analytical structure, drawing from sensory science, behavioral research, and marketing analytics. Quantitative data collection and statistical analysis form the backbone of the research design, while conceptual frameworks from gastronomy and hospitality strategy provide the interpretive context.
+            Research design is approached as a synthesis — combining controlled experimental measurement with real-world observation. Experience with randomized controlled trial methodology, developed through research participation at the Department of Sensory Science & Eating Behavior, Wageningen University & Research, informs the empirical rigor applied across all research contexts. Analytical tools include sentiment analysis for the interpretation of consumer perception and affective response, translating qualitative experiential data into quantitative behavioral evidence.
+            The goal is not to describe experience — it is to measure it, interpret it, and translate it into research intelligence that advances understanding across sensory science and hospitality contexts.
+          </p>
+          <div class="research-panel-line"></div>
+        </div>
+      </article>
+
+      <!-- 004 / Investigations -->
+      <article class="research-panel" id="panel-work" data-panel="work">
+        <div class="research-panel-inner">
+          <div class="research-panel-number">004/006</div>
+          <h2 class="research-panel-title">Investigations</h2>
+          <p class="research-panel-lead">
+            Restructure Study (2023–2024)
+            Research Fellow — Department of Sensory Science & Eating Behavior, Wageningen University & Research, The Netherlands
+            Supervised by Prof. Ciaran Forde
+          </p>
+          <p class="research-panel-body">
+            The Restructure Study is a randomized controlled trial investigating how the texture of ultra-processed foods influences eating rate and energy intake. As a Research Fellow within the Department of Sensory Science & Eating Behavior, contributions spanned three interconnected dimensions of the research process — meal preparation as a trained chef, ensuring precise control of textural properties across experimental conditions; direct participant interaction during trial sessions, supporting data collection protocols; and video-based behavioral analysis of eating behavior, capturing consumption patterns, eating rate, and behavioral response to textural variation. This comprehensive involvement across culinary, observational, and analytical dimensions of an RCT forms the empirical foundation that informs the broader research trajectory.
+
+            Epignosis Study 2 (2024–2025)
+            Principal Investigator — Department of Marketing & Communication, Athens University of Economics and Business
+            Supervised by Prof. Georgios Mpaltas
+            Sustainable Spatial Aesthetics, Multisensory Experience and Emotional Processing in Concept Hotels: A Sequential S-O-R Model Enhanced by Sentiment Analytics
+            This study investigates how sustainability-oriented spatial aesthetics function as active sensory stimuli in concept hotel environments. Applying the Stimulus-Organism-Response framework, the research empirically confirms a sequential mediation structure: spatial sustainability activates multisensory perception, which triggers emotional response, which shapes brand attitude, and ultimately drives green behavioral intentions. Sentiment analytics were integrated as an analytical layer to capture affective dimensions of guest response. Findings indicate that brand meaning in experiential hospitality contexts is constructed through sensory absorption and emotional congruence rather than cognitive quality evaluation.
+
+            Epignosis Study 1 (2023–2024)
+            Principal Investigator — Department of Management, Marketing & Tourism, International Hellenic University
+            Supervised by Assistant Professor Dr. Antonios Giannopoulos
+            The Awareness of Sensory Marketing in Co-creating a New-Age Gastronomic Tourism Experience: Investigating the Eating Behavior of Millennials and Gen Z
+            This study examines the contribution of multisensory aesthetic factors — visual, auditory, olfactory, and flavor perception — in shaping dining experience and cuisine choice among Millennials and Generation Z. Based on responses from 308 participants, bivariate correlation and multivariate linear regression methods were applied to identify the sensory and demographic determinants of dining behavior. Findings demonstrate that interior design, color, light, and olfactory elements are among the most influential factors in restaurant aesthetic appeal, and that cultural and demographic variables significantly moderate sensory perception and cuisine preference.
+          </p>
+          <div class="research-panel-line"></div>
+        </div>
+      </article>
+
+      <!-- 005 / Profile -->
+      <article class="research-panel" id="panel-profile" data-panel="profile">
+        <div class="research-panel-inner">
+          <div class="research-panel-number">005/006</div>
+          <h2 class="research-panel-title">Profile</h2>
+          <p class="research-panel-lead">
+            Paris Intzes is a Hospitality Experience Strategist and Researcher working at the intersection of multisensory experience, eating behavior, and experiential design.
+          </p>
+          <p class="research-panel-body">
+            With a background in food science, gastronomy, tourism management, and marketing analytics, his work integrates scientific inquiry with applied experience composition across hospitality and sensory environments.
+          </p>
+          <div class="research-panel-line"></div>
+        </div>
+      </article>
+
+      <!-- 006 / Contact -->
+      <article class="research-panel" id="panel-contact" data-panel="contact">
+        <div class="research-panel-inner">
+          <div class="research-panel-number">006/006</div>
+          <h2 class="research-panel-title">Contact</h2>
+          <p class="research-panel-lead">
+            For research dialogue, interdisciplinary collaborations, and hospitality-related concepts.
+          </p>
+          <p class="research-panel-body">
+            Contact details, partnerships, and future projects can be discussed directly through the communication channels that will be added here.
+          </p>
+          <div class="research-panel-line"></div>
+        </div>
+      </article>
+
+    </section>
+    <!-- /research-reveal-stage -->
+
+    <!-- =========================================================
+    HTML SECTION 13: RESEARCH LABEL RAIL
+    Right column — drifting navigation labels
+    ========================================================== -->
+    <nav class="research-label-rail" id="researchLabelRail" aria-label="Research Sections">
+
+      <button class="research-label is-active" data-target="direction" type="button">
+        <span class="research-label-arrow research-label-arrow-left">←</span>
+        <span class="research-label-meta">001/006</span>
+        <span class="research-label-title">Inquiry</span>
+        <span class="research-label-arrow research-label-arrow-right">→</span>
+      </button>
+
+      <button class="research-label" data-target="contexts" type="button">
+        <span class="research-label-arrow research-label-arrow-left">←</span>
+        <span class="research-label-meta">002/006</span>
+        <span class="research-label-title">Contexts</span>
+        <span class="research-label-arrow research-label-arrow-right">→</span>
+      </button>
+
+      <button class="research-label" data-target="method" type="button">
+        <span class="research-label-arrow research-label-arrow-left">←</span>
+        <span class="research-label-meta">003/006</span>
+        <span class="research-label-title">Method</span>
+        <span class="research-label-arrow research-label-arrow-right">→</span>
+      </button>
+
+      <button class="research-label" data-target="work" type="button">
+        <span class="research-label-arrow research-label-arrow-left">←</span>
+        <span class="research-label-meta">004/006</span>
+        <span class="research-label-title">Work &amp; Studies</span>
+        <span class="research-label-arrow research-label-arrow-right">→</span>
+      </button>
+
+      <button class="research-label" data-target="profile" type="button">
+        <span class="research-label-arrow research-label-arrow-left">←</span>
+        <span class="research-label-meta">005/006</span>
+        <span class="research-label-title">Profile</span>
+        <span class="research-label-arrow research-label-arrow-right">→</span>
+      </button>
+
+      <button class="research-label" data-target="contact" type="button">
+        <span class="research-label-arrow research-label-arrow-left">←</span>
+        <span class="research-label-meta">006/006</span>
+        <span class="research-label-title">Contact</span>
+        <span class="research-label-arrow research-label-arrow-right">→</span>
+      </button>
+
+    </nav>
+    <!-- /research-label-rail -->
+
+  </main>
+  <!-- /research-field -->
+
+  <!-- =========================================================
+  HTML SECTION 14: BURGER MENU OVERLAY
+  Single-page full-screen navigation overlay
+  ========================================================== -->
+  <div class="menu-overlay" id="menuOverlay" aria-hidden="true">
+    <div class="menu-overlay-inner">
+      <button class="menu-overlay-close" id="menuOverlayClose" type="button" aria-label="Close menu">Close</button>
+      <div class="menu-overlay-links">
+        <button class="menu-link" data-menu-target="direction" type="button">001 / Direction</button>
+        <button class="menu-link" data-menu-target="contexts" type="button">002 / Contexts</button>
+        <button class="menu-link" data-menu-target="method" type="button">003 / Method</button>
+        <button class="menu-link" data-menu-target="work" type="button">004 / Work &amp; Studies</button>
+        <button class="menu-link" data-menu-target="profile" type="button">005 / Profile</button>
+        <button class="menu-link" data-menu-target="contact" type="button">006 / Contact</button>
+      </div>
     </div>
   </div>
-</div>
-  
+  <!-- /menu-overlay -->
+
   <script>
-  /* =========================================================
-  JS SECTION 01: ELEMENT REFERENCES
-  Φέρνουμε τα βασικά στοιχεία του νέου continuous system
-  ========================================================== */
-  const desktopEntranceQuery = window.matchMedia('(min-width: 1101px)');
-    
-  const entranceFlow = document.getElementById('entranceFlow');
-  const entranceSkipBtn = document.getElementById('entranceSkipBtn');
-  const entranceCanvas = document.getElementById('entranceCanvas');
-    
-  const flowUnitPerception = document.getElementById('flowUnitPerception');
-  const flowUnitPerceptionLine = document.getElementById('flowUnitPerceptionLine');
-
-  const flowUnitSensory = document.getElementById('flowUnitSensory');
-  const flowUnitSensoryLine = document.getElementById('flowUnitSensoryLine');
-
-  const flowUnitAnalysis = document.getElementById('flowUnitAnalysis');
-  const flowUnitAnalysisLine = document.getElementById('flowUnitAnalysisLine');
-
-  const frameLineLeft = document.getElementById('frameLineLeft');
-  const frameLineRight = document.getElementById('frameLineRight');
-    
-  const heroImageColumn = document.getElementById('heroImageColumn');
-  const heroStage = document.getElementById('heroStage');
-  const heroToolbar = document.getElementById('heroToolbar');
-  const heroImageStrip = document.getElementById('heroImageStrip');
-
-  /* =========================================================
-  JS SECTION 02: TIMELINE STORAGE
-  Κρατάμε timeouts / RAF ids ώστε να μπορούμε να τα ακυρώσουμε
-  ========================================================== */
-  const activeTimers = [];
-  let animationFrameId = null;
-  let flowStartedAt = null;
-  let flowStopped = false;
-
-  function schedule(fn, delay) {
-    const timer = setTimeout(fn, delay);
-    activeTimers.push(timer);
-  }
-
-  function clearAllTimers() {
-    activeTimers.forEach(timer => clearTimeout(timer));
-    activeTimers.length = 0;
-  }
-
-  /* =========================================================
-  JS SECTION 03: REVEAL HELPERS
-  Helpers για reveal states
-  ========================================================== */
-  function setFrameLinesHeight(value) {
-  if (frameLineLeft) frameLineLeft.style.height = value;
-  if (frameLineRight) frameLineRight.style.height = value;
-}
-
-function fadeFrameLines() {
-  if (frameLineLeft) frameLineLeft.style.opacity = '0';
-  if (frameLineRight) frameLineRight.style.opacity = '0';
-}
-    
-  function revealUnit(imageEl, textGroupEl) {
-  if (imageEl) imageEl.classList.add('is-unit-visible');
-  if (textGroupEl) textGroupEl.classList.add('is-unit-visible');
-}
-
-function exitUnit(imageEl, textGroupEl) {
-  if (imageEl) imageEl.classList.add('is-unit-exit');
-  if (textGroupEl) textGroupEl.classList.add('is-unit-exit');
-
-  /* Fade starts later, when the unit has already moved upward */
-  setTimeout(() => {
-    if (imageEl) imageEl.classList.add('is-unit-fade');
-    if (textGroupEl) textGroupEl.classList.add('is-unit-fade');
-  }, 1550);
-}
-
-function revealLine(el) {
-  if (!el) return;
-  el.classList.add('line-open');
-}
-
-  /* =========================================================
-  JS SECTION 04: FLOW LAYER OFFSETS
-  Εδώ ρυθμίζουμε διαφορετικές ταχύτητες ανά layer
-  για πιο κινηματογραφική αίσθηση
-  ========================================================== */
-  function applyFlowTransforms(el, y) {
-    if (!el) return;
-    el.style.transform = `translateY(${-y}px)`;
-  }
-
-  /* =========================================================
-  JS SECTION 05: CONTINUOUS FLOW ENGINE
-  Layered upward drift με διαφορετικές ταχύτητες
-  ========================================================== */
-  function runContinuousFlow(timestamp) {
-  if (flowStopped) return;
-
-  if (!flowStartedAt) {
-    flowStartedAt = timestamp;
-  }
-
-  animationFrameId = requestAnimationFrame(runContinuousFlow);
-}
-
- /* =========================================================
-JS SECTION 06: HERO REVEAL
-Το hero ανεβαίνει σαν master block και μετά ενεργοποιεί τα inner reveals
-========================================================= */
-function revealHeroStage() {
-  if (!heroStage) return;
-
-  heroStage.classList.add('is-rising');
-
-  setTimeout(() => {
-    heroStage.classList.add('is-settled');
-  }, 1200);
-}
-  /* =========================================================
-JS SECTION 06A: DIRECT HERO MODE
-Tablet / mobile φορτώνουν απευθείας το hero με staged reveal
-========================================================= */
-function revealHeroDirect() {
-  flowStopped = true;
-
-  if (animationFrameId) {
-    cancelAnimationFrame(animationFrameId);
-  }
-
-  clearAllTimers();
-
-  if (entranceFlow) {
-    entranceFlow.style.display = 'none';
-  }
-
-  if (frameLineLeft) frameLineLeft.style.display = 'none';
-  if (frameLineRight) frameLineRight.style.display = 'none';
-
-  if (heroStage) {
-  heroStage.classList.add('is-visible');
-  heroStage.classList.add('is-rising');
-}
-
-  /* Tablet / mobile cinematic reveal sequence */
-  schedule(() => {
-    if (heroStage) heroStage.classList.add('is-mobile-toolbar-ready');
-  }, 80);
-
-  schedule(() => {
-    if (heroStage) heroStage.classList.add('is-mobile-title-ready');
-  }, 260);
-
-  schedule(() => {
-    if (heroStage) heroStage.classList.add('is-mobile-subtitle-ready');
-  }, 430);
-
-  schedule(() => {
-    if (heroStage) heroStage.classList.add('is-mobile-image-ready');
-  }, 620);
-
-  schedule(() => {
-    if (heroStage) heroStage.classList.add('is-mobile-footer-ready');
-  }, 980);
-}  
 
     /* =========================================================
-  JS SECTION 07: SKIP INTRO
-  Άμεσο πέρασμα από entrance σε hero
-  ========================================================== */
-  function skipEntranceFlow() {
-    flowStopped = true;
+    JS SECTION 01: ELEMENT REFERENCES
+    Φέρνουμε τα βασικά στοιχεία του continuous system
+    ========================================================== */
+    const desktopEntranceQuery = window.matchMedia('(min-width: 1101px)');
 
-    if (animationFrameId) {
-      cancelAnimationFrame(animationFrameId);
-    }
+    const entranceFlow    = document.getElementById('entranceFlow');
+    const entranceSkipBtn = document.getElementById('entranceSkipBtn');
+    const entranceCanvas  = document.getElementById('entranceCanvas');
 
-    clearAllTimers();
+    const flowUnitPerception     = document.getElementById('flowUnitPerception');
+    const flowUnitPerceptionLine = document.getElementById('flowUnitPerceptionLine');
 
-    if (entranceFlow) {
-      entranceFlow.classList.add('is-hidden');
-    }
+    const flowUnitSensory     = document.getElementById('flowUnitSensory');
+    const flowUnitSensoryLine = document.getElementById('flowUnitSensoryLine');
 
-    revealHeroStage();
-  }
+    const flowUnitAnalysis     = document.getElementById('flowUnitAnalysis');
+    const flowUnitAnalysisLine = document.getElementById('flowUnitAnalysisLine');
 
-  /* =========================================================
-JS SECTION 08: FIRST CINEMATIC TIMELINE
-Option 2:
-Τα στοιχεία εμφανίζονται, κάθονται, και μετά μπαίνουν στη ροή
-========================================================= */
-function startEntranceTimeline() {
-  requestAnimationFrame(runContinuousFlow);
+    const frameLineLeft  = document.getElementById('frameLineLeft');
+    const frameLineRight = document.getElementById('frameLineRight');
 
-  /* Show skip button */
-  schedule(() => {
-    if (entranceSkipBtn) entranceSkipBtn.classList.add('is-visible');
-  }, 350);
-  
-/* FRAME LINES — PHASE 1 / PERCEPTION */
-schedule(() => {
-  setFrameLinesHeight('30vh');
-}, 450);
+    const heroStage       = document.getElementById('heroStage');
+    const heroToolbar     = document.getElementById('heroToolbar');
+    const heroImageColumn = document.getElementById('heroImageColumn');
+    const heroImageStrip  = document.getElementById('heroImageStrip');
 
-/* FRAME LINES — PHASE 2 / SENSORY */
-schedule(() => {
-  setFrameLinesHeight('62vh');
-}, 3900);
-
-/* FRAME LINES — PHASE 3 / ANALYSIS */
-schedule(() => {
-  setFrameLinesHeight('100vh');
-}, 7100);
-
-  /* =========================================
-   UNIT 01 — PERCEPTION
-========================================= */
-schedule(() => {
-  if (flowUnitPerception) flowUnitPerception.classList.add('is-unit-visible');
-}, 500);
-
-schedule(() => {
-  revealLine(flowUnitPerceptionLine);
-}, 2100);
-
-schedule(() => {
-  if (flowUnitPerception) flowUnitPerception.classList.add('is-unit-exit');
-}, 4300);
-
-
-  /* =========================================
-   UNIT 02 — SENSORY RESPONSE
-========================================= */
-schedule(() => {
-  if (flowUnitSensory) flowUnitSensory.classList.add('is-unit-visible');
-}, 3900);
-
-schedule(() => {
-  revealLine(flowUnitSensoryLine);
-}, 5600);
-
-schedule(() => {
-  if (flowUnitSensory) flowUnitSensory.classList.add('is-unit-exit');
-}, 8000);
-
-
-/* =========================================
-   UNIT 03 — ANALYSIS
-========================================= */  
-schedule(() => {
-  if (flowUnitAnalysis) flowUnitAnalysis.classList.add('is-unit-visible');
-}, 7700);
-
-schedule(() => {
-  revealLine(flowUnitAnalysisLine);
-}, 9800);
-
-schedule(() => {
-  if (flowUnitAnalysis) flowUnitAnalysis.classList.add('is-unit-exit');
-}, 11700);
-
-
-/* =========================================
-   HERO EMERGES 
-========================================= */
-schedule(() => {
-  revealHeroStage();
-
-  if (entranceFlow) {
-    entranceFlow.classList.add('is-hidden');
-  }
-
-  fadeFrameLines();
-}, 13200);
-
-schedule(() => {
-  if (entranceFlow) {
-    entranceFlow.style.display = 'none';
-  }
-}, 14650);
-}
     /* =========================================================
-JS SECTION 09: HERO TOOLBAR COMPRESSION
-Με το scroll μένει μόνο το brand name
-========================================================= */
-function handleHeroCompression() {
-  if (!heroToolbar) return;
+    JS SECTION 02: TIMELINE STORAGE
+    Κρατάμε timeouts / RAF ids ώστε να μπορούμε να τα ακυρώσουμε
+    ========================================================== */
+    const activeTimers = [];
+    let animationFrameId = null;
+    let flowStartedAt   = null;
+    let flowStopped     = false;
 
-  if (window.scrollY > 60) {
-    heroToolbar.classList.add('is-compact');
-  } else {
-    heroToolbar.classList.remove('is-compact');
-  }
-}
-/* =========================================================
-JS SECTION 09A: HERO MICRO DRIFT
-Subtle parallax drift for hero image column
-========================================================= */
-function handleHeroMicroDrift() {
-  if (!desktopEntranceQuery.matches) return;
-  if (!heroStage || !heroStage.classList.contains('is-settled')) return;
-
-  const scrollY = window.scrollY;
-
-  /* Main hero image */
-  if (heroImageColumn) {
-    const driftMain = Math.min(scrollY * 0.08, 18);
-    heroImageColumn.style.transform = `translateY(${driftMain}px)`;
-  }
-
-  /* Left vertical strip */
-  if (heroImageStrip) {
-    const driftStrip = Math.min(scrollY * 0.04, 10);
-    heroImageStrip.style.transform = `translateY(${driftStrip}px)`;
-  }
-}
-  /* =========================================================
-  JS SECTION 10: EVENT BINDINGS
-  Συνδέουμε interactions
-  ========================================================== */
-  if (entranceSkipBtn) {
-    entranceSkipBtn.addEventListener('click', skipEntranceFlow);
-  }
-
-  window.addEventListener('scroll', handleHeroCompression);
-  window.addEventListener('scroll', handleHeroMicroDrift);
-
- /* =========================================================
-JS SECTION 11: INITIAL LOAD
-Desktop only entrance / direct hero for tablet & mobile
-========================================================= */
-window.addEventListener('load', () => {
-  if (desktopEntranceQuery.matches) {
-    startEntranceTimeline();
-  } else {
-    revealHeroDirect();
-  }
-});
-
-/* =========================================================
-JS SECTION 12: MAIN CONTENT INTERACTION
-Cinematic panel switching + burger menu navigation
-========================================================= */
-const researchLabels = document.querySelectorAll('.research-label');
-const researchPanels = document.querySelectorAll('.research-panel');
-
-function activateResearchPanel(targetName) {
-  researchLabels.forEach(label => {
-    const isMatch = label.dataset.target === targetName;
-    label.classList.toggle('is-active', isMatch);
-  });
-
-  researchPanels.forEach(panel => {
-    const isMatch = panel.dataset.panel === targetName;
-    panel.classList.toggle('is-active', isMatch);
-  });
-}
-
-researchLabels.forEach(label => {
-  label.addEventListener('click', () => {
-    activateResearchPanel(label.dataset.target);
-
-    const field = document.getElementById('researchField');
-    if (field) {
-      field.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
-});
-
-/* =========================================================
-JS SECTION 13: BURGER MENU SYSTEM
-Overlay open / close + section activation
-========================================================= */
-const menuOverlay = document.getElementById('menuOverlay');
-const menuOverlayClose = document.getElementById('menuOverlayClose');
-const heroMenuButton = document.getElementById('heroMenuButton');
-const menuLinks = document.querySelectorAll('.menu-link');
-
-function forceHideNativeCursor() {
-  document.documentElement.style.cursor = 'none';
-  document.body.style.cursor = 'none';
-
-  if (menuOverlay) menuOverlay.style.cursor = 'none';
-  if (menuOverlayClose) menuOverlayClose.style.cursor = 'none';
-  if (heroMenuButton) heroMenuButton.style.cursor = 'none';
-
-  menuLinks.forEach(link => {
-    link.style.cursor = 'none';
-  });
-}
-
-function openMenuOverlay() {
-  if (!menuOverlay) return;
-  menuOverlay.classList.add('is-open');
-  menuOverlay.setAttribute('aria-hidden', 'false');
-  forceHideNativeCursor();
-}
-
-function closeMenuOverlay() {
-  if (!menuOverlay) return;
-  menuOverlay.classList.remove('is-open');
-  menuOverlay.setAttribute('aria-hidden', 'true');
-  forceHideNativeCursor();
-}
-
-if (heroMenuButton) {
-  heroMenuButton.addEventListener('click', () => {
-    if (!menuOverlay) return;
-    const isOpen = menuOverlay.classList.contains('is-open');
-
-    if (isOpen) {
-      closeMenuOverlay();
-    } else {
-      openMenuOverlay();
+    function schedule(fn, delay) {
+      const timer = setTimeout(fn, delay);
+      activeTimers.push(timer);
     }
 
-    heroMenuButton.blur();
-    forceHideNativeCursor();
-  });
-}
+    function clearAllTimers() {
+      activeTimers.forEach(timer => clearTimeout(timer));
+      activeTimers.length = 0;
+    }
 
-if (menuOverlayClose) {
-  menuOverlayClose.addEventListener('click', () => {
-    closeMenuOverlay();
-    forceHideNativeCursor();
-  });
-}
+    /* =========================================================
+    JS SECTION 03: REVEAL HELPERS
+    Helpers για reveal states
+    ========================================================== */
+    function setFrameLinesHeight(value) {
+      if (frameLineLeft)  frameLineLeft.style.height  = value;
+      if (frameLineRight) frameLineRight.style.height = value;
+    }
 
-menuLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    const targetName = link.dataset.menuTarget;
-    activateResearchPanel(targetName);
-    closeMenuOverlay();
-    forceHideNativeCursor();
+    function fadeFrameLines() {
+      if (frameLineLeft)  frameLineLeft.style.opacity  = '0';
+      if (frameLineRight) frameLineRight.style.opacity = '0';
+    }
 
-    const field = document.getElementById('researchField');
-    if (field) {
+    function revealUnit(imageEl, textGroupEl) {
+      if (imageEl)     imageEl.classList.add('is-unit-visible');
+      if (textGroupEl) textGroupEl.classList.add('is-unit-visible');
+    }
+
+    function exitUnit(imageEl, textGroupEl) {
+      if (imageEl)     imageEl.classList.add('is-unit-exit');
+      if (textGroupEl) textGroupEl.classList.add('is-unit-exit');
+
+      /* Fade starts later, when the unit has already moved upward */
       setTimeout(() => {
-        field.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 120);
+        if (imageEl)     imageEl.classList.add('is-unit-fade');
+        if (textGroupEl) textGroupEl.classList.add('is-unit-fade');
+      }, 1550);
     }
-  });
-});
 
-if (menuOverlay) {
-  menuOverlay.addEventListener('click', (event) => {
-    if (event.target === menuOverlay) {
-      closeMenuOverlay();
+    function revealLine(el) {
+      if (!el) return;
+      el.classList.add('line-open');
+    }
+
+    /* =========================================================
+    JS SECTION 04: FLOW LAYER OFFSETS
+    Εδώ ρυθμίζουμε διαφορετικές ταχύτητες ανά layer
+    για πιο κινηματογραφική αίσθηση
+    ========================================================== */
+    function applyFlowTransforms(el, y) {
+      if (!el) return;
+      el.style.transform = `translateY(${-y}px)`;
+    }
+
+    /* =========================================================
+    JS SECTION 05: CONTINUOUS FLOW ENGINE
+    Layered upward drift με διαφορετικές ταχύτητες
+    ========================================================== */
+    function runContinuousFlow(timestamp) {
+      if (flowStopped) return;
+
+      if (!flowStartedAt) {
+        flowStartedAt = timestamp;
+      }
+
+      animationFrameId = requestAnimationFrame(runContinuousFlow);
+    }
+
+    /* =========================================================
+    JS SECTION 06: HERO REVEAL
+    Το hero ανεβαίνει σαν master block και μετά ενεργοποιεί τα inner reveals
+    ========================================================== */
+    function revealHeroStage() {
+      if (!heroStage) return;
+
+      heroStage.classList.add('is-rising');
+
+      setTimeout(() => {
+        heroStage.classList.add('is-settled');
+      }, 1200);
+    }
+
+    /* =========================================================
+    JS SECTION 06A: DIRECT HERO MODE
+    Tablet / mobile φορτώνουν απευθείας το hero με staged reveal
+    ========================================================== */
+    function revealHeroDirect() {
+      flowStopped = true;
+
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+      clearAllTimers();
+
+      if (entranceFlow)   entranceFlow.style.display = 'none';
+      if (frameLineLeft)  frameLineLeft.style.display = 'none';
+      if (frameLineRight) frameLineRight.style.display = 'none';
+
+      if (heroStage) {
+        heroStage.classList.add('is-visible');
+        heroStage.classList.add('is-rising');
+      }
+
+      /* Tablet / mobile cinematic reveal sequence */
+      schedule(() => { if (heroStage) heroStage.classList.add('is-mobile-toolbar-ready');  },  80);
+      schedule(() => { if (heroStage) heroStage.classList.add('is-mobile-title-ready');    }, 260);
+      schedule(() => { if (heroStage) heroStage.classList.add('is-mobile-subtitle-ready'); }, 430);
+      schedule(() => { if (heroStage) heroStage.classList.add('is-mobile-image-ready');    }, 620);
+      schedule(() => { if (heroStage) heroStage.classList.add('is-mobile-footer-ready');   }, 980);
+    }
+
+    /* =========================================================
+    JS SECTION 07: SKIP INTRO
+    Άμεσο πέρασμα από entrance σε hero
+    ========================================================== */
+    function skipEntranceFlow() {
+      flowStopped = true;
+
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+      clearAllTimers();
+
+      if (entranceFlow) entranceFlow.classList.add('is-hidden');
+      revealHeroStage();
+    }
+
+    /* =========================================================
+    JS SECTION 08: ENTRANCE TIMELINE
+    Τα units εμφανίζονται, κάθονται, και μετά βγαίνουν
+    ========================================================== */
+    function startEntranceTimeline() {
+      requestAnimationFrame(runContinuousFlow);
+
+      /* Show skip button */
+      schedule(() => { if (entranceSkipBtn) entranceSkipBtn.classList.add('is-visible'); }, 350);
+
+      /* FRAME LINES */
+      schedule(() => { setFrameLinesHeight('30vh');  },  450);  /* Phase 1 — Perception */
+      schedule(() => { setFrameLinesHeight('62vh');  }, 3900);  /* Phase 2 — Sensory    */
+      schedule(() => { setFrameLinesHeight('100vh'); }, 7100);  /* Phase 3 — Analysis   */
+
+      /* UNIT 01 — PERCEPTION */
+      schedule(() => { if (flowUnitPerception) flowUnitPerception.classList.add('is-unit-visible'); },  500);
+      schedule(() => { revealLine(flowUnitPerceptionLine); }, 2100);
+      schedule(() => { if (flowUnitPerception) flowUnitPerception.classList.add('is-unit-exit');    }, 4300);
+
+      /* UNIT 02 — SENSORY RESPONSE */
+      schedule(() => { if (flowUnitSensory) flowUnitSensory.classList.add('is-unit-visible'); }, 3900);
+      schedule(() => { revealLine(flowUnitSensoryLine); }, 5600);
+      schedule(() => { if (flowUnitSensory) flowUnitSensory.classList.add('is-unit-exit');    }, 8000);
+
+      /* UNIT 03 — ANALYSIS */
+      schedule(() => { if (flowUnitAnalysis) flowUnitAnalysis.classList.add('is-unit-visible'); },  7700);
+      schedule(() => { revealLine(flowUnitAnalysisLine); },  9800);
+      schedule(() => { if (flowUnitAnalysis) flowUnitAnalysis.classList.add('is-unit-exit');    }, 11700);
+
+      /* HERO EMERGES */
+      schedule(() => {
+        revealHeroStage();
+        if (entranceFlow) entranceFlow.classList.add('is-hidden');
+        fadeFrameLines();
+      }, 13200);
+
+      schedule(() => {
+        if (entranceFlow) entranceFlow.style.display = 'none';
+      }, 14650);
+    }
+
+    /* =========================================================
+    JS SECTION 09: HERO TOOLBAR COMPRESSION
+    Με το scroll μένει μόνο το brand name
+    ========================================================== */
+    function handleHeroCompression() {
+      if (!heroToolbar) return;
+      heroToolbar.classList.toggle('is-compact', window.scrollY > 60);
+    }
+
+    /* =========================================================
+    JS SECTION 09A: HERO MICRO DRIFT
+    Subtle parallax drift for hero image column
+    ========================================================== */
+    function handleHeroMicroDrift() {
+      if (!desktopEntranceQuery.matches) return;
+      if (!heroStage || !heroStage.classList.contains('is-settled')) return;
+
+      const scrollY = window.scrollY;
+
+      if (heroImageColumn) {
+        heroImageColumn.style.transform = `translateY(${Math.min(scrollY * 0.08, 18)}px)`;
+      }
+
+      if (heroImageStrip) {
+        heroImageStrip.style.transform = `translateY(${Math.min(scrollY * 0.04, 10)}px)`;
+      }
+    }
+
+    /* =========================================================
+    JS SECTION 10: EVENT BINDINGS
+    ========================================================== */
+    if (entranceSkipBtn) {
+      entranceSkipBtn.addEventListener('click', skipEntranceFlow);
+    }
+
+    window.addEventListener('scroll', handleHeroCompression);
+    window.addEventListener('scroll', handleHeroMicroDrift);
+
+    /* =========================================================
+    JS SECTION 11: INITIAL LOAD
+    Desktop only entrance / direct hero for tablet & mobile
+    ========================================================== */
+    window.addEventListener('load', () => {
+      if (desktopEntranceQuery.matches) {
+        startEntranceTimeline();
+      } else {
+        revealHeroDirect();
+      }
+    });
+
+    /* =========================================================
+    JS SECTION 12: RESEARCH PANEL INTERACTION
+    Cinematic panel switching
+    ========================================================== */
+    const researchLabels = document.querySelectorAll('.research-label');
+    const researchPanels = document.querySelectorAll('.research-panel');
+
+    function activateResearchPanel(targetName) {
+      researchLabels.forEach(label => {
+        label.classList.toggle('is-active', label.dataset.target === targetName);
+      });
+      researchPanels.forEach(panel => {
+        panel.classList.toggle('is-active', panel.dataset.panel === targetName);
+      });
+    }
+
+    researchLabels.forEach(label => {
+      label.addEventListener('click', () => {
+        activateResearchPanel(label.dataset.target);
+        const field = document.getElementById('researchField');
+        if (field) field.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    /* =========================================================
+    JS SECTION 13: BURGER MENU SYSTEM
+    Overlay open / close + section activation
+    ========================================================== */
+    const menuOverlay      = document.getElementById('menuOverlay');
+    const menuOverlayClose = document.getElementById('menuOverlayClose');
+    const heroMenuButton   = document.getElementById('heroMenuButton');
+    const menuLinks        = document.querySelectorAll('.menu-link');
+
+    function forceHideNativeCursor() {
+      document.documentElement.style.cursor = 'none';
+      document.body.style.cursor = 'none';
+      if (menuOverlay)      menuOverlay.style.cursor      = 'none';
+      if (menuOverlayClose) menuOverlayClose.style.cursor = 'none';
+      if (heroMenuButton)   heroMenuButton.style.cursor   = 'none';
+      menuLinks.forEach(link => { link.style.cursor = 'none'; });
+    }
+
+    function openMenuOverlay() {
+      if (!menuOverlay) return;
+      menuOverlay.classList.add('is-open');
+      menuOverlay.setAttribute('aria-hidden', 'false');
       forceHideNativeCursor();
     }
-  });
 
-  menuOverlay.addEventListener('mousemove', forceHideNativeCursor);
-  menuOverlay.addEventListener('mouseenter', forceHideNativeCursor);
-}
- /* =========================================================
-JS SECTION 14: DESKTOP CUSTOM CURSOR
-Only for desktop screens
-========================================================= */
-const customCursor = document.getElementById('customCursor');
-
-function initCustomCursor() {
-  if (!desktopEntranceQuery.matches || !customCursor) return;
-
-  document.documentElement.classList.add('has-custom-cursor');
-  document.body.classList.add('has-custom-cursor');
-  document.documentElement.style.cursor = 'none';
-  document.body.style.cursor = 'none';
-
-  let cursorX = 0;
-  let cursorY = 0;
-
-  function enforceCursorNone(target) {
-    document.documentElement.style.cursor = 'none';
-    document.body.style.cursor = 'none';
-
-    let node = target;
-    while (node && node !== document.documentElement) {
-      if (node.style) {
-        node.style.cursor = 'none';
-      }
-      node = node.parentElement;
+    function closeMenuOverlay() {
+      if (!menuOverlay) return;
+      menuOverlay.classList.remove('is-open');
+      menuOverlay.setAttribute('aria-hidden', 'true');
+      forceHideNativeCursor();
     }
-  }
 
-  function moveCursor(event) {
-    cursorX = event.clientX;
-    cursorY = event.clientY;
+    if (heroMenuButton) {
+      heroMenuButton.addEventListener('click', () => {
+        menuOverlay.classList.contains('is-open') ? closeMenuOverlay() : openMenuOverlay();
+        heroMenuButton.blur();
+        forceHideNativeCursor();
+      });
+    }
 
-    customCursor.style.left = `${cursorX}px`;
-    customCursor.style.top = `${cursorY}px`;
-    customCursor.classList.add('is-visible');
+    if (menuOverlayClose) {
+      menuOverlayClose.addEventListener('click', () => {
+        closeMenuOverlay();
+        forceHideNativeCursor();
+      });
+    }
 
-    enforceCursorNone(event.target);
-  }
+    menuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        activateResearchPanel(link.dataset.menuTarget);
+        closeMenuOverlay();
+        forceHideNativeCursor();
+        const field = document.getElementById('researchField');
+        if (field) {
+          setTimeout(() => { field.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 120);
+        }
+      });
+    });
 
-  function showCursor() {
-    customCursor.classList.add('is-visible');
-  }
+    if (menuOverlay) {
+      menuOverlay.addEventListener('click', event => {
+        if (event.target === menuOverlay) {
+          closeMenuOverlay();
+          forceHideNativeCursor();
+        }
+      });
+      menuOverlay.addEventListener('mousemove', forceHideNativeCursor);
+      menuOverlay.addEventListener('mouseenter', forceHideNativeCursor);
+    }
 
-  function hideCursor() {
-    customCursor.classList.remove('is-visible');
-    customCursor.classList.remove('is-active');
-  }
+    /* =========================================================
+    JS SECTION 14: DESKTOP CUSTOM CURSOR
+    Only for desktop screens
+    ========================================================== */
+    const customCursor = document.getElementById('customCursor');
 
-  function activateCursor() {
-    customCursor.classList.add('is-active');
-  }
+    function initCustomCursor() {
+      if (!desktopEntranceQuery.matches || !customCursor) return;
 
-  function deactivateCursor() {
-    customCursor.classList.remove('is-active');
-  }
+      document.documentElement.classList.add('has-custom-cursor');
+      document.body.classList.add('has-custom-cursor');
+      document.documentElement.style.cursor = 'none';
+      document.body.style.cursor = 'none';
 
-  window.addEventListener('mousemove', moveCursor);
+      function enforceCursorNone(target) {
+        document.documentElement.style.cursor = 'none';
+        document.body.style.cursor = 'none';
+        let node = target;
+        while (node && node !== document.documentElement) {
+          if (node.style) node.style.cursor = 'none';
+          node = node.parentElement;
+        }
+      }
 
-  document.addEventListener('mouseover', (event) => {
-    enforceCursorNone(event.target);
-  }, true);
+      function moveCursor(event) {
+        customCursor.style.left = `${event.clientX}px`;
+        customCursor.style.top  = `${event.clientY}px`;
+        customCursor.classList.add('is-visible');
+        enforceCursorNone(event.target);
+      }
 
-  document.addEventListener('mousedown', (event) => {
-    enforceCursorNone(event.target);
-  }, true);
+      function showCursor()     { customCursor.classList.add('is-visible'); }
+      function hideCursor()     { customCursor.classList.remove('is-visible', 'is-active'); }
+      function activateCursor() { customCursor.classList.add('is-active'); }
+      function deactivateCursor() { customCursor.classList.remove('is-active'); }
 
-  document.addEventListener('mouseup', (event) => {
-    enforceCursorNone(event.target);
-  }, true);
+      window.addEventListener('mousemove', moveCursor);
+      document.addEventListener('mouseover',  event => { enforceCursorNone(event.target); }, true);
+      document.addEventListener('mousedown',  event => { enforceCursorNone(event.target); }, true);
+      document.addEventListener('mouseup',    event => { enforceCursorNone(event.target); }, true);
+      document.addEventListener('mouseenter', showCursor);
+      document.addEventListener('mouseleave', hideCursor);
 
-  document.addEventListener('mouseenter', showCursor);
-  document.addEventListener('mouseleave', hideCursor);
+      document.querySelectorAll('a, button, .research-label, .menu-link, .hero-menu-button, .entrance-skip')
+        .forEach(target => {
+          target.addEventListener('mouseenter', activateCursor);
+          target.addEventListener('mouseleave', deactivateCursor);
+        });
+    }
 
-  const interactiveTargets = document.querySelectorAll(
-    'a, button, .research-label, .menu-link, .hero-menu-button, .entrance-skip'
-  );
+    window.addEventListener('load', () => { initCustomCursor(); });
 
-  interactiveTargets.forEach(target => {
-    target.addEventListener('mouseenter', activateCursor);
-    target.addEventListener('mouseleave', deactivateCursor);
-  });
-}
-
-window.addEventListener('load', () => {
-  initCustomCursor();
-});
-</script>
-
+  </script>
 
 </body>
 </html>
