@@ -2083,6 +2083,51 @@
     }
 
     /* =========================================================
+    CSS SECTION 23C: INQUIRY PANEL REFINEMENT
+    More editorial spacing and cleaner reading rhythm
+    ========================================================== */
+    .research-panel-inner-inquiry {
+    max-width: 700px;
+    padding-top: 18px;
+  }
+
+    .inquiry-title {
+    max-width: 520px;
+    margin-bottom: 22px;
+  }
+
+    .inquiry-lead {
+    max-width: 520px;
+    font-size: 21px;
+    line-height: 1.32;
+    margin-bottom: 34px;
+    color: rgba(17, 17, 17, 0.92);
+    letter-spacing: -0.012em;
+  }
+
+    .inquiry-body-wrap {
+    max-width: 560px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .inquiry-body {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.82;
+    color: rgba(17, 17, 17, 0.70);
+    font-weight: 300;
+    text-wrap: pretty;
+  }
+
+    .inquiry-line {
+    margin-top: 38px;
+    width: 92px;
+    background: rgba(17, 17, 17, 0.46);
+  }
+
+    /* =========================================================
     CSS SECTION 24: TABLET ADAPTATION
     Cinematic stacked adaptation for tablet
     ========================================================== */
@@ -2645,21 +2690,33 @@
     <section class="research-reveal-stage" id="researchRevealStage">
 
       <!-- 001 / Inquiry -->
-      <article class="research-panel is-active" id="panel-direction" data-panel="direction">
-        <div class="research-panel-inner">
-          <div class="research-panel-number">001/006</div>
-          <h2 class="research-panel-title">Inquiry</h2>
-          <p class="research-panel-lead">
-            Eating is not a simple act — it is a perceptual event.
-          </p>
-          <p class="research-panel-body">
-            Perception precedes cognition. Before a meal is evaluated, it is absorbed — through texture, atmosphere, sound, and spatial condition. Gastronomy is not merely the study of food — it is the study of how food is perceived, remembered, and experienced within a cultural and spatial context.
-            Understanding how these stimuli converge to shape eating behavior and guest experience is the central intellectual interest that drives this research trajectory — one that combines scientific rigor with creative inquiry.
-            The inquiry sits at the intersection of sensory science, gastronomy, and hospitality strategy — examining multisensory experience not as aesthetic layer, but as a measurable behavioral variable. The analytical lens draws from marketing analytics and data-driven methodologies, bridging empirical evidence with applied hospitality intelligence.
-          </p>
-          <div class="research-panel-line"></div>
-        </div>
-      </article>
+<article class="research-panel is-active" id="panel-direction" data-panel="direction">
+  <div class="research-panel-inner research-panel-inner-inquiry">
+    <div class="research-panel-number">001/006</div>
+
+    <h2 class="research-panel-title inquiry-title">Inquiry</h2>
+
+    <p class="research-panel-lead inquiry-lead">
+      Eating is not a simple act — it is a perceptual event.
+    </p>
+
+    <div class="inquiry-body-wrap">
+      <p class="research-panel-body inquiry-body">
+        Perception precedes cognition. Before a meal is evaluated, it is absorbed — through texture, atmosphere, sound, and spatial condition. Gastronomy is not merely the study of food — it is the study of how food is perceived, remembered, and experienced within a cultural and spatial context.
+      </p>
+
+      <p class="research-panel-body inquiry-body">
+        Understanding how these stimuli converge to shape eating behavior and guest experience is the central intellectual interest that drives this research trajectory — one that combines scientific rigor with creative inquiry.
+      </p>
+
+      <p class="research-panel-body inquiry-body">
+        The inquiry sits at the intersection of sensory science, gastronomy, and hospitality strategy — examining multisensory experience not as an aesthetic layer, but as a measurable behavioral variable. The analytical lens draws from marketing analytics and data-driven methodologies, bridging empirical evidence with applied hospitality intelligence.
+      </p>
+    </div>
+
+    <div class="research-panel-line inquiry-line"></div>
+  </div>
+</article>
 
       <!-- 002 / Fields of Inquiry -->
       <article class="research-panel" id="panel-contexts" data-panel="contexts">
