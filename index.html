@@ -2121,20 +2121,16 @@ Magazine-style layout with proper desktop/tablet/mobile behavior
 }
 
 .inquiry-editorial-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 180px;
-  column-gap: 40px;
-  align-items: start;
+  display: block;
 }
 
 .inquiry-main {
-  max-width: 560px;
+  max-width: 620px;
   display: flex;
   flex-direction: column;
   gap: 22px;
   min-width: 0;
 }
-
 .inquiry-body {
   margin: 0;
   font-size: 15px;
@@ -2154,33 +2150,6 @@ Magazine-style layout with proper desktop/tablet/mobile behavior
   padding-top: 7px;
   font-weight: 400;
   color: rgba(17, 17, 17, 0.94);
-}
-
-/* side note */
-.inquiry-side-note {
-  position: relative;
-  padding-top: 4px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  color: rgba(17, 17, 17, 0.48);
-}
-
-.side-note-label {
-  font-size: 10px;
-  line-height: 1;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  font-weight: 300;
-  color: rgba(17, 17, 17, 0.34);
-}
-
-.side-note-text {
-  font-size: 12px;
-  line-height: 1.65;
-  font-weight: 300;
-  color: rgba(17, 17, 17, 0.48);
-  text-wrap: pretty;
 }
 
 .inquiry-line {
@@ -2231,14 +2200,6 @@ CSS SECTION 23C-T: INQUIRY PANEL / TABLET
     font-size: 15px;
     line-height: 1.78;
   }
-
-  .inquiry-side-note {
-    max-width: 320px;
-    padding-top: 0;
-    padding-left: 2px;
-    opacity: 0.82;
-  }
-
   .drop-cap::first-letter {
     font-size: 44px;
     line-height: 0.86;
@@ -2293,23 +2254,6 @@ CSS SECTION 23C-M: INQUIRY PANEL / MOBILE
     line-height: 0.88;
     padding-right: 6px;
     padding-top: 5px;
-  }
-
-  .inquiry-side-note {
-    max-width: 100%;
-    padding: 10px 0 0;
-    border-top: 1px solid rgba(17, 17, 17, 0.08);
-    gap: 6px;
-  }
-
-  .side-note-label {
-    font-size: 9px;
-    letter-spacing: 0.16em;
-  }
-
-  .side-note-text {
-    font-size: 11px;
-    line-height: 1.58;
   }
 
   .inquiry-line {
