@@ -2743,6 +2743,84 @@ CSS SECTION 23F: INVESTIGATIONS — PORTFOLIO SYSTEM
     width: 70px;
   }
 }
+    /* =========================================================
+CSS SECTION 23Ε: TRAJECTORY PANEL (LEFT IMAGE LAYOUT)
+Inquiry-style editorial layout with left visual anchor
+========================================================== */
+.trajectory-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 72px;
+}
+
+/* IMAGE LEFT */
+.trajectory-photo-wrap {
+  flex: 0 0 280px;
+  position: relative;
+  margin-top: 8px;
+}
+
+.trajectory-photo {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 18%;
+
+  opacity: 0;
+  transform: translateY(48px) scale(1.06);
+  filter: blur(18px) brightness(0.88);
+
+  transition:
+    opacity 1.9s cubic-bezier(0.22, 1, 0.36, 1) 0.5s,
+    transform 2.1s cubic-bezier(0.22, 1, 0.36, 1) 0.5s,
+    filter 1.9s cubic-bezier(0.22, 1, 0.36, 1) 0.5s;
+}
+
+/* ACTIVE STATE */
+#panel-profile.is-active .trajectory-photo {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0px) brightness(1);
+}
+
+/* TEXT RIGHT */
+.trajectory-text {
+  flex: 1;
+  max-width: 640px;
+}
+
+/* BODY STRUCTURE */
+.trajectory-body p {
+  margin-bottom: 22px;
+  max-width: 560px;
+}
+
+/* =========================================================
+TABLET
+========================================================== */
+@media (max-width: 1100px) {
+  .trajectory-inner {
+    flex-direction: column;
+    gap: 36px;
+  }
+
+  .trajectory-photo-wrap {
+    width: 220px;
+  }
+}
+
+/* =========================================================
+MOBILE
+========================================================== */
+@media (max-width: 767px) {
+  .trajectory-photo-wrap {
+    display: none;
+  }
+
+  .trajectory-text {
+    max-width: 100%;
+  }
+}
     
     /* =========================================================
     CSS SECTION 24: TABLET ADAPTATION
@@ -3558,25 +3636,57 @@ Premium desktop-only cursor system
   </div>
 </article>
 
-      <!-- 005 / Profile -->
-      <article class="research-panel" id="panel-profile" data-panel="profile">
-        <div class="research-panel-inner profile-inner">
-          <div class="profile-text">
-            <div class="research-panel-number">005/006</div>
-            <h2 class="research-panel-title">Profile</h2>
-            <p class="research-panel-lead">
-              Paris Intzes is a Hospitality Experience Strategist and Researcher working at the intersection of multisensory experience, eating behavior, and experiential design.
-            </p>
-            <p class="research-panel-body">
-              With a background in food science, gastronomy, tourism management, and marketing analytics, his work integrates scientific inquiry with applied experience composition across hospitality and sensory environments.
-            </p>
-            <div class="research-panel-line"></div>
-          </div>
-          <div class="profile-photo-wrap">
-            <img class="profile-photo" src="images/Paris.jpg" alt="Paris Intzes">
-          </div>
-        </div>
-      </article>
+     <!-- 005 / Trajectory -->
+<article class="research-panel" id="panel-profile" data-panel="profile">
+  <div class="research-panel-inner trajectory-inner">
+
+    <!-- LEFT: IMAGE -->
+    <div class="trajectory-photo-wrap">
+      <img class="trajectory-photo" src="images/Paris.jpg" alt="Paris Intzes">
+    </div>
+
+    <!-- RIGHT: TEXT -->
+    <div class="trajectory-text">
+      <div class="research-panel-number">005/006</div>
+      <h2 class="research-panel-title">Trajectory</h2>
+
+      <p class="research-panel-lead">
+        Paris Intzesiloglou is a Hospitality & Food Experience Strategist and Researcher working at the convergence of sensory science, eating behavior, and hospitality design — bringing together a rare combination of culinary expertise, analytical thinking, and creative inquiry.
+      </p>
+
+      <div class="research-panel-body trajectory-body">
+
+        <p>
+          His academic formation spans Food Science & Technology (BSc, International Hellenic University), complemented by professional culinary training at IEK Delta, Greece. He holds an MSc in Tourism Management & Business Administration and an MSc in Marketing Analytics (Athens University of Economics and Business).
+        </p>
+
+        <p>
+          His research formation was shaped by a residency at the Department of Sensory Science & Eating Behavior, Wageningen University & Research, The Netherlands.
+        </p>
+
+        <p>
+          His professional trajectory reflects a sustained engagement with hospitality environments across both research and operational contexts — spanning F&B management, quality assurance, product development, R&D consultancy, and training operations in Greece, as well as culinary and research work internationally.
+        </p>
+
+        <p>
+          At Wageningen University & Research, direct involvement in a randomized controlled trial on food texture and eating behavior bridged culinary expertise with empirical research practice — an intersection that defines the core of his research identity.
+        </p>
+
+        <p>
+          The intersection of chef training, marketing analytics, and creative problem-solving defines a research approach that moves fluidly between measurement and meaning — between data and experience.
+        </p>
+
+        <p>
+          Recognized contributions include a Bronze Medal at the 12th International Culinary Competition of Southern Europe (2023) and Second Position at the Olive Challenge Innovation & Entrepreneurship Competition (2020).
+        </p>
+
+      </div>
+
+      <div class="research-panel-line"></div>
+    </div>
+
+  </div>
+</article>
 
       <!-- 006 / Contact -->
       <article class="research-panel" id="panel-contact" data-panel="contact">
