@@ -2607,18 +2607,18 @@ Editorial continuation of Inquiry / Contexts
     width: 68px;
   }
 }
-    /* =========================================================
-CSS SECTION 23F: INVESTIGATIONS — PORTFOLIO SYSTEM
+   /* =========================================================
+CSS SECTION 23F: INVESTIGATIONS — HIGH-END RESEARCH STORYTELLING
+Apple-like editorial archive for academic work
 ========================================================== */
-
-.research-panel-inner-work-v2 {
+.research-panel-inner-work-v3 {
   position: relative;
-  max-width: 900px;
+  max-width: 920px;
   padding-top: 22px;
   padding-left: 24px;
 }
 
-.research-panel-inner-work-v2::before {
+.research-panel-inner-work-v3::before {
   content: "";
   position: absolute;
   left: 0;
@@ -2629,118 +2629,224 @@ CSS SECTION 23F: INVESTIGATIONS — PORTFOLIO SYSTEM
 }
 
 .work-title {
-  margin-bottom: 36px;
-}
-
-.work-list {
-  display: flex;
-  flex-direction: column;
-  gap: 42px;
-}
-
-.work-item {
+  margin-bottom: 18px;
   max-width: 640px;
+}
+
+.work-intro {
+  max-width: 620px;
+  margin-bottom: 38px;
+  font-size: 17px;
+  line-height: 1.5;
+  font-weight: 300;
+  color: rgba(17, 17, 17, 0.64);
+  letter-spacing: -0.01em;
+  text-wrap: pretty;
+}
+
+.work-entries {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 34px;
 }
 
-.work-meta {
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  color: rgba(17, 17, 17, 0.42);
+.work-entry {
+  max-width: 700px;
+  padding: 0 0 28px;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+}
+
+.work-entry:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.work-entry-topline {
   display: flex;
-  gap: 12px;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
 }
 
-.work-heading {
-  font-size: 20px;
+.work-entry-index,
+.work-entry-period {
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(17, 17, 17, 0.38);
   font-weight: 300;
-  letter-spacing: -0.01em;
-  margin: 0;
 }
 
-.work-context {
+.work-entry-title {
+  margin: 0 0 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  font-weight: 300;
+  color: rgba(17, 17, 17, 0.94);
+}
+
+.work-entry-role {
+  margin: 0 0 8px;
+  max-width: 680px;
   font-size: 13px;
-  line-height: 1.4;
-  color: rgba(17, 17, 17, 0.55);
+  line-height: 1.5;
+  font-weight: 300;
+  color: rgba(17, 17, 17, 0.58);
 }
 
-.work-body {
+.work-entry-supervision {
+  margin: 0 0 14px;
+  max-width: 680px;
+  font-size: 13px;
+  line-height: 1.5;
+  font-weight: 300;
+  color: rgba(17, 17, 17, 0.58);
+  text-wrap: pretty;
+}
+
+.work-entry-body {
+  margin: 0;
+  max-width: 640px;
   font-size: 15px;
-  line-height: 1.72;
+  line-height: 1.82;
+  font-weight: 300;
   color: rgba(17, 17, 17, 0.72);
-  margin: 6px 0 0;
+  text-wrap: pretty;
+  hyphens: auto;
+}
+
+.work-entry-note {
+  margin: 14px 0 0;
+  max-width: 620px;
+  font-size: 12px;
+  line-height: 1.55;
+  font-weight: 300;
+  color: rgba(17, 17, 17, 0.46);
+  letter-spacing: 0.01em;
+  font-style: italic;
 }
 
 .work-line {
-  margin-top: 46px;
+  margin-top: 44px;
   width: 96px;
   background: rgba(17, 17, 17, 0.46);
 }
-    .inquiry-body,
-.contexts-body,
-.method-body,
-.work-body {
-  text-align: left;
-  text-wrap: pretty;
-  hyphens: auto;
-  max-width: 60ch;
-}
     @media (max-width: 1100px) {
-  .research-panel-inner-work-v2 {
+  .research-panel-inner-work-v3 {
+    max-width: 100%;
+    padding-top: 10px;
     padding-left: 18px;
   }
 
-  .work-list {
-    gap: 34px;
+  .research-panel-inner-work-v3::before {
+    left: 0;
+    top: 26px;
+    bottom: 10px;
+    opacity: 0.8;
   }
 
-  .work-item {
+  .work-intro {
     max-width: 100%;
+    margin-bottom: 30px;
+    font-size: 16px;
+    line-height: 1.48;
   }
 
-  .work-heading {
-    font-size: 18px;
-  }
-
-  .work-body {
-    font-size: 15px;
-  }
-}
-    @media (max-width: 767px) {
-  .research-panel-inner-work-v2 {
-    padding-left: 0;
-  }
-
-  .research-panel-inner-work-v2::before {
-    display: none;
-  }
-
-  .work-list {
+  .work-entries {
     gap: 28px;
   }
 
-  .work-meta {
-    font-size: 10px;
+  .work-entry {
+    max-width: 100%;
+    padding-bottom: 24px;
   }
 
-  .work-heading {
-    font-size: 17px;
+  .work-entry-title {
+    font-size: 21px;
   }
 
-  .work-context {
-    font-size: 12px;
+  .work-entry-role,
+  .work-entry-supervision {
+    max-width: 100%;
+    font-size: 13px;
   }
 
-  .work-body {
-    font-size: 14px;
-    line-height: 1.68;
+  .work-entry-body,
+  .work-entry-note {
+    max-width: 100%;
   }
 
   .work-line {
-    margin-top: 30px;
-    width: 70px;
+    margin-top: 34px;
+    width: 82px;
+  }
+  @media (max-width: 767px) {
+  .research-panel-inner-work-v3 {
+    padding-top: 4px;
+    padding-left: 0;
+  }
+
+  .research-panel-inner-work-v3::before {
+    display: none;
+  }
+
+  .work-title {
+    margin-bottom: 14px;
+  }
+
+  .work-intro {
+    margin-bottom: 24px;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .work-entries {
+    gap: 24px;
+  }
+
+  .work-entry {
+    padding-bottom: 20px;
+  }
+
+  .work-entry-topline {
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .work-entry-index,
+  .work-entry-period {
+    font-size: 9px;
+    letter-spacing: 0.16em;
+  }
+
+  .work-entry-title {
+    font-size: 18px;
+    line-height: 1.12;
+  }
+
+  .work-entry-role,
+  .work-entry-supervision {
+    font-size: 12px;
+    line-height: 1.48;
+  }
+
+  .work-entry-body {
+    font-size: 14px;
+    line-height: 1.72;
+  }
+
+  .work-entry-note {
+    font-size: 11px;
+    line-height: 1.5;
+    margin-top: 12px;
+  }
+
+  .work-line {
+    margin-top: 28px;
+    width: 68px;
   }
 }
     /* =========================================================
@@ -3561,73 +3667,87 @@ Premium desktop-only cursor system
 
       <!-- 004 / Investigations -->
 <article class="research-panel" id="panel-work" data-panel="work">
-  <div class="research-panel-inner research-panel-inner-work-v2">
+  <div class="research-panel-inner research-panel-inner-work-v3">
 
     <div class="research-panel-number">004/006</div>
-
     <h2 class="research-panel-title work-title">Investigations</h2>
 
-    <div class="work-list">
+    <div class="work-intro">
+      A selected body of research and applied inquiry spanning sensory science,
+      eating behavior, hospitality environments, and multisensory experience design.
+    </div>
 
-      <!-- STUDY 01 -->
-      <div class="work-item">
-        <div class="work-meta">
-          <span class="work-year">2023–2024</span>
-          <span class="work-role">Research Fellow</span>
+    <div class="work-entries">
+
+      <!-- ENTRY 01 -->
+      <article class="work-entry">
+        <div class="work-entry-topline">
+          <span class="work-entry-index">01</span>
+          <span class="work-entry-period">2023–2024</span>
         </div>
 
-        <h3 class="work-heading">
-          Restructure Study
-        </h3>
+        <h3 class="work-entry-title">Restructure Study</h3>
 
-        <div class="work-context">
-          Department of Sensory Science &amp; Eating Behavior — Wageningen University &amp; Research
-        </div>
-
-        <p class="work-body">
-          A randomized controlled trial investigating how the texture of ultra-processed foods influences eating rate and energy intake. Contributions spanned meal preparation, participant interaction, and behavioral video analysis, forming a multi-dimensional understanding of eating behavior.
+        <p class="work-entry-role">
+          Research Fellow — Department of Sensory Science &amp; Eating Behavior, Wageningen University &amp; Research, The Netherlands
         </p>
-      </div>
 
-      <!-- STUDY 02 -->
-      <div class="work-item">
-        <div class="work-meta">
-          <span class="work-year">2024–2025</span>
-          <span class="work-role">Principal Investigator</span>
-        </div>
-
-        <h3 class="work-heading">
-          Epignosis Study 2
-        </h3>
-
-        <div class="work-context">
-          Athens University of Economics and Business — Marketing &amp; Communication
-        </div>
-
-        <p class="work-body">
-          Investigating how sustainable spatial aesthetics function as sensory stimuli in concept hotels. The study confirms a sequential S-O-R mediation: sensory perception → emotional response → brand attitude → behavioral intention, enhanced through sentiment analytics.
+        <p class="work-entry-supervision">
+          Principal Researcher: Professor Ciarán Forde, Chair-holder of the Sensory Science and Eating Behavior Group, Wageningen University &amp; Research.
         </p>
-      </div>
 
-      <!-- STUDY 03 -->
-      <div class="work-item">
-        <div class="work-meta">
-          <span class="work-year">2023–2024</span>
-          <span class="work-role">Principal Investigator</span>
-        </div>
-
-        <h3 class="work-heading">
-          Epignosis Study 1
-        </h3>
-
-        <div class="work-context">
-          International Hellenic University — Tourism &amp; Marketing
-        </div>
-
-        <p class="work-body">
-          A quantitative study on multisensory aesthetics and dining behavior among Millennials and Gen Z. Findings highlight the influence of spatial and sensory stimuli on perception, preference, and consumption patterns.
+        <p class="work-entry-body">
+          A randomized controlled trial investigating how the texture of ultra-processed foods influences eating rate and energy intake. Research involvement bridged culinary execution, participant-facing trial support, and video-based behavioral analysis — connecting hospitality expertise with empirical research practice in a highly controlled experimental setting.
         </p>
-      </div>
+      </article>
+
+      <!-- ENTRY 02 -->
+      <article class="work-entry">
+        <div class="work-entry-topline">
+          <span class="work-entry-index">02</span>
+          <span class="work-entry-period">2024–2025</span>
+        </div>
+
+        <h3 class="work-entry-title">Epignosis Study 2</h3>
+
+        <p class="work-entry-role">
+          Principal Investigator — Department of Marketing &amp; Communication, Athens University of Economics and Business
+        </p>
+
+        <p class="work-entry-supervision">
+          Supervised by Professor George Baltas, Director of the AUEB MSc in Marketing Analytics and the AUEB Marketing Research Laboratory.
+        </p>
+
+        <p class="work-entry-body">
+          An empirical study examining how sustainable spatial aesthetics function as active sensory stimuli in concept hotel environments. Applying a sequential Stimulus–Organism–Response framework, the study showed how sensory perception, emotional response, and brand attitude contribute to behavioral intention, while sentiment analytics added an interpretive layer to the understanding of guest response.
+        </p>
+      </article>
+
+      <!-- ENTRY 03 -->
+      <article class="work-entry">
+        <div class="work-entry-topline">
+          <span class="work-entry-index">03</span>
+          <span class="work-entry-period">2023–2024</span>
+        </div>
+
+        <h3 class="work-entry-title">Epignosis Study 1</h3>
+
+        <p class="work-entry-role">
+          Principal Investigator — Department of Organisation Management, Marketing &amp; Tourism, International Hellenic University
+        </p>
+
+        <p class="work-entry-supervision">
+          Supervised by Dr. Antonios Giannopoulos, Associate Professor at the Department of Organisation Management, Marketing, International Hellenic University.
+        </p>
+
+        <p class="work-entry-body">
+          A quantitative study exploring how multisensory aesthetic factors — including visual, auditory, olfactory, and flavor-related cues — shape dining experience and cuisine choice among Millennials and Gen Z. The findings highlighted the role of spatial and sensory stimuli in shaping perception, preference, and consumption-related behavior.
+        </p>
+
+        <p class="work-entry-note">
+          Findings were presented at the Mediterranean Tourism Knowledge Exchange &amp; Policy Conference, Malta, November 2024.
+        </p>
+      </article>
 
     </div>
 
