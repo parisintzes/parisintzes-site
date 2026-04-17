@@ -830,6 +830,7 @@
       .hero-stage.is-mobile-title-ready .hero-accent-line {
         opacity: 1;
         transform: translateY(0);
+        filter: blur(0px);
       }
 
       .hero-stage.is-mobile-title-ready .hero-accent-line {
@@ -1600,10 +1601,18 @@
     CSS SECTION 22C: CLOSING STATEMENT + FOOTER
     Cinematic coda + ultra-minimal editorial footer
     ========================================================== */
+
+    .page-end-cover {
+      position: relative;
+      z-index: 3;
+      background: #111111;
+      min-height: 88vh;
+    }
+
     .closing-statement {
       position: relative;
       width: 100%;
-      min-height: 85vh;
+      min-height: 58vh;
       background: #111111;
       display: flex;
       align-items: center;
@@ -1633,7 +1642,7 @@
 
     .closing-text {
       font-family: 'Inter', sans-serif;
-      font-size: clamp(28px, 4.2vw, 58px);
+      font-size: clamp(22px, 3.0vw, 42px);
       line-height: 1.10;
       font-weight: 300;
       letter-spacing: -0.02em;
@@ -1748,12 +1757,12 @@
     .research-field {
       position: relative;
       display: grid;
-      grid-template-columns: minmax(0, 68%) minmax(260px, 32%);
+      grid-template-columns: minmax(0, 72%) minmax(240px, 28%);
       align-items: start;
       gap: 0;
       min-height: 120vh;
       margin-top: 0;
-      padding: 140px 64px 180px;
+      padding: 140px 48px 180px;
       background: var(--bg);
       overflow: visible;
       z-index: 3;
@@ -1779,13 +1788,15 @@
 
     .research-reveal-stage {
       position: relative;
-      min-height: 760px;
+      min-height: 1100px;
       z-index: 3;
     }
 
     .research-panel {
       position: absolute;
-      inset: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       opacity: 0;
       pointer-events: none;
       transform: translateX(-80px);
@@ -2850,83 +2861,82 @@ Apple-like editorial archive for academic work
   }
 }
     /* =========================================================
-CSS SECTION 23Ε: TRAJECTORY PANEL (LEFT IMAGE LAYOUT)
-Inquiry-style editorial layout with left visual anchor
-========================================================== */
-.trajectory-inner {
-  display: flex;
-  align-items: flex-start;
-  gap: 72px;
-}
+    CSS SECTION 23E: TRAJECTORY PANEL — PORTRAIT LEFT, TEXT RIGHT
+    ========================================================== */
+    .trajectory-inner {
+      max-width: 100%;
+      display: flex;
+      align-items: flex-start;
+      gap: 52px;
+    }
 
-/* IMAGE LEFT */
-.trajectory-photo-wrap {
-  flex: 0 0 280px;
-  position: relative;
-  margin-top: 8px;
-}
+    .trajectory-photo-wrap {
+      flex: 0 0 140px;
+      position: relative;
+      margin-top: 6px;
+    }
 
-.trajectory-photo {
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  object-position: center 18%;
+    .trajectory-photo {
+      width: 100%;
+      display: block;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      object-position: center 12%;
+      opacity: 0;
+      translate: 0 32px;
+      scale: 1.05;
+      filter: blur(14px) brightness(0.88);
+      transition:
+        opacity  1.8s cubic-bezier(0.22, 1, 0.36, 1) 0.45s,
+        translate 2.0s cubic-bezier(0.22, 1, 0.36, 1) 0.45s,
+        scale    2.0s cubic-bezier(0.22, 1, 0.36, 1) 0.45s,
+        filter   1.8s cubic-bezier(0.22, 1, 0.36, 1) 0.45s;
+    }
 
-  opacity: 0;
-  transform: translateY(48px) scale(1.06);
-  filter: blur(18px) brightness(0.88);
+    #panel-profile.is-active .trajectory-photo {
+      opacity: 1;
+      translate: 0 0;
+      scale: 1;
+      filter: blur(0px) brightness(1);
+    }
 
-  transition:
-    opacity 1.9s cubic-bezier(0.22, 1, 0.36, 1) 0.5s,
-    transform 2.1s cubic-bezier(0.22, 1, 0.36, 1) 0.5s,
-    filter 1.9s cubic-bezier(0.22, 1, 0.36, 1) 0.5s;
-}
+    .trajectory-text {
+      flex: 1;
+      min-width: 0;
+    }
 
-/* ACTIVE STATE */
-#panel-profile.is-active .trajectory-photo {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  filter: blur(0px) brightness(1);
-}
+    .trajectory-body p {
+      margin: 0 0 20px;
+      max-width: 520px;
+    }
 
-/* TEXT RIGHT */
-.trajectory-text {
-  flex: 1;
-  max-width: 640px;
-}
+    /* Tablet */
+    @media (max-width: 1100px) {
+      .trajectory-inner {
+        flex-direction: column;
+        gap: 32px;
+      }
 
-/* BODY STRUCTURE */
-.trajectory-body p {
-  margin-bottom: 22px;
-  max-width: 560px;
-}
+      .trajectory-photo-wrap {
+        flex: 0 0 auto;
+        width: 140px;
+      }
 
-/* =========================================================
-TABLET
-========================================================== */
-@media (max-width: 1100px) {
-  .trajectory-inner {
-    flex-direction: column;
-    gap: 36px;
-  }
+      .trajectory-text {
+        width: 100%;
+      }
+    }
 
-  .trajectory-photo-wrap {
-    width: 220px;
-  }
-}
+    /* Mobile */
+    @media (max-width: 767px) {
+      .trajectory-photo-wrap {
+        display: none;
+      }
 
-/* =========================================================
-MOBILE
-========================================================== */
-@media (max-width: 767px) {
-  .trajectory-photo-wrap {
-    display: none;
-  }
-
-  .trajectory-text {
-    max-width: 100%;
-  }
-}
+      .trajectory-text {
+        width: 100%;
+      }
+    }
     
     /* =========================================================
     CSS SECTION 24: TABLET ADAPTATION
@@ -3177,20 +3187,7 @@ MOBILE
       color: rgba(17, 17, 17, 0.52);
     }
 
-    .menu-overlay,
-    .menu-overlay *,
-    .menu-overlay button,
-    .menu-overlay .menu-link,
-    .menu-overlay .menu-overlay-close {
-      cursor: none !important;
-    }
-    .hero-menu-button,
-    .research-label,
-    .entrance-skip,
-    a,
-    button {
-    cursor: none !important;
-  }
+    /* cursor:none handled globally by html.has-premium-cursor on desktop */
 
     @media (max-width: 1100px) {
       .menu-overlay-inner {
@@ -3777,27 +3774,15 @@ Premium desktop-only cursor system
       <div class="research-panel-body trajectory-body">
 
         <p>
-          His academic formation spans Food Science & Technology (BSc, International Hellenic University), complemented by professional culinary training at IEK Delta, Greece. He holds an MSc in Tourism Management & Business Administration and an MSc in Marketing Analytics (Athens University of Economics and Business).
+          Trained as a chef, educated as a scientist, and formed through research practice at Wageningen University &amp; Research — his formation moves across registers that rarely overlap. BSc in Food Science &amp; Technology, MSc in Tourism Management, MSc in Marketing Analytics.
         </p>
 
         <p>
-          His research formation was shaped by a residency at the Department of Sensory Science & Eating Behavior, Wageningen University & Research, The Netherlands.
+          His professional arc spans F&amp;B operations, product development, R&amp;D consultancy, and sensory research across Greece and internationally. At Wageningen, direct involvement in a randomized controlled trial on food texture and eating behavior defined the intersection where culinary knowledge meets empirical method.
         </p>
 
         <p>
-          His professional trajectory reflects a sustained engagement with hospitality environments across both research and operational contexts — spanning F&B management, quality assurance, product development, R&D consultancy, and training operations in Greece, as well as culinary and research work internationally.
-        </p>
-
-        <p>
-          At Wageningen University & Research, direct involvement in a randomized controlled trial on food texture and eating behavior bridged culinary expertise with empirical research practice — an intersection that defines the core of his research identity.
-        </p>
-
-        <p>
-          The intersection of chef training, marketing analytics, and creative problem-solving defines a research approach that moves fluidly between measurement and meaning — between data and experience.
-        </p>
-
-        <p>
-          Recognized contributions include a Bronze Medal at the 12th International Culinary Competition of Southern Europe (2023) and Second Position at the Olive Challenge Innovation & Entrepreneurship Competition (2020).
+          The work moves between measurement and meaning — between the controlled conditions of a research lab and the lived intelligence of a hospitality environment. That movement is not a contradiction. It is the method.
         </p>
 
       </div>
@@ -3814,10 +3799,13 @@ Premium desktop-only cursor system
           <div class="research-panel-number">006/006</div>
           <h2 class="research-panel-title">Contact</h2>
           <p class="research-panel-lead">
-            For research dialogue, interdisciplinary collaborations, and hospitality-related concepts.
+            Research begins with conversation.
           </p>
           <p class="research-panel-body">
-            Contact details, partnerships, and future projects can be discussed directly through the communication channels that will be added here.
+            Open to research dialogue, interdisciplinary collaboration, and consultancy within hospitality, sensory science, and experiential design. If the work connects with yours — reach out.
+          </p>
+          <p class="research-panel-body" style="margin-top: 28px; font-size: 13px; letter-spacing: 0.14em; color: rgba(17,17,17,0.44); text-transform: lowercase;">
+            parisintzes@gmail.com
           </p>
           <div class="research-panel-line"></div>
         </div>
@@ -3884,6 +3872,8 @@ Premium desktop-only cursor system
   HTML SECTION 14B: CLOSING STATEMENT
   Cinematic coda — dark full-bleed closing thought
   ========================================================== -->
+  <div class="page-end-cover">
+
   <section class="closing-statement" id="closingStatement">
     <div class="closing-statement-inner">
       <div class="closing-label">// coda</div>
@@ -3906,6 +3896,8 @@ Premium desktop-only cursor system
       <span class="site-footer-year" id="footerYear">2026</span>
     </div>
   </footer>
+
+  </div><!-- /.page-end-cover -->
 
   <!-- =========================================================
   HTML SECTION 14: BURGER MENU OVERLAY
@@ -4067,11 +4059,11 @@ Premium desktop-only cursor system
       }
 
       /* Tablet / mobile cinematic reveal sequence */
-      schedule(() => { if (heroStage) heroStage.classList.add('is-mobile-toolbar-ready');  },  80);
-      schedule(() => { if (heroStage) heroStage.classList.add('is-mobile-title-ready');    }, 260);
-      schedule(() => { if (heroStage) heroStage.classList.add('is-mobile-subtitle-ready'); }, 430);
-      schedule(() => { if (heroStage) heroStage.classList.add('is-mobile-image-ready');    }, 620);
-      schedule(() => { if (heroStage) heroStage.classList.add('is-mobile-footer-ready');   }, 980);
+      schedule(() => { if (heroStage) heroStage.classList.add('is-mobile-toolbar-ready');  },  180);
+      schedule(() => { if (heroStage) heroStage.classList.add('is-mobile-image-ready');    },  380);
+      schedule(() => { if (heroStage) heroStage.classList.add('is-mobile-title-ready');    },  680);
+      schedule(() => { if (heroStage) heroStage.classList.add('is-mobile-subtitle-ready'); }, 1100);
+      schedule(() => { if (heroStage) heroStage.classList.add('is-mobile-footer-ready');   }, 1650);
     }
 
     /* =========================================================
@@ -4420,11 +4412,12 @@ function initPremiumCursor() {
   }
 
   showCursor();
+  /* Start RAF immediately so cursor renders at center on init */
+  rafId = requestAnimationFrame(renderCursor);
 }
 
-window.addEventListener('load', () => {
-  initPremiumCursor();
-});
+window.addEventListener('DOMContentLoaded', initPremiumCursor);
+window.addEventListener('load', initPremiumCursor);
     /* =========================================================
     JS SECTION 15: CINEMATIC BRIDGE — LUXURY REVEAL + PARALLAX
     ========================================================== */
