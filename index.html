@@ -3000,6 +3000,13 @@ CSS SECTION 23F: INVESTIGATIONS — PORTFOLIO SYSTEM
     .menu-overlay .menu-overlay-close {
       cursor: none !important;
     }
+    .hero-menu-button,
+    .research-label,
+    .entrance-skip,
+    a,
+    button {
+    cursor: none !important;
+  }
 
     @media (max-width: 1100px) {
       .menu-overlay-inner {
@@ -3027,71 +3034,136 @@ CSS SECTION 23F: INVESTIGATIONS — PORTFOLIO SYSTEM
     }
 
     /* =========================================================
-    CSS SECTION 27: DESKTOP CUSTOM CURSOR
-    Minimal outlined circle → filled dot on interactive hover
-    ========================================================== */
-    .custom-cursor {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 22px;
-      height: 22px;
-      border: 1px solid rgba(17, 17, 17, 0.68);
-      border-radius: 50%;
-      background: transparent;
-      pointer-events: none;
-      opacity: 0;
-      transform: translate(-50%, -50%);
-      transition:
-        opacity 0.25s ease,
-        width 0.22s ease,
-        height 0.22s ease,
-        border-color 0.22s ease,
-        background-color 0.22s ease;
-      z-index: 20000;
-      will-change: left, top, opacity, width, height;
-      mix-blend-mode: normal;
-    }
+CSS SECTION 27: DESKTOP CUSTOM CURSOR — PREMIUM APPLE-LIKE
+High-aesthetic ring + core system with smooth motion
+========================================================== */
+.cursor-shell {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  z-index: 20000;
+  opacity: 0;
+  transition: opacity 0.28s ease;
+  will-change: transform, opacity;
+}
 
-    .custom-cursor.is-visible {
-      opacity: 1;
-    }
+.cursor-shell.is-visible {
+  opacity: 1;
+}
 
-    .custom-cursor.is-active {
-      width: 8px;
-      height: 8px;
-      border-color: rgba(17, 17, 17, 0.95);
-      background: rgba(17, 17, 17, 0.95);
-    }
+.cursor-ring,
+.cursor-dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 999px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  will-change: transform, width, height, opacity, background, border-color;
+}
 
-    /* Desktop only: hide native cursor on interactive cinematic mode */
-    @media (min-width: 1101px) {
-      html.has-custom-cursor,
-      html.has-custom-cursor body,
-      html.has-custom-cursor body *,
-      html.has-custom-cursor body *::before,
-      html.has-custom-cursor body *::after {
-        cursor: none !important;
-      }
-    }
+/* Outer ring */
+.cursor-ring {
+  width: 26px;
+  height: 26px;
+  border: 1px solid rgba(17, 17, 17, 0.38);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+    0 2px 18px rgba(17, 17, 17, 0.08);
+  transition:
+    width 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.28s ease,
+    background 0.28s ease,
+    opacity 0.28s ease,
+    box-shadow 0.32s ease,
+    transform 0.22s ease;
+}
 
-    /* Tablet / mobile: completely disable custom cursor */
-    @media (max-width: 1100px) {
-      .custom-cursor {
-        display: none !important;
-      }
-    }
+/* Inner core */
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  background: rgba(17, 17, 17, 0.94);
+  box-shadow: 0 0 18px rgba(17, 17, 17, 0.12);
+  transition:
+    width 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.28s ease,
+    opacity 0.28s ease,
+    transform 0.2s ease;
+}
+
+/* Hover over interactive targets */
+.cursor-shell.is-hover .cursor-ring {
+  width: 38px;
+  height: 38px;
+  border-color: rgba(17, 17, 17, 0.20);
+  background: rgba(17, 17, 17, 0.05);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.12) inset,
+    0 8px 32px rgba(17, 17, 17, 0.10);
+}
+
+.cursor-shell.is-hover .cursor-dot {
+  width: 4px;
+  height: 4px;
+}
+
+/* Mouse down / press */
+.cursor-shell.is-pressed .cursor-ring {
+  width: 28px;
+  height: 28px;
+  border-color: rgba(17, 17, 17, 0.26);
+  background: rgba(17, 17, 17, 0.08);
+}
+
+.cursor-shell.is-pressed .cursor-dot {
+  width: 8px;
+  height: 8px;
+}
+
+/* Hidden when leaving viewport */
+.cursor-shell.is-hidden {
+  opacity: 0 !important;
+}
+
+/* Desktop only: completely suppress native cursor */
+@media (min-width: 1101px) {
+  html.has-premium-cursor,
+  html.has-premium-cursor body,
+  html.has-premium-cursor body *,
+  html.has-premium-cursor body *::before,
+  html.has-premium-cursor body *::after {
+    cursor: none !important;
+  }
+}
+
+/* No custom cursor on tablet/mobile */
+@media (max-width: 1100px) {
+  .cursor-shell {
+    display: none !important;
+  }
+}
 
   </style>
 </head>
 <body>
 
-  <!-- =========================================================
-  HTML SECTION 02: CUSTOM CURSOR
-  Desktop-only cinematic cursor
-  ========================================================== -->
-  <div class="custom-cursor" id="customCursor" aria-hidden="true"></div>
-
+ <!-- =========================================================
+HTML SECTION 02: CUSTOM CURSOR
+Premium desktop-only cursor system
+========================================================== -->
+<div class="cursor-shell" id="cursorShell" aria-hidden="true">
+  <div class="cursor-ring" id="cursorRing"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+</div>
   <!-- =========================================================
   HTML SECTION 03: CONTINUOUS CINEMATIC ENTRANCE
   Κύριο wrapper του entrance
@@ -3219,7 +3291,7 @@ CSS SECTION 23F: INVESTIGATIONS — PORTFOLIO SYSTEM
       <div class="hero-brand-block" id="heroBrandBlock">
         <div class="hero-brand-name" id="heroBrandName">PARIS INTZES</div>
         <div class="hero-brand-meta" id="heroBrandMeta">
-          Hospitality Experience Strategist<br>
+          Hospitality & Food Experience Strategist<br>
           Multisensory Experience & Eating Behavior Researcher
         </div>
       </div>
@@ -3260,7 +3332,7 @@ CSS SECTION 23F: INVESTIGATIONS — PORTFOLIO SYSTEM
 
       <div class="hero-footer-meta" id="heroFooterMeta">
         <div class="hero-keywords">
-          sensory · behavior · emotion · gastronomy · data · synthesis
+          sensory · behavior · aesthetics · gastronomy · data · synthesis
         </div>
         <div class="hero-year">2026</div>
       </div>
@@ -3973,57 +4045,156 @@ CSS SECTION 23F: INVESTIGATIONS — PORTFOLIO SYSTEM
     }
 
     /* =========================================================
-    JS SECTION 14: DESKTOP CUSTOM CURSOR
-    Only for desktop screens
-    ========================================================== */
-    const customCursor = document.getElementById('customCursor');
+JS SECTION 14: DESKTOP CUSTOM CURSOR — PREMIUM APPLE-LIKE
+Smooth ring/core cursor with desktop-only behavior
+========================================================== */
+const cursorShell = document.getElementById('cursorShell');
+const cursorRing  = document.getElementById('cursorRing');
+const cursorDot   = document.getElementById('cursorDot');
 
-    function initCustomCursor() {
-      if (!desktopEntranceQuery.matches || !customCursor) return;
+function initPremiumCursor() {
+  if (!desktopEntranceQuery.matches || !cursorShell || !cursorRing || !cursorDot) return;
 
-      document.documentElement.classList.add('has-custom-cursor');
-      document.body.classList.add('has-custom-cursor');
+  document.documentElement.classList.add('has-premium-cursor');
+  document.body.classList.add('has-premium-cursor');
+
+  /* Extra enforcement against Chrome showing native cursor */
+  document.documentElement.style.cursor = 'none';
+  document.body.style.cursor = 'none';
+
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+
+  let ringX = mouseX;
+  let ringY = mouseY;
+
+  let dotX = mouseX;
+  let dotY = mouseY;
+
+  let rafId = null;
+
+  const interactiveSelector = [
+    'a',
+    'button',
+    '.research-label',
+    '.menu-link',
+    '.hero-menu-button',
+    '.entrance-skip'
+  ].join(',');
+
+  function enforceCursorNone(target) {
+    document.documentElement.style.cursor = 'none';
+    document.body.style.cursor = 'none';
+
+    let node = target;
+    while (node && node !== document.documentElement) {
+      if (node.style) node.style.cursor = 'none';
+      node = node.parentElement;
+    }
+  }
+
+  function renderCursor() {
+    ringX += (mouseX - ringX) * 0.14;
+    ringY += (mouseY - ringY) * 0.14;
+
+    dotX += (mouseX - dotX) * 0.34;
+    dotY += (mouseY - dotY) * 0.34;
+
+    cursorRing.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
+    cursorDot.style.transform  = `translate(${dotX}px, ${dotY}px) translate(-50%, -50%)`;
+
+    rafId = requestAnimationFrame(renderCursor);
+  }
+
+  function showCursor() {
+    cursorShell.classList.add('is-visible');
+    cursorShell.classList.remove('is-hidden');
+  }
+
+  function hideCursor() {
+    cursorShell.classList.add('is-hidden');
+    cursorShell.classList.remove('is-visible', 'is-hover', 'is-pressed');
+  }
+
+  function handleMouseMove(event) {
+    mouseX = event.clientX;
+    mouseY = event.clientY;
+
+    showCursor();
+    enforceCursorNone(event.target);
+
+    if (!rafId) {
+      rafId = requestAnimationFrame(renderCursor);
+    }
+  }
+
+  function handlePointerOver(event) {
+    enforceCursorNone(event.target);
+    const interactiveTarget = event.target.closest(interactiveSelector);
+
+    if (interactiveTarget) {
+      cursorShell.classList.add('is-hover');
+    } else {
+      cursorShell.classList.remove('is-hover');
+    }
+  }
+
+  function handlePointerDown(event) {
+    enforceCursorNone(event.target);
+    cursorShell.classList.add('is-pressed');
+  }
+
+  function handlePointerUp(event) {
+    enforceCursorNone(event.target);
+    cursorShell.classList.remove('is-pressed');
+  }
+
+  function handleWindowBlur() {
+    hideCursor();
+  }
+
+  function handleWindowFocus() {
+    document.documentElement.style.cursor = 'none';
+    document.body.style.cursor = 'none';
+  }
+
+  window.addEventListener('mousemove', handleMouseMove, { passive: true });
+  window.addEventListener('mousedown', handlePointerDown, true);
+  window.addEventListener('mouseup', handlePointerUp, true);
+  window.addEventListener('blur', handleWindowBlur);
+  window.addEventListener('focus', handleWindowFocus);
+
+  document.addEventListener('mouseover', handlePointerOver, true);
+  document.addEventListener('mouseenter', showCursor, true);
+  document.addEventListener('mouseleave', hideCursor, true);
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      hideCursor();
+    } else {
       document.documentElement.style.cursor = 'none';
       document.body.style.cursor = 'none';
-
-      function enforceCursorNone(target) {
-        document.documentElement.style.cursor = 'none';
-        document.body.style.cursor = 'none';
-        let node = target;
-        while (node && node !== document.documentElement) {
-          if (node.style) node.style.cursor = 'none';
-          node = node.parentElement;
-        }
-      }
-
-      function moveCursor(event) {
-        customCursor.style.left = `${event.clientX}px`;
-        customCursor.style.top  = `${event.clientY}px`;
-        customCursor.classList.add('is-visible');
-        enforceCursorNone(event.target);
-      }
-
-      function showCursor()     { customCursor.classList.add('is-visible'); }
-      function hideCursor()     { customCursor.classList.remove('is-visible', 'is-active'); }
-      function activateCursor() { customCursor.classList.add('is-active'); }
-      function deactivateCursor() { customCursor.classList.remove('is-active'); }
-
-      window.addEventListener('mousemove', moveCursor);
-      document.addEventListener('mouseover',  event => { enforceCursorNone(event.target); }, true);
-      document.addEventListener('mousedown',  event => { enforceCursorNone(event.target); }, true);
-      document.addEventListener('mouseup',    event => { enforceCursorNone(event.target); }, true);
-      document.addEventListener('mouseenter', showCursor);
-      document.addEventListener('mouseleave', hideCursor);
-
-      document.querySelectorAll('a, button, .research-label, .menu-link, .hero-menu-button, .entrance-skip')
-        .forEach(target => {
-          target.addEventListener('mouseenter', activateCursor);
-          target.addEventListener('mouseleave', deactivateCursor);
-        });
     }
+  });
 
-    window.addEventListener('load', () => { initCustomCursor(); });
+  /* Force suppression inside overlay/menu for Chrome edge cases */
+  if (menuOverlay) {
+    menuOverlay.addEventListener('mouseenter', () => {
+      document.documentElement.style.cursor = 'none';
+      document.body.style.cursor = 'none';
+    });
+    menuOverlay.addEventListener('mousemove', () => {
+      document.documentElement.style.cursor = 'none';
+      document.body.style.cursor = 'none';
+    });
+  }
 
+  showCursor();
+}
+
+window.addEventListener('load', () => {
+  initPremiumCursor();
+});
     /* =========================================================
     JS SECTION 15: CINEMATIC BRIDGE — LUXURY REVEAL + PARALLAX
     ========================================================== */
