@@ -2356,90 +2356,118 @@ Editorial continuation of Inquiry without side note
   background: rgba(17, 17, 17, 0.46);
 }
 @media (max-width: 1100px) {
-  .research-panel-inner-contexts-v2 {
+  .research-panel-inner-work-v3 {
     max-width: 100%;
     padding-top: 10px;
     padding-left: 18px;
   }
 
-  .research-panel-inner-contexts-v2::before {
+  .research-panel-inner-work-v3::before {
     left: 0;
     top: 26px;
     bottom: 10px;
     opacity: 0.8;
   }
 
-  .contexts-title {
+  .work-intro {
     max-width: 100%;
-    margin-bottom: 18px;
-  }
-
-  .contexts-lead {
-    max-width: 100%;
-    font-size: 19px;
-    line-height: 1.38;
     margin-bottom: 30px;
+    font-size: 16px;
+    line-height: 1.48;
   }
 
-  .contexts-main {
+  .work-entries {
+    gap: 28px;
+  }
+
+  .work-entry {
     max-width: 100%;
-    gap: 20px;
+    padding-bottom: 24px;
   }
 
-  .contexts-body {
-    font-size: 15px;
-    line-height: 1.78;
+  .work-entry-title {
+    font-size: 21px;
   }
 
-  .drop-cap-contexts::first-letter {
-    font-size: 44px;
-    line-height: 0.86;
-    padding-right: 7px;
-    padding-top: 6px;
+  .work-entry-role,
+  .work-entry-supervision {
+    max-width: 100%;
+    font-size: 13px;
   }
 
-  .contexts-line {
+  .work-entry-body,
+  .work-entry-note {
+    max-width: 100%;
+  }
+
+  .work-line {
     margin-top: 34px;
     width: 82px;
   }
-  @media (max-width: 767px) {
-  .research-panel-inner-contexts-v2 {
+}
+
+@media (max-width: 767px) {
+  .research-panel-inner-work-v3 {
     padding-top: 4px;
     padding-left: 0;
   }
 
-  .research-panel-inner-contexts-v2::before {
+  .research-panel-inner-work-v3::before {
     display: none;
   }
 
-  .contexts-title {
+  .work-title {
     margin-bottom: 14px;
   }
 
-  .contexts-lead {
-    font-size: 17px;
-    line-height: 1.44;
-    margin-bottom: 22px;
-    letter-spacing: -0.01em;
+  .work-intro {
+    margin-bottom: 24px;
+    font-size: 15px;
+    line-height: 1.5;
   }
 
-  .contexts-main {
-    gap: 18px;
+  .work-entries {
+    gap: 24px;
   }
 
-  .contexts-body {
+  .work-entry {
+    padding-bottom: 20px;
+  }
+
+  .work-entry-topline {
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .work-entry-index,
+  .work-entry-period {
+    font-size: 9px;
+    letter-spacing: 0.16em;
+  }
+
+  .work-entry-title {
+    font-size: 18px;
+    line-height: 1.12;
+  }
+
+  .work-entry-role,
+  .work-entry-supervision {
+    font-size: 12px;
+    line-height: 1.48;
+  }
+
+  .work-entry-body {
     font-size: 14px;
-    line-height: 1.74;
+    line-height: 1.72;
   }
 
-  .drop-cap-contexts::first-letter {
-    font-size: 36px;
-    line-height: 0.88;
-    padding-right: 6px;
-    padding-top: 5px;
+  .work-entry-note {
+    font-size: 11px;
+    line-height: 1.5;
+    margin-top: 12px;
   }
 
-  .contexts-line {
+  .work-line {
     margin-top: 28px;
     width: 68px;
   }
@@ -2745,7 +2773,7 @@ Apple-like editorial archive for academic work
   width: 96px;
   background: rgba(17, 17, 17, 0.46);
 }
-    @media (max-width: 1100px) {
+  @media (max-width: 1100px) {
   .research-panel-inner-work-v3 {
     max-width: 100%;
     padding-top: 10px;
@@ -2794,7 +2822,9 @@ Apple-like editorial archive for academic work
     margin-top: 34px;
     width: 82px;
   }
-  @media (max-width: 767px) {
+}
+
+@media (max-width: 767px) {
   .research-panel-inner-work-v3 {
     padding-top: 4px;
     padding-left: 0;
