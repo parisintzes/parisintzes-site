@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Paris Intzes</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-
+  
   <!-- =========================================================
   HTML SECTION 02: GOOGLE FONTS
   ========================================================== -->
@@ -2360,133 +2360,97 @@ Editorial continuation of Inquiry without side note
   background: rgba(17, 17, 17, 0.46);
 }
 @media (max-width: 1100px) {
-  .research-panel-inner-work-v3 {
+  .research-panel-inner-contexts-v2 {
     max-width: 100%;
     padding-top: 10px;
     padding-left: 18px;
   }
 
-  .research-panel-inner-work-v3::before {
+  .research-panel-inner-contexts-v2::before {
     left: 0;
     top: 26px;
     bottom: 10px;
     opacity: 0.8;
   }
 
-  .work-intro {
+  .contexts-title {
     max-width: 100%;
+    margin-bottom: 18px;
+  }
+
+  .contexts-lead {
+    font-size: 19px;
+    line-height: 1.38;
     margin-bottom: 30px;
-    font-size: 16px;
-    line-height: 1.48;
-  }
-
-  .work-entries {
-    gap: 28px;
-  }
-
-  .work-entry {
-    max-width: 100%;
-    padding-bottom: 24px;
-  }
-
-  .work-entry-title {
-    font-size: 21px;
-  }
-
-  .work-entry-role,
-  .work-entry-supervision {
-    max-width: 100%;
-    font-size: 13px;
-  }
-
-  .work-entry-body,
-  .work-entry-note {
     max-width: 100%;
   }
 
-  .work-line {
+  .contexts-main {
+    max-width: 100%;
+    gap: 20px;
+  }
+
+  .contexts-body {
+    font-size: 15px;
+    line-height: 1.78;
+  }
+
+  .drop-cap-contexts::first-letter {
+    font-size: 44px;
+    line-height: 0.86;
+    padding-right: 7px;
+    padding-top: 6px;
+  }
+
+  .contexts-line {
     margin-top: 34px;
     width: 82px;
   }
 }
 
 @media (max-width: 767px) {
-  .research-panel-inner-work-v3 {
+  .research-panel-inner-contexts-v2 {
     padding-top: 4px;
     padding-left: 0;
   }
 
-  .research-panel-inner-work-v3::before {
+  .research-panel-inner-contexts-v2::before {
     display: none;
   }
 
-  .work-title {
+  .contexts-title {
     margin-bottom: 14px;
   }
 
-  .work-intro {
-    margin-bottom: 24px;
-    font-size: 15px;
-    line-height: 1.5;
+  .contexts-lead {
+    font-size: 17px;
+    line-height: 1.44;
+    margin-bottom: 22px;
+    letter-spacing: -0.01em;
   }
 
-  .work-entries {
-    gap: 24px;
+  .contexts-main {
+    max-width: 100%;
+    gap: 18px;
   }
 
-  .work-entry {
-    padding-bottom: 20px;
-  }
-
-  .work-entry-topline {
-    gap: 10px;
-    margin-bottom: 12px;
-  }
-
-  .work-entry-index,
-  .work-entry-period {
-    font-size: 9px;
-    letter-spacing: 0.16em;
-  }
-
-  .work-entry-title {
-    font-size: 18px;
-    line-height: 1.12;
-  }
-
-  .work-entry-role,
-  .work-entry-supervision {
-    font-size: 12px;
-    line-height: 1.48;
-  }
-
-  .work-entry-body {
+  .contexts-body {
+    max-width: 100%;
     font-size: 14px;
-    line-height: 1.72;
+    line-height: 1.74;
   }
 
-  .work-entry-note {
-    font-size: 11px;
-    line-height: 1.5;
-    margin-top: 12px;
+  .drop-cap-contexts::first-letter {
+    font-size: 36px;
+    line-height: 0.88;
+    padding-right: 6px;
+    padding-top: 5px;
   }
 
-  .work-line {
+  .contexts-line {
     margin-top: 28px;
     width: 68px;
   }
-  .contexts-main {
-  max-width: 100%;
-  width: 100%;
-  gap: 18px;
-}
-
-.contexts-body {
-  max-width: 100%;
-  width: 100%;
-  font-size: 14px;
-  line-height: 1.74;
-}
 }
 }
     /* =========================================================
@@ -2792,7 +2756,7 @@ Apple-like editorial archive for academic work
   width: 96px;
   background: rgba(17, 17, 17, 0.46);
 }
-  @media (max-width: 1100px) {
+@media (max-width: 1100px) {
   .research-panel-inner-work-v3 {
     max-width: 100%;
     padding-top: 10px;
@@ -2827,11 +2791,7 @@ Apple-like editorial archive for academic work
   }
 
   .work-entry-role,
-  .work-entry-supervision {
-    max-width: 100%;
-    font-size: 13px;
-  }
-
+  .work-entry-supervision,
   .work-entry-body,
   .work-entry-note {
     max-width: 100%;
@@ -2894,21 +2854,13 @@ Apple-like editorial archive for academic work
   }
 
   .work-entry-body {
-  max-width: 100%;
-  width: 100%;
-  font-size: 14px;
-  line-height: 1.72;
-}
-  .work-entry,
-  .work-intro,
-  .work-entry-role,
-  .work-entry-supervision,
-  .work-entry-note {
-  max-width: 100%;
-  width: 100%;
-}
+    max-width: 100%;
+    font-size: 14px;
+    line-height: 1.72;
+  }
 
   .work-entry-note {
+    max-width: 100%;
     font-size: 11px;
     line-height: 1.5;
     margin-top: 12px;
@@ -2918,6 +2870,7 @@ Apple-like editorial archive for academic work
     margin-top: 28px;
     width: 68px;
   }
+}
 }
     /* =========================================================
     CSS SECTION 23E: TRAJECTORY PANEL — PORTRAIT LEFT, TEXT RIGHT
