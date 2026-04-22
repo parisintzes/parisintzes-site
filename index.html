@@ -2982,9 +2982,24 @@ Apple-like editorial archive for academic work
       }
 
       .research-reveal-stage {
-        order: 3;
-        min-height: 520px;
-      }
+  order: 3;
+  min-height: auto;
+  height: auto;
+}
+      .research-panel {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  display: none;
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+
+.research-panel.is-active {
+  display: block;
+}
 
       .research-panel-inner {
         max-width: 100%;
@@ -3059,12 +3074,24 @@ Apple-like editorial archive for academic work
       }
 
       .research-reveal-stage {
-        min-height: 540px;
-      }
+  min-height: auto;
+  height: auto;
+}
 
-      .research-panel {
-        transform: translateX(-36px);
-      }
+.research-panel {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  display: none;
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+
+.research-panel.is-active {
+  display: block;
+}
 
       .research-panel-number {
         margin-bottom: 14px;
@@ -4275,13 +4302,20 @@ Premium desktop-only cursor system
     const researchPanels = document.querySelectorAll('.research-panel');
 
     function activateResearchPanel(targetName) {
-      researchLabels.forEach(label => {
-        label.classList.toggle('is-active', label.dataset.target === targetName);
-      });
-      researchPanels.forEach(panel => {
-        panel.classList.toggle('is-active', panel.dataset.panel === targetName);
-      });
-    }
+  researchLabels.forEach(label => {
+    label.classList.toggle('is-active', label.dataset.target === targetName);
+  });
+
+  researchPanels.forEach(panel => {
+    panel.classList.toggle('is-active', panel.dataset.panel === targetName);
+  });
+
+  if (window.innerWidth <= 1100) {
+    requestAnimationFrame(() => {
+      window.dispatchEvent(new Event('resize'));
+    });
+  }
+}
 
     researchLabels.forEach(label => {
       label.addEventListener('click', () => {
