@@ -49,9 +49,10 @@
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+   html {
+  scroll-behavior: auto;
+}
+    
 
     body {
       margin: 0;
@@ -1768,9 +1769,11 @@
       z-index: 3;
       opacity: 0;
       transform: translateY(56px);
+      scroll-margin-top: 28px;
       transition:
         opacity  1.4s cubic-bezier(0.22, 1, 0.36, 1),
         transform 1.9s cubic-bezier(0.22, 1, 0.36, 1);
+   
     }
 
     .research-field.is-revealed {
@@ -3181,16 +3184,17 @@ Apple-like editorial archive for academic work
     Single-page full-screen navigation
     ========================================================== */
     .menu-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(10px);
-      z-index: 10050;
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(10px);
+  z-index: 10050;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  will-change: opacity;
+}
 
     /* Staged display — block set before opacity transition so CSS can animate */
     .menu-overlay.is-preparing {
@@ -4334,6 +4338,63 @@ Premium desktop-only cursor system
     const heroMenuButton   = document.getElementById('heroMenuButton');
     const menuLinks        = document.querySelectorAll('.menu-link');
 
+    function isSafariBrowser() {
+  const ua = window.navigator.userAgent;
+  return /^((?!chrome|android).)*safari/i.test(ua);
+}
+
+function getViewportOffset() {
+  if (window.innerWidth <= 767) return 18;
+  if (window.innerWidth <= 1100) return 24;
+  return 32;
+}
+
+function smoothScrollToY(targetY, duration = 720) {
+  const startY = window.pageYOffset;
+  const distance = targetY - startY;
+
+  if (Math.abs(distance) < 2) return;
+
+  const startTime = performance.now();
+
+  function easeInOutCubic(t) {
+    return t < 0.5
+      ? 4 * t * t * t
+      : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  }
+
+  function step(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = easeInOutCubic(progress);
+
+    window.scrollTo(0, startY + distance * eased);
+
+    if (progress < 1) {
+      requestAnimationFrame(step);
+    }
+  }
+
+  requestAnimationFrame(step);
+}
+
+function scrollToResearchField() {
+  const field = document.getElementById('researchField');
+  if (!field) return;
+
+  const offset = getViewportOffset();
+  const targetY = field.getBoundingClientRect().top + window.pageYOffset - offset;
+
+  if (isSafariBrowser()) {
+    smoothScrollToY(targetY, 820);
+  } else {
+    window.scrollTo({
+      top: targetY,
+      behavior: 'smooth'
+    });
+  }
+}
+
     function forceHideNativeCursor() {
       document.documentElement.style.cursor = 'none';
       document.body.style.cursor = 'none';
@@ -4361,16 +4422,17 @@ Premium desktop-only cursor system
     }
 
     function closeMenuOverlay() {
-      if (!menuOverlay) return;
-      menuOverlay.classList.remove('is-open');
-      menuOverlay.setAttribute('aria-hidden', 'true');
-      forceHideNativeCursor();
-      /* Remove display:block only after transition finishes (0.45s) */
-      menuCloseTimer = setTimeout(() => {
-        menuOverlay.classList.remove('is-preparing');
-        menuCloseTimer = null;
-      }, 500);
-    }
+  if (!menuOverlay) return;
+
+  menuOverlay.classList.remove('is-open');
+  menuOverlay.setAttribute('aria-hidden', 'true');
+  forceHideNativeCursor();
+
+  menuCloseTimer = setTimeout(() => {
+    menuOverlay.classList.remove('is-preparing');
+    menuCloseTimer = null;
+  }, 460);
+}
 
     if (heroMenuButton) {
       heroMenuButton.addEventListener('click', () => {
@@ -4387,25 +4449,19 @@ Premium desktop-only cursor system
       });
     }
 
-  menuLinks.forEach(link => {
+ menuLinks.forEach(link => {
   link.addEventListener('click', () => {
     const targetName = link.dataset.menuTarget;
-    const field = document.getElementById('researchField');
 
     activateResearchPanel(targetName);
     closeMenuOverlay();
     forceHideNativeCursor();
 
-    if (field) {
-  setTimeout(() => {
-    const fieldTop = field.getBoundingClientRect().top + window.pageYOffset;
-
-    window.scrollTo({
-      top: fieldTop - 32,
-      behavior: 'smooth'
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        scrollToResearchField();
+      });
     });
-  }, 180);
-}
   });
 });
 
