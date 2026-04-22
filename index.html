@@ -2452,7 +2452,6 @@ Editorial continuation of Inquiry without side note
     width: 68px;
   }
 }
-}
     /* =========================================================
 CSS SECTION 23E: APPROACH — PREMIUM RESPONSIVE
 Editorial continuation of Inquiry / Contexts
@@ -2871,7 +2870,6 @@ Apple-like editorial archive for academic work
     width: 68px;
   }
 }
-}
     /* =========================================================
     CSS SECTION 23E: TRAJECTORY PANEL — PORTRAIT LEFT, TEXT RIGHT
     ========================================================== */
@@ -2939,23 +2937,21 @@ Apple-like editorial archive for academic work
       }
     }
 
-    /* Mobile */
-    @media (max-width: 767px) {
-      .trajectory-photo-wrap {
-        display: none;
-      }
+  /* Mobile */
+@media (max-width: 767px) {
+  .trajectory-photo-wrap {
+    display: none;
+  }
 
-      .trajectory-text {
-        width: 100%;
-      }
-      .trajectory-text,
-.trajectory-body,
-.trajectory-body p {
-  max-width: 100%;
-  width: 100%;
+  .trajectory-text,
+  .trajectory-body,
+  .trajectory-body p {
+    width: 100%;
+    max-width: 100%;
+  }
+}
 
-    }
-    .contact-link {
+.contact-link {
   margin-top: 12px;
   font-size: 13px;
   letter-spacing: 0.14em;
@@ -3141,29 +3137,32 @@ Apple-like editorial archive for academic work
       width: 100%;
       max-width: 100%;
 }
+            .research-reveal-stage,
+      .research-panel,
       .research-panel-inner,
-.research-panel-inner-inquiry-v2,
-.research-panel-inner-contexts-v2,
-.research-panel-inner-method-v2,
-.research-panel-inner-work-v3,
-.inquiry-main,
-.contexts-main,
-.method-main,
-.work-entry,
-.trajectory-text,
-.inquiry-body,
-.contexts-body,
-.method-body,
-.work-body,
-.work-entry-body,
-.work-entry-role,
-.work-entry-supervision,
-.work-entry-note,
-.work-intro,
-.trajectory-body p {
-  width: 100%;
-  max-width: 100%;
-}
+      .research-panel-inner-inquiry-v2,
+      .research-panel-inner-contexts-v2,
+      .research-panel-inner-method-v2,
+      .research-panel-inner-work-v3,
+      .trajectory-text,
+      .inquiry-main,
+      .contexts-main,
+      .method-main,
+      .work-entry,
+      .inquiry-body,
+      .contexts-body,
+      .method-body,
+      .work-body,
+      .work-entry-body,
+      .work-entry-role,
+      .work-entry-supervision,
+      .work-entry-note,
+      .work-intro,
+      .trajectory-body,
+      .trajectory-body p {
+        min-width: 0;
+        overflow-wrap: break-word;
+      }
     }
 
     /* =========================================================
@@ -3303,12 +3302,16 @@ High-aesthetic ring + core system with smooth motion
   pointer-events: none;
   z-index: 20000;
   opacity: 0;
-  transition: opacity 0.28s ease;
+  visibility: hidden;
+  transition:
+    opacity 0.28s ease,
+    visibility 0.28s ease;
   will-change: transform, opacity;
 }
 
 .cursor-shell.is-visible {
   opacity: 1;
+  visibility: visible;
 }
 
 .cursor-ring,
@@ -3389,6 +3392,7 @@ High-aesthetic ring + core system with smooth motion
 /* Hidden when leaving viewport */
 .cursor-shell.is-hidden {
   opacity: 0 !important;
+  visibility: hidden !important;
 }
 
 /* Desktop only: completely suppress native cursor */
@@ -3889,11 +3893,12 @@ Premium desktop-only cursor system
           <p class="research-panel-body" style="margin-top: 28px; font-size: 13px; letter-spacing: 0.14em; color: rgba(17,17,17,0.44); text-transform: lowercase;">
             parisintzes@gmail.com
           </p>
-          <p class="research-panel-body contact-link">
-            <a href="https://www.linkedin.com/in/parisintzes/" target="_blank" rel="noopener noreferrer">
-            linkedin ↗
-          </a>
-          <div class="research-panel-line"></div>
+         <p class="research-panel-body contact-link">
+  <a href="https://www.linkedin.com/in/parisintzes/" target="_blank" rel="noopener noreferrer">
+    linkedin ↗
+  </a>
+</p>
+<div class="research-panel-line"></div>
         </div>
       </article>
 
@@ -4374,15 +4379,15 @@ Premium desktop-only cursor system
     forceHideNativeCursor();
 
     if (field) {
-      setTimeout(() => {
-        const fieldTop = field.getBoundingClientRect().top + window.pageYOffset;
+  setTimeout(() => {
+    const fieldTop = field.getBoundingClientRect().top + window.pageYOffset;
 
-        window.scrollTo({
-          top: fieldTop - 12,
-          behavior: 'smooth'
-        });
-      }, 520);
-    }
+    window.scrollTo({
+      top: fieldTop - 32,
+      behavior: 'smooth'
+    });
+  }, 180);
+}
   });
 });
 
@@ -4398,148 +4403,147 @@ Premium desktop-only cursor system
     }
 
     /* =========================================================
-    JS SECTION 14: DESKTOP CUSTOM CURSOR — PREMIUM APPLE-LIKE
-    Smooth ring/core cursor with desktop-only behavior
-    ========================================================== */
-    const cursorShell = document.getElementById('cursorShell');
-    const cursorRing  = document.getElementById('cursorRing');
-    const cursorDot   = document.getElementById('cursorDot');
+JS SECTION 14: DESKTOP CUSTOM CURSOR — PREMIUM APPLE-LIKE
+Smooth ring/core cursor with desktop-only behavior
+========================================================== */
+const cursorShell = document.getElementById('cursorShell');
+const cursorRing  = document.getElementById('cursorRing');
+const cursorDot   = document.getElementById('cursorDot');
 
-    /* Guard: prevent double-initialization if load fires twice or after DOMContentLoaded */
-    let premiumCursorInitialized = false;
+let premiumCursorInitialized = false;
 
-    function initPremiumCursor() {
-      /* Only ever run once, and only on desktop viewports */
-      if (premiumCursorInitialized) return;
-      if (!desktopEntranceQuery.matches || !cursorShell || !cursorRing || !cursorDot) return;
-      premiumCursorInitialized = true;
+function initPremiumCursor() {
+  if (premiumCursorInitialized) return;
+  if (!desktopEntranceQuery.matches || !cursorShell || !cursorRing || !cursorDot) return;
 
-      document.documentElement.classList.add('has-premium-cursor');
-      document.body.classList.add('has-premium-cursor');
+  premiumCursorInitialized = true;
 
-      /* Suppress native cursor globally on desktop */
-      document.documentElement.style.cursor = 'none';
-      document.body.style.cursor = 'none';
+  document.documentElement.classList.add('has-premium-cursor');
+  document.body.classList.add('has-premium-cursor');
+  document.documentElement.style.cursor = 'none';
+  document.body.style.cursor = 'none';
 
-            /* Cursor position state — hidden until first real mouse move */
-      let mouseX = 0;
-      let mouseY = 0;
-      let ringX  = 0;
-      let ringY  = 0;
-      let dotX   = 0;
-      let dotY   = 0;
-      let rafId  = null;
-      let hasMouseMoved = false;
-      
-      const interactiveSelector = [
-        'a', 'button', '.research-label', '.menu-link',
-        '.hero-menu-button', '.entrance-skip'
-      ].join(',');
+  let mouseX = 0;
+  let mouseY = 0;
+  let ringX = 0;
+  let ringY = 0;
+  let dotX = 0;
+  let dotY = 0;
+  let hasMouseMoved = false;
 
-      /* Walk up DOM tree setting cursor:none to suppress any override */
-      function enforceCursorNone(target) {
-        document.documentElement.style.cursor = 'none';
-        document.body.style.cursor = 'none';
-        let node = target;
-        while (node && node !== document.documentElement) {
-          if (node.style) node.style.cursor = 'none';
-          node = node.parentElement;
-        }
-      }
+  const interactiveSelector = [
+    'a',
+    'button',
+    '.research-label',
+    '.menu-link',
+    '.hero-menu-button',
+    '.entrance-skip'
+  ].join(',');
 
-      /* Continuous smooth RAF loop */
-           function renderCursor() {
-        if (hasMouseMoved) {
-          ringX += (mouseX - ringX) * 0.14;
-          ringY += (mouseY - ringY) * 0.14;
-          dotX  += (mouseX - dotX)  * 0.34;
-          dotY  += (mouseY - dotY)  * 0.34;
+  function enforceCursorNone(target) {
+    document.documentElement.style.cursor = 'none';
+    document.body.style.cursor = 'none';
 
-          cursorRing.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
-          cursorDot.style.transform  = `translate(${dotX}px,  ${dotY}px)  translate(-50%, -50%)`;
-        }
+    let node = target;
+    while (node && node !== document.documentElement) {
+      if (node.style) node.style.cursor = 'none';
+      node = node.parentElement;
+    }
+  }
 
-        rafId = requestAnimationFrame(renderCursor);
-      }
+  function renderCursor() {
+    if (hasMouseMoved) {
+      ringX += (mouseX - ringX) * 0.14;
+      ringY += (mouseY - ringY) * 0.14;
+      dotX  += (mouseX - dotX)  * 0.34;
+      dotY  += (mouseY - dotY)  * 0.34;
 
-      function showCursor() {
-        cursorShell.classList.add('is-visible');
-        cursorShell.classList.remove('is-hidden');
-      }
-
-      function hideCursor() {
-        cursorShell.classList.add('is-hidden');
-        cursorShell.classList.remove('is-visible', 'is-hover', 'is-pressed');
-      }
-
-            function handleMouseMove(event) {
-        mouseX = event.clientX;
-        mouseY = event.clientY;
-
-        if (!hasMouseMoved) {
-          hasMouseMoved = true;
-          ringX = mouseX;
-          ringY = mouseY;
-          dotX  = mouseX;
-          dotY  = mouseY;
-        }
-
-        showCursor();
-        enforceCursorNone(event.target);
-      }
-      function handlePointerOver(event) {
-        enforceCursorNone(event.target);
-        if (event.target.closest(interactiveSelector)) {
-          cursorShell.classList.add('is-hover');
-        } else {
-          cursorShell.classList.remove('is-hover');
-        }
-      }
-
-      function handlePointerDown(event) {
-        enforceCursorNone(event.target);
-        cursorShell.classList.add('is-pressed');
-      }
-
-      function handlePointerUp(event) {
-        enforceCursorNone(event.target);
-        cursorShell.classList.remove('is-pressed');
-      }
-
-      /* Hide cursor only when mouse actually leaves the browser viewport */
-      function handleDocumentLeave(event) {
-        if (!event.relatedTarget && event.clientY <= 0) hideCursor();
-      }
-
-      window.addEventListener('mousemove',  handleMouseMove,  { passive: true });
-      window.addEventListener('mousedown',  handlePointerDown, true);
-      window.addEventListener('mouseup',    handlePointerUp,   true);
-      window.addEventListener('blur',       hideCursor);
-      window.addEventListener('focus',      () => {
-        document.documentElement.style.cursor = 'none';
-        document.body.style.cursor = 'none';
-      });
-
-      document.addEventListener('mouseover',   handlePointerOver, true);
-      /* Fire only on true viewport-exit — not on every element mouseleave */
-      document.documentElement.addEventListener('mouseleave', hideCursor);
-      document.documentElement.addEventListener('mouseenter', showCursor);
-
-      document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-          hideCursor();
-        } else {
-          document.documentElement.style.cursor = 'none';
-          document.body.style.cursor = 'none';
-        }
-      });
-
-          /* Start RAF, but keep cursor hidden until first real mouse move */
-      rafId = requestAnimationFrame(renderCursor);
+      cursorRing.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
+      cursorDot.style.transform  = `translate(${dotX}px, ${dotY}px) translate(-50%, -50%)`;
     }
 
-    /* Single entry point — load guarantees all DOM + resources are ready */
-    window.addEventListener('load', initPremiumCursor);
+    requestAnimationFrame(renderCursor);
+  }
+
+  function showCursor() {
+    if (!hasMouseMoved) return;
+    cursorShell.classList.add('is-visible');
+    cursorShell.classList.remove('is-hidden');
+  }
+
+  function hideCursor() {
+    cursorShell.classList.add('is-hidden');
+    cursorShell.classList.remove('is-visible', 'is-hover', 'is-pressed');
+  }
+
+  function handleMouseMove(event) {
+    mouseX = event.clientX;
+    mouseY = event.clientY;
+
+    if (!hasMouseMoved) {
+      hasMouseMoved = true;
+      ringX = mouseX;
+      ringY = mouseY;
+      dotX = mouseX;
+      dotY = mouseY;
+    }
+
+    enforceCursorNone(event.target);
+    showCursor();
+  }
+
+  function handlePointerOver(event) {
+    enforceCursorNone(event.target);
+
+    if (event.target.closest(interactiveSelector)) {
+      cursorShell.classList.add('is-hover');
+    } else {
+      cursorShell.classList.remove('is-hover');
+    }
+  }
+
+  function handlePointerDown(event) {
+    enforceCursorNone(event.target);
+    cursorShell.classList.add('is-pressed');
+  }
+
+  function handlePointerUp(event) {
+    enforceCursorNone(event.target);
+    cursorShell.classList.remove('is-pressed');
+  }
+
+  function handleWindowMouseOut(event) {
+    if (!event.relatedTarget) {
+      hideCursor();
+    }
+  }
+
+  window.addEventListener('mousemove', handleMouseMove, { passive: true });
+  window.addEventListener('mousedown', handlePointerDown, true);
+  window.addEventListener('mouseup', handlePointerUp, true);
+  window.addEventListener('mouseout', handleWindowMouseOut);
+  window.addEventListener('blur', hideCursor);
+
+  window.addEventListener('focus', () => {
+    document.documentElement.style.cursor = 'none';
+    document.body.style.cursor = 'none';
+  });
+
+  document.addEventListener('mouseover', handlePointerOver, true);
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      hideCursor();
+    } else {
+      document.documentElement.style.cursor = 'none';
+      document.body.style.cursor = 'none';
+    }
+  });
+
+  requestAnimationFrame(renderCursor);
+}
+
+window.addEventListener('load', initPremiumCursor);
     /* =========================================================
     JS SECTION 15: CINEMATIC BRIDGE — LUXURY REVEAL + PARALLAX
     ========================================================== */
