@@ -2260,14 +2260,18 @@ CSS SECTION 23C-M: INQUIRY PANEL / MOBILE
     row-gap: 18px;
   }
 
-  .inquiry-main {
-    gap: 18px;
-  }
+ .inquiry-main {
+  max-width: 100%;
+  width: 100%;
+  gap: 18px;
+}
 
-  .inquiry-body {
-    font-size: 14px;
-    line-height: 1.74;
-  }
+.inquiry-body {
+  max-width: 100%;
+  width: 100%;
+  font-size: 14px;
+  line-height: 1.74;
+}
 
   .drop-cap::first-letter {
     font-size: 36px;
@@ -2471,6 +2475,18 @@ Editorial continuation of Inquiry without side note
     margin-top: 28px;
     width: 68px;
   }
+  .contexts-main {
+  max-width: 100%;
+  width: 100%;
+  gap: 18px;
+}
+
+.contexts-body {
+  max-width: 100%;
+  width: 100%;
+  font-size: 14px;
+  line-height: 1.74;
+}
 }
 }
     /* =========================================================
@@ -2481,7 +2497,7 @@ Editorial continuation of Inquiry / Contexts
   position: relative;
   max-width: 900px;
   padding-top: 22px;
-  padding-left: 42px;
+  padding-left: 70px;
 }
 .research-panel-inner-method-v2::before {
   content: "";
@@ -2624,14 +2640,18 @@ Editorial continuation of Inquiry / Contexts
     letter-spacing: -0.01em;
   }
 
-  .method-main {
-    gap: 18px;
-  }
+ .method-main {
+  max-width: 100%;
+  width: 100%;
+  gap: 18px;
+}
 
-  .method-body {
-    font-size: 14px;
-    line-height: 1.74;
-  }
+.method-body {
+  max-width: 100%;
+  width: 100%;
+  font-size: 14px;
+  line-height: 1.74;
+}
 
   .drop-cap-method::first-letter {
     font-size: 36px;
@@ -2874,9 +2894,19 @@ Apple-like editorial archive for academic work
   }
 
   .work-entry-body {
-    font-size: 14px;
-    line-height: 1.72;
-  }
+  max-width: 100%;
+  width: 100%;
+  font-size: 14px;
+  line-height: 1.72;
+}
+  .work-entry,
+  .work-intro,
+  .work-entry-role,
+  .work-entry-supervision,
+  .work-entry-note {
+  max-width: 100%;
+  width: 100%;
+}
 
   .work-entry-note {
     font-size: 11px;
@@ -2965,6 +2995,12 @@ Apple-like editorial archive for academic work
       .trajectory-text {
         width: 100%;
       }
+      .trajectory-text,
+.trajectory-body,
+.trajectory-body p {
+  max-width: 100%;
+  width: 100%;
+
     }
     .contact-link {
   margin-top: 12px;
@@ -3062,11 +3098,10 @@ Apple-like editorial archive for academic work
     ========================================================== */
     @media (max-width: 767px) {
       .research-field {
-        margin-top: -34px;
-        padding: 118px 22px 120px;
-        gap: 30px;
+      margin-top: -34px;
+      padding: 118px 26px 120px;
+      gap: 30px;
       }
-
       .research-field::before {
         height: 86px;
       }
@@ -3141,6 +3176,41 @@ Apple-like editorial archive for academic work
         margin-top: 26px;
         width: 68px;
       }
+      .research-panel-inner {
+       max-width: 100%;
+}
+      .research-panel-inner,
+      .research-panel-inner-inquiry-v2,
+      .research-panel-inner-contexts-v2,
+      .research-panel-inner-method-v2,
+      .research-panel-inner-work-v3,
+      .trajectory-text {
+      width: 100%;
+      max-width: 100%;
+}
+      .research-panel-inner,
+.research-panel-inner-inquiry-v2,
+.research-panel-inner-contexts-v2,
+.research-panel-inner-method-v2,
+.research-panel-inner-work-v3,
+.inquiry-main,
+.contexts-main,
+.method-main,
+.work-entry,
+.trajectory-text,
+.inquiry-body,
+.contexts-body,
+.method-body,
+.work-body,
+.work-entry-body,
+.work-entry-role,
+.work-entry-supervision,
+.work-entry-note,
+.work-intro,
+.trajectory-body p {
+  width: 100%;
+  max-width: 100%;
+}
     }
 
     /* =========================================================
@@ -3629,14 +3699,17 @@ Premium desktop-only cursor system
       <div class="inquiry-main">
         <p class="research-panel-body inquiry-body drop-cap">
           Perception precedes cognition. Before a meal is evaluated, it is absorbed — through texture, atmosphere, sound, and spatial condition. Gastronomy is not merely the study of food — it is the study of how food is perceived, remembered, and experienced within a cultural and spatial context.
+
         </p>
 
         <p class="research-panel-body inquiry-body">
           Understanding how these stimuli converge to shape eating behavior and guest experience is the central intellectual interest that drives this research trajectory — one that combines scientific rigor with creative inquiry.
+
         </p>
 
         <p class="research-panel-body inquiry-body">
-          The inquiry sits at the intersection of sensory science, gastronomy, and hospitality strategy — examining multisensory experience not as an aesthetic layer, but as a measurable behavioral variable.
+          The inquiry sits at the intersection of sensory science, gastronomy, and food and hospitality strategy — examining multisensory experience not as an aesthetic layer, but as a measurable behavioral variable. The analytical lens draws from marketing analytics and data-driven methodologies, bridging empirical evidence with applied food and hospitality intelligence.
+
         </p>
       </div>
 
@@ -3668,8 +3741,7 @@ Premium desktop-only cursor system
         </p>
 
         <p class="research-panel-body contexts-body">
-          In hotel and tourism environments, the interest lies in how spatial aesthetics and multisensory atmosphere affect guest perception and behavioral intention. Across both contexts, the underlying question remains consistent: how does the environment become a behavioral condition?
-        </p>
+          In hotel and tourism environments, the interest lies in how spatial aesthetics and multisensory atmosphere affect guest perception and behavioral intention. Across both contexts, the underlying question remains consistent: how do food and environment converge to shape behavioral response?
       </div>
     </div>
 
@@ -4339,17 +4411,27 @@ Premium desktop-only cursor system
       });
     }
 
-    menuLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        activateResearchPanel(link.dataset.menuTarget);
-        closeMenuOverlay();
-        forceHideNativeCursor();
-        const field = document.getElementById('researchField');
-        if (field) {
-          setTimeout(() => { field.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 120);
-        }
-      });
-    });
+  menuLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    const targetName = link.dataset.menuTarget;
+    const field = document.getElementById('researchField');
+
+    activateResearchPanel(targetName);
+    closeMenuOverlay();
+    forceHideNativeCursor();
+
+    if (field) {
+      setTimeout(() => {
+        const fieldTop = field.getBoundingClientRect().top + window.pageYOffset;
+
+        window.scrollTo({
+          top: fieldTop - 12,
+          behavior: 'smooth'
+        });
+      }, 520);
+    }
+  });
+});
 
     if (menuOverlay) {
       menuOverlay.addEventListener('click', event => {
@@ -4386,15 +4468,16 @@ Premium desktop-only cursor system
       document.documentElement.style.cursor = 'none';
       document.body.style.cursor = 'none';
 
-      /* Cursor position state — starts at viewport center */
-      let mouseX = window.innerWidth  / 2;
-      let mouseY = window.innerHeight / 2;
-      let ringX  = mouseX;
-      let ringY  = mouseY;
-      let dotX   = mouseX;
-      let dotY   = mouseY;
+            /* Cursor position state — hidden until first real mouse move */
+      let mouseX = 0;
+      let mouseY = 0;
+      let ringX  = 0;
+      let ringY  = 0;
+      let dotX   = 0;
+      let dotY   = 0;
       let rafId  = null;
-
+      let hasMouseMoved = false;
+      
       const interactiveSelector = [
         'a', 'button', '.research-label', '.menu-link',
         '.hero-menu-button', '.entrance-skip'
@@ -4412,14 +4495,16 @@ Premium desktop-only cursor system
       }
 
       /* Continuous smooth RAF loop */
-      function renderCursor() {
-        ringX += (mouseX - ringX) * 0.14;
-        ringY += (mouseY - ringY) * 0.14;
-        dotX  += (mouseX - dotX)  * 0.34;
-        dotY  += (mouseY - dotY)  * 0.34;
+           function renderCursor() {
+        if (hasMouseMoved) {
+          ringX += (mouseX - ringX) * 0.14;
+          ringY += (mouseY - ringY) * 0.14;
+          dotX  += (mouseX - dotX)  * 0.34;
+          dotY  += (mouseY - dotY)  * 0.34;
 
-        cursorRing.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
-        cursorDot.style.transform  = `translate(${dotX}px,  ${dotY}px)  translate(-50%, -50%)`;
+          cursorRing.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
+          cursorDot.style.transform  = `translate(${dotX}px,  ${dotY}px)  translate(-50%, -50%)`;
+        }
 
         rafId = requestAnimationFrame(renderCursor);
       }
@@ -4434,14 +4519,21 @@ Premium desktop-only cursor system
         cursorShell.classList.remove('is-visible', 'is-hover', 'is-pressed');
       }
 
-      function handleMouseMove(event) {
+            function handleMouseMove(event) {
         mouseX = event.clientX;
         mouseY = event.clientY;
+
+        if (!hasMouseMoved) {
+          hasMouseMoved = true;
+          ringX = mouseX;
+          ringY = mouseY;
+          dotX  = mouseX;
+          dotY  = mouseY;
+        }
+
         showCursor();
         enforceCursorNone(event.target);
-        /* RAF already running continuously — no need to restart */
       }
-
       function handlePointerOver(event) {
         enforceCursorNone(event.target);
         if (event.target.closest(interactiveSelector)) {
@@ -4489,8 +4581,7 @@ Premium desktop-only cursor system
         }
       });
 
-      /* Show immediately and start the RAF loop */
-      showCursor();
+          /* Start RAF, but keep cursor hidden until first real mouse move */
       rafId = requestAnimationFrame(renderCursor);
     }
 
