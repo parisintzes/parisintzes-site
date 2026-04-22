@@ -3991,6 +3991,26 @@ Premium desktop-only cursor system
     const entranceSkipBtn = document.getElementById('entranceSkipBtn');
     const entranceCanvas  = document.getElementById('entranceCanvas');
 
+    function finishEntrance() {
+  if (entranceFlow) {
+    entranceFlow.classList.add('is-hidden');
+  }
+
+  if (heroStage) {
+    heroStage.classList.add('is-rising');
+  }
+
+  setTimeout(() => {
+    if (entranceFlow) {
+      entranceFlow.style.display = 'none';
+    }
+
+    if (heroStage) {
+      heroStage.classList.add('is-settled');
+    }
+  }, 1200);
+}
+
     const flowUnitPerception     = document.getElementById('flowUnitPerception');
     const flowUnitPerceptionLine = document.getElementById('flowUnitPerceptionLine');
 
