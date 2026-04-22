@@ -1824,32 +1824,31 @@
     }
 
     .research-panel-title {
-      margin: 0 0 28px;
-      font-family: 'Inter', sans-serif;
-      font-size: clamp(34px, 3.2vw, 46px);
-      line-height: 1.04;
-      letter-spacing: -0.03em;
-      font-weight: 300;
-    }
+  margin: 0 0 24px;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(30px, 2.8vw, 40px);
+  line-height: 1.06;
+  letter-spacing: -0.028em;
+  font-weight: 300;
+}
 
     .research-panel-lead {
-      margin: 0 0 32px;
-      max-width: 68ch;
-      font-size: 19px;
-      line-height: 1.52;
-      font-weight: 300;
-      color: rgba(17, 17, 17, 0.86);
-    }
+  margin: 0 0 26px;
+  max-width: 68ch;
+  font-size: 17px;
+  line-height: 1.46;
+  font-weight: 300;
+  color: rgba(17, 17, 17, 0.86);
+}
 
-    .research-panel-body {
-      margin: 0;
-      max-width: 66ch;
-      font-size: 15px;
-      line-height: 1.86;
-      font-weight: 300;
-      color: rgba(17, 17, 17, 0.68);
-    }
-
+   .research-panel-body {
+  margin: 0;
+  max-width: 66ch;
+  font-size: 14px;
+  line-height: 1.78;
+  font-weight: 300;
+  color: rgba(17, 17, 17, 0.68);
+}
     .research-panel-line {
       width: 84px;
       height: 1px;
@@ -2111,9 +2110,9 @@ Magazine-style layout with proper desktop/tablet/mobile behavior
 
 .inquiry-lead {
   max-width: 70ch;
-  margin: 0 0 46px;
-  font-size: 21px;
-  line-height: 1.44;
+  margin: 0 0 34px;
+  font-size: 18px;
+  line-height: 1.42;
   font-weight: 300;
   letter-spacing: -0.012em;
   color: rgba(17, 17, 17, 0.92);
@@ -2144,23 +2143,25 @@ Magazine-style layout with proper desktop/tablet/mobile behavior
 }
 .inquiry-body {
   margin: 0;
-  font-size: 15px;
-  line-height: 1.88;
+  font-size: 14px;
+  line-height: 1.76;
   font-weight: 300;
   color: rgba(17, 17, 17, 0.72);
   text-wrap: pretty;
 }
 
 /* premium drop cap */
-.drop-cap::first-letter {
-  float: left;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 50px;
-  line-height: 0.84;
-  padding-right: 8px;
-  padding-top: 7px;
-  font-weight: 400;
-  color: rgba(17, 17, 17, 0.94);
+.drop-cap::first-letter,
+.drop-cap-contexts::first-letter,
+.drop-cap-method::first-letter {
+  float: none;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  padding-right: 0;
+  padding-top: 0;
+  font-weight: inherit;
+  color: inherit;
 }
 
 .inquiry-line {
@@ -2220,12 +2221,6 @@ CSS SECTION 23C-T: INQUIRY PANEL / TABLET
     font-size: 15px;
     line-height: 1.78;
   }
-  .drop-cap::first-letter {
-    font-size: 44px;
-    line-height: 0.86;
-    padding-right: 7px;
-    padding-top: 6px;
-  }
 
   .inquiry-line {
     margin-top: 34px;
@@ -2273,13 +2268,6 @@ CSS SECTION 23C-M: INQUIRY PANEL / MOBILE
   line-height: 1.74;
 }
 
-  .drop-cap::first-letter {
-    font-size: 36px;
-    line-height: 0.88;
-    padding-right: 6px;
-    padding-top: 5px;
-  }
-
   .inquiry-line {
     margin-top: 28px;
     width: 68px;
@@ -2312,10 +2300,10 @@ Editorial continuation of Inquiry without side note
 }
 
 .contexts-lead {
-  max-width: 70ch;
-  margin: 0 0 46px;
-  font-size: 21px;
-  line-height: 1.44;
+ max-width: 70ch;
+  margin: 0 0 34px;
+  font-size: 18px;
+  line-height: 1.42;
   font-weight: 300;
   letter-spacing: -0.012em;
   color: rgba(17, 17, 17, 0.92);
@@ -2335,23 +2323,25 @@ Editorial continuation of Inquiry without side note
 }
 
 .contexts-body {
-  margin: 0;
-  font-size: 15px;
-  line-height: 1.84;
+ margin: 0;
+  font-size: 14px;
+  line-height: 1.76;
   font-weight: 300;
   color: rgba(17, 17, 17, 0.72);
   text-wrap: pretty;
 }
 
-.drop-cap-contexts::first-letter {
-  float: left;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 50px;
-  line-height: 0.84;
-  padding-right: 8px;
-  padding-top: 7px;
-  font-weight: 400;
-  color: rgba(17, 17, 17, 0.94);
+.drop-cap::first-letter,
+.drop-cap-contexts::first-letter,
+.drop-cap-method::first-letter {
+  float: none;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  padding-right: 0;
+  padding-top: 0;
+  font-weight: inherit;
+  color: inherit;
 }
 
 .contexts-line {
@@ -2395,12 +2385,6 @@ Editorial continuation of Inquiry without side note
     line-height: 1.78;
   }
 
-  .drop-cap-contexts::first-letter {
-    font-size: 44px;
-    line-height: 0.86;
-    padding-right: 7px;
-    padding-top: 6px;
-  }
 
   .contexts-line {
     margin-top: 34px;
@@ -2440,13 +2424,6 @@ Editorial continuation of Inquiry without side note
     line-height: 1.74;
   }
 
-  .drop-cap-contexts::first-letter {
-    font-size: 36px;
-    line-height: 0.88;
-    padding-right: 6px;
-    padding-top: 5px;
-  }
-
   .contexts-line {
     margin-top: 28px;
     width: 68px;
@@ -2460,7 +2437,7 @@ Editorial continuation of Inquiry / Contexts
   position: relative;
   max-width: 900px;
   padding-top: 22px;
-  padding-left: 70px;
+  padding-left: 28px;
 }
 .research-panel-inner-method-v2::before {
   content: "";
@@ -2479,9 +2456,9 @@ Editorial continuation of Inquiry / Contexts
 
 .method-lead {
   max-width: 70ch;
-  margin: 0 0 46px;
-  font-size: 21px;
-  line-height: 1.44;
+  margin: 0 0 34px;
+  font-size: 18px;
+  line-height: 1.42;
   font-weight: 300;
   letter-spacing: -0.012em;
   color: rgba(17, 17, 17, 0.92);
@@ -2502,22 +2479,24 @@ Editorial continuation of Inquiry / Contexts
 
 .method-body {
   margin: 0;
-  font-size: 15px;
-  line-height: 1.84;
+  font-size: 14px;
+  line-height: 1.76;
   font-weight: 300;
   color: rgba(17, 17, 17, 0.72);
   text-wrap: pretty;
 }
 
+.drop-cap::first-letter,
+.drop-cap-contexts::first-letter,
 .drop-cap-method::first-letter {
-  float: left;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 50px;
-  line-height: 0.84;
-  padding-right: 8px;
-  padding-top: 7px;
-  font-weight: 400;
-  color: rgba(17, 17, 17, 0.94);
+  float: none;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  padding-right: 0;
+  padding-top: 0;
+  font-weight: inherit;
+  color: inherit;
 }
 
 .method-line {
@@ -2570,12 +2549,6 @@ Editorial continuation of Inquiry / Contexts
     line-height: 1.78;
   }
 
-  .drop-cap-method::first-letter {
-    font-size: 44px;
-    line-height: 0.86;
-    padding-right: 7px;
-    padding-top: 6px;
-  }
 
   .method-line {
     margin-top: 34px;
@@ -2616,13 +2589,6 @@ Editorial continuation of Inquiry / Contexts
   line-height: 1.74;
 }
 
-  .drop-cap-method::first-letter {
-    font-size: 36px;
-    line-height: 0.88;
-    padding-right: 6px;
-    padding-top: 5px;
-  }
-
   .method-line {
     margin-top: 28px;
     width: 68px;
@@ -2656,9 +2622,9 @@ Apple-like editorial archive for academic work
 
 .work-intro {
   max-width: 70ch;
-  margin-bottom: 46px;
-  font-size: 17px;
-  line-height: 1.58;
+  margin-bottom: 32px;
+  font-size: 15px;
+  line-height: 1.54;
   font-weight: 300;
   color: rgba(17, 17, 17, 0.64);
   letter-spacing: -0.01em;
@@ -2702,7 +2668,7 @@ Apple-like editorial archive for academic work
 .work-entry-title {
   margin: 0 0 10px;
   font-family: 'Inter', sans-serif;
-  font-size: 24px;
+  font-size: 21px;
   line-height: 1.08;
   letter-spacing: -0.02em;
   font-weight: 300;
@@ -2712,16 +2678,16 @@ Apple-like editorial archive for academic work
 .work-entry-role {
   margin: 0 0 8px;
   max-width: 72ch;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.56;
   font-weight: 300;
   color: rgba(17, 17, 17, 0.58);
 }
 
 .work-entry-supervision {
-  margin: 0 0 16px;
+  margin: 0 0 14px;
   max-width: 72ch;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.56;
   font-weight: 300;
   color: rgba(17, 17, 17, 0.58);
@@ -2731,8 +2697,8 @@ Apple-like editorial archive for academic work
 .work-entry-body {
   margin: 0;
   max-width: 68ch;
-  font-size: 15px;
-  line-height: 1.86;
+  font-size: 14px;
+  line-height: 1.76;
   font-weight: 300;
   color: rgba(17, 17, 17, 0.72);
   text-wrap: pretty;
@@ -2972,14 +2938,13 @@ Apple-like editorial archive for academic work
     Cinematic stacked adaptation for tablet
     ========================================================== */
     @media (max-width: 1100px) {
-      .research-field {
-        grid-template-columns: 1fr;
-        gap: 48px;
-        min-height: auto;
-        margin-top: -56px;
-        padding: 150px 40px 150px;
-      }
-
+  .research-field {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    min-height: auto;
+    margin-top: -56px;
+    padding: 140px 28px 140px;
+  }
       .research-field::before {
         height: 120px;
       }
@@ -3026,31 +2991,32 @@ Apple-like editorial archive for academic work
       }
 
       .research-panel-title {
-        font-size: clamp(30px, 5vw, 40px);
+        font-size: clamp(28px, 4.2vw, 34px);
       }
 
       .research-panel-lead {
-        max-width: 100%;
-        font-size: 18px;
-        line-height: 1.52;
-      }
+  max-width: 100%;
+  font-size: 16px;
+  line-height: 1.44;
+}
 
-      .research-panel-body {
-        max-width: 100%;
-        line-height: 1.84;
-      }
+     .research-panel-body {
+  max-width: 100%;
+  font-size: 14px;
+  line-height: 1.74;
+}
     }
 
     /* =========================================================
     CSS SECTION 25: MOBILE ADAPTATION
     Accordion-cinematic adaptation for mobile
     ========================================================== */
-    @media (max-width: 767px) {
-      .research-field {
-      margin-top: -34px;
-      padding: 118px 26px 120px;
-      gap: 30px;
-      }
+   @media (max-width: 767px) {
+  .research-field {
+    margin-top: -34px;
+    padding: 108px 14px 108px;
+    gap: 24px;
+  }
       .research-field::before {
         height: 86px;
       }
@@ -3076,7 +3042,7 @@ Apple-like editorial archive for academic work
       }
 
       .research-label-title {
-        font-size: 17px;
+        font-size: 15px;
       }
 
       .research-wave-field {
@@ -3105,21 +3071,20 @@ Apple-like editorial archive for academic work
       }
 
       .research-panel-title {
-        font-size: 28px;
-        line-height: 1.04;
-        margin-bottom: 16px;
-      }
+  font-size: 24px;
+  line-height: 1.08;
+  margin-bottom: 14px;
+}
 
       .research-panel-lead {
-        font-size: 16px;
-        line-height: 1.4;
-        margin-bottom: 18px;
-      }
-
+  font-size: 15px;
+  line-height: 1.42;
+  margin-bottom: 16px;
+}
       .research-panel-body {
-        font-size: 14px;
-        line-height: 1.68;
-      }
+  font-size: 13px;
+  line-height: 1.66;
+}
 
       .research-panel-line {
         margin-top: 26px;
@@ -3137,7 +3102,7 @@ Apple-like editorial archive for academic work
       width: 100%;
       max-width: 100%;
 }
-            .research-reveal-stage,
+           .research-reveal-stage,
       .research-panel,
       .research-panel-inner,
       .research-panel-inner-inquiry-v2,
@@ -3160,8 +3125,27 @@ Apple-like editorial archive for academic work
       .work-intro,
       .trajectory-body,
       .trajectory-body p {
+        width: 100%;
+        max-width: 100%;
         min-width: 0;
         overflow-wrap: break-word;
+      }
+           .research-panel-inner-inquiry-v2,
+      .research-panel-inner-contexts-v2,
+      .research-panel-inner-method-v2,
+      .research-panel-inner-work-v3 {
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      .inquiry-title,
+      .contexts-title,
+      .method-title,
+      .work-title,
+      .research-panel-title,
+      .research-panel-lead,
+      .work-intro {
+        max-width: 100%;
       }
     }
 
